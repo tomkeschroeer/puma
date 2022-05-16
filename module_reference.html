@@ -142,14 +142,88 @@
 <nav id="bd-toc-nav">
     <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#module-puma">
-   puma
+  <a class="reference internal nav-link" href="#plot-base">
+   Plot base
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plotbase">
+     <code class="code docutils literal notranslate">
+      <span class="pre">
+       PlotBase
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plotobject">
+     <code class="code docutils literal notranslate">
+      <span class="pre">
+       PlotObject
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plotlineobject">
+     <code class="code docutils literal notranslate">
+      <span class="pre">
+       PlotLineObject
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#puma-base">
-   puma.base
+  <a class="reference internal nav-link" href="#histograms">
+   Histograms
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#histogram">
+     <code class="code docutils literal notranslate">
+      <span class="pre">
+       Histogram
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#histogramplot">
+     <code class="code docutils literal notranslate">
+      <span class="pre">
+       HistogramPlot
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#roc-curves">
+   ROC curves
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#roc">
+     <code class="code docutils literal notranslate">
+      <span class="pre">
+       Roc
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rocplot">
+     <code class="code docutils literal notranslate">
+      <span class="pre">
+       RocPlot
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -174,13 +248,761 @@
                 
   <section id="module-reference">
 <h1>Module reference<a class="headerlink" href="#module-reference" title="Permalink to this headline">#</a></h1>
-<section id="module-puma">
-<span id="puma"></span><h2>puma<a class="headerlink" href="#module-puma" title="Permalink to this headline">#</a></h2>
-<p>puma framework - Plotting UMami Api.</p>
+<section id="plot-base">
+<h2>Plot base<a class="headerlink" href="#plot-base" title="Permalink to this headline">#</a></h2>
+<section id="plotbase">
+<h3><code class="code docutils literal notranslate"><span class="pre">PlotBase</span></code><a class="headerlink" href="#plotbase" title="Permalink to this headline">#</a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="puma.PlotBase">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">puma.</span></span><span class="sig-name descname"><span class="pre">PlotBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.PlotBase" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#puma.PlotObject" title="puma.plot_base.PlotObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">puma.plot_base.PlotObject</span></code></a></p>
+<p>Base class for plotting</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.PlotBase.atlasify">
+<span class="sig-name descname"><span class="pre">atlasify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">use_tag</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.PlotBase.atlasify" title="Permalink to this definition">#</a></dt>
+<dd><p>Apply ATLAS style to all axes using the atlasify package</p>
+<dl class="simple">
+<dt>use_tag<span class="classifier">bool, optional</span></dt><dd><p>If False, ATLAS style will be applied but no tag will be put on the plot.
+If True, the tag will be put on as well, by default True</p>
+</dd>
+<dt>force<span class="classifier">bool, optional</span></dt><dd><p>Force ATLAS style also if class variable is False, by default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.PlotBase.draw_vlines">
+<span class="sig-name descname"><span class="pre">draw_vlines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vlines_xvalues</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vlines_label_list</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vlines_line_height_list</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_height</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colour</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'#920000'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fontsize</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.PlotBase.draw_vlines" title="Permalink to this definition">#</a></dt>
+<dd><p>Drawing working points in plot</p>
+<dl class="simple">
+<dt>vlines_xvalues<span class="classifier">list</span></dt><dd><p>List of working points x values to draw</p>
+</dd>
+<dt>vlines_label_list<span class="classifier">list, optional</span></dt><dd><p>List with labels for the vertical lines. Must be the same
+order as the vlines_xvalues. If None, the xvalues * 100 will be
+used as labels. By default None</p>
+</dd>
+<dt>vlines_line_height_list<span class="classifier">list, optional</span></dt><dd><p>List with the y height of the vertical lines in percent of the
+upper plot (0 is bottom, 1 is top). Must be the same
+order as the vlines_xvalues and the labels. By default None</p>
+</dd>
+<dt>same_height<span class="classifier">bool, optional</span></dt><dd><p>working point lines on same height, by default False</p>
+</dd>
+<dt>colour<span class="classifier">str, optional</span></dt><dd><p>colour of the vertical line, by default “#920000”</p>
+</dd>
+<dt>fontsize<span class="classifier">int, optional</span></dt><dd><p>Fontsize of the vertical line text. By default 10.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.PlotBase.initialise_figure">
+<span class="sig-name descname"><span class="pre">initialise_figure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sub_plot_index</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.PlotBase.initialise_figure" title="Permalink to this definition">#</a></dt>
+<dd><p>Initialising matplotlib.figure.Figure for different scenarios depending on how
+many ratio panels are requested.</p>
+<dl class="simple">
+<dt>sub_plot_index<span class="classifier">int, optional</span></dt><dd><p>indicates for the scenario with one ratio how large the upper and lower
+panels are, by default 5</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.PlotBase.initialise_plot">
+<span class="sig-name descname"><span class="pre">initialise_plot</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#puma.PlotBase.initialise_plot" title="Permalink to this definition">#</a></dt>
+<dd><p>Calls other methods which are usually used when plotting</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.PlotBase.make_legend">
+<span class="sig-name descname"><span class="pre">make_legend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">handles:</span> <span class="pre">list</span></em>, <em class="sig-param"><span class="pre">ax_mpl:</span> <span class="pre">&lt;module</span> <span class="pre">'matplotlib.axis'</span> <span class="pre">from</span> <span class="pre">'/usr/local/lib/python3.8/site-packages/matplotlib/axis.py'&gt;</span></em>, <em class="sig-param"><span class="pre">labels:</span> <span class="pre">Optional[list]</span> <span class="pre">=</span> <span class="pre">None</span></em>, <em class="sig-param"><span class="pre">**kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.PlotBase.make_legend" title="Permalink to this definition">#</a></dt>
+<dd><p>Drawing legend on axis.</p>
+<dl class="simple">
+<dt>handles<span class="classifier">list</span></dt><dd><p>list of matplotlib.lines.Line2D object returned when plotting</p>
+</dd>
+<dt>ax_mpl<span class="classifier">axis</span></dt><dd><p>matplotlib.axis object where the legend should be plotted</p>
+</dd>
+<dt>labels<span class="classifier">list, optional</span></dt><dd><p>plot labels. If None, the labels are extracted from the <code class="code docutils literal notranslate"><span class="pre">handles</span></code>.
+By default None</p>
+</dd>
+<dt><a href="#id1"><span class="problematic" id="id2">**</span></a>kwargs<span class="classifier">kwargs</span></dt><dd><p>kwargs which can be passed to matplotlib axis</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.PlotBase.savefig">
+<span class="sig-name descname"><span class="pre">savefig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plot_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transparent</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dpi</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.PlotBase.savefig" title="Permalink to this definition">#</a></dt>
+<dd><p>Save plot to disk.</p>
+<dl class="simple">
+<dt>plot_name<span class="classifier">str</span></dt><dd><p>file name of the plot</p>
+</dd>
+<dt>transparent<span class="classifier">bool, optional</span></dt><dd><p>if plot transparent, by default True</p>
+</dd>
+<dt>dpi<span class="classifier">int, optional</span></dt><dd><p>dpi for plotting, by default 400</p>
+</dd>
+<dt><a href="#id3"><span class="problematic" id="id4">**</span></a>kwargs<span class="classifier">kwargs</span></dt><dd><p>kwargs passed to <code class="code docutils literal notranslate"><span class="pre">matplotlib.figure.Figure.savefig()</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.PlotBase.set_logy">
+<span class="sig-name descname"><span class="pre">set_logy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.PlotBase.set_logy" title="Permalink to this definition">#</a></dt>
+<dd><p>Set log scale of y-axis of main panel.</p>
+<dl class="simple">
+<dt>force<span class="classifier">bool, optional</span></dt><dd><p>forcing logy even if class variable is False, by default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.PlotBase.set_ratio_label">
+<span class="sig-name descname"><span class="pre">set_ratio_label</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ratio_panel</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.PlotBase.set_ratio_label" title="Permalink to this definition">#</a></dt>
+<dd><p>Associate the rejection class to a ratio panel</p>
+<dl class="simple">
+<dt>ratio_panel<span class="classifier">int</span></dt><dd><p>ratio panel either 1 or 2</p>
+</dd>
+<dt>label<span class="classifier">str</span></dt><dd><p>y-axis label of the ratio panel</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>ValueError</dt><dd><p>if requested ratio panels and given ratio_panel do not match.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.PlotBase.set_tick_params">
+<span class="sig-name descname"><span class="pre">set_tick_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">labelsize</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.PlotBase.set_tick_params" title="Permalink to this definition">#</a></dt>
+<dd><p>Set x-axis label.</p>
+<dl class="simple">
+<dt>labelsize<span class="classifier">int, optional</span></dt><dd><p>label size of x- and y- axis ticks, by default None
+if None then using global fontsize</p>
+</dd>
+<dt><a href="#id5"><span class="problematic" id="id6">**</span></a>kwargs<span class="classifier">kwargs</span></dt><dd><p>kwargs passed to <code class="code docutils literal notranslate"><span class="pre">matplotlib.axes.Axes.set_xlabel()</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.PlotBase.set_title">
+<span class="sig-name descname"><span class="pre">set_title</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.PlotBase.set_title" title="Permalink to this definition">#</a></dt>
+<dd><p>Set title of top panel.</p>
+<dl class="simple">
+<dt>title<span class="classifier">str, optional</span></dt><dd><p>title of top panel, if None using the value form the class variables,
+by default None</p>
+</dd>
+<dt><a href="#id7"><span class="problematic" id="id8">**</span></a>kwargs<span class="classifier">kwargs</span></dt><dd><p>kwargs passed to <code class="code docutils literal notranslate"><span class="pre">matplotlib.axes.Axes.set_title()</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.PlotBase.set_xlabel">
+<span class="sig-name descname"><span class="pre">set_xlabel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.PlotBase.set_xlabel" title="Permalink to this definition">#</a></dt>
+<dd><p>Set x-axis label.</p>
+<dl class="simple">
+<dt>label<span class="classifier">str, optional</span></dt><dd><p>x-axis label, by default None</p>
+</dd>
+<dt><a href="#id9"><span class="problematic" id="id10">**</span></a>kwargs<span class="classifier">kwargs</span></dt><dd><p>kwargs passed to <code class="code docutils literal notranslate"><span class="pre">matplotlib.axes.Axes.set_xlabel()</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.PlotBase.set_xlim">
+<span class="sig-name descname"><span class="pre">set_xlim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xmin</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xmax</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.PlotBase.set_xlim" title="Permalink to this definition">#</a></dt>
+<dd><p>Set limits of x-axis</p>
+<dl class="simple">
+<dt>xmin<span class="classifier">float, optional</span></dt><dd><p>min of x-axis, by default None</p>
+</dd>
+<dt>xmax<span class="classifier">float, optional</span></dt><dd><p>max of x-axis, by default None</p>
+</dd>
+<dt><a href="#id11"><span class="problematic" id="id12">**</span></a>kwargs<span class="classifier">kwargs</span></dt><dd><p>kwargs passed to <code class="code docutils literal notranslate"><span class="pre">matplotlib.axes.Axes.set_xlim()</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.PlotBase.set_y_lim">
+<span class="sig-name descname"><span class="pre">set_y_lim</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#puma.PlotBase.set_y_lim" title="Permalink to this definition">#</a></dt>
+<dd><p>Set limits of y-axis.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.PlotBase.set_ylabel">
+<span class="sig-name descname"><span class="pre">set_ylabel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax_mpl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_right</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.PlotBase.set_ylabel" title="Permalink to this definition">#</a></dt>
+<dd><p>Set y-axis label.</p>
+<dl class="simple">
+<dt>ax_mpl<span class="classifier">matplotlib.axes.Axes</span></dt><dd><p>matplotlib axis object</p>
+</dd>
+<dt>label<span class="classifier">str, optional</span></dt><dd><p>x-axis label, by default None</p>
+</dd>
+<dt>align_right<span class="classifier">bool, optional</span></dt><dd><p>alignment of y-axis label, by default True</p>
+</dd>
+<dt><a href="#id13"><span class="problematic" id="id14">**</span></a>kwargs, kwargs</dt><dd><p>kwargs passed to <code class="code docutils literal notranslate"><span class="pre">matplotlib.axes.Axes.set_ylabel()</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.PlotBase.tight_layout">
+<span class="sig-name descname"><span class="pre">tight_layout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.PlotBase.tight_layout" title="Permalink to this definition">#</a></dt>
+<dd><p>abstract function of matplotlib.figure.Figure.tight_layout</p>
+<dl class="simple">
+<dt><a href="#id15"><span class="problematic" id="id16">**</span></a>kwargs: kwargs</dt><dd><p>kwargs from <code class="code docutils literal notranslate"><span class="pre">matplotlib.figure.Figure.tight_layout()</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="plotobject">
+<h3><code class="code docutils literal notranslate"><span class="pre">PlotObject</span></code><a class="headerlink" href="#plotobject" title="Permalink to this headline">#</a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="puma.PlotObject">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">puma.</span></span><span class="sig-name descname"><span class="pre">PlotObject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw_errors</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xmin</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xmax</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymin</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymax</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymin_ratio_1</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymax_ratio_1</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymin_ratio_2</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymax_ratio_2</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_scale</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1.3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logy</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xlabel</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylabel</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylabel_ratio_1</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'Ratio'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylabel_ratio_2</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'Ratio'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_fontsize</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fontsize</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_ratio_panels</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertical_split</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dpi</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">400</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">leg_fontsize</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">leg_loc</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'upper</span> <span class="pre">right'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">leg_ncol</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apply_atlas_style</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_atlas_tag</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atlas_first_tag</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'Simulation</span> <span class="pre">Internal'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atlas_second_tag</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atlas_fontsize</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atlas_vertical_offset</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atlas_horizontal_offset</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atlas_brand</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'ATLAS'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plotting_done</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.PlotObject" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Data base class defining properties of a plot object.</p>
+<dl class="simple">
+<dt>title<span class="classifier">str, optional</span></dt><dd><p>Title of the plot, by default “”</p>
+</dd>
+<dt>draw_errors<span class="classifier">bool, optional</span></dt><dd><p>Draw statistical uncertainty on the lines, by default True</p>
+</dd>
+<dt>xmin<span class="classifier">float, optional</span></dt><dd><p>Minimum value of the x-axis, by default None</p>
+</dd>
+<dt>xmax<span class="classifier">float, optional</span></dt><dd><p>Maximum value of the x-axis, by default None</p>
+</dd>
+<dt>ymin<span class="classifier">float, optional</span></dt><dd><p>Minimum value of the y-axis, by default None</p>
+</dd>
+<dt>ymax<span class="classifier">float, optional</span></dt><dd><p>Maximum value of the y-axis, by default None</p>
+</dd>
+<dt>ymin_ratio_1<span class="classifier">float, optional</span></dt><dd><p>Set the lower y limit of the first ratio subplot, by default None.</p>
+</dd>
+<dt>ymax_ratio_1<span class="classifier">float, optional</span></dt><dd><p>Set the upper y limit of the first ratio subplot, by default None.</p>
+</dd>
+<dt>ymin_ratio_2<span class="classifier">float, optional</span></dt><dd><p>Set the lower y limit of the second ratio subplot, by default None.</p>
+</dd>
+<dt>ymax_ratio_2<span class="classifier">float, optional</span></dt><dd><p>Set the upper y limit of the second ratio subplot, by default None.</p>
+</dd>
+<dt>y_scale<span class="classifier">float, optional</span></dt><dd><p>Scaling up the y axis, e.g. to fit the ATLAS Tag. Applied if ymax not defined,
+by default 1.3</p>
+</dd>
+<dt>logy<span class="classifier">bool, optional</span></dt><dd><p>Set log of y-axis of main panel, by default True</p>
+</dd>
+<dt>xlabel<span class="classifier">str, optional</span></dt><dd><p>Label of the x-axis, by default None</p>
+</dd>
+<dt>ylabel<span class="classifier">str, optional</span></dt><dd><p>Label of the y-axis, by default None</p>
+</dd>
+<dt>ylabel_ratio_1<span class="classifier">str, optional</span></dt><dd><p>Label of the y-axis in the first ratio plot, by default “Ratio”</p>
+</dd>
+<dt>ylabel_ratio_2<span class="classifier">str, optional</span></dt><dd><p>Label of the y-axis in the second ratio plot, by default “Ratio”</p>
+</dd>
+<dt>label_fontsize<span class="classifier">int, optional</span></dt><dd><p>Used fontsize in label, by default 12</p>
+</dd>
+<dt>fontsize<span class="classifier">int, optional</span></dt><dd><p>Used fontsize, by default 10</p>
+</dd>
+<dt>n_ratio_panels<span class="classifier">int, optional</span></dt><dd><p>Amount of ratio panels between 0 and 2, by default 1</p>
+</dd>
+<dt>vertical_split: bool</dt><dd><p>Set to False if you would like to split the figure horizonally. If set to
+True the figure is split vertically (e.g for pie chart). By default False.</p>
+</dd>
+<dt>figsize<span class="classifier">(float, float), optional</span></dt><dd><p>Tuple of figure size <code class="code docutils literal notranslate"><span class="pre">(width,</span> <span class="pre">height)</span></code> in inches, by default (8, 6)</p>
+</dd>
+<dt>dpi<span class="classifier">int, optional</span></dt><dd><p>dpi used for plotting, by default 400</p>
+</dd>
+<dt>grid<span class="classifier">bool, optional</span></dt><dd><p>Set the grid for the plots.</p>
+</dd>
+<dt>leg_fontsize<span class="classifier">int, optional</span></dt><dd><p>Fontsize of the legend, by default 10</p>
+</dd>
+<dt>leg_loc<span class="classifier">str, optional</span></dt><dd><p>Position of the legend in the plot, by default “upper right”</p>
+</dd>
+<dt>leg_ncol<span class="classifier">int, optional</span></dt><dd><p>Number of legend columns, by default 1</p>
+</dd>
+<dt>apply_atlas_style<span class="classifier">bool, optional</span></dt><dd><p>Apply ATLAS style for matplotlib, by default True</p>
+</dd>
+<dt>use_atlas_tag<span class="classifier">bool, optional</span></dt><dd><p>Use the ATLAS Tag in the plots, by default True</p>
+</dd>
+<dt>atlas_first_tag<span class="classifier">str, optional</span></dt><dd><p>First row of the ATLAS tag (i.e. the first row is “ATLAS &lt;atlas_first_tag&gt;”),
+by default “Simulation Internal”</p>
+</dd>
+<dt>atlas_second_tag<span class="classifier">str, optional</span></dt><dd><p>Second row of the ATLAS tag, by default “”</p>
+</dd>
+<dt>atlas_fontsize<span class="classifier">float, optional</span></dt><dd><p>Fontsize of ATLAS label, by default 10</p>
+</dd>
+<dt>atlas_vertical_offset<span class="classifier">float, optional</span></dt><dd><p>Vertical offset of the ATLAS tag, by default 5</p>
+</dd>
+<dt>atlas_horizontal_offset<span class="classifier">float, optional</span></dt><dd><p>Horizontal offset of the ATLAS tag, by default 8</p>
+</dd>
+<dt>atlas_brand<span class="classifier">str, optional</span></dt><dd><p><code class="code docutils literal notranslate"><span class="pre">brand</span></code> argument handed to atlasify. If you want to remove it just use an empty
+string or None, by default “ATLAS”</p>
+</dd>
+<dt>plotting_done<span class="classifier">bool</span></dt><dd><p>Bool that indicates if plotting is done. Only then <code class="code docutils literal notranslate"><span class="pre">atlasify()</span></code> can be called,
+by default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="plotlineobject">
+<h3><code class="code docutils literal notranslate"><span class="pre">PlotLineObject</span></code><a class="headerlink" href="#plotlineobject" title="Permalink to this headline">#</a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="puma.PlotLineObject">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">puma.</span></span><span class="sig-name descname"><span class="pre">PlotLineObject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xmin</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xmax</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colour</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linestyle</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linewidth</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">marker</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">markersize</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">markeredgewidth</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_marker</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.PlotLineObject" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base data class defining properties of a plot object.</p>
+<dl class="simple">
+<dt>xmin<span class="classifier">float, optional</span></dt><dd><p>Minimum value of the x-axis, by default None</p>
+</dd>
+<dt>xmax<span class="classifier">float, optional</span></dt><dd><p>Maximum value of the x-axis, by default None</p>
+</dd>
+<dt>colour<span class="classifier">str, optional</span></dt><dd><p>colour of the object, by default None</p>
+</dd>
+<dt>label<span class="classifier">str, optional</span></dt><dd><p>label of object, by default None</p>
+</dd>
+<dt>linestyle<span class="classifier">str, optional</span></dt><dd><p>linestyle following numpy style, by default None</p>
+</dd>
+<dt>alpha<span class="classifier">float, optional</span></dt><dd><p>Value for visibility of the plot lines, by default None</p>
+</dd>
+<dt>marker<span class="classifier">str, optional</span></dt><dd><p>Marker that is used in the plot. For example an x.
+By default None</p>
+</dd>
+<dt>markersize<span class="classifier">int, optional</span></dt><dd><p>Size of the marker. By default None</p>
+</dd>
+<dt>markeredgewidth<span class="classifier">int, optional</span></dt><dd><p>Edge width of the marker. By default None</p>
+</dd>
+<dt>is_marker<span class="classifier">bool, optional</span></dt><dd><p>Bool, to give info about if this is a marker or a line.
+By default None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
 </section>
 <hr class="docutils" />
-<section id="puma-base">
-<h2>puma.base<a class="headerlink" href="#puma-base" title="Permalink to this headline">#</a></h2>
+<section id="histograms">
+<h2>Histograms<a class="headerlink" href="#histograms" title="Permalink to this headline">#</a></h2>
+<section id="histogram">
+<h3><code class="code docutils literal notranslate"><span class="pre">Histogram</span></code><a class="headerlink" href="#histogram" title="Permalink to this headline">#</a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="puma.Histogram">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">puma.</span></span><span class="sig-name descname"><span class="pre">Histogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flavour</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">histtype</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'step'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.Histogram" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#puma.PlotLineObject" title="puma.plot_base.PlotLineObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">puma.plot_base.PlotLineObject</span></code></a></p>
+<p>Histogram class storing info about histogram and allows to calculate ratio w.r.t
+other histograms.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.Histogram.divide">
+<span class="sig-name descname"><span class="pre">divide</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.Histogram.divide" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculate ratio between two class objects.</p>
+<dl class="simple">
+<dt>other<span class="classifier">histogram class</span></dt><dd><p>Second histogram object to calculate ratio with</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>np.ndarray</dt><dd><p>ratio</p>
+</dd>
+<dt>np.ndarray</dt><dd><p>ratio error</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>ValueError</dt><dd><p>If binning is not identical between 2 objects</p>
+</dd>
+<dt>ValueError</dt><dd><p>If hist attribute is not set for one of the two histograms</p>
+</dd>
+<dt>ValueError</dt><dd><p>If bin_edges attribute is not set for one of the two histograms</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="histogramplot">
+<h3><code class="code docutils literal notranslate"><span class="pre">HistogramPlot</span></code><a class="headerlink" href="#histogramplot" title="Permalink to this headline">#</a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="puma.HistogramPlot">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">puma.</span></span><span class="sig-name descname"><span class="pre">HistogramPlot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">40</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bins_range</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discrete_vals</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_pie</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pie_colours</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pie_labels</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logy</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bin_width_in_ylabel</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.HistogramPlot" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#puma.PlotBase" title="puma.plot_base.PlotBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">puma.plot_base.PlotBase</span></code></a></p>
+<p>Histogram plot class</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.HistogramPlot.add">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">curve</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reference</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.HistogramPlot.add" title="Permalink to this definition">#</a></dt>
+<dd><p>Adding histogram object to figure.</p>
+<dl class="simple">
+<dt>curve<span class="classifier">histogram class</span></dt><dd><p>histogram curve</p>
+</dd>
+<dt>key<span class="classifier">str, optional</span></dt><dd><p>Unique identifier for histogram, by default None</p>
+</dd>
+<dt>reference<span class="classifier">bool, optional</span></dt><dd><p>If this histogram is used as reference for ratio calculation, by default
+False</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>KeyError</dt><dd><p>If unique identifier key is used twice</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.HistogramPlot.add_bin_width_to_ylabel">
+<span class="sig-name descname"><span class="pre">add_bin_width_to_ylabel</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#puma.HistogramPlot.add_bin_width_to_ylabel" title="Permalink to this definition">#</a></dt>
+<dd><p>Adds the bin width to the ylabel of a histogram plot. If the bin with is
+smaller than 0.01, scientific notation will be used.</p>
+<dl class="simple">
+<dt>ValueError</dt><dd><p>If plotting_done is False (therefore <code class="code docutils literal notranslate"><span class="pre">bins</span></code> is not yet calculated)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.HistogramPlot.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">labelpad</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.HistogramPlot.draw" title="Permalink to this definition">#</a></dt>
+<dd><p>Draw figure.</p>
+<dl class="simple">
+<dt>labelpad<span class="classifier">int, optional</span></dt><dd><p>Spacing in points from the axes bounding box including
+ticks and tick labels, by default “ratio”</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.HistogramPlot.get_discrete_values">
+<span class="sig-name descname"><span class="pre">get_discrete_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elem</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">object</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.HistogramPlot.get_discrete_values" title="Permalink to this definition">#</a></dt>
+<dd><p>Get discrete values of a variable and adjust the
+bins accordingly</p>
+<dl class="simple">
+<dt>elem<span class="classifier">histogram class</span></dt><dd><p>Histogram we want to calculate the bins containing discrete values for</p>
+</dd>
+</dl>
+<p>bins : recalculated bins including only the discrete values</p>
+<dl class="simple">
+<dt>ValueError</dt><dd><p>If the bin width is larger than 1 such that potentially not
+all discrete values are in a seperate bin</p>
+</dd>
+<dt>ValueError</dt><dd><p>If the number of bins is set to 1 such that no values can be
+distinguished</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.HistogramPlot.get_reference_histo">
+<span class="sig-name descname"><span class="pre">get_reference_histo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">histo</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.HistogramPlot.get_reference_histo" title="Permalink to this definition">#</a></dt>
+<dd><p>Get reference histogram from list of references</p>
+<dl class="simple">
+<dt>histo<span class="classifier">histogram class</span></dt><dd><p>Histogram we want to calculate the ratio for</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>histogram class</dt><dd><p>Reference histogram</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>ValueError</dt><dd><p>If no reference histo was found or multiple matches.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.HistogramPlot.plot">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.HistogramPlot.plot" title="Permalink to this definition">#</a></dt>
+<dd><p>Plotting curves. This also generates the bins of the histograms that are
+added to the plot. Plot objects are drawn in the same order as they were added
+to the plot.</p>
+<dl class="simple">
+<dt><a href="#id17"><span class="problematic" id="id18">**</span></a>kwargs: kwargs</dt><dd><p>kwargs passed to matplotlib.axes.Axes.hist()</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Line2D</dt><dd><p>matplotlib Line2D object</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>ValueError</dt><dd><p>If specified bins type is not supported.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.HistogramPlot.plot_pie_chart">
+<span class="sig-name descname"><span class="pre">plot_pie_chart</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#puma.HistogramPlot.plot_pie_chart" title="Permalink to this definition">#</a></dt>
+<dd><p>Plotting Pie chart. Only variables with defined discrete values
+can be plotted. Only non-zero values are plotted.</p>
+<dl class="simple">
+<dt>Patch</dt><dd><p>matplotlib Patch object</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>ValueError</dt><dd><p>If plot_pie is set to True but not the vertical_split</p>
+</dd>
+<dt>ValueError</dt><dd><p>If no discrete values of the variable are provided</p>
+</dd>
+<dt>ValueError</dt><dd><p>If specified bins type is not supported.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.HistogramPlot.plot_ratios">
+<span class="sig-name descname"><span class="pre">plot_ratios</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#puma.HistogramPlot.plot_ratios" title="Permalink to this definition">#</a></dt>
+<dd><p>Plotting ratio histograms.</p>
+<dl class="simple">
+<dt>ValueError</dt><dd><p>If no reference histogram is defined</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.HistogramPlot.set_reference">
+<span class="sig-name descname"><span class="pre">set_reference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.HistogramPlot.set_reference" title="Permalink to this definition">#</a></dt>
+<dd><p>Setting the reference histogram curves used in the ratios</p>
+<dl class="simple">
+<dt>key<span class="classifier">str</span></dt><dd><p>unique identifier of histogram object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+<hr class="docutils" />
+<section id="roc-curves">
+<h2>ROC curves<a class="headerlink" href="#roc-curves" title="Permalink to this headline">#</a></h2>
+<section id="roc">
+<h3><code class="code docutils literal notranslate"><span class="pre">Roc</span></code><a class="headerlink" href="#roc" title="Permalink to this headline">#</a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="puma.Roc">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">puma.</span></span><span class="sig-name descname"><span class="pre">Roc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sig_eff</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bkg_rej</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_test</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rej_class</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signal_class</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.Roc" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#puma.PlotLineObject" title="puma.plot_base.PlotLineObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">puma.plot_base.PlotLineObject</span></code></a></p>
+<p>ROC class storing info about curve and allows to calculate ratio w.r.t other roc.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.Roc.binomial_error">
+<span class="sig-name descname"><span class="pre">binomial_error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_test</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#puma.Roc.binomial_error" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculate binomial error of roc curve.</p>
+<dl class="simple">
+<dt>norm<span class="classifier">bool</span></dt><dd><p>if True calulate relative error, by default False</p>
+</dd>
+<dt>n_test<span class="classifier">int</span></dt><dd><p>Number of events used to calculate the background efficiencies,
+by default None</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>numpy.array</dt><dd><p>binomial error</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>ValueError</dt><dd><p>if no <code class="code docutils literal notranslate"><span class="pre">n_test</span></code> was provided</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.Roc.divide">
+<span class="sig-name descname"><span class="pre">divide</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">roc_comp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inverse</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.Roc.divide" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculate ratio between the roc curve and another roc.</p>
+<dl class="simple">
+<dt>roc_comp<span class="classifier">roc class</span></dt><dd><p>second roc curve to calculate ratio with</p>
+</dd>
+<dt>inverse<span class="classifier">bool</span></dt><dd><p>if False the ratio is calculated <code class="code docutils literal notranslate"><span class="pre">this_roc</span> <span class="pre">/</span> <span class="pre">roc_comp</span></code>,
+if True the inverse is calculated</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>np.array</dt><dd><p>signal efficiency used for the ratio calculation which is the overlapping
+interval of the two roc curves</p>
+</dd>
+<dt>np.array</dt><dd><p>ratio</p>
+</dd>
+<dt>np.array or None</dt><dd><p>ratio_err if <code class="code docutils literal notranslate"><span class="pre">n_test</span></code> was provided to class</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="puma.Roc.fct_inter">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">fct_inter</span></span><a class="headerlink" href="#puma.Roc.fct_inter" title="Permalink to this definition">#</a></dt>
+<dd><p>Interpolate the rejection function for better ratio calculation plotting etc.</p>
+<dl class="simple">
+<dt>pchip</dt><dd><p>interpolation function</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="puma.Roc.non_zero">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">non_zero</span></span><a class="headerlink" href="#puma.Roc.non_zero" title="Permalink to this definition">#</a></dt>
+<dd><p>Abstraction of <code class="code docutils literal notranslate"><span class="pre">non_zero_mask</span></code></p>
+<dl class="simple">
+<dt>numpy.array</dt><dd><p>masked signal efficiency</p>
+</dd>
+<dt>numpy.array</dt><dd><p>masked background rejection</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="puma.Roc.non_zero_mask">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">non_zero_mask</span></span><a class="headerlink" href="#puma.Roc.non_zero_mask" title="Permalink to this definition">#</a></dt>
+<dd><p>Masking points where rejection is 0 and no signal efficiency change present</p>
+<dl class="simple">
+<dt>numpy.array</dt><dd><p>masked indices</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="rocplot">
+<h3><code class="code docutils literal notranslate"><span class="pre">RocPlot</span></code><a class="headerlink" href="#rocplot" title="Permalink to this headline">#</a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="puma.RocPlot">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">puma.</span></span><span class="sig-name descname"><span class="pre">RocPlot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.RocPlot" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#puma.PlotBase" title="puma.plot_base.PlotBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">puma.plot_base.PlotBase</span></code></a></p>
+<p>Roc plot class</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.RocPlot.add_ratios">
+<span class="sig-name descname"><span class="pre">add_ratios</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#puma.RocPlot.add_ratios" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculating ratios.</p>
+<dl class="simple">
+<dt>ValueError</dt><dd><p>if number of reference rocs and ratio panels don’t match</p>
+</dd>
+<dt>ValueError</dt><dd><p>if no ratio classes are set</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.RocPlot.add_roc">
+<span class="sig-name descname"><span class="pre">add_roc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">roc_curve</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reference</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.RocPlot.add_roc" title="Permalink to this definition">#</a></dt>
+<dd><p>Adding roc object to figure.</p>
+<dl class="simple">
+<dt>roc_curve<span class="classifier">roc class</span></dt><dd><p>roc curve</p>
+</dd>
+<dt>key<span class="classifier">str, optional</span></dt><dd><p>unique identifier for roc, by default None</p>
+</dd>
+<dt>reference<span class="classifier">bool, optional</span></dt><dd><p>if roc is used as reference for ratio calculation, by default False</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>KeyError</dt><dd><p>if unique identifier key is used twice</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.RocPlot.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">labelpad</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.RocPlot.draw" title="Permalink to this definition">#</a></dt>
+<dd><p>Draw plotting</p>
+<dl class="simple">
+<dt>labelpad<span class="classifier">int, optional</span></dt><dd><p>Spacing in points from the axes bounding box including
+ticks and tick labels, by default None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.RocPlot.get_xlim_auto">
+<span class="sig-name descname"><span class="pre">get_xlim_auto</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#puma.RocPlot.get_xlim_auto" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns min and max efficiency values</p>
+<dl class="simple">
+<dt>float</dt><dd><p>min and max efficiency values</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.RocPlot.make_split_legend">
+<span class="sig-name descname"><span class="pre">make_split_legend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">handles</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.RocPlot.make_split_legend" title="Permalink to this definition">#</a></dt>
+<dd><p>Draw legend for the case of 2 ratios, splitting up legend into models and
+rejection class.</p>
+<dl class="simple">
+<dt>handles<span class="classifier">list</span></dt><dd><p>list of Line2D objects to extract info for legend</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>ValueError</dt><dd><p>if not 2 ratios requested</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.RocPlot.plot_ratios">
+<span class="sig-name descname"><span class="pre">plot_ratios</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">matplotlib.pyplot.axis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rej_class</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.RocPlot.plot_ratios" title="Permalink to this definition">#</a></dt>
+<dd><p>Plotting ratio curves</p>
+<dl class="simple">
+<dt>axis<span class="classifier">plt.axis</span></dt><dd><p>matplotlib axis object</p>
+</dd>
+<dt>rej_class<span class="classifier">str</span></dt><dd><p>rejection class</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.RocPlot.plot_roc">
+<span class="sig-name descname"><span class="pre">plot_roc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">matplotlib.lines.Line2D</span></span></span><a class="headerlink" href="#puma.RocPlot.plot_roc" title="Permalink to this definition">#</a></dt>
+<dd><p>Plotting roc curves</p>
+<dl class="simple">
+<dt><a href="#id19"><span class="problematic" id="id20">**</span></a>kwargs: kwargs</dt><dd><p>kwargs passed to plt.axis.plot</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Line2D</dt><dd><p>matplotlib Line2D object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.RocPlot.set_leg_rej_labels">
+<span class="sig-name descname"><span class="pre">set_leg_rej_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rej_class</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.RocPlot.set_leg_rej_labels" title="Permalink to this definition">#</a></dt>
+<dd><p>Set legend label for rejection class</p>
+<dl class="simple">
+<dt>rej_class<span class="classifier">str</span></dt><dd><p>rejection class</p>
+</dd>
+<dt>label<span class="classifier">str</span></dt><dd><p>label added in legend</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.RocPlot.set_ratio_class">
+<span class="sig-name descname"><span class="pre">set_ratio_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ratio_panel</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rej_class</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.RocPlot.set_ratio_class" title="Permalink to this definition">#</a></dt>
+<dd><p>Associate the rejection class to a ratio panel</p>
+<dl class="simple">
+<dt>ratio_panel<span class="classifier">int</span></dt><dd><p>ratio panel either 1 or 2</p>
+</dd>
+<dt>rej_class<span class="classifier">str</span></dt><dd><p>rejeciton class associated to that panel</p>
+</dd>
+<dt>label<span class="classifier">str</span></dt><dd><p>y-axis label of the ratio panel</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>ValueError</dt><dd><p>if requested ratio panels and given ratio_panel do not match.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.RocPlot.set_roc_reference">
+<span class="sig-name descname"><span class="pre">set_roc_reference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rej_class</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.RocPlot.set_roc_reference" title="Permalink to this definition">#</a></dt>
+<dd><p>Setting the reference roc curves used in the ratios</p>
+<dl class="simple">
+<dt>key<span class="classifier">str</span></dt><dd><p>unique identifier of roc object</p>
+</dd>
+<dt>rej_class<span class="classifier">str</span></dt><dd><p>rejection class encoded in roc curve</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>ValueError</dt><dd><p>if more rejection classes are set than actual ratio panels available.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
 </section>
 </section>
 

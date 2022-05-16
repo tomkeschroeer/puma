@@ -149,6 +149,18 @@
     <a class="reference internal nav-link" href="#installation">
      Installation
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#install-latest-release-from-pypi">
+       Install latest release from PyPI
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#install-latest-version-from-github">
+       Install latest version from GitHub
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
@@ -183,6 +195,9 @@
 <p><a class="reference external" href="https://github.com/psf/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg" /></a>
 <a class="reference external" href="https://umami-hep.github.io/puma/"><img alt="Umami docs" src="https://img.shields.io/badge/info-documentation-informational" /></a>
 <a class="reference external" href="https://badge.fury.io/py/puma-hep"><img alt="PyPI version" src="https://badge.fury.io/py/puma-hep.svg" /></a></p>
+<p><img alt="Testing workflow" src="https://github.com/umami-hep/puma/actions/workflows/testing.yml/badge.svg" />
+<img alt="Linting workflow" src="https://github.com/umami-hep/puma/actions/workflows/linting.yml/badge.svg" />
+<img alt="Pages workflow" src="https://github.com/umami-hep/puma/actions/workflows/pages.yml/badge.svg" /></p>
 <p>The Python package <code class="docutils literal notranslate"><span class="pre">puma</span></code> provides a plotting API for commonly used plots in flavour tagging.</p>
 <table class="colwidths-auto table">
 <thead>
@@ -202,11 +217,25 @@
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">puma</span></code> package is currently under construction. It can be installed from PyPI or
 using the latest code from this repository.</p>
+<section id="install-latest-release-from-pypi">
+<h3>Install latest release from PyPI<a class="headerlink" href="#install-latest-release-from-pypi" title="Permalink to this headline">#</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install puma-hep
-<span class="c1"># or</span>
-pip install https://github.com/umami-hep/puma/archive/master.tar.gz
 </pre></div>
 </div>
+<p>The installation from PyPI only allows to install tagged releases, meaning you can not
+install the latest code from this repo using the above command.
+If you just want to use a stable release of <code class="docutils literal notranslate"><span class="pre">puma</span></code>, this is the way to go.</p>
+</section>
+<section id="install-latest-version-from-github">
+<h3>Install latest version from GitHub<a class="headerlink" href="#install-latest-version-from-github" title="Permalink to this headline">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install https://github.com/umami-hep/puma/archive/master.tar.gz
+</pre></div>
+</div>
+<p>This will install the latest version of <code class="docutils literal notranslate"><span class="pre">puma</span></code>, i.e. the current version
+from the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch (no matter if it is a release/tagged commit).
+If you plan on contributing to <code class="docutils literal notranslate"><span class="pre">puma</span></code> and/or want the latest version possible, this
+is what you want.</p>
+</section>
 </section>
 </section>
 <div class="toctree-wrapper compound">
