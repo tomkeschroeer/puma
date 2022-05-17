@@ -1,0 +1,92 @@
+:py:mod:`puma.tests.test_fraction_scan`
+=======================================
+
+.. py:module:: puma.tests.test_fraction_scan
+
+.. autoapi-nested-parse::
+
+   Unit test script for the functions in histogram.py
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   puma.tests.test_fraction_scan.FractionScanTestCase
+   puma.tests.test_fraction_scan.TestCase
+
+
+
+
+.. py:class:: FractionScanTestCase(methodName='runTest')
+
+   Bases: :py:obj:`unittest.TestCase`
+
+   Test class for the puma.fraction_scan functions.
+
+   Create an instance of the class that will use the named test
+   method when executed. Raises a ValueError if the instance does
+   not have a method with the specified name.
+
+   .. py:method:: test_wrong_inputs_xvalues(self)
+
+      test if providing wrong input type to FractionScan raises ValueError
+
+
+   .. py:method:: test_differnt_input_types(self)
+
+      test if providing different input types raises ValueError
+
+
+   .. py:method:: test_empty_input(self)
+
+      test if ValueError is raised when one of the input values is zero
+
+
+   .. py:method:: test_different_input_shapes(self)
+
+      test if ValueError is raised when different lengths given
+
+
+
+.. py:class:: TestCase(methodName='runTest')
+
+   Bases: :py:obj:`unittest.TestCase`
+
+   Test class for puma.FractionScanPlot
+
+   Create an instance of the class that will use the named test
+   method when executed. Raises a ValueError if the instance does
+   not have a method with the specified name.
+
+   .. py:method:: setUp(self)
+
+      Set up values needed.
+
+
+   .. py:method:: test_FractionScanPlot(self)
+
+      Test the basic functions of FractionScanPlot
+
+
+   .. py:method:: test_FractionScanPlot_grid_off(self)
+
+      Test the basic functions of FractionScanPlot
+
+
+   .. py:method:: test_FractionScanPlot_no_param_set(self)
+
+      Test the basic functions of FractionScanPlot
+
+
+   .. py:method:: test_FractionScanPlot_double_key(self)
+
+      Test the basic functions of FractionScanPlot
+
+
+

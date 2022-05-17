@@ -1,0 +1,38 @@
+:py:mod:`puma.tests.utils.test_logging`
+=======================================
+
+.. py:module:: puma.tests.utils.test_logging
+
+.. autoapi-nested-parse::
+
+   Unit test script for the functions in utils.logging
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   puma.tests.utils.test_logging.get_log_level_TestCase
+
+
+
+
+.. py:class:: get_log_level_TestCase(methodName='runTest')
+
+   Bases: :py:obj:`unittest.TestCase`
+
+   Test class for the puma logger
+
+   Create an instance of the class that will use the named test
+   method when executed. Raises a ValueError if the instance does
+   not have a method with the specified name.
+
+   .. py:method:: test_wrong_input(self)
+
+
+

@@ -1,0 +1,134 @@
+:py:mod:`puma.tests.test_histogram`
+===================================
+
+.. py:module:: puma.tests.test_histogram
+
+.. autoapi-nested-parse::
+
+   Unit test script for the functions in histogram.py
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   puma.tests.test_histogram.histogram_TestCase
+   puma.tests.test_histogram.histogram_plot_TestCase
+
+
+
+
+.. py:class:: histogram_TestCase(methodName='runTest')
+
+   Bases: :py:obj:`unittest.TestCase`
+
+   Test class for the puma.histogram functions.
+
+   Create an instance of the class that will use the named test
+   method when executed. Raises a ValueError if the instance does
+   not have a method with the specified name.
+
+   .. py:method:: test_empty_histogram(self)
+
+      test if providing wrong input type to histogram raises ValueError
+
+
+   .. py:method:: test_divide_before_plotting(self)
+
+      test if ValueError is raised when dividing before plotting the histograms
+
+
+   .. py:method:: test_divide_after_plotting_no_norm(self)
+
+      test if ratio is calculated correctly after plotting (without norm)
+
+
+   .. py:method:: test_divide_after_plotting_norm(self)
+
+      test if ratio is calculated correctly after plotting (with norm)
+
+
+   .. py:method:: test_ratio_same_histogram(self)
+
+      test if ratio is 1 for equal histograms (with norm)
+
+
+
+.. py:class:: histogram_plot_TestCase(methodName='runTest')
+
+   Bases: :py:obj:`unittest.TestCase`
+
+   Test class for puma.histogram_plot
+
+   Create an instance of the class that will use the named test
+   method when executed. Raises a ValueError if the instance does
+   not have a method with the specified name.
+
+   .. py:method:: setUp(self)
+
+      Hook method for setting up the test fixture before exercising it.
+
+
+   .. py:method:: test_invalid_bins_type(self)
+
+      check if ValueError is raised when using invalid type in `bins` argument
+
+
+   .. py:method:: test_add_bin_width_to_ylabel(self)
+
+      check if ValueError is raised when using invalid type in `bins` argument
+
+
+   .. py:method:: test_custom_range(self)
+
+      check if
+      1. bins_range argument is used correctly
+      2. deactivate ATLAS branding works
+      3. adding bin width to ylabel works
+
+
+   .. py:method:: test_output_ratio(self)
+
+      check with a plot if the ratio is the expected value
+
+
+   .. py:method:: test_output_empty_histogram_norm(self)
+
+
+   .. py:method:: test_output_empty_histogram_no_norm(self)
+
+      Test if ratio is 1 for whole range if reference histogram is empty
+
+
+   .. py:method:: test_output_different_range_histogram(self)
+
+      Test if ratio yields the expected values for case of different histogram
+      ranges
+
+
+   .. py:method:: test_draw_vlines_histogram(self)
+
+      Test the drawing of vertical lines in the histogram.
+
+
+   .. py:method:: test_draw_vlines_histogram_custom_labels(self)
+
+      Test the drawing of vertical lines in the histogram.
+
+
+   .. py:method:: test_draw_vlines_histogram_same_height(self)
+
+      Test the drawing of vertical lines in the histogram.
+
+
+   .. py:method:: test_draw_vlines_histogram_custom_yheight(self)
+
+      Test the drawing of vertical lines in the histogram.
+
+
+

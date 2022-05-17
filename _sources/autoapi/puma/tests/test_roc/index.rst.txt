@@ -1,0 +1,189 @@
+:py:mod:`puma.tests.test_roc`
+=============================
+
+.. py:module:: puma.tests.test_roc
+
+.. autoapi-nested-parse::
+
+   Unit test script for the functions in roc.py
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   puma.tests.test_roc.roc_TestCase
+   puma.tests.test_roc.roc_mask_TestCase
+   puma.tests.test_roc.roc_output_TestCase
+
+
+
+
+.. py:class:: roc_TestCase(methodName='runTest')
+
+   Bases: :py:obj:`unittest.TestCase`
+
+   Test class for the puma.roc functions.
+
+   Create an instance of the class that will use the named test
+   method when executed. Raises a ValueError if the instance does
+   not have a method with the specified name.
+
+   .. py:method:: setUp(self)
+
+      Hook method for setting up the test fixture before exercising it.
+
+
+   .. py:method:: test_roc_init(self)
+
+      Test roc init.
+
+
+   .. py:method:: test_ratio_same_object(self)
+
+      Test roc divide function.
+
+
+   .. py:method:: test_ratio_factor_two(self)
+
+      Test roc divide function.
+
+
+   .. py:method:: test_ratio_different_sig_interval(self)
+
+      Test roc divide function.
+
+
+   .. py:method:: test_ratio_factor_two_inverse(self)
+
+      Test roc divide function.
+
+
+   .. py:method:: test_binomial_error_no_ntest(self)
+
+      Test roc binomial_error function.
+
+
+   .. py:method:: test_binomial_error_only_zeros(self)
+
+      Test roc binomial_error function.
+
+
+   .. py:method:: test_binomial_error_example(self)
+
+      Test roc binomial_error function.
+
+
+   .. py:method:: test_binomial_error_example_norm(self)
+
+      Test roc binomial_error function.
+
+
+   .. py:method:: test_binomial_error_example_pass_ntest(self)
+
+      Test roc binomial_error function.
+
+
+   .. py:method:: test_fct_inter(self)
+
+      Test roc fct_inter function.
+
+
+
+.. py:class:: roc_mask_TestCase(methodName='runTest')
+
+   Bases: :py:obj:`unittest.TestCase`
+
+   Test class for the puma.roc non_zero_mask function.
+
+   Create an instance of the class that will use the named test
+   method when executed. Raises a ValueError if the instance does
+   not have a method with the specified name.
+
+   .. py:method:: setUp(self)
+
+      Hook method for setting up the test fixture before exercising it.
+
+
+   .. py:method:: test_non_zero_mask(self)
+
+      Test roc non_zero_mask function.
+
+
+   .. py:method:: test_non_zero_mask_xmin(self)
+
+      Test roc non_zero_mask function.
+
+
+   .. py:method:: test_non_zero_mask_xmax(self)
+
+      Test roc non_zero_mask function.
+
+
+   .. py:method:: test_non_zero_mask_xmin_xmax(self)
+
+      Test roc non_zero_mask function.
+
+
+   .. py:method:: test_non_zero(self)
+
+      Test roc non_zero function.
+
+
+   .. py:method:: test_non_zero_xmin(self)
+
+      Test roc non_zero function.
+
+
+   .. py:method:: test_non_zero_xmax(self)
+
+      Test roc non_zero function.
+
+
+   .. py:method:: test_non_zero_xmin_xmax(self)
+
+      Test roc non_zero function.
+
+
+
+.. py:class:: roc_output_TestCase(methodName='runTest')
+
+   Bases: :py:obj:`unittest.TestCase`
+
+   Test class for the puma.roc_plot function.
+
+   Create an instance of the class that will use the named test
+   method when executed. Raises a ValueError if the instance does
+   not have a method with the specified name.
+
+   .. py:method:: setUp(self)
+
+      Hook method for setting up the test fixture before exercising it.
+
+
+   .. py:method:: test_output_two_curves_one_ratio(self)
+
+      Test with two curves of same flavour, one ratio panel
+
+
+   .. py:method:: test_output_two_curves_one_ratio_uncertainties(self)
+
+      Test with two curves of same flavour, one ratio panel
+
+
+   .. py:method:: test_output_four_curves_two_ratio(self)
+
+      Test with two curves for each flavour, two ratio panels
+
+
+   .. py:method:: test_output_four_curves_two_ratio_uncertainties(self)
+
+      Test with two curves for each flavour, two ratio panels and binom. unc.
+
+
+

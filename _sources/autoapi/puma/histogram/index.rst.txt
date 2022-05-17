@@ -1,0 +1,216 @@
+:py:mod:`puma.histogram`
+========================
+
+.. py:module:: puma.histogram
+
+.. autoapi-nested-parse::
+
+   Histogram plot functions.
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   puma.histogram.Histogram
+   puma.histogram.HistogramPlot
+
+
+
+
+.. py:class:: Histogram(values: numpy.ndarray, flavour: str = None, histtype: str = 'step', **kwargs)
+
+   Bases: :py:obj:`puma.plot_base.PlotLineObject`
+
+   Histogram class storing info about histogram and allows to calculate ratio w.r.t
+   other histograms.
+
+   Initialise properties of histogram curve object.
+
+   :param values: Input data for the histogram
+   :type values: np.ndarray
+   :param flavour: Jet flavour in case the histogram corresponds to one specific flavour. If
+                   this is specified, the correct colour will be extracted from the global
+                   config. Allowed values are the ones from the global config, i.e. "bjets",
+                   "cjets", "ujets", "bbjets", ..., by default None
+   :type flavour: str, optional
+   :param histtype: `histtype` parameter which is handed to matplotlib.hist() when plotting the
+                    histograms. Supported values are "bar", "barstacked", "step", "stepfilled".
+                    By default "step"
+   :type histtype: str, optional
+   :param \*\*kwargs: kwargs passed to `PlotLineObject`
+   :type \*\*kwargs: kwargs
+
+   :raises ValueError: If input data is not of type np.ndarray or list
+
+   .. py:method:: divide(self, other)
+
+      Calculate ratio between two class objects.
+
+      :param other: Second histogram object to calculate ratio with
+      :type other: histogram class
+
+      :returns: * *np.ndarray* -- ratio
+                * *np.ndarray* -- ratio error
+
+      :raises ValueError: If binning is not identical between 2 objects
+      :raises ValueError: If hist attribute is not set for one of the two histograms
+      :raises ValueError: If bin_edges attribute is not set for one of the two histograms
+
+
+
+.. py:class:: HistogramPlot(bins=40, bins_range: tuple = None, discrete_vals: list = None, plot_pie: bool = False, pie_colours: list = None, pie_labels: list = None, norm: bool = True, logy: bool = False, bin_width_in_ylabel: bool = False, **kwargs)
+
+   Bases: :py:obj:`puma.plot_base.PlotBase`
+
+   Histogram plot class
+
+   histogram plot properties
+
+   :param bins: If bins is an int, it defines the number of equal-width bins in the given
+                range. If bins is a sequence, it defines a monotonically increasing array
+                of bin edges, including the rightmost edge, allowing for non-uniform
+                bin widths (like in numpy.histogram). By default 40
+   :type bins: int or numpy.ndarray or list, optional
+   :param bins_range: Tuple of two floats, specifying the range for the binning. If bins_range is
+                      specified and bins is an integer, equal-width bins from bins_range[0] to
+                      bins_range[1] are used for the histogram (like in numpy.histogram).
+                      By default None
+   :type bins_range: tuple, optional
+   :param discrete_vals: List of values if a variable only has discrete values. If discrete_vals is
+                         specified only the bins containing these values are plotted. If a pie chart
+                         is plotted, discrete_vals is obligatory. By default None.
+   :type discrete_vals: list, optional
+   :param plot_pie: Set to True if you would like to plot a pie chart instead of a histogram
+   :type plot_pie: bool, optional
+   :param pie_colours: List of colours used for a pie chart or string providing the colour scheme.
+                       Possible colour schemes are 'red', 'blue', 'green' or 'yellow',
+                       by default None
+   :type pie_colours: list or str, optional
+   :param pie_labels: List of labels used for a pie chart, by default None
+   :type pie_labels: list, optional
+   :param norm: Specify if the histograms are normalised, this means that histograms are
+                divided by the total numer of counts. Therefore, the sum of the bin counts
+                is equal to one, but NOT the area under the curve, which would be
+                sum(bin_counts * bin_width). By default True.
+   :type norm: bool, optional
+   :param logy: Set log scale on y-axis, by default False.
+   :type logy: bool, optional
+   :param bin_width_in_ylabel: Specify if the bin width should be added to the ylabel, by default False
+   :type bin_width_in_ylabel: bool, optional
+   :param \*\*kwargs: kwargs from `plot_base`
+   :type \*\*kwargs: kwargs
+
+   :raises ValueError: If n_ratio_panels > 1
+
+   .. py:method:: add(self, curve: object, key: str = None, reference: bool = False)
+
+      Adding histogram object to figure.
+
+      :param curve: histogram curve
+      :type curve: histogram class
+      :param key: Unique identifier for histogram, by default None
+      :type key: str, optional
+      :param reference: If this histogram is used as reference for ratio calculation, by default
+                        False
+      :type reference: bool, optional
+
+      :raises KeyError: If unique identifier key is used twice
+
+
+   .. py:method:: set_reference(self, key: str)
+
+      Setting the reference histogram curves used in the ratios
+
+      :param key: unique identifier of histogram object
+      :type key: str
+
+
+   .. py:method:: plot(self, **kwargs)
+
+      Plotting curves. This also generates the bins of the histograms that are
+      added to the plot. Plot objects are drawn in the same order as they were added
+      to the plot.
+
+      :param \*\*kwargs: kwargs passed to matplotlib.axes.Axes.hist()
+      :type \*\*kwargs: kwargs
+
+      :returns: matplotlib Line2D object
+      :rtype: Line2D
+
+      :raises ValueError: If specified bins type is not supported.
+
+
+   .. py:method:: plot_pie_chart(self)
+
+      Plotting Pie chart. Only variables with defined discrete values
+      can be plotted. Only non-zero values are plotted.
+
+      :returns: matplotlib Patch object
+      :rtype: Patch
+
+      :raises ValueError: If plot_pie is set to True but not the vertical_split
+      :raises ValueError: If no discrete values of the variable are provided
+      :raises ValueError: If specified bins type is not supported.
+
+
+   .. py:method:: get_discrete_values(self, elem: object)
+
+      Get discrete values of a variable and adjust the
+      bins accordingly
+
+      :param elem: Histogram we want to calculate the bins containing discrete values for
+      :type elem: histogram class
+
+      :returns: **bins**
+      :rtype: recalculated bins including only the discrete values
+
+      :raises ValueError: If the bin width is larger than 1 such that potentially not
+          all discrete values are in a seperate bin
+      :raises ValueError: If the number of bins is set to 1 such that no values can be
+          distinguished
+
+
+   .. py:method:: get_reference_histo(self, histo)
+
+      Get reference histogram from list of references
+
+      :param histo: Histogram we want to calculate the ratio for
+      :type histo: histogram class
+
+      :returns: Reference histogram
+      :rtype: histogram class
+
+      :raises ValueError: If no reference histo was found or multiple matches.
+
+
+   .. py:method:: plot_ratios(self)
+
+      Plotting ratio histograms.
+
+      :raises ValueError: If no reference histogram is defined
+
+
+   .. py:method:: add_bin_width_to_ylabel(self)
+
+      Adds the bin width to the ylabel of a histogram plot. If the bin with is
+      smaller than 0.01, scientific notation will be used.
+
+      :raises ValueError: If plotting_done is False (therefore `bins` is not yet calculated)
+
+
+   .. py:method:: draw(self, labelpad: int = None)
+
+      Draw figure.
+
+      :param labelpad: Spacing in points from the axes bounding box including
+                       ticks and tick labels, by default "ratio"
+      :type labelpad: int, optional
+
+
+

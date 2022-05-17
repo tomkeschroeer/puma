@@ -1,0 +1,798 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>puma.var_vs_eff &#8212; puma  documentation</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+<a class="navbar-brand" href="../../../index.html">
+<p class="title">puma</p>
+</a>
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../index.html">
+  Quickstart
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../examples/index.html">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../index.html">
+  API Reference
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/umami-hep/puma" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar">
+              <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../utils/index.html">
+   <code class="xref py py-mod docutils literal notranslate">
+    <span class="pre">
+     puma.utils
+    </span>
+   </code>
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../utils/generate/index.html">
+     <code class="xref py py-mod docutils literal notranslate">
+      <span class="pre">
+       puma.utils.generate
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../utils/histogram/index.html">
+     <code class="xref py py-mod docutils literal notranslate">
+      <span class="pre">
+       puma.utils.histogram
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../utils/logging/index.html">
+     <code class="xref py py-mod docutils literal notranslate">
+      <span class="pre">
+       puma.utils.logging
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../fraction_scan/index.html">
+   <code class="xref py py-mod docutils literal notranslate">
+    <span class="pre">
+     puma.fraction_scan
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../histogram/index.html">
+   <code class="xref py py-mod docutils literal notranslate">
+    <span class="pre">
+     puma.histogram
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../metrics/index.html">
+   <code class="xref py py-mod docutils literal notranslate">
+    <span class="pre">
+     puma.metrics
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../plot_base/index.html">
+   <code class="xref py py-mod docutils literal notranslate">
+    <span class="pre">
+     puma.plot_base
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../roc/index.html">
+   <code class="xref py py-mod docutils literal notranslate">
+    <span class="pre">
+     puma.roc
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   <code class="xref py py-mod docutils literal notranslate">
+    <span class="pre">
+     puma.var_vs_eff
+    </span>
+   </code>
+  </a>
+ </li>
+</ul>
+
+  </div>
+</nav>
+              </div>
+              <div class="sidebar-end-items">
+              </div>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-contents">
+   Module Contents
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#classes">
+     Classes
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#puma.var_vs_eff.VarVsEff">
+       VarVsEff
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.var_vs_eff.VarVsEff._set_bin_edges">
+         _set_bin_edges
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.var_vs_eff.VarVsEff._apply_binning">
+         _apply_binning
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.var_vs_eff.VarVsEff._get_disc_cuts">
+         _get_disc_cuts
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.var_vs_eff.VarVsEff.efficiency">
+         efficiency
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.var_vs_eff.VarVsEff.rejection">
+         rejection
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.var_vs_eff.VarVsEff.sig_eff">
+         sig_eff
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.var_vs_eff.VarVsEff.bkg_eff">
+         bkg_eff
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.var_vs_eff.VarVsEff.sig_rej">
+         sig_rej
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.var_vs_eff.VarVsEff.bkg_rej">
+         bkg_rej
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.var_vs_eff.VarVsEff.__eq__">
+         __eq__
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.var_vs_eff.VarVsEff.get">
+         get
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.var_vs_eff.VarVsEff.divide">
+         divide
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#puma.var_vs_eff.VarVsEffPlot">
+       VarVsEffPlot
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.var_vs_eff.VarVsEffPlot.add">
+         add
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.var_vs_eff.VarVsEffPlot.set_reference">
+         set_reference
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.var_vs_eff.VarVsEffPlot.plot">
+         plot
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.var_vs_eff.VarVsEffPlot.plot_ratios">
+         plot_ratios
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.var_vs_eff.VarVsEffPlot.set_grid">
+         set_grid
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.var_vs_eff.VarVsEffPlot.set_inverse_cut">
+         set_inverse_cut
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.var_vs_eff.VarVsEffPlot.draw_hline">
+         draw_hline
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.var_vs_eff.VarVsEffPlot.draw">
+         draw
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <section id="module-puma.var_vs_eff">
+<span id="puma-var-vs-eff"></span><h1><a class="reference internal" href="#module-puma.var_vs_eff" title="puma.var_vs_eff"><code class="xref py py-mod docutils literal notranslate"><span class="pre">puma.var_vs_eff</span></code></a><a class="headerlink" href="#module-puma.var_vs_eff" title="Permalink to this headline">#</a></h1>
+<p>Efficiency plots vs. specific variable.</p>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">#</a></h2>
+<section id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">#</a></h3>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#puma.var_vs_eff.VarVsEff" title="puma.var_vs_eff.VarVsEff"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VarVsEff</span></code></a></p></td>
+<td><p>var_vs_eff class storing info about curve and allows to calculate ratio w.r.t other</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#puma.var_vs_eff.VarVsEffPlot" title="puma.var_vs_eff.VarVsEffPlot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VarVsEffPlot</span></code></a></p></td>
+<td><p>var_vs_eff plot class</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="puma.var_vs_eff.VarVsEff">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">puma.var_vs_eff.</span></span><span class="sig-name descname"><span class="pre">VarVsEff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_var_sig</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disc_sig</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_var_bkg</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disc_bkg</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">working_point</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disc_cut</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fixed_eff_bin</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.var_vs_eff.VarVsEff" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../plot_base/index.html#puma.plot_base.PlotLineObject" title="puma.plot_base.PlotLineObject"><code class="xref py py-obj docutils literal notranslate"><span class="pre">puma.plot_base.PlotLineObject</span></code></a></p>
+<p>var_vs_eff class storing info about curve and allows to calculate ratio w.r.t other
+efficiency plots.</p>
+<p>Initialise properties of roc curve object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x_var_sig</strong> (<em>np.ndarray</em>) – values for x-axis variable for signal</p></li>
+<li><p><strong>disc_sig</strong> (<em>np.ndarray</em>) – discriminant values for signal</p></li>
+<li><p><strong>x_var_bkg</strong> (<em>np.ndarray</em><em>, </em><em>optional</em>) – values for x-axis variable for background, by default None</p></li>
+<li><p><strong>disc_bkg</strong> (<em>np.ndarray</em><em>, </em><em>optional</em>) – discriminant values for background, by default None</p></li>
+<li><p><strong>bins</strong> (<em>int</em><em> or </em><em>sequence of scalars</em><em>, </em><em>optional</em>) – If bins is an int, it defines the number of equal-width bins in the
+given range (10, by default). If bins is a sequence, it defines a
+monotonically increasing array of bin edges, including the
+rightmost edge, allowing for non-uniform bin widths, by default 10</p></li>
+<li><p><strong>working_point</strong> (<em>float</em><em>, </em><em>optional</em>) – working point, by default None</p></li>
+<li><p><strong>disc_cut</strong> (<em>float</em><em> or  </em><em>sequence of floats</em><em>, </em><em>optional</em>) – cut value for discriminant, if it is a sequence it has to have the same
+length as number of bins, by default None</p></li>
+<li><p><strong>fixed_eff_bin</strong> (<em>bool</em><em>, </em><em>optional</em>) – if True and no <code class="code docutils literal notranslate"><span class="pre">disc_cut</span></code> is given the signal efficiency is held constant
+in each bin, by default False</p></li>
+<li><p><strong>key</strong> (<em>str</em><em>, </em><em>optional</em>) – <p>identifier for the curve e.g. tagger, by default None
+<a href="#id1"><span class="problematic" id="id2">**</span></a>kwargs : kwargs</p>
+<blockquote>
+<div><p>kwargs passed to <code class="code docutils literal notranslate"><span class="pre">PlotLineObject</span></code></p>
+</div></blockquote>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – if provided options are not compatible with each other</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.var_vs_eff.VarVsEff._set_bin_edges">
+<span class="sig-name descname"><span class="pre">_set_bin_edges</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bins</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.var_vs_eff.VarVsEff._set_bin_edges" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculate bin edges, centres and width and save them as class variables.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>bins</strong> (<em>int</em><em> or </em><em>sequence of scalars</em>) – If bins is an int, it defines the number of equal-width bins in the given
+range. If bins is a sequence, it defines a monotonically increasing array of
+bin edges, including the rightmost edge, allowing for non-uniform bin
+widths.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.var_vs_eff.VarVsEff._apply_binning">
+<span class="sig-name descname"><span class="pre">_apply_binning</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.var_vs_eff.VarVsEff._apply_binning" title="Permalink to this definition">#</a></dt>
+<dd><p>Get binned distributions for the signal and background.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.var_vs_eff.VarVsEff._get_disc_cuts">
+<span class="sig-name descname"><span class="pre">_get_disc_cuts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.var_vs_eff.VarVsEff._get_disc_cuts" title="Permalink to this definition">#</a></dt>
+<dd><p>Retrieve cut values on discriminant. If <code class="code docutils literal notranslate"><span class="pre">disc_cut</span></code> is not given, retrieve
+cut values from the working point.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.var_vs_eff.VarVsEff.efficiency">
+<span class="sig-name descname"><span class="pre">efficiency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arr</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cut</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.var_vs_eff.VarVsEff.efficiency" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculate efficiency and the associated error.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>arr</strong> (<em>np.ndarray</em>) – array with discriminants</p></li>
+<li><p><strong>cut</strong> (<em>float</em>) – cut value</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>float</em> – efficiency</p></li>
+<li><p><em>float</em> – efficiency error</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.var_vs_eff.VarVsEff.rejection">
+<span class="sig-name descname"><span class="pre">rejection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arr</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cut</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.var_vs_eff.VarVsEff.rejection" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculate rejection and the associated error.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>arr</strong> (<em>np.ndarray</em>) – array with discriminants</p></li>
+<li><p><strong>cut</strong> (<em>float</em>) – cut value</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>float</em> – rejection</p></li>
+<li><p><em>float</em> – rejection error</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.var_vs_eff.VarVsEff.sig_eff">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">sig_eff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.var_vs_eff.VarVsEff.sig_eff" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculate signal efficiency per bin.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><em>np.ndarray</em> – efficiency</p></li>
+<li><p><em>np.ndarray</em> – efficiency_error</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.var_vs_eff.VarVsEff.bkg_eff">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">bkg_eff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.var_vs_eff.VarVsEff.bkg_eff" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculate background efficiency per bin.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><em>np.ndarray</em> – efficiency</p></li>
+<li><p><em>np.ndarray</em> – efficiency_error</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.var_vs_eff.VarVsEff.sig_rej">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">sig_rej</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.var_vs_eff.VarVsEff.sig_rej" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculate signal rejection per bin.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><em>np.ndarray</em> – rejection</p></li>
+<li><p><em>np.ndarray</em> – rejection_error</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.var_vs_eff.VarVsEff.bkg_rej">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">bkg_rej</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.var_vs_eff.VarVsEff.bkg_rej" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculate background rejection per bin.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><em>np.ndarray</em> – rejection</p></li>
+<li><p><em>np.ndarray</em> – rejection_error</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.var_vs_eff.VarVsEff.__eq__">
+<span class="sig-name descname"><span class="pre">__eq__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.var_vs_eff.VarVsEff.__eq__" title="Permalink to this definition">#</a></dt>
+<dd><p>Return self==value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.var_vs_eff.VarVsEff.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inverse_cut</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.var_vs_eff.VarVsEff.get" title="Permalink to this definition">#</a></dt>
+<dd><p>Wrapper around rejection and efficiency functions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mode</strong> (<em>str</em>) – can be “sig_eff”, “bkg_eff”, “sig_rej”, “bkg_rej”</p></li>
+<li><p><strong>inverse_cut</strong> (<em>bool</em><em>, </em><em>optional</em>) – inverts the discriminant cut, which will yield the efficiency or rejection
+of the jets not passing the working point, by default False</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>np.ndarray</em> – rejection or efficiency depending on <code class="code docutils literal notranslate"><span class="pre">mode</span></code> value</p></li>
+<li><p><em>np.ndarray</em> – rejection or efficiency error depending on <code class="code docutils literal notranslate"><span class="pre">mode</span></code> value</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – if mode not supported</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.var_vs_eff.VarVsEff.divide">
+<span class="sig-name descname"><span class="pre">divide</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">other</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inverse</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inverse_cut</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.var_vs_eff.VarVsEff.divide" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculate ratio between two class objects.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>other</strong> (<em>var_vs_eff class</em>) – second var_vs_eff object to calculate ratio with</p></li>
+<li><p><strong>mode</strong> (<em>str</em>) – defines the mode which is used for the ratoi calculation, can be the
+following values: <code class="code docutils literal notranslate"><span class="pre">sig_eff</span></code>, <code class="code docutils literal notranslate"><span class="pre">bkg_eff</span></code>, <code class="code docutils literal notranslate"><span class="pre">sig_rej</span></code>, <code class="code docutils literal notranslate"><span class="pre">bkg_rej</span></code></p></li>
+<li><p><strong>inverse</strong> (<em>bool</em>) – if False the ratio is calculated <code class="code docutils literal notranslate"><span class="pre">this</span> <span class="pre">/</span> <span class="pre">other</span></code>,
+if True the inverse is calculated</p></li>
+<li><p><strong>inverse_cut</strong> (<em>bool</em>) – inverts the discriminant cut, which will yield the efficiency or rejection
+of the jets not passing the working point, by default False</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>np.ndarray</em> – ratio</p></li>
+<li><p><em>np.ndarray</em> – ratio error</p></li>
+<li><p><em>np.ndarray</em> – bin centres</p></li>
+<li><p><em>np.ndarray</em> – bin widths</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – if binning is not identical between 2 objects</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="puma.var_vs_eff.VarVsEffPlot">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">puma.var_vs_eff.</span></span><span class="sig-name descname"><span class="pre">VarVsEffPlot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.var_vs_eff.VarVsEffPlot" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../plot_base/index.html#puma.plot_base.PlotBase" title="puma.plot_base.PlotBase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">puma.plot_base.PlotBase</span></code></a></p>
+<p>var_vs_eff plot class</p>
+<p>var_vs_eff plot properties</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mode</strong> (<em>str</em>) – defines which quantity is plotted, the following options ar available:
+“sig_eff”, “bkg_eff”, “sig_rej” or “bkg_rej”</p></li>
+<li><p><strong>**kwargs</strong> (<em>kwargs</em>) – kwargs from <code class="code docutils literal notranslate"><span class="pre">plot_base</span></code></p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – if incompatible mode given or more than 1 ratio panel requested</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.var_vs_eff.VarVsEffPlot.add">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curve</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reference</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.var_vs_eff.VarVsEffPlot.add" title="Permalink to this definition">#</a></dt>
+<dd><p>Adding var_vs_eff object to figure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>curve</strong> (<em>var_vs_eff class</em>) – var_vs_eff curve</p></li>
+<li><p><strong>key</strong> (<em>str</em><em>, </em><em>optional</em>) – unique identifier for var_vs_eff, by default None</p></li>
+<li><p><strong>reference</strong> (<em>bool</em><em>, </em><em>optional</em>) – if var_vs_eff is used as reference for ratio calculation, by default False</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>KeyError</strong> – if unique identifier key is used twice</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.var_vs_eff.VarVsEffPlot.set_reference">
+<span class="sig-name descname"><span class="pre">set_reference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.var_vs_eff.VarVsEffPlot.set_reference" title="Permalink to this definition">#</a></dt>
+<dd><p>Setting the reference roc curves used in the ratios</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key</strong> (<em>str</em>) – unique identifier of roc object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.var_vs_eff.VarVsEffPlot.plot">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.var_vs_eff.VarVsEffPlot.plot" title="Permalink to this definition">#</a></dt>
+<dd><p>Plotting curves</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>**kwargs</strong> (<em>kwargs</em>) – <p>kwargs passed to plt.axis.errorbar</p>
+<p>Returns</p>
+</p></li>
+<li><p><strong>-------</strong> – </p></li>
+<li><p><strong>Line2D</strong> – matplotlib Line2D object</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.var_vs_eff.VarVsEffPlot.plot_ratios">
+<span class="sig-name descname"><span class="pre">plot_ratios</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.var_vs_eff.VarVsEffPlot.plot_ratios" title="Permalink to this definition">#</a></dt>
+<dd><p>Plotting ratio curves.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – if no reference curve is defined</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.var_vs_eff.VarVsEffPlot.set_grid">
+<span class="sig-name descname"><span class="pre">set_grid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.var_vs_eff.VarVsEffPlot.set_grid" title="Permalink to this definition">#</a></dt>
+<dd><p>Set gtid lines.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.var_vs_eff.VarVsEffPlot.set_inverse_cut">
+<span class="sig-name descname"><span class="pre">set_inverse_cut</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inverse_cut</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.var_vs_eff.VarVsEffPlot.set_inverse_cut" title="Permalink to this definition">#</a></dt>
+<dd><p>Invert the discriminant cut, which will yield the efficiency or rejection
+of the jets not passing the working point.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inverse_cut</strong> (<em>bool</em><em>, </em><em>optional</em>) – invert discriminant cut, by default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.var_vs_eff.VarVsEffPlot.draw_hline">
+<span class="sig-name descname"><span class="pre">draw_hline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_val</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.var_vs_eff.VarVsEffPlot.draw_hline" title="Permalink to this definition">#</a></dt>
+<dd><p>Draw hline in top plot panel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>y_val</strong> (<em>float</em>) – y value of the horizontal line</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.var_vs_eff.VarVsEffPlot.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labelpad</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.var_vs_eff.VarVsEffPlot.draw" title="Permalink to this definition">#</a></dt>
+<dd><p>Draw figure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>labelpad</strong> (<em>int</em><em>, </em><em>optional</em>) – Spacing in points from the axes bounding box including
+ticks and tick labels, by default “ratio”</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+              </div>
+              
+              
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2022, puma developers.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>
