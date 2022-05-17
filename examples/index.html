@@ -215,16 +215,18 @@ can be used as a starting point for your plotting scripts.</p>
 </div>
 <section id="some-basics-before-plotting">
 <h2>Some basics before plotting<a class="headerlink" href="#some-basics-before-plotting" title="Permalink to this headline">#</a></h2>
-<p>In the following a small example how to read in h5 and calculate discriminants.</p>
-<p>first you need to import some packages</p>
+<p>In the following a small example how to read in h5 and calculate the <em>b</em>-tagging
+discriminant.</p>
+<p>First you need to import some packages</p>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">h5py</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 
-<span class="kn">from</span> <span class="nn">umami.metrics</span> <span class="kn">import</span> <span class="n">calc_rej</span>
+<span class="kn">from</span> <span class="nn">puma.metrics</span> <span class="kn">import</span> <span class="n">calc_rej</span>
 </pre></div>
 </div>
+<p>Then you can read a h5 file that contains the data you want to plot:</p>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="c1"># this is just an example to read in your h5 file</span>
 <span class="c1"># if you have tagger predictions you can plug them in directly in the `disc_fct` as well</span>
 <span class="c1"># taking one random ttbar file</span>
@@ -233,22 +235,24 @@ can be used as a starting point for your plotting scripts.</p>
     <span class="s2">&quot;2022-02-07-T174158_output.h5/user.alfroch.28040424._001207.output.h5&quot;</span>
 <span class="p">)</span>
 <span class="k">with</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">ttbar_file</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-    <span class="n">f</span><span class="p">[</span><span class="s2">&quot;jets&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">fields</span><span class="p">(</span>
-        <span class="p">[</span>
-            <span class="s2">&quot;rnnip_pu&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;rnnip_pc&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;rnnip_pb&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;dipsLoose20210729_pu&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;dipsLoose20210729_pc&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;dipsLoose20210729_pb&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;HadronConeExclTruthLabelID&quot;</span><span class="p">,</span>
-        <span class="p">]</span>
-    <span class="p">)[:</span><span class="mi">300000</span><span class="p">]</span>
-<span class="p">)</span>
-<span class="n">n_test</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+        <span class="n">f</span><span class="p">[</span><span class="s2">&quot;jets&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">fields</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;rnnip_pu&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;rnnip_pc&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;rnnip_pb&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;dipsLoose20210729_pu&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;dipsLoose20210729_pc&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;dipsLoose20210729_pb&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;HadronConeExclTruthLabelID&quot;</span><span class="p">,</span>
+            <span class="p">]</span>
+        <span class="p">)[:</span><span class="mi">300000</span><span class="p">]</span>
+    <span class="p">)</span>
+    <span class="n">n_test</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>In the example below you can find an example on how you can calculate the tagger
+discriminant using the raw output (i.e. <code class="docutils literal notranslate"><span class="pre">p_u</span></code>, <code class="docutils literal notranslate"><span class="pre">p_c</span></code> and <code class="docutils literal notranslate"><span class="pre">p_b</span></code>) of the tagger.</p>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="c1"># define a small function to calculate discriminant</span>
 <span class="k">def</span> <span class="nf">disc_fct</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Tagger discriminant</span>
@@ -280,7 +284,8 @@ can be used as a starting point for your plotting scripts.</p>
 <span class="p">)</span>
 </pre></div>
 </div>
-<p>To calculate the rejection values you can do the following or using a results file from umami directly.</p>
+<p>To calculate the rejection values you can do the following or using a results file
+from a previous evaluation.</p>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="c1"># defining target efficiency</span>
 <span class="n">sig_eff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.49</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
 <span class="c1"># defining boolean arrays to select the different flavour classes</span>

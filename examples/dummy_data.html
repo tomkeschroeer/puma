@@ -187,9 +187,9 @@
                 
   <section id="dummy-data">
 <h1>Dummy Data<a class="headerlink" href="#dummy-data" title="Permalink to this headline">#</a></h1>
-<p>Often to test the plotting, we just want to use dummy data.</p>
-<p>There are two methods in umami to generate dummy data:</p>
-<p>The first function returns directly a pandas DataFrame including the following columns:</p>
+<p>To test/demonstrate the <code class="docutils literal notranslate"><span class="pre">puma</span></code> API, we just want to use dummy data.</p>
+<p>There are two methods in puma to generate dummy data:</p>
+<p>The first function returns directly a <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> including the following columns:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">HadronConeExclTruthLabelID</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">rnnip_pu</span></code></p></li>
@@ -200,14 +200,16 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">dips_pb</span></code></p></li>
 </ul>
 <p>which can be used in the following manner:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">umami.plotting.utils</span> <span class="kn">import</span> <span class="n">get_dummy_2_taggers</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">puma.utils</span> <span class="kn">import</span> <span class="n">get_dummy_2_taggers</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">get_dummy_2_taggers</span><span class="p">()</span>
 
 </pre></div>
 </div>
-<p>The second function is <code class="docutils literal notranslate"><span class="pre">get_dummy_multiclass_scores</span></code> which returns an output array with shape <code class="docutils literal notranslate"><span class="pre">(size,</span> <span class="pre">3)</span></code>, which is the usual output of our multi-class classifiers like DIPS, and the labels conform with the <code class="docutils literal notranslate"><span class="pre">HadronConeExclTruthLabelID</span></code> variable.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">umami.plotting.utils</span> <span class="kn">import</span> <span class="n">get_dummy_multiclass_scores</span>
+<p>The second function is <code class="docutils literal notranslate"><span class="pre">get_dummy_multiclass_scores</span></code> which returns an output array
+with shape <code class="docutils literal notranslate"><span class="pre">(size,</span> <span class="pre">3)</span></code>, which is the usual output of our multi-class classifiers like
+DIPS, and the labels conform with the <code class="docutils literal notranslate"><span class="pre">HadronConeExclTruthLabelID</span></code> variable.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">puma.utils</span> <span class="kn">import</span> <span class="n">get_dummy_multiclass_scores</span>
 
 <span class="n">output</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">get_dummy_multiclass_scores</span><span class="p">()</span>
 </pre></div>
