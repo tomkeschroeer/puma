@@ -674,9 +674,9 @@
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>xmin</strong> (<em>float</em><em>, </em><em>optional</em>) – Minimum value of the x-axis, by default None</p></li>
 <li><p><strong>xmax</strong> (<em>float</em><em>, </em><em>optional</em>) – Maximum value of the x-axis, by default None</p></li>
-<li><p><strong>colour</strong> (<em>str</em><em>, </em><em>optional</em>) – colour of the object, by default None</p></li>
-<li><p><strong>label</strong> (<em>str</em><em>, </em><em>optional</em>) – label of object, by default None</p></li>
-<li><p><strong>linestyle</strong> (<em>str</em><em>, </em><em>optional</em>) – linestyle following numpy style, by default None</p></li>
+<li><p><strong>colour</strong> (<em>str</em><em>, </em><em>optional</em>) – Colour of the object, by default None</p></li>
+<li><p><strong>label</strong> (<em>str</em><em>, </em><em>optional</em>) – Label of object, by default None</p></li>
+<li><p><strong>linestyle</strong> (<em>str</em><em>, </em><em>optional</em>) – Linestyle following numpy style, by default None</p></li>
 <li><p><strong>alpha</strong> (<em>float</em><em>, </em><em>optional</em>) – Value for visibility of the plot lines, by default None</p></li>
 <li><p><strong>marker</strong> (<em>str</em><em>, </em><em>optional</em>) – Marker that is used in the plot. For example an x.
 By default None</p></li>
@@ -975,7 +975,7 @@ by default False</p></li>
 <dd><p>Check for allowed values.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises</dt>
-<dd class="field-odd"><p><strong>ValueError</strong> – if n_ratio_panels not in [0, 1, 2]</p>
+<dd class="field-odd"><p><strong>ValueError</strong> – If n_ratio_panels not in [0, 1, 2]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -986,7 +986,7 @@ by default False</p></li>
 <dd><p>Check <code class="code docutils literal notranslate"><span class="pre">figsize</span></code></p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises</dt>
-<dd class="field-odd"><p><strong>ValueError</strong> – if shape of <code class="code docutils literal notranslate"><span class="pre">figsize</span></code> is not a tuple or list with length 2</p>
+<dd class="field-odd"><p><strong>ValueError</strong> – If shape of <code class="code docutils literal notranslate"><span class="pre">figsize</span></code> is not a tuple or list with length 2</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1001,7 +1001,7 @@ by default False</p></li>
 <p>Initialise class</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>**kwargs</strong> (<em>kwargs</em>) – kwargs from <code class="code docutils literal notranslate"><span class="pre">plot_object</span></code></p>
+<dd class="field-odd"><p><strong>**kwargs</strong> (<em>kwargs</em>) – Keyword arguments from <code class="code docutils literal notranslate"><span class="pre">puma.PlotObject</span></code></p>
 </dd>
 </dl>
 <dl class="py method">
@@ -1011,7 +1011,7 @@ by default False</p></li>
 many ratio panels are requested.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>sub_plot_index</strong> (<em>int</em><em>, </em><em>optional</em>) – indicates for the scenario with one ratio how large the upper and lower
+<dd class="field-odd"><p><strong>sub_plot_index</strong> (<em>int</em><em>, </em><em>optional</em>) – Indicates for the scenario with one ratio how large the upper and lower
 panels are, by default 5</p>
 </dd>
 </dl>
@@ -1031,8 +1031,8 @@ used as labels. By default None</p></li>
 <li><p><strong>vlines_line_height_list</strong> (<em>list</em><em>, </em><em>optional</em>) – List with the y height of the vertical lines in percent of the
 upper plot (0 is bottom, 1 is top). Must be the same
 order as the vlines_xvalues and the labels. By default None</p></li>
-<li><p><strong>same_height</strong> (<em>bool</em><em>, </em><em>optional</em>) – working point lines on same height, by default False</p></li>
-<li><p><strong>colour</strong> (<em>str</em><em>, </em><em>optional</em>) – colour of the vertical line, by default “#920000”</p></li>
+<li><p><strong>same_height</strong> (<em>bool</em><em>, </em><em>optional</em>) – Working point lines on same height, by default False</p></li>
+<li><p><strong>colour</strong> (<em>str</em><em>, </em><em>optional</em>) – Colour of the vertical line, by default “#920000”</p></li>
 <li><p><strong>fontsize</strong> (<em>int</em><em>, </em><em>optional</em>) – Fontsize of the vertical line text. By default 10.</p></li>
 </ul>
 </dd>
@@ -1046,9 +1046,9 @@ order as the vlines_xvalues and the labels. By default None</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>title</strong> (<em>str</em><em>, </em><em>optional</em>) – title of top panel, if None using the value form the class variables,
+<li><p><strong>title</strong> (<em>str</em><em>, </em><em>optional</em>) – Title of top panel, if None using the value form the class variables,
 by default None</p></li>
-<li><p><strong>**kwargs</strong> (<em>kwargs</em>) – kwargs passed to <code class="code docutils literal notranslate"><span class="pre">matplotlib.axes.Axes.set_title()</span></code></p></li>
+<li><p><strong>**kwargs</strong> (<em>kwargs</em>) – Keyword arguments passed to <code class="code docutils literal notranslate"><span class="pre">matplotlib.axes.Axes.set_title()</span></code></p></li>
 </ul>
 </dd>
 </dl>
@@ -1060,7 +1060,7 @@ by default None</p></li>
 <dd><p>Set log scale of y-axis of main panel.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>force</strong> (<em>bool</em><em>, </em><em>optional</em>) – forcing logy even if class variable is False, by default False</p>
+<dd class="field-odd"><p><strong>force</strong> (<em>bool</em><em>, </em><em>optional</em>) – Forcing logy even if class variable is False, by default False</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1080,9 +1080,9 @@ by default None</p></li>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>ax_mpl</strong> (<em>matplotlib.axes.Axes</em>) – matplotlib axis object</p></li>
 <li><p><strong>label</strong> (<em>str</em><em>, </em><em>optional</em>) – x-axis label, by default None</p></li>
-<li><p><strong>align_right</strong> (<em>bool</em><em>, </em><em>optional</em>) – alignment of y-axis label, by default True</p></li>
-<li><p><strong>**kwargs</strong> – kwargs passed to <code class="code docutils literal notranslate"><span class="pre">matplotlib.axes.Axes.set_ylabel()</span></code></p></li>
-<li><p><strong>kwargs</strong> – kwargs passed to <code class="code docutils literal notranslate"><span class="pre">matplotlib.axes.Axes.set_ylabel()</span></code></p></li>
+<li><p><strong>align_right</strong> (<em>bool</em><em>, </em><em>optional</em>) – Alignment of y-axis label, by default True</p></li>
+<li><p><strong>**kwargs</strong> – Keyword arguments passed to <code class="code docutils literal notranslate"><span class="pre">matplotlib.axes.Axes.set_ylabel()</span></code></p></li>
+<li><p><strong>kwargs</strong> – Keyword arguments passed to <code class="code docutils literal notranslate"><span class="pre">matplotlib.axes.Axes.set_ylabel()</span></code></p></li>
 </ul>
 </dd>
 </dl>
@@ -1096,7 +1096,7 @@ by default None</p></li>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>label</strong> (<em>str</em><em>, </em><em>optional</em>) – x-axis label, by default None</p></li>
-<li><p><strong>**kwargs</strong> (<em>kwargs</em>) – kwargs passed to <code class="code docutils literal notranslate"><span class="pre">matplotlib.axes.Axes.set_xlabel()</span></code></p></li>
+<li><p><strong>**kwargs</strong> (<em>kwargs</em>) – Keyword arguments passed to <code class="code docutils literal notranslate"><span class="pre">matplotlib.axes.Axes.set_xlabel()</span></code></p></li>
 </ul>
 </dd>
 </dl>
@@ -1109,9 +1109,9 @@ by default None</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>labelsize</strong> (<em>int</em><em>, </em><em>optional</em>) – label size of x- and y- axis ticks, by default None
-if None then using global fontsize</p></li>
-<li><p><strong>**kwargs</strong> (<em>kwargs</em>) – kwargs passed to <code class="code docutils literal notranslate"><span class="pre">matplotlib.axes.Axes.set_xlabel()</span></code></p></li>
+<li><p><strong>labelsize</strong> (<em>int</em><em>, </em><em>optional</em>) – Label size of x- and y- axis ticks, by default None.
+If None then using global fontsize</p></li>
+<li><p><strong>**kwargs</strong> (<em>kwargs</em>) – Keyword arguments passed to <code class="code docutils literal notranslate"><span class="pre">matplotlib.axes.Axes.set_xlabel()</span></code></p></li>
 </ul>
 </dd>
 </dl>
@@ -1124,9 +1124,9 @@ if None then using global fontsize</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>xmin</strong> (<em>float</em><em>, </em><em>optional</em>) – min of x-axis, by default None</p></li>
-<li><p><strong>xmax</strong> (<em>float</em><em>, </em><em>optional</em>) – max of x-axis, by default None</p></li>
-<li><p><strong>**kwargs</strong> (<em>kwargs</em>) – kwargs passed to <code class="code docutils literal notranslate"><span class="pre">matplotlib.axes.Axes.set_xlim()</span></code></p></li>
+<li><p><strong>xmin</strong> (<em>float</em><em>, </em><em>optional</em>) – Min of x-axis, by default None</p></li>
+<li><p><strong>xmax</strong> (<em>float</em><em>, </em><em>optional</em>) – Max of x-axis, by default None</p></li>
+<li><p><strong>**kwargs</strong> (<em>kwargs</em>) – Keyword arguments passed to <code class="code docutils literal notranslate"><span class="pre">matplotlib.axes.Axes.set_xlim()</span></code></p></li>
 </ul>
 </dd>
 </dl>
@@ -1139,10 +1139,10 @@ if None then using global fontsize</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>plot_name</strong> (<em>str</em>) – file name of the plot</p></li>
-<li><p><strong>transparent</strong> (<em>bool</em><em>, </em><em>optional</em>) – if plot transparent, by default True</p></li>
-<li><p><strong>dpi</strong> (<em>int</em><em>, </em><em>optional</em>) – dpi for plotting, by default 400</p></li>
-<li><p><strong>**kwargs</strong> (<em>kwargs</em>) – kwargs passed to <code class="code docutils literal notranslate"><span class="pre">matplotlib.figure.Figure.savefig()</span></code></p></li>
+<li><p><strong>plot_name</strong> (<em>str</em>) – File name of the plot</p></li>
+<li><p><strong>transparent</strong> (<em>bool</em><em>, </em><em>optional</em>) – If plot transparent, by default True</p></li>
+<li><p><strong>dpi</strong> (<em>int</em><em>, </em><em>optional</em>) – DPI for plotting, by default 400</p></li>
+<li><p><strong>**kwargs</strong> (<em>kwargs</em>) – Keyword arguments passed to <code class="code docutils literal notranslate"><span class="pre">matplotlib.figure.Figure.savefig()</span></code></p></li>
 </ul>
 </dd>
 </dl>
@@ -1154,7 +1154,7 @@ if None then using global fontsize</p></li>
 <dd><p>abstract function of matplotlib.figure.Figure.tight_layout</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>**kwargs</strong> (<em>kwargs</em>) – kwargs from <code class="code docutils literal notranslate"><span class="pre">matplotlib.figure.Figure.tight_layout()</span></code></p>
+<dd class="field-odd"><p><strong>**kwargs</strong> (<em>kwargs</em>) – Keyword arguments from <code class="code docutils literal notranslate"><span class="pre">matplotlib.figure.Figure.tight_layout()</span></code></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1181,11 +1181,11 @@ If True, the tag will be put on as well, by default True</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>handles</strong> (<em>list</em>) – list of matplotlib.lines.Line2D object returned when plotting</p></li>
-<li><p><strong>ax_mpl</strong> (<em>axis</em>) – matplotlib.axis object where the legend should be plotted</p></li>
-<li><p><strong>labels</strong> (<em>list</em><em>, </em><em>optional</em>) – plot labels. If None, the labels are extracted from the <code class="code docutils literal notranslate"><span class="pre">handles</span></code>.
+<li><p><strong>handles</strong> (<em>list</em>) – List of matplotlib.lines.Line2D object returned when plotting</p></li>
+<li><p><strong>ax_mpl</strong> (<em>matplotlib.axis.Axes</em>) – <code class="code docutils literal notranslate"><span class="pre">matplotlib.axis.Axes</span></code> object where the legend should be plotted</p></li>
+<li><p><strong>labels</strong> (<em>list</em><em>, </em><em>optional</em>) – Plot labels. If None, the labels are extracted from the <code class="code docutils literal notranslate"><span class="pre">handles</span></code>.
 By default None</p></li>
-<li><p><strong>**kwargs</strong> (<em>kwargs</em>) – kwargs which can be passed to matplotlib axis</p></li>
+<li><p><strong>**kwargs</strong> (<em>kwargs</em>) – Keyword arguments which can be passed to matplotlib axis</p></li>
 </ul>
 </dd>
 </dl>
@@ -1198,12 +1198,12 @@ By default None</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>ratio_panel</strong> (<em>int</em>) – ratio panel either 1 or 2</p></li>
+<li><p><strong>ratio_panel</strong> (<em>int</em>) – Indicates which ratio panel to modify (either 1 or 2).</p></li>
 <li><p><strong>label</strong> (<em>str</em>) – y-axis label of the ratio panel</p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises</dt>
-<dd class="field-even"><p><strong>ValueError</strong> – if requested ratio panels and given ratio_panel do not match.</p>
+<dd class="field-even"><p><strong>ValueError</strong> – If requested ratio panels and given ratio_panel do not match.</p>
 </dd>
 </dl>
 </dd></dl>

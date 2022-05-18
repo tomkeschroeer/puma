@@ -28,17 +28,17 @@ Functions
    Generate dummy data representing output of 3 class classifier.
    Adapted to light-, c- and b-jets and values of `HadronConeExclTruthLabelID`.
 
-   :param size: size of dummy data. For each of the 3 classes, the same amount of is produces,
+   :param size: Size of dummy data. For each of the 3 classes, the same amount of is produces,
                 by default 10_000
    :type size: int, optional
-   :param bjets_mean: mean value of the b-jets 3D gaussian, the more away from 0, the better the
+   :param bjets_mean: Mean value of the b-jets 3D gaussian, the more away from 0, the better the
                       b-tagging performance, by default 1.4
    :type bjets_mean: float, optional
-   :param seed: random seed for number generation, by default 42
+   :param seed: Random seed for number generation, by default 42
    :type seed: int, optional
 
-   :returns: * *np.ndarray* -- output scores of the shape (size, 3)
-             * *np.ndarray* -- labels of shape (size,). The order of the output is light-jets, c-jets, b-jets
+   :returns: * *np.ndarray* -- Output scores of the shape (size, 3)
+             * *np.ndarray* -- Labels of shape (size,). The order of the output is light-jets, c-jets, b-jets
 
 
 .. py:function:: get_dummy_2_taggers(size: int = 10000, shuffle: bool = True, seed: int = 42, add_pt: bool = False)
@@ -47,19 +47,19 @@ Functions
    for 2 taggers, in this case rnnip and dips as well as HadronConeExclTruthLabelID.
 
 
-   :param size: size of dummy data, by default 10_000
+   :param size: Size of dummy data, by default 10_000
    :type size: int, optional
-   :param shuffle: if True shuffles the dummy data, by default True
+   :param shuffle: If True shuffles the dummy data, by default True
    :type shuffle: bool, optional
-   :param seed: random seed for number generation (will count +10 for second tagger),
+   :param seed: Random seed for number generation (will count +10 for second tagger),
                 by default 42
    :type seed: int, optional
-   :param add_pt: specify if pt column should be added as well, by default False
+   :param add_pt: Specify if pt column should be added as well, by default False
    :type add_pt: bool, optional
 
-   :returns: pandas DataFrame with columns
+   :returns: **df_gen** -- Dataframe with columns
              [HadronConeExclTruthLabelID, rnnip_pu, rnnip_pc, rnnip_pb, dips_pu, dips_pc,
              dips_pb]
-   :rtype: pd.DataFrame
+   :rtype: pandas.DataFrame
 
 

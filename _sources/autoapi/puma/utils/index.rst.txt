@@ -58,7 +58,7 @@ Attributes
 
    :param puma_logger: logger object
    :type puma_logger: logger
-   :param log_level: logging level corresponding CRITICAL, ERROR, WARNING, INFO, DEBUG, NOTSET
+   :param log_level: Logging level corresponding CRITICAL, ERROR, WARNING, INFO, DEBUG, NOTSET
    :type log_level: str
 
 

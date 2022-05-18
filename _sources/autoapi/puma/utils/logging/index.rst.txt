@@ -132,14 +132,14 @@ Attributes
    :returns: logging object with log level info
    :rtype: logging level
 
-   :raises ValueError: if non-valid option is given
+   :raises ValueError: If non-valid option is given
 
 
 .. py:function:: initialise_logger(log_level: str = None)
 
    Initialise.
 
-   :param log_level: logging level defining the verbose level. Accepted values are:
+   :param log_level: Logging level defining the verbose level. Accepted values are:
                      CRITICAL, ERROR, WARNING, INFO, DEBUG, NOTSET, by default None
                      If the log_level is not set, it will
    :type log_level: str, optional
@@ -154,7 +154,7 @@ Attributes
 
    :param puma_logger: logger object
    :type puma_logger: logger
-   :param log_level: logging level corresponding CRITICAL, ERROR, WARNING, INFO, DEBUG, NOTSET
+   :param log_level: Logging level corresponding CRITICAL, ERROR, WARNING, INFO, DEBUG, NOTSET
    :type log_level: str
 
 

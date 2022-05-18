@@ -43,7 +43,7 @@ Classes
                     histograms. Supported values are "bar", "barstacked", "step", "stepfilled".
                     By default "step"
    :type histtype: str, optional
-   :param \*\*kwargs: kwargs passed to `PlotLineObject`
+   :param \*\*kwargs: Keyword arguments passed to `PlotLineObject`
    :type \*\*kwargs: kwargs
 
    :raises ValueError: If input data is not of type np.ndarray or list
@@ -55,8 +55,8 @@ Classes
       :param other: Second histogram object to calculate ratio with
       :type other: histogram class
 
-      :returns: * *np.ndarray* -- ratio
-                * *np.ndarray* -- ratio error
+      :returns: * *np.ndarray* -- Ratio
+                * *np.ndarray* -- Ratio error
 
       :raises ValueError: If binning is not identical between 2 objects
       :raises ValueError: If hist attribute is not set for one of the two histograms
@@ -103,7 +103,7 @@ Classes
    :type logy: bool, optional
    :param bin_width_in_ylabel: Specify if the bin width should be added to the ylabel, by default False
    :type bin_width_in_ylabel: bool, optional
-   :param \*\*kwargs: kwargs from `plot_base`
+   :param \*\*kwargs: Keyword arguments from `puma.PlotObject`
    :type \*\*kwargs: kwargs
 
    :raises ValueError: If n_ratio_panels > 1
@@ -112,7 +112,7 @@ Classes
 
       Adding histogram object to figure.
 
-      :param curve: histogram curve
+      :param curve: Histogram curve
       :type curve: histogram class
       :param key: Unique identifier for histogram, by default None
       :type key: str, optional
@@ -127,7 +127,7 @@ Classes
 
       Setting the reference histogram curves used in the ratios
 
-      :param key: unique identifier of histogram object
+      :param key: Unique identifier of histogram object
       :type key: str
 
 
@@ -137,7 +137,7 @@ Classes
       added to the plot. Plot objects are drawn in the same order as they were added
       to the plot.
 
-      :param \*\*kwargs: kwargs passed to matplotlib.axes.Axes.hist()
+      :param \*\*kwargs: Keyword arguments passed to matplotlib.axes.Axes.hist()
       :type \*\*kwargs: kwargs
 
       :returns: matplotlib Line2D object
@@ -151,8 +151,8 @@ Classes
       Plotting Pie chart. Only variables with defined discrete values
       can be plotted. Only non-zero values are plotted.
 
-      :returns: matplotlib Patch object
-      :rtype: Patch
+      :returns: **Patch**
+      :rtype: matplotlib Patch object
 
       :raises ValueError: If plot_pie is set to True but not the vertical_split
       :raises ValueError: If no discrete values of the variable are provided
@@ -167,8 +167,8 @@ Classes
       :param elem: Histogram we want to calculate the bins containing discrete values for
       :type elem: histogram class
 
-      :returns: **bins**
-      :rtype: recalculated bins including only the discrete values
+      :returns: **bins** -- Recalculated bins including only the discrete values
+      :rtype: numpy.ndarray
 
       :raises ValueError: If the bin width is larger than 1 such that potentially not
           all discrete values are in a seperate bin
@@ -181,10 +181,10 @@ Classes
       Get reference histogram from list of references
 
       :param histo: Histogram we want to calculate the ratio for
-      :type histo: histogram class
+      :type histo: puma.histogram.Histogram
 
-      :returns: Reference histogram
-      :rtype: histogram class
+      :returns: **reference_histo_name** -- Identifier of the corresponding reference histogram
+      :rtype: str, int
 
       :raises ValueError: If no reference histo was found or multiple matches.
 

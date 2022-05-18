@@ -421,29 +421,25 @@ efficiency plots.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>x_var_sig</strong> (<em>np.ndarray</em>) – values for x-axis variable for signal</p></li>
-<li><p><strong>disc_sig</strong> (<em>np.ndarray</em>) – discriminant values for signal</p></li>
-<li><p><strong>x_var_bkg</strong> (<em>np.ndarray</em><em>, </em><em>optional</em>) – values for x-axis variable for background, by default None</p></li>
-<li><p><strong>disc_bkg</strong> (<em>np.ndarray</em><em>, </em><em>optional</em>) – discriminant values for background, by default None</p></li>
+<li><p><strong>x_var_sig</strong> (<em>np.ndarray</em>) – Values for x-axis variable for signal</p></li>
+<li><p><strong>disc_sig</strong> (<em>np.ndarray</em>) – Discriminant values for signal</p></li>
+<li><p><strong>x_var_bkg</strong> (<em>np.ndarray</em><em>, </em><em>optional</em>) – Values for x-axis variable for background, by default None</p></li>
+<li><p><strong>disc_bkg</strong> (<em>np.ndarray</em><em>, </em><em>optional</em>) – Discriminant values for background, by default None</p></li>
 <li><p><strong>bins</strong> (<em>int</em><em> or </em><em>sequence of scalars</em><em>, </em><em>optional</em>) – If bins is an int, it defines the number of equal-width bins in the
 given range (10, by default). If bins is a sequence, it defines a
 monotonically increasing array of bin edges, including the
 rightmost edge, allowing for non-uniform bin widths, by default 10</p></li>
-<li><p><strong>working_point</strong> (<em>float</em><em>, </em><em>optional</em>) – working point, by default None</p></li>
-<li><p><strong>disc_cut</strong> (<em>float</em><em> or  </em><em>sequence of floats</em><em>, </em><em>optional</em>) – cut value for discriminant, if it is a sequence it has to have the same
+<li><p><strong>working_point</strong> (<em>float</em><em>, </em><em>optional</em>) – Working point, by default None</p></li>
+<li><p><strong>disc_cut</strong> (<em>float</em><em> or  </em><em>sequence of floats</em><em>, </em><em>optional</em>) – Cut value for discriminant, if it is a sequence it has to have the same
 length as number of bins, by default None</p></li>
-<li><p><strong>fixed_eff_bin</strong> (<em>bool</em><em>, </em><em>optional</em>) – if True and no <code class="code docutils literal notranslate"><span class="pre">disc_cut</span></code> is given the signal efficiency is held constant
+<li><p><strong>fixed_eff_bin</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True and no <code class="code docutils literal notranslate"><span class="pre">disc_cut</span></code> is given the signal efficiency is held constant
 in each bin, by default False</p></li>
-<li><p><strong>key</strong> (<em>str</em><em>, </em><em>optional</em>) – <p>identifier for the curve e.g. tagger, by default None
-<a href="#id1"><span class="problematic" id="id2">**</span></a>kwargs : kwargs</p>
-<blockquote>
-<div><p>kwargs passed to <code class="code docutils literal notranslate"><span class="pre">PlotLineObject</span></code></p>
-</div></blockquote>
-</p></li>
+<li><p><strong>key</strong> (<em>str</em><em>, </em><em>optional</em>) – Identifier for the curve e.g. tagger, by default None</p></li>
+<li><p><strong>**kwargs</strong> (<em>kwargs</em>) – Keyword arguments passed to <code class="code docutils literal notranslate"><span class="pre">PlotLineObject</span></code></p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises</dt>
-<dd class="field-even"><p><strong>ValueError</strong> – if provided options are not compatible with each other</p>
+<dd class="field-even"><p><strong>ValueError</strong> – If provided options are not compatible with each other</p>
 </dd>
 </dl>
 <dl class="py method">
@@ -480,14 +476,14 @@ cut values from the working point.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>arr</strong> (<em>np.ndarray</em>) – array with discriminants</p></li>
-<li><p><strong>cut</strong> (<em>float</em>) – cut value</p></li>
+<li><p><strong>arr</strong> (<em>np.ndarray</em>) – Array with discriminants</p></li>
+<li><p><strong>cut</strong> (<em>float</em>) – Cut value</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><ul class="simple">
-<li><p><em>float</em> – efficiency</p></li>
-<li><p><em>float</em> – efficiency error</p></li>
+<li><p><em>float</em> – Efficiency</p></li>
+<li><p><em>float</em> – Efficiency error</p></li>
 </ul>
 </p>
 </dd>
@@ -501,14 +497,14 @@ cut values from the working point.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>arr</strong> (<em>np.ndarray</em>) – array with discriminants</p></li>
-<li><p><strong>cut</strong> (<em>float</em>) – cut value</p></li>
+<li><p><strong>arr</strong> (<em>np.ndarray</em>) – Array with discriminants</p></li>
+<li><p><strong>cut</strong> (<em>float</em>) – Cut value</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><ul class="simple">
-<li><p><em>float</em> – rejection</p></li>
-<li><p><em>float</em> – rejection error</p></li>
+<li><p><em>float</em> – Rejection</p></li>
+<li><p><em>float</em> – Rejection error</p></li>
 </ul>
 </p>
 </dd>
@@ -522,8 +518,8 @@ cut values from the working point.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p><ul class="simple">
-<li><p><em>np.ndarray</em> – efficiency</p></li>
-<li><p><em>np.ndarray</em> – efficiency_error</p></li>
+<li><p><em>np.ndarray</em> – Efficiency</p></li>
+<li><p><em>np.ndarray</em> – Efficiency_error</p></li>
 </ul>
 </p>
 </dd>
@@ -537,8 +533,8 @@ cut values from the working point.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p><ul class="simple">
-<li><p><em>np.ndarray</em> – efficiency</p></li>
-<li><p><em>np.ndarray</em> – efficiency_error</p></li>
+<li><p><em>np.ndarray</em> – Efficiency</p></li>
+<li><p><em>np.ndarray</em> – Efficiency_error</p></li>
 </ul>
 </p>
 </dd>
@@ -552,8 +548,8 @@ cut values from the working point.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p><ul class="simple">
-<li><p><em>np.ndarray</em> – rejection</p></li>
-<li><p><em>np.ndarray</em> – rejection_error</p></li>
+<li><p><em>np.ndarray</em> – Rejection</p></li>
+<li><p><em>np.ndarray</em> – Rejection_error</p></li>
 </ul>
 </p>
 </dd>
@@ -567,8 +563,8 @@ cut values from the working point.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p><ul class="simple">
-<li><p><em>np.ndarray</em> – rejection</p></li>
-<li><p><em>np.ndarray</em> – rejection_error</p></li>
+<li><p><em>np.ndarray</em> – Rejection</p></li>
+<li><p><em>np.ndarray</em> – Rejection_error</p></li>
 </ul>
 </p>
 </dd>
@@ -588,20 +584,20 @@ cut values from the working point.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>mode</strong> (<em>str</em>) – can be “sig_eff”, “bkg_eff”, “sig_rej”, “bkg_rej”</p></li>
-<li><p><strong>inverse_cut</strong> (<em>bool</em><em>, </em><em>optional</em>) – inverts the discriminant cut, which will yield the efficiency or rejection
+<li><p><strong>mode</strong> (<em>str</em>) – Can be “sig_eff”, “bkg_eff”, “sig_rej”, “bkg_rej”</p></li>
+<li><p><strong>inverse_cut</strong> (<em>bool</em><em>, </em><em>optional</em>) – Inverts the discriminant cut, which will yield the efficiency or rejection
 of the jets not passing the working point, by default False</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><ul class="simple">
-<li><p><em>np.ndarray</em> – rejection or efficiency depending on <code class="code docutils literal notranslate"><span class="pre">mode</span></code> value</p></li>
-<li><p><em>np.ndarray</em> – rejection or efficiency error depending on <code class="code docutils literal notranslate"><span class="pre">mode</span></code> value</p></li>
+<li><p><em>np.ndarray</em> – Rejection or efficiency depending on <code class="code docutils literal notranslate"><span class="pre">mode</span></code> value</p></li>
+<li><p><em>np.ndarray</em> – Rejection or efficiency error depending on <code class="code docutils literal notranslate"><span class="pre">mode</span></code> value</p></li>
 </ul>
 </p>
 </dd>
 <dt class="field-odd">Raises</dt>
-<dd class="field-odd"><p><strong>ValueError</strong> – if mode not supported</p>
+<dd class="field-odd"><p><strong>ValueError</strong> – If mode not supported</p>
 </dd>
 </dl>
 </dd></dl>
@@ -613,26 +609,26 @@ of the jets not passing the working point, by default False</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>other</strong> (<em>var_vs_eff class</em>) – second var_vs_eff object to calculate ratio with</p></li>
-<li><p><strong>mode</strong> (<em>str</em>) – defines the mode which is used for the ratoi calculation, can be the
+<li><p><strong>other</strong> (<em>var_vs_eff class</em>) – Second var_vs_eff object to calculate ratio with</p></li>
+<li><p><strong>mode</strong> (<em>str</em>) – Defines the mode which is used for the ratoi calculation, can be the
 following values: <code class="code docutils literal notranslate"><span class="pre">sig_eff</span></code>, <code class="code docutils literal notranslate"><span class="pre">bkg_eff</span></code>, <code class="code docutils literal notranslate"><span class="pre">sig_rej</span></code>, <code class="code docutils literal notranslate"><span class="pre">bkg_rej</span></code></p></li>
-<li><p><strong>inverse</strong> (<em>bool</em>) – if False the ratio is calculated <code class="code docutils literal notranslate"><span class="pre">this</span> <span class="pre">/</span> <span class="pre">other</span></code>,
+<li><p><strong>inverse</strong> (<em>bool</em>) – If False the ratio is calculated <code class="code docutils literal notranslate"><span class="pre">this</span> <span class="pre">/</span> <span class="pre">other</span></code>,
 if True the inverse is calculated</p></li>
-<li><p><strong>inverse_cut</strong> (<em>bool</em>) – inverts the discriminant cut, which will yield the efficiency or rejection
+<li><p><strong>inverse_cut</strong> (<em>bool</em>) – Inverts the discriminant cut, which will yield the efficiency or rejection
 of the jets not passing the working point, by default False</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><ul class="simple">
-<li><p><em>np.ndarray</em> – ratio</p></li>
-<li><p><em>np.ndarray</em> – ratio error</p></li>
-<li><p><em>np.ndarray</em> – bin centres</p></li>
-<li><p><em>np.ndarray</em> – bin widths</p></li>
+<li><p><em>np.ndarray</em> – Ratio</p></li>
+<li><p><em>np.ndarray</em> – Ratio error</p></li>
+<li><p><em>np.ndarray</em> – Bin centres</p></li>
+<li><p><em>np.ndarray</em> – Bin widths</p></li>
 </ul>
 </p>
 </dd>
 <dt class="field-odd">Raises</dt>
-<dd class="field-odd"><p><strong>ValueError</strong> – if binning is not identical between 2 objects</p>
+<dd class="field-odd"><p><strong>ValueError</strong> – If binning is not identical between 2 objects</p>
 </dd>
 </dl>
 </dd></dl>
@@ -648,13 +644,13 @@ of the jets not passing the working point, by default False</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>mode</strong> (<em>str</em>) – defines which quantity is plotted, the following options ar available:
+<li><p><strong>mode</strong> (<em>str</em>) – Defines which quantity is plotted, the following options ar available:
 “sig_eff”, “bkg_eff”, “sig_rej” or “bkg_rej”</p></li>
-<li><p><strong>**kwargs</strong> (<em>kwargs</em>) – kwargs from <code class="code docutils literal notranslate"><span class="pre">plot_base</span></code></p></li>
+<li><p><strong>**kwargs</strong> (<em>kwargs</em>) – Keyword arguments from <code class="code docutils literal notranslate"><span class="pre">puma.PlotObject</span></code></p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises</dt>
-<dd class="field-even"><p><strong>ValueError</strong> – if incompatible mode given or more than 1 ratio panel requested</p>
+<dd class="field-even"><p><strong>ValueError</strong> – If incompatible mode given or more than 1 ratio panel requested</p>
 </dd>
 </dl>
 <dl class="py method">
@@ -664,13 +660,13 @@ of the jets not passing the working point, by default False</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>curve</strong> (<em>var_vs_eff class</em>) – var_vs_eff curve</p></li>
-<li><p><strong>key</strong> (<em>str</em><em>, </em><em>optional</em>) – unique identifier for var_vs_eff, by default None</p></li>
-<li><p><strong>reference</strong> (<em>bool</em><em>, </em><em>optional</em>) – if var_vs_eff is used as reference for ratio calculation, by default False</p></li>
+<li><p><strong>curve</strong> (<em>var_vs_eff class</em>) – Var_vs_eff curve</p></li>
+<li><p><strong>key</strong> (<em>str</em><em>, </em><em>optional</em>) – Unique identifier for var_vs_eff, by default None</p></li>
+<li><p><strong>reference</strong> (<em>bool</em><em>, </em><em>optional</em>) – If var_vs_eff is used as reference for ratio calculation, by default False</p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises</dt>
-<dd class="field-even"><p><strong>KeyError</strong> – if unique identifier key is used twice</p>
+<dd class="field-even"><p><strong>KeyError</strong> – If unique identifier key is used twice</p>
 </dd>
 </dl>
 </dd></dl>
@@ -681,7 +677,7 @@ of the jets not passing the working point, by default False</p></li>
 <dd><p>Setting the reference roc curves used in the ratios</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>key</strong> (<em>str</em>) – unique identifier of roc object</p>
+<dd class="field-odd"><p><strong>key</strong> (<em>str</em>) – Unique identifier of roc object</p>
 </dd>
 </dl>
 </dd></dl>
@@ -692,13 +688,13 @@ of the jets not passing the working point, by default False</p></li>
 <dd><p>Plotting curves</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>**kwargs</strong> (<em>kwargs</em>) – <p>kwargs passed to plt.axis.errorbar</p>
-<p>Returns</p>
-</p></li>
-<li><p><strong>-------</strong> – </p></li>
-<li><p><strong>Line2D</strong> – matplotlib Line2D object</p></li>
-</ul>
+<dd class="field-odd"><p><strong>**kwargs</strong> (<em>kwargs</em>) – Keyword arguments passed to plt.axis.errorbar</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>matplotlib Line2D object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Line2D</p>
 </dd>
 </dl>
 </dd></dl>
@@ -709,7 +705,7 @@ of the jets not passing the working point, by default False</p></li>
 <dd><p>Plotting ratio curves.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises</dt>
-<dd class="field-odd"><p><strong>ValueError</strong> – if no reference curve is defined</p>
+<dd class="field-odd"><p><strong>ValueError</strong> – If no reference curve is defined</p>
 </dd>
 </dl>
 </dd></dl>
@@ -727,7 +723,7 @@ of the jets not passing the working point, by default False</p></li>
 of the jets not passing the working point.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>inverse_cut</strong> (<em>bool</em><em>, </em><em>optional</em>) – invert discriminant cut, by default True</p>
+<dd class="field-odd"><p><strong>inverse_cut</strong> (<em>bool</em><em>, </em><em>optional</em>) – Invert discriminant cut, by default True</p>
 </dd>
 </dl>
 </dd></dl>

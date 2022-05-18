@@ -33,7 +33,7 @@ Functions
    :type numerator: array_like, int, float
    :param denominator: Denominator in the ratio calculation.
    :type denominator: array_like, int, float
-   :param default: default value which is returned if denominator is 0.
+   :param default: Default value which is returned if denominator is 0.
    :type default: float
 
    :returns: **ratio**

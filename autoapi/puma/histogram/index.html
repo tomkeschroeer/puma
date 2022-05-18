@@ -379,7 +379,7 @@ config. Allowed values are the ones from the global config, i.e. “bjets”,
 <li><p><strong>histtype</strong> (<em>str</em><em>, </em><em>optional</em>) – <code class="code docutils literal notranslate"><span class="pre">histtype</span></code> parameter which is handed to matplotlib.hist() when plotting the
 histograms. Supported values are “bar”, “barstacked”, “step”, “stepfilled”.
 By default “step”</p></li>
-<li><p><strong>**kwargs</strong> (<em>kwargs</em>) – kwargs passed to <code class="code docutils literal notranslate"><span class="pre">PlotLineObject</span></code></p></li>
+<li><p><strong>**kwargs</strong> (<em>kwargs</em>) – Keyword arguments passed to <code class="code docutils literal notranslate"><span class="pre">PlotLineObject</span></code></p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises</dt>
@@ -396,8 +396,8 @@ By default “step”</p></li>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><ul class="simple">
-<li><p><em>np.ndarray</em> – ratio</p></li>
-<li><p><em>np.ndarray</em> – ratio error</p></li>
+<li><p><em>np.ndarray</em> – Ratio</p></li>
+<li><p><em>np.ndarray</em> – Ratio error</p></li>
 </ul>
 </p>
 </dd>
@@ -444,7 +444,7 @@ is equal to one, but NOT the area under the curve, which would be
 sum(bin_counts * bin_width). By default True.</p></li>
 <li><p><strong>logy</strong> (<em>bool</em><em>, </em><em>optional</em>) – Set log scale on y-axis, by default False.</p></li>
 <li><p><strong>bin_width_in_ylabel</strong> (<em>bool</em><em>, </em><em>optional</em>) – Specify if the bin width should be added to the ylabel, by default False</p></li>
-<li><p><strong>**kwargs</strong> (<em>kwargs</em>) – kwargs from <code class="code docutils literal notranslate"><span class="pre">plot_base</span></code></p></li>
+<li><p><strong>**kwargs</strong> (<em>kwargs</em>) – Keyword arguments from <code class="code docutils literal notranslate"><span class="pre">puma.PlotObject</span></code></p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises</dt>
@@ -458,7 +458,7 @@ sum(bin_counts * bin_width). By default True.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>curve</strong> (<em>histogram class</em>) – histogram curve</p></li>
+<li><p><strong>curve</strong> (<em>histogram class</em>) – Histogram curve</p></li>
 <li><p><strong>key</strong> (<em>str</em><em>, </em><em>optional</em>) – Unique identifier for histogram, by default None</p></li>
 <li><p><strong>reference</strong> (<em>bool</em><em>, </em><em>optional</em>) – If this histogram is used as reference for ratio calculation, by default
 False</p></li>
@@ -476,7 +476,7 @@ False</p></li>
 <dd><p>Setting the reference histogram curves used in the ratios</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>key</strong> (<em>str</em>) – unique identifier of histogram object</p>
+<dd class="field-odd"><p><strong>key</strong> (<em>str</em>) – Unique identifier of histogram object</p>
 </dd>
 </dl>
 </dd></dl>
@@ -489,7 +489,7 @@ added to the plot. Plot objects are drawn in the same order as they were added
 to the plot.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>**kwargs</strong> (<em>kwargs</em>) – kwargs passed to matplotlib.axes.Axes.hist()</p>
+<dd class="field-odd"><p><strong>**kwargs</strong> (<em>kwargs</em>) – Keyword arguments passed to matplotlib.axes.Axes.hist()</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>matplotlib Line2D object</p>
@@ -510,10 +510,10 @@ to the plot.</p>
 can be plotted. Only non-zero values are plotted.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>matplotlib Patch object</p>
+<dd class="field-odd"><p><strong>Patch</strong></p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p>Patch</p>
+<dd class="field-even"><p>matplotlib Patch object</p>
 </dd>
 <dt class="field-odd">Raises</dt>
 <dd class="field-odd"><ul class="simple">
@@ -535,10 +535,10 @@ bins accordingly</p>
 <dd class="field-odd"><p><strong>elem</strong> (<em>histogram class</em>) – Histogram we want to calculate the bins containing discrete values for</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>bins</strong></p>
+<dd class="field-even"><p><strong>bins</strong> – Recalculated bins including only the discrete values</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>recalculated bins including only the discrete values</p>
+<dd class="field-odd"><p>numpy.ndarray</p>
 </dd>
 <dt class="field-even">Raises</dt>
 <dd class="field-even"><ul class="simple">
@@ -557,13 +557,13 @@ distinguished</p></li>
 <dd><p>Get reference histogram from list of references</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>histo</strong> (<em>histogram class</em>) – Histogram we want to calculate the ratio for</p>
+<dd class="field-odd"><p><strong>histo</strong> (<a class="reference internal" href="#puma.histogram.Histogram" title="puma.histogram.Histogram"><em>puma.histogram.Histogram</em></a>) – Histogram we want to calculate the ratio for</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Reference histogram</p>
+<dd class="field-even"><p><strong>reference_histo_name</strong> – Identifier of the corresponding reference histogram</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>histogram class</p>
+<dd class="field-odd"><p>str, int</p>
 </dd>
 <dt class="field-even">Raises</dt>
 <dd class="field-even"><p><strong>ValueError</strong> – If no reference histo was found or multiple matches.</p>

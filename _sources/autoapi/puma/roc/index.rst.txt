@@ -31,9 +31,9 @@ Classes
 
    Initialise properties of roc curve object.
 
-   :param sig_eff: array of signal efficiencies
+   :param sig_eff: Array of signal efficiencies
    :type sig_eff: np.array
-   :param bkg_rej: array of background rejection
+   :param bkg_rej: Array of background rejection
    :type bkg_rej: np.array
    :param n_test: Number of events used to calculate the background efficiencies,
                   by default None
@@ -43,43 +43,43 @@ Classes
    :param rej_class: Rejection class, e.g. for b-tagging anc charm rejection "cjets",
                      by default None
    :type rej_class: str
-   :param key: identifier for roc curve e.g. tagger, by default None
+   :param key: Identifier for roc curve e.g. tagger, by default None
    :type key: str
-   :param \*\*kwargs: kwargs passed to `PlotLineObject`
+   :param \*\*kwargs: Keyword arguments passed to `puma.PlotLineObject`
    :type \*\*kwargs: kwargs
 
-   :raises ValueError: if `sig_eff` and `bkg_rej` have a different shape
+   :raises ValueError: If `sig_eff` and `bkg_rej` have a different shape
 
    .. py:method:: binomial_error(self, norm: bool = False, n_test: int = None) -> numpy.ndarray
 
       Calculate binomial error of roc curve.
 
-      :param norm: if True calulate relative error, by default False
+      :param norm: If True calulate relative error, by default False
       :type norm: bool
       :param n_test: Number of events used to calculate the background efficiencies,
                      by default None
       :type n_test: int
 
-      :returns: binomial error
+      :returns: Binomial error
       :rtype: numpy.array
 
-      :raises ValueError: if no `n_test` was provided
+      :raises ValueError: If no `n_test` was provided
 
 
    .. py:method:: divide(self, roc_comp, inverse: bool = False)
 
       Calculate ratio between the roc curve and another roc.
 
-      :param roc_comp: second roc curve to calculate ratio with
+      :param roc_comp: Second roc curve to calculate ratio with
       :type roc_comp: roc class
-      :param inverse: if False the ratio is calculated `this_roc / roc_comp`,
+      :param inverse: If False the ratio is calculated `this_roc / roc_comp`,
                       if True the inverse is calculated
       :type inverse: bool
 
-      :returns: * *np.array* -- signal efficiency used for the ratio calculation which is the overlapping
+      :returns: * *np.array* -- Signal efficiency used for the ratio calculation which is the overlapping
                   interval of the two roc curves
-                * *np.array* -- ratio
-                * *np.array or None* -- ratio_err if `n_test` was provided to class
+                * *np.array* -- Ratio
+                * *np.array or None* -- Ratio_err if `n_test` was provided to class
 
 
    .. py:method:: fct_inter(self)
@@ -87,7 +87,7 @@ Classes
 
       Interpolate the rejection function for better ratio calculation plotting etc.
 
-      :returns: interpolation function
+      :returns: Interpolation function
       :rtype: pchip
 
 
@@ -96,7 +96,7 @@ Classes
 
       Masking points where rejection is 0 and no signal efficiency change present
 
-      :returns: masked indices
+      :returns: Masked indices
       :rtype: numpy.array
 
 
@@ -105,8 +105,8 @@ Classes
 
       Abstraction of `non_zero_mask`
 
-      :returns: * *numpy.array* -- masked signal efficiency
-                * *numpy.array* -- masked background rejection
+      :returns: * *numpy.array* -- Masked signal efficiency
+                * *numpy.array* -- Masked background rejection
 
 
 
@@ -114,46 +114,46 @@ Classes
 
    Bases: :py:obj:`puma.plot_base.PlotBase`
 
-   Roc plot class
+   ROC plot class
 
-   roc plot properties
+   ROC plot properties
 
-   :param \*\*kwargs: kwargs from `plot_base`
+   :param \*\*kwargs: Keyword arguments from `puma.PlotObject`
    :type \*\*kwargs: kwargs
 
    .. py:method:: add_roc(self, roc_curve: object, key: str = None, reference: bool = False)
 
-      Adding roc object to figure.
+      Adding puma.Roc object to figure.
 
-      :param roc_curve: roc curve
-      :type roc_curve: roc class
-      :param key: unique identifier for roc, by default None
+      :param roc_curve: ROC curve
+      :type roc_curve: puma.Roc
+      :param key: Unique identifier for roc_curve, by default None
       :type key: str, optional
-      :param reference: if roc is used as reference for ratio calculation, by default False
+      :param reference: If roc is used as reference for ratio calculation, by default False
       :type reference: bool, optional
 
-      :raises KeyError: if unique identifier key is used twice
+      :raises KeyError: If unique identifier key is used twice
 
 
    .. py:method:: set_roc_reference(self, key: str, rej_class: str)
 
       Setting the reference roc curves used in the ratios
 
-      :param key: unique identifier of roc object
+      :param key: Unique identifier of roc object
       :type key: str
-      :param rej_class: rejection class encoded in roc curve
+      :param rej_class: Rejection class encoded in roc curve
       :type rej_class: str
 
-      :raises ValueError: if more rejection classes are set than actual ratio panels available.
+      :raises ValueError: If more rejection classes are set than actual ratio panels available.
 
 
    .. py:method:: set_leg_rej_labels(self, rej_class: str, label: str)
 
       Set legend label for rejection class
 
-      :param rej_class: rejection class
+      :param rej_class: Rejection class
       :type rej_class: str
-      :param label: label added in legend
+      :param label: Label added in legend
       :type label: str
 
 
@@ -161,9 +161,9 @@ Classes
 
       Associate the rejection class to a ratio panel
 
-      :param ratio_panel: ratio panel either 1 or 2
+      :param ratio_panel: Ratio panel either 1 or 2
       :type ratio_panel: int
-      :param rej_class: rejeciton class associated to that panel
+      :param rej_class: Rejeciton class associated to that panel
       :type rej_class: str
       :param label: y-axis label of the ratio panel
       :type label: str
@@ -175,15 +175,15 @@ Classes
 
       Calculating ratios.
 
-      :raises ValueError: if number of reference rocs and ratio panels don't match
-      :raises ValueError: if no ratio classes are set
+      :raises ValueError: If number of reference rocs and ratio panels don't match
+      :raises ValueError: If no ratio classes are set
 
 
    .. py:method:: get_xlim_auto(self)
 
       Returns min and max efficiency values
 
-      :returns: min and max efficiency values
+      :returns: Min and max efficiency values
       :rtype: float
 
 
@@ -193,7 +193,7 @@ Classes
 
       :param axis: matplotlib axis object
       :type axis: plt.axis
-      :param rej_class: rejection class
+      :param rej_class: Rejection class
       :type rej_class: str
 
 
@@ -202,10 +202,10 @@ Classes
       Draw legend for the case of 2 ratios, splitting up legend into models and
       rejection class.
 
-      :param handles: list of Line2D objects to extract info for legend
+      :param handles: List of Line2D objects to extract info for legend
       :type handles: list
 
-      :raises ValueError: if not 2 ratios requested
+      :raises ValueError: If not 2 ratios requested
 
 
    .. py:method:: draw(self, labelpad: int = None)
@@ -221,7 +221,7 @@ Classes
 
       Plotting roc curves
 
-      :param \*\*kwargs: kwargs passed to plt.axis.plot
+      :param \*\*kwargs: Keyword arguments passed to plt.axis.plot
       :type \*\*kwargs: kwargs
 
       :returns: matplotlib Line2D object

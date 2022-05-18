@@ -45,11 +45,11 @@ Attributes
    :type xmin: float, optional
    :param xmax: Maximum value of the x-axis, by default None
    :type xmax: float, optional
-   :param colour: colour of the object, by default None
+   :param colour: Colour of the object, by default None
    :type colour: str, optional
-   :param label: label of object, by default None
+   :param label: Label of object, by default None
    :type label: str, optional
-   :param linestyle: linestyle following numpy style, by default None
+   :param linestyle: Linestyle following numpy style, by default None
    :type linestyle: str, optional
    :param alpha: Value for visibility of the plot lines, by default None
    :type alpha: float, optional
@@ -379,14 +379,14 @@ Attributes
 
       Check for allowed values.
 
-      :raises ValueError: if n_ratio_panels not in [0, 1, 2]
+      :raises ValueError: If n_ratio_panels not in [0, 1, 2]
 
 
    .. py:method:: __check_figsize(self)
 
       Check `figsize`
 
-      :raises ValueError: if shape of `figsize` is not a tuple or list with length 2
+      :raises ValueError: If shape of `figsize` is not a tuple or list with length 2
 
 
 
@@ -398,7 +398,7 @@ Attributes
 
    Initialise class
 
-   :param \*\*kwargs: kwargs from `plot_object`
+   :param \*\*kwargs: Keyword arguments from `puma.PlotObject`
    :type \*\*kwargs: kwargs
 
    .. py:method:: initialise_figure(self, sub_plot_index: int = 5)
@@ -406,7 +406,7 @@ Attributes
       Initialising matplotlib.figure.Figure for different scenarios depending on how
       many ratio panels are requested.
 
-      :param sub_plot_index: indicates for the scenario with one ratio how large the upper and lower
+      :param sub_plot_index: Indicates for the scenario with one ratio how large the upper and lower
                              panels are, by default 5
       :type sub_plot_index: int, optional
 
@@ -425,9 +425,9 @@ Attributes
                                       upper plot (0 is bottom, 1 is top). Must be the same
                                       order as the vlines_xvalues and the labels. By default None
       :type vlines_line_height_list: list, optional
-      :param same_height: working point lines on same height, by default False
+      :param same_height: Working point lines on same height, by default False
       :type same_height: bool, optional
-      :param colour: colour of the vertical line, by default "#920000"
+      :param colour: Colour of the vertical line, by default "#920000"
       :type colour: str, optional
       :param fontsize: Fontsize of the vertical line text. By default 10.
       :type fontsize: int, optional
@@ -437,10 +437,10 @@ Attributes
 
       Set title of top panel.
 
-      :param title: title of top panel, if None using the value form the class variables,
+      :param title: Title of top panel, if None using the value form the class variables,
                     by default None
       :type title: str, optional
-      :param \*\*kwargs: kwargs passed to `matplotlib.axes.Axes.set_title()`
+      :param \*\*kwargs: Keyword arguments passed to `matplotlib.axes.Axes.set_title()`
       :type \*\*kwargs: kwargs
 
 
@@ -448,7 +448,7 @@ Attributes
 
       Set log scale of y-axis of main panel.
 
-      :param force: forcing logy even if class variable is False, by default False
+      :param force: Forcing logy even if class variable is False, by default False
       :type force: bool, optional
 
 
@@ -465,10 +465,10 @@ Attributes
       :type ax_mpl: matplotlib.axes.Axes
       :param label: x-axis label, by default None
       :type label: str, optional
-      :param align_right: alignment of y-axis label, by default True
+      :param align_right: Alignment of y-axis label, by default True
       :type align_right: bool, optional
-      :param \*\*kwargs: kwargs passed to `matplotlib.axes.Axes.set_ylabel()`
-      :param kwargs: kwargs passed to `matplotlib.axes.Axes.set_ylabel()`
+      :param \*\*kwargs: Keyword arguments passed to `matplotlib.axes.Axes.set_ylabel()`
+      :param kwargs: Keyword arguments passed to `matplotlib.axes.Axes.set_ylabel()`
 
 
    .. py:method:: set_xlabel(self, label: str = None, **kwargs)
@@ -477,7 +477,7 @@ Attributes
 
       :param label: x-axis label, by default None
       :type label: str, optional
-      :param \*\*kwargs: kwargs passed to `matplotlib.axes.Axes.set_xlabel()`
+      :param \*\*kwargs: Keyword arguments passed to `matplotlib.axes.Axes.set_xlabel()`
       :type \*\*kwargs: kwargs
 
 
@@ -485,10 +485,10 @@ Attributes
 
       Set x-axis label.
 
-      :param labelsize: label size of x- and y- axis ticks, by default None
-                        if None then using global fontsize
+      :param labelsize: Label size of x- and y- axis ticks, by default None.
+                        If None then using global fontsize
       :type labelsize: int, optional
-      :param \*\*kwargs: kwargs passed to `matplotlib.axes.Axes.set_xlabel()`
+      :param \*\*kwargs: Keyword arguments passed to `matplotlib.axes.Axes.set_xlabel()`
       :type \*\*kwargs: kwargs
 
 
@@ -496,11 +496,11 @@ Attributes
 
       Set limits of x-axis
 
-      :param xmin: min of x-axis, by default None
+      :param xmin: Min of x-axis, by default None
       :type xmin: float, optional
-      :param xmax: max of x-axis, by default None
+      :param xmax: Max of x-axis, by default None
       :type xmax: float, optional
-      :param \*\*kwargs: kwargs passed to `matplotlib.axes.Axes.set_xlim()`
+      :param \*\*kwargs: Keyword arguments passed to `matplotlib.axes.Axes.set_xlim()`
       :type \*\*kwargs: kwargs
 
 
@@ -508,13 +508,13 @@ Attributes
 
       Save plot to disk.
 
-      :param plot_name: file name of the plot
+      :param plot_name: File name of the plot
       :type plot_name: str
-      :param transparent: if plot transparent, by default True
+      :param transparent: If plot transparent, by default True
       :type transparent: bool, optional
-      :param dpi: dpi for plotting, by default 400
+      :param dpi: DPI for plotting, by default 400
       :type dpi: int, optional
-      :param \*\*kwargs: kwargs passed to `matplotlib.figure.Figure.savefig()`
+      :param \*\*kwargs: Keyword arguments passed to `matplotlib.figure.Figure.savefig()`
       :type \*\*kwargs: kwargs
 
 
@@ -522,7 +522,7 @@ Attributes
 
       abstract function of matplotlib.figure.Figure.tight_layout
 
-      :param \*\*kwargs: kwargs from `matplotlib.figure.Figure.tight_layout()`
+      :param \*\*kwargs: Keyword arguments from `matplotlib.figure.Figure.tight_layout()`
       :type \*\*kwargs: kwargs
 
 
@@ -541,14 +541,14 @@ Attributes
 
       Drawing legend on axis.
 
-      :param handles: list of matplotlib.lines.Line2D object returned when plotting
+      :param handles: List of matplotlib.lines.Line2D object returned when plotting
       :type handles: list
-      :param ax_mpl: matplotlib.axis object where the legend should be plotted
-      :type ax_mpl: axis
-      :param labels: plot labels. If None, the labels are extracted from the `handles`.
+      :param ax_mpl: `matplotlib.axis.Axes` object where the legend should be plotted
+      :type ax_mpl: matplotlib.axis.Axes
+      :param labels: Plot labels. If None, the labels are extracted from the `handles`.
                      By default None
       :type labels: list, optional
-      :param \*\*kwargs: kwargs which can be passed to matplotlib axis
+      :param \*\*kwargs: Keyword arguments which can be passed to matplotlib axis
       :type \*\*kwargs: kwargs
 
 
@@ -556,12 +556,12 @@ Attributes
 
       Associate the rejection class to a ratio panel
 
-      :param ratio_panel: ratio panel either 1 or 2
+      :param ratio_panel: Indicates which ratio panel to modify (either 1 or 2).
       :type ratio_panel: int
       :param label: y-axis label of the ratio panel
       :type label: str
 
-      :raises ValueError: if requested ratio panels and given ratio_panel do not match.
+      :raises ValueError: If requested ratio panels and given ratio_panel do not match.
 
 
    .. py:method:: initialise_plot(self)

@@ -330,9 +330,9 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>sig_disc</strong> (<em>np.ndarray</em>) – signal discriminant</p></li>
-<li><p><strong>bkg_disc</strong> (<em>np.ndarray</em>) – background discriminant</p></li>
-<li><p><strong>target_eff</strong> (<em>float</em><em> or </em><em>list</em>) – WP which is used for discriminant calculation</p></li>
+<li><p><strong>sig_disc</strong> (<em>np.ndarray</em>) – Signal discriminant</p></li>
+<li><p><strong>bkg_disc</strong> (<em>np.ndarray</em>) – Background discriminant</p></li>
+<li><p><strong>target_eff</strong> (<em>float</em><em> or </em><em>list</em>) – Working point which is used for discriminant calculation</p></li>
 <li><p><strong>return_cuts</strong> (<em>bool</em>) – Specifies if the cut values corresponding to the provided WPs are returned.
 If target_eff is a float, only one cut value will be returned. If target_eff
 is an array, target_eff is an array as well.</p></li>
@@ -340,10 +340,10 @@ is an array, target_eff is an array as well.</p></li>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><ul class="simple">
-<li><p><em>float or np.ndarray</em> – efficiency
-if target_eff is a float, a float is returned if it’s a list a np.ndarray</p></li>
-<li><p><em>float or np.ndarray</em> – cutvalue if return_cuts is True
-if target_eff is a float, a float is returned if it’s a list a np.ndarray</p></li>
+<li><p><strong>eff</strong> (<em>float or np.ndarray</em>) – Efficiency.
+If target_eff is a float, a float is returned if it’s a list a np.ndarray</p></li>
+<li><p><strong>cutvalue</strong> (<em>float or np.ndarray</em>) – Cutvalue if return_cuts is True.
+If target_eff is a float, a float is returned if it’s a list a np.ndarray</p></li>
 </ul>
 </p>
 </dd>
@@ -357,9 +357,9 @@ if target_eff is a float, a float is returned if it’s a list a np.ndarray</p><
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>sig_disc</strong> (<em>np.ndarray</em>) – signal discriminant</p></li>
-<li><p><strong>bkg_disc</strong> (<em>np.ndarray</em>) – background discriminant</p></li>
-<li><p><strong>target_eff</strong> (<em>float</em><em> or </em><em>list</em>) – WP which is used for discriminant calculation</p></li>
+<li><p><strong>sig_disc</strong> (<em>np.ndarray</em>) – Signal discriminant</p></li>
+<li><p><strong>bkg_disc</strong> (<em>np.ndarray</em>) – Background discriminant</p></li>
+<li><p><strong>target_eff</strong> (<em>float</em><em> or </em><em>list</em>) – Working point which is used for discriminant calculation</p></li>
 <li><p><strong>return_cuts</strong> (<em>bool</em>) – Specifies if the cut values corresponding to the provided WPs are returned.
 If target_eff is a float, only one cut value will be returned. If target_eff
 is an array, target_eff is an array as well.</p></li>
@@ -367,10 +367,10 @@ is an array, target_eff is an array as well.</p></li>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><ul class="simple">
-<li><p><em>float or np.ndarray</em> – rejection
-if target_eff is a float, a float is returned if it’s a list a np.ndarray</p></li>
-<li><p><em>float or np.ndarray</em> – cutvalue if return_cuts is True
-if target_eff is a float, a float is returned if it’s a list a np.ndarray</p></li>
+<li><p><strong>rej</strong> (<em>float or np.ndarray</em>) – Rejection.
+If target_eff is a float, a float is returned if it’s a list a np.ndarray</p></li>
+<li><p><strong>cut_value</strong> (<em>float or np.ndarray</em>) – Cutvalue if return_cuts is True.
+If target_eff is a float, a float is returned if it’s a list a np.ndarray</p></li>
 </ul>
 </p>
 </dd>
@@ -384,20 +384,20 @@ if target_eff is a float, a float is returned if it’s a list a np.ndarray</p><
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>arr</strong> (<em>numpy.array</em>) – efficiency values</p></li>
-<li><p><strong>n_counts</strong> (<em>int</em>) – number of used statistics to calculate efficiency</p></li>
-<li><p><strong>suppress_zero_divison_error</strong> (<em>bool</em>) – not raising Error for zero division</p></li>
-<li><p><strong>norm</strong> (<em>bool</em><em>, </em><em>optional</em>) – if True, normed (relative) error is being calculated, by default False</p></li>
+<li><p><strong>arr</strong> (<em>numpy.array</em>) – Efficiency values</p></li>
+<li><p><strong>n_counts</strong> (<em>int</em>) – Number of used statistics to calculate efficiency</p></li>
+<li><p><strong>suppress_zero_divison_error</strong> (<em>bool</em>) – Not raising Error for zero division</p></li>
+<li><p><strong>norm</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, normed (relative) error is being calculated, by default False</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>efficiency uncertainties</p>
+<dd class="field-even"><p>Efficiency uncertainties</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>numpy.array</p>
 </dd>
 <dt class="field-even">Raises</dt>
-<dd class="field-even"><p><strong>ValueError</strong> – if n_counts &lt;=0</p>
+<dd class="field-even"><p><strong>ValueError</strong> – If n_counts &lt;=0</p>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -412,26 +412,26 @@ if target_eff is a float, a float is returned if it’s a list a np.ndarray</p><
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>arr</strong> (<em>numpy.array</em>) – rejection values</p></li>
-<li><p><strong>n_counts</strong> (<em>int</em>) – number of used statistics to calculate rejection</p></li>
-<li><p><strong>norm</strong> (<em>bool</em><em>, </em><em>optional</em>) – if True, normed (relative) error is being calculated, by default False</p></li>
+<li><p><strong>arr</strong> (<em>numpy.array</em>) – Rejection values</p></li>
+<li><p><strong>n_counts</strong> (<em>int</em>) – Number of used statistics to calculate rejection</p></li>
+<li><p><strong>norm</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, normed (relative) error is being calculated, by default False</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>rejection uncertainties</p>
+<dd class="field-even"><p>Rejection uncertainties</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>numpy.array</p>
 </dd>
 <dt class="field-even">Raises</dt>
 <dd class="field-even"><ul class="simple">
-<li><p><strong>ValueError</strong> – if n_counts &lt;=0</p></li>
-<li><p><strong>ValueError</strong> – if any rejection value is 0</p></li>
+<li><p><strong>ValueError</strong> – If n_counts &lt;=0</p></li>
+<li><p><strong>ValueError</strong> – If any rejection value is 0</p></li>
 </ul>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
-<p>special case of <code class="code docutils literal notranslate"><span class="pre">eff_err()</span></code></p>
+<p>Special case of <code class="code docutils literal notranslate"><span class="pre">eff_err()</span></code></p>
 </dd></dl>
 
 </section>

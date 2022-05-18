@@ -54,10 +54,9 @@ Classes
 
    Fraction scan plot properties
 
-   :param logy: Decide, if the y-axis of the plot will
-                be in log, by default False
+   :param logy: Decide, if the y-axis of the plot will be in log, by default False
    :type logy: bool, optional
-   :param \*\*kwargs: kwargs from `plot_base`
+   :param \*\*kwargs: Keyword arguments from `puma.PlotObject`
    :type \*\*kwargs: kwargs
 
    .. py:method:: add(self, curve: object, key: str = None, is_marker: bool = False)
@@ -68,8 +67,7 @@ Classes
       :type curve: FractionScan
       :param key: Unique identifier for FractionScan, by default None
       :type key: str, optional
-      :param is_marker: Defines if this is a marker (True) or a line (False).
-                        By default False.
+      :param is_marker: Defines if this is a marker (True) or a line (False). By default False.
       :type is_marker: bool, optional
 
       :raises KeyError: If unique identifier key is used twice
@@ -80,7 +78,7 @@ Classes
       Plotting curves. Plot objects are drawn in the same order as they
       were added to the plot.
 
-      :param \*\*kwargs: kwargs passed to matplotlib.axes.Axes.plot()
+      :param \*\*kwargs: Keyword arguments passed to matplotlib.axes.Axes.plot()
       :type \*\*kwargs: kwargs
 
       :returns: matplotlib Line2D object

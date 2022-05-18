@@ -382,7 +382,7 @@
 <td><p>ROC class storing info about curve and allows to calculate ratio w.r.t other roc.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#puma.roc.RocPlot" title="puma.roc.RocPlot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RocPlot</span></code></a></p></td>
-<td><p>Roc plot class</p></td>
+<td><p>ROC plot class</p></td>
 </tr>
 </tbody>
 </table>
@@ -395,19 +395,19 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>sig_eff</strong> (<em>np.array</em>) – array of signal efficiencies</p></li>
-<li><p><strong>bkg_rej</strong> (<em>np.array</em>) – array of background rejection</p></li>
+<li><p><strong>sig_eff</strong> (<em>np.array</em>) – Array of signal efficiencies</p></li>
+<li><p><strong>bkg_rej</strong> (<em>np.array</em>) – Array of background rejection</p></li>
 <li><p><strong>n_test</strong> (<em>int</em>) – Number of events used to calculate the background efficiencies,
 by default None</p></li>
 <li><p><strong>signal_class</strong> (<em>str</em>) – Signal class, e.g. for b-tagging “bjets”, by default None</p></li>
 <li><p><strong>rej_class</strong> (<em>str</em>) – Rejection class, e.g. for b-tagging anc charm rejection “cjets”,
 by default None</p></li>
-<li><p><strong>key</strong> (<em>str</em>) – identifier for roc curve e.g. tagger, by default None</p></li>
-<li><p><strong>**kwargs</strong> (<em>kwargs</em>) – kwargs passed to <code class="code docutils literal notranslate"><span class="pre">PlotLineObject</span></code></p></li>
+<li><p><strong>key</strong> (<em>str</em>) – Identifier for roc curve e.g. tagger, by default None</p></li>
+<li><p><strong>**kwargs</strong> (<em>kwargs</em>) – Keyword arguments passed to <code class="code docutils literal notranslate"><span class="pre">puma.PlotLineObject</span></code></p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises</dt>
-<dd class="field-even"><p><strong>ValueError</strong> – if <code class="code docutils literal notranslate"><span class="pre">sig_eff</span></code> and <code class="code docutils literal notranslate"><span class="pre">bkg_rej</span></code> have a different shape</p>
+<dd class="field-even"><p><strong>ValueError</strong> – If <code class="code docutils literal notranslate"><span class="pre">sig_eff</span></code> and <code class="code docutils literal notranslate"><span class="pre">bkg_rej</span></code> have a different shape</p>
 </dd>
 </dl>
 <dl class="py method">
@@ -417,19 +417,19 @@ by default None</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>norm</strong> (<em>bool</em>) – if True calulate relative error, by default False</p></li>
+<li><p><strong>norm</strong> (<em>bool</em>) – If True calulate relative error, by default False</p></li>
 <li><p><strong>n_test</strong> (<em>int</em>) – Number of events used to calculate the background efficiencies,
 by default None</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>binomial error</p>
+<dd class="field-even"><p>Binomial error</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>numpy.array</p>
 </dd>
 <dt class="field-even">Raises</dt>
-<dd class="field-even"><p><strong>ValueError</strong> – if no <code class="code docutils literal notranslate"><span class="pre">n_test</span></code> was provided</p>
+<dd class="field-even"><p><strong>ValueError</strong> – If no <code class="code docutils literal notranslate"><span class="pre">n_test</span></code> was provided</p>
 </dd>
 </dl>
 </dd></dl>
@@ -441,17 +441,17 @@ by default None</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>roc_comp</strong> (<em>roc class</em>) – second roc curve to calculate ratio with</p></li>
-<li><p><strong>inverse</strong> (<em>bool</em>) – if False the ratio is calculated <code class="code docutils literal notranslate"><span class="pre">this_roc</span> <span class="pre">/</span> <span class="pre">roc_comp</span></code>,
+<li><p><strong>roc_comp</strong> (<em>roc class</em>) – Second roc curve to calculate ratio with</p></li>
+<li><p><strong>inverse</strong> (<em>bool</em>) – If False the ratio is calculated <code class="code docutils literal notranslate"><span class="pre">this_roc</span> <span class="pre">/</span> <span class="pre">roc_comp</span></code>,
 if True the inverse is calculated</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><ul class="simple">
-<li><p><em>np.array</em> – signal efficiency used for the ratio calculation which is the overlapping
+<li><p><em>np.array</em> – Signal efficiency used for the ratio calculation which is the overlapping
 interval of the two roc curves</p></li>
-<li><p><em>np.array</em> – ratio</p></li>
-<li><p><em>np.array or None</em> – ratio_err if <code class="code docutils literal notranslate"><span class="pre">n_test</span></code> was provided to class</p></li>
+<li><p><em>np.array</em> – Ratio</p></li>
+<li><p><em>np.array or None</em> – Ratio_err if <code class="code docutils literal notranslate"><span class="pre">n_test</span></code> was provided to class</p></li>
 </ul>
 </p>
 </dd>
@@ -464,7 +464,7 @@ interval of the two roc curves</p></li>
 <dd><p>Interpolate the rejection function for better ratio calculation plotting etc.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>interpolation function</p>
+<dd class="field-odd"><p>Interpolation function</p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p>pchip</p>
@@ -478,7 +478,7 @@ interval of the two roc curves</p></li>
 <dd><p>Masking points where rejection is 0 and no signal efficiency change present</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>masked indices</p>
+<dd class="field-odd"><p>Masked indices</p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p>numpy.array</p>
@@ -493,8 +493,8 @@ interval of the two roc curves</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p><ul class="simple">
-<li><p><em>numpy.array</em> – masked signal efficiency</p></li>
-<li><p><em>numpy.array</em> – masked background rejection</p></li>
+<li><p><em>numpy.array</em> – Masked signal efficiency</p></li>
+<li><p><em>numpy.array</em> – Masked background rejection</p></li>
 </ul>
 </p>
 </dd>
@@ -507,27 +507,27 @@ interval of the two roc curves</p></li>
 <dt class="sig sig-object py" id="puma.roc.RocPlot">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">puma.roc.</span></span><span class="sig-name descname"><span class="pre">RocPlot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.roc.RocPlot" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../plot_base/index.html#puma.plot_base.PlotBase" title="puma.plot_base.PlotBase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">puma.plot_base.PlotBase</span></code></a></p>
-<p>Roc plot class</p>
-<p>roc plot properties</p>
+<p>ROC plot class</p>
+<p>ROC plot properties</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>**kwargs</strong> (<em>kwargs</em>) – kwargs from <code class="code docutils literal notranslate"><span class="pre">plot_base</span></code></p>
+<dd class="field-odd"><p><strong>**kwargs</strong> (<em>kwargs</em>) – Keyword arguments from <code class="code docutils literal notranslate"><span class="pre">puma.PlotObject</span></code></p>
 </dd>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="puma.roc.RocPlot.add_roc">
 <span class="sig-name descname"><span class="pre">add_roc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roc_curve</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reference</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.roc.RocPlot.add_roc" title="Permalink to this definition">#</a></dt>
-<dd><p>Adding roc object to figure.</p>
+<dd><p>Adding puma.Roc object to figure.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>roc_curve</strong> (<em>roc class</em>) – roc curve</p></li>
-<li><p><strong>key</strong> (<em>str</em><em>, </em><em>optional</em>) – unique identifier for roc, by default None</p></li>
-<li><p><strong>reference</strong> (<em>bool</em><em>, </em><em>optional</em>) – if roc is used as reference for ratio calculation, by default False</p></li>
+<li><p><strong>roc_curve</strong> (<a class="reference internal" href="../index.html#puma.Roc" title="puma.Roc"><em>puma.Roc</em></a>) – ROC curve</p></li>
+<li><p><strong>key</strong> (<em>str</em><em>, </em><em>optional</em>) – Unique identifier for roc_curve, by default None</p></li>
+<li><p><strong>reference</strong> (<em>bool</em><em>, </em><em>optional</em>) – If roc is used as reference for ratio calculation, by default False</p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises</dt>
-<dd class="field-even"><p><strong>KeyError</strong> – if unique identifier key is used twice</p>
+<dd class="field-even"><p><strong>KeyError</strong> – If unique identifier key is used twice</p>
 </dd>
 </dl>
 </dd></dl>
@@ -539,12 +539,12 @@ interval of the two roc curves</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>key</strong> (<em>str</em>) – unique identifier of roc object</p></li>
-<li><p><strong>rej_class</strong> (<em>str</em>) – rejection class encoded in roc curve</p></li>
+<li><p><strong>key</strong> (<em>str</em>) – Unique identifier of roc object</p></li>
+<li><p><strong>rej_class</strong> (<em>str</em>) – Rejection class encoded in roc curve</p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises</dt>
-<dd class="field-even"><p><strong>ValueError</strong> – if more rejection classes are set than actual ratio panels available.</p>
+<dd class="field-even"><p><strong>ValueError</strong> – If more rejection classes are set than actual ratio panels available.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -556,8 +556,8 @@ interval of the two roc curves</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>rej_class</strong> (<em>str</em>) – rejection class</p></li>
-<li><p><strong>label</strong> (<em>str</em>) – label added in legend</p></li>
+<li><p><strong>rej_class</strong> (<em>str</em>) – Rejection class</p></li>
+<li><p><strong>label</strong> (<em>str</em>) – Label added in legend</p></li>
 </ul>
 </dd>
 </dl>
@@ -570,8 +570,8 @@ interval of the two roc curves</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>ratio_panel</strong> (<em>int</em>) – ratio panel either 1 or 2</p></li>
-<li><p><strong>rej_class</strong> (<em>str</em>) – rejeciton class associated to that panel</p></li>
+<li><p><strong>ratio_panel</strong> (<em>int</em>) – Ratio panel either 1 or 2</p></li>
+<li><p><strong>rej_class</strong> (<em>str</em>) – Rejeciton class associated to that panel</p></li>
 <li><p><strong>label</strong> (<em>str</em>) – y-axis label of the ratio panel</p></li>
 </ul>
 </dd>
@@ -588,8 +588,8 @@ interval of the two roc curves</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Raises</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>ValueError</strong> – if number of reference rocs and ratio panels don’t match</p></li>
-<li><p><strong>ValueError</strong> – if no ratio classes are set</p></li>
+<li><p><strong>ValueError</strong> – If number of reference rocs and ratio panels don’t match</p></li>
+<li><p><strong>ValueError</strong> – If no ratio classes are set</p></li>
 </ul>
 </dd>
 </dl>
@@ -601,7 +601,7 @@ interval of the two roc curves</p></li>
 <dd><p>Returns min and max efficiency values</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>min and max efficiency values</p>
+<dd class="field-odd"><p>Min and max efficiency values</p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p>float</p>
@@ -617,7 +617,7 @@ interval of the two roc curves</p></li>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>axis</strong> (<em>plt.axis</em>) – matplotlib axis object</p></li>
-<li><p><strong>rej_class</strong> (<em>str</em>) – rejection class</p></li>
+<li><p><strong>rej_class</strong> (<em>str</em>) – Rejection class</p></li>
 </ul>
 </dd>
 </dl>
@@ -630,10 +630,10 @@ interval of the two roc curves</p></li>
 rejection class.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>handles</strong> (<em>list</em>) – list of Line2D objects to extract info for legend</p>
+<dd class="field-odd"><p><strong>handles</strong> (<em>list</em>) – List of Line2D objects to extract info for legend</p>
 </dd>
 <dt class="field-even">Raises</dt>
-<dd class="field-even"><p><strong>ValueError</strong> – if not 2 ratios requested</p>
+<dd class="field-even"><p><strong>ValueError</strong> – If not 2 ratios requested</p>
 </dd>
 </dl>
 </dd></dl>
@@ -656,7 +656,7 @@ ticks and tick labels, by default None</p>
 <dd><p>Plotting roc curves</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>**kwargs</strong> (<em>kwargs</em>) – kwargs passed to plt.axis.plot</p>
+<dd class="field-odd"><p><strong>**kwargs</strong> (<em>kwargs</em>) – Keyword arguments passed to plt.axis.plot</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>matplotlib Line2D object</p>
