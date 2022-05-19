@@ -163,6 +163,11 @@
      </li>
     </ul>
    </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#docker-images">
+     Docker images
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toc-h1 nav-item toc-entry">
@@ -237,6 +242,23 @@ from the <code class="docutils literal notranslate"><span class="pre">main</span
 If you plan on contributing to <code class="docutils literal notranslate"><span class="pre">puma</span></code> and/or want the latest version possible, this
 is what you want.</p>
 </section>
+</section>
+<section id="docker-images">
+<h2>Docker images<a class="headerlink" href="#docker-images" title="Permalink to this headline">#</a></h2>
+<p>The Docker images are built on GitHub and contain the latest version from the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch.</p>
+<p>The container registry with all available tags can be found
+<a class="reference external" href="https://gitlab.cern.ch/atlas-flavor-tagging-tools/training-images/puma-images/container_registry/13727">here</a>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">puma:latest</span></code> image is based on <code class="docutils literal notranslate"><span class="pre">python:3.8-slim</span></code> and is meant for users who want to use the latest version of <code class="docutils literal notranslate"><span class="pre">puma</span></code>. For each release, there is a corresponding tagged image.
+You can start an interactive shell in a container with your current working directory
+mounted into the container by using one of the commands provided below.</p>
+<p>On a machine with Docker installed:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker run -it --rm -v <span class="nv">$PWD</span>:/puma_container -w /puma_container gitlab-registry.cern.ch/atlas-flavor-tagging-tools/training-images/puma-images/puma:latest bash
+</pre></div>
+</div>
+<p>On a machine/cluster with singularity installed:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>singularity shell -B <span class="nv">$PWD</span> docker://gitlab-registry.cern.ch/atlas-flavor-tagging-tools/training-images/puma-images/puma:latest
+</pre></div>
+</div>
 </section>
 </section>
 <div class="toctree-wrapper compound">
