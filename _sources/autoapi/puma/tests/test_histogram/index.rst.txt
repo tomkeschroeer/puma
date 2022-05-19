@@ -84,6 +84,17 @@ Classes
       check if ValueError is raised when using invalid type in `bins` argument
 
 
+   .. py:method:: test_multiple_references_no_flavour(self)
+
+      Tests if error is raised in case of non-unique reference histogram
+
+
+   .. py:method:: test_multiple_references_flavour(self)
+
+      Tests if error is raised in case of non-unique reference histogram
+      when flavoured histograms are used
+
+
    .. py:method:: test_custom_range(self)
 
       check if

@@ -108,12 +108,12 @@ Classes
 
    :raises ValueError: If n_ratio_panels > 1
 
-   .. py:method:: add(self, curve: object, key: str = None, reference: bool = False)
+   .. py:method:: add(self, histogram: object, key: str = None, reference: bool = False)
 
       Adding histogram object to figure.
 
-      :param curve: Histogram curve
-      :type curve: histogram class
+      :param histogram: Histogram curve
+      :type histogram: Histogram class
       :param key: Unique identifier for histogram, by default None
       :type key: str, optional
       :param reference: If this histogram is used as reference for ratio calculation, by default
