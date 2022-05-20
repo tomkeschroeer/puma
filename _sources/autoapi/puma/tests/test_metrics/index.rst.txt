@@ -1,0 +1,97 @@
+:py:mod:`puma.tests.test_metrics`
+=================================
+
+.. py:module:: puma.tests.test_metrics
+
+.. autoapi-nested-parse::
+
+   Unit test script for the functions in metrics.py
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   puma.tests.test_metrics.eff_err_TestCase
+   puma.tests.test_metrics.rej_err_TestCase
+
+
+
+
+.. py:class:: eff_err_TestCase(methodName='runTest')
+
+   Bases: :py:obj:`unittest.TestCase`
+
+   Test class for the puma.metrics functions.
+
+   Create an instance of the class that will use the named test
+   method when executed. Raises a ValueError if the instance does
+   not have a method with the specified name.
+
+   .. py:method:: test_zero_N_case(self)
+
+      Test eff_err function.
+
+
+   .. py:method:: test_negative_N_case(self)
+
+      Test eff_err function.
+
+
+   .. py:method:: test_one_case(self)
+
+      Test eff_err function.
+
+
+   .. py:method:: test_example_case(self)
+
+      Test eff_err function.
+
+
+
+.. py:class:: rej_err_TestCase(methodName='runTest')
+
+   Bases: :py:obj:`unittest.TestCase`
+
+   Test class for the puma.metrics functions.
+
+   Create an instance of the class that will use the named test
+   method when executed. Raises a ValueError if the instance does
+   not have a method with the specified name.
+
+   .. py:method:: setUp(self)
+
+      Hook method for setting up the test fixture before exercising it.
+
+
+   .. py:method:: test_zero_N_case(self)
+
+      Test rej_err function.
+
+
+   .. py:method:: test_negative_N_case(self)
+
+      Test rej_err function.
+
+
+   .. py:method:: test_one_case(self)
+
+      Test rej_err function.
+
+
+   .. py:method:: test_zero_x_case(self)
+
+      Test rej_err function.
+
+
+   .. py:method:: test_example_case(self)
+
+      Test rej_err function.
+
+
+
