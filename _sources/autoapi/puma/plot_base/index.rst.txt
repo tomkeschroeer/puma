@@ -147,6 +147,8 @@ Attributes
    :param y_scale: Scaling up the y axis, e.g. to fit the ATLAS Tag. Applied if ymax not defined,
                    by default 1.3
    :type y_scale: float, optional
+   :param logx: Set the log of x-axis, by default False
+   :type logx: bool, optional
    :param logy: Set log of y-axis of main panel, by default True
    :type logy: bool, optional
    :param xlabel: Label of the x-axis, by default None
@@ -252,6 +254,11 @@ Attributes
 
    .. py:attribute:: y_scale
       :annotation: :float = 1.3
+
+      
+
+   .. py:attribute:: logx
+      :annotation: :bool = False
 
       
 
@@ -444,11 +451,12 @@ Attributes
       :type \*\*kwargs: kwargs
 
 
-   .. py:method:: set_logy(self, force: bool = False)
+   .. py:method:: set_log(self, force: bool = False)
 
-      Set log scale of y-axis of main panel.
+      Set log scale of the axes. For the y-axis, only the main panel is
+      set. For the x-axes (also from the ratio subpanels), all are changed.
 
-      :param force: Forcing logy even if class variable is False, by default False
+      :param force: Forcing log even if class variable is False, by default False
       :type force: bool, optional
 
 
