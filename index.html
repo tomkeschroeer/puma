@@ -167,6 +167,13 @@
     <a class="reference internal nav-link" href="#docker-images">
      Docker images
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#extended-image-for-development">
+       Extended image for development
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
@@ -260,6 +267,18 @@ mounted into the container by using one of the commands provided below.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>singularity shell -B <span class="nv">$PWD</span> docker://gitlab-registry.cern.ch/atlas-flavor-tagging-tools/training-images/puma-images/puma:latest
 </pre></div>
 </div>
+<section id="extended-image-for-development">
+<h3>Extended image for development<a class="headerlink" href="#extended-image-for-development" title="Permalink to this headline">#</a></h3>
+<p><em>For development, just replace the tag of the image</em>:</p>
+<p><code class="docutils literal notranslate"><span class="pre">latest</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">latest-dev</span></code></p>
+<p>In addition to the minimal requirements that are required to use <code class="docutils literal notranslate"><span class="pre">puma</span></code>, the
+<code class="docutils literal notranslate"><span class="pre">puma:latest-dev</span></code> image has the <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> from the <code class="docutils literal notranslate"><span class="pre">puma</span></code> repo installed as
+well.
+This means that packages like <code class="docutils literal notranslate"><span class="pre">pytest</span></code>, <code class="docutils literal notranslate"><span class="pre">black</span></code>, <code class="docutils literal notranslate"><span class="pre">pylint</span></code>, etc. are installed as well.
+However, note that <code class="docutils literal notranslate"><span class="pre">puma</span></code> itself is not installed in that image such that the dev-version
+on your machine can be used/tested.</p>
+<p><strong>The images are automatically updated via GitHub and pushed to this <a class="reference external" href="https://gitlab.cern.ch/atlas-flavor-tagging-tools/training-images/puma-images/container_registry">repository registry</a>.</strong></p>
+</section>
 </section>
 </section>
 <div class="toctree-wrapper compound">

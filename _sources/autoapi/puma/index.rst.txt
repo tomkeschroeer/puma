@@ -447,7 +447,7 @@ Attributes
 
       :param plot_name: File name of the plot
       :type plot_name: str
-      :param transparent: If plot transparent, by default True
+      :param transparent: If plot transparent, by default False
       :type transparent: bool, optional
       :param dpi: DPI for plotting, by default 400
       :type dpi: int, optional
