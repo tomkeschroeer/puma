@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Dummy Data &#8212; puma  documentation</title>
+    <title>Develop &#8212; puma  documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -32,8 +32,8 @@
     <script src="../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Histograms" href="histograms.html" />
-    <link rel="prev" title="Examples" href="index.html" />
+    <link rel="next" title="Good coding practices" href="development_guidelines.html" />
+    <link rel="prev" title="Pie charts" href="../examples/pie_charts.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -74,14 +74,14 @@
  </a>
 </li>
 
-<li class="toctree-l1 current active nav-item">
- <a class="reference internal nav-link" href="index.html">
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../examples/index.html">
   Examples
  </a>
 </li>
 
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../dev_guidelines/index.html">
+<li class="toctree-l1 current active nav-item">
+ <a class="current reference internal nav-link" href="#">
   Develop
  </a>
 </li>
@@ -126,30 +126,20 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
   <div class="bd-toc-item active">
-    <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Dummy Data
+    <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="development_guidelines.html">
+   Good coding practices
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="histograms.html">
-   Histograms
+  <a class="reference internal" href="docker.html">
+   Docker images
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="rocs.html">
-   ROC curves
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="var_vs_eff.html">
-   Variable vs efficiency plots
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="pie_charts.html">
-   Pie charts
+  <a class="reference internal" href="docs_development.html">
+   Docs development
   </a>
  </li>
 </ul>
@@ -191,36 +181,30 @@
               
               <div>
                 
-  <section id="dummy-data">
-<h1>Dummy Data<a class="headerlink" href="#dummy-data" title="Permalink to this headline">#</a></h1>
-<p>To test/demonstrate the <code class="docutils literal notranslate"><span class="pre">puma</span></code> API, we just want to use dummy data.</p>
-<p>There are two methods in puma to generate dummy data:</p>
-<p>The first function returns directly a <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> including the following columns:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">HadronConeExclTruthLabelID</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">rnnip_pu</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">rnnip_pc</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">rnnip_pb</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">dips_pu</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">dips_pc</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">dips_pb</span></code></p></li>
+  <section id="develop">
+<h1>Develop<a class="headerlink" href="#develop" title="Permalink to this headline">#</a></h1>
+<p>If you find a bug, have a feature request or similar, feel free to submit an issue
+<a class="reference external" href="https://github.com/umami-hep/puma/issues/new">here</a>, where further steps can be discussed
+and assigned.</p>
+<p>Pull requests are highly welcome!</p>
+<p>In this part of the documentation you find different resources that you might find
+helpful when working on the <code class="code docutils literal notranslate"><span class="pre">puma</span></code> source code.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="development_guidelines.html">Good coding practices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="development_guidelines.html#test-driven-development">Test-Driven Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development_guidelines.html#code-style">Code Style</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development_guidelines.html#linters">Linters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development_guidelines.html#pre-commit-hook">Pre-commit hook</a></li>
 </ul>
-<p>which can be used in the following manner:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">puma.utils</span> <span class="kn">import</span> <span class="n">get_dummy_2_taggers</span>
-
-<span class="n">df</span> <span class="o">=</span> <span class="n">get_dummy_2_taggers</span><span class="p">()</span>
-
-</pre></div>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="docker.html">Docker images</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="docker.html#extended-image-for-development">Extended image for development</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="docs_development.html">Docs development</a></li>
+</ul>
 </div>
-<p>The second function is <code class="docutils literal notranslate"><span class="pre">get_dummy_multiclass_scores</span></code> which returns an output array
-with shape <code class="docutils literal notranslate"><span class="pre">(size,</span> <span class="pre">3)</span></code>, which is the usual output of our multi-class classifiers like
-DIPS, and the labels conform with the <code class="docutils literal notranslate"><span class="pre">HadronConeExclTruthLabelID</span></code> variable.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">puma.utils</span> <span class="kn">import</span> <span class="n">get_dummy_multiclass_scores</span>
-
-<span class="n">output</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">get_dummy_multiclass_scores</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>TODO: here we need to write more when we have the API more evolved.</p>
 </section>
 
 
@@ -229,17 +213,17 @@ DIPS, and the labels conform with the <code class="docutils literal notranslate"
               
               <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="index.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../examples/pie_charts.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Examples</p>
+            <p class="prev-next-title">Pie charts</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="histograms.html" title="next page">
+    <a class='right-next' id="next-link" href="development_guidelines.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Histograms</p>
+        <p class="prev-next-title">Good coding practices</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
