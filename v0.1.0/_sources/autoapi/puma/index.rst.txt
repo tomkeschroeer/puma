@@ -1,0 +1,1326 @@
+:py:mod:`puma`
+==============
+
+.. py:module:: puma
+
+.. autoapi-nested-parse::
+
+   puma framework - Plotting UMami Api.
+
+
+
+Subpackages
+-----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 3
+
+   utils/index.rst
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   fraction_scan/index.rst
+   histogram/index.rst
+   metrics/index.rst
+   plot_base/index.rst
+   roc/index.rst
+   var_vs_eff/index.rst
+
+
+Package Contents
+----------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   puma.FractionScan
+   puma.FractionScanPlot
+   puma.Histogram
+   puma.HistogramPlot
+   puma.PlotBase
+   puma.PlotLineObject
+   puma.PlotObject
+   puma.Roc
+   puma.RocPlot
+   puma.VarVsEff
+   puma.VarVsEffPlot
+
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   puma.__version__
+
+
+.. py:data:: __version__
+   :annotation: = 0.1.0
+
+   
+
+.. py:class:: FractionScan(x_values: numpy.ndarray, y_values: numpy.ndarray, **kwargs)
+
+   Bases: :py:obj:`puma.plot_base.PlotLineObject`
+
+   FractionScan class storing info about the fractions.
+
+   Initialise properties of fraction scan curve object.
+
+   :param x_values: x values of the fraction scan curve
+   :type x_values: np.ndarray
+   :param y_values: y values of the fraction scan curve
+   :type y_values: np.ndarray
+   :param \*\*kwargs: kwargs passed to `PlotLineObject`
+   :type \*\*kwargs: kwargs
+
+   :raises ValueError: If the dtype of x_values and y_values is different.
+   :raises ValueError: If provided x_values array is empty.
+   :raises ValueError: If provided y_values array is empty.
+   :raises ValueError: If provided x_values and y_values arrays have different
+       shapes.
+   :raises ValueError: If an invalid type was given for x_values
+
+
+.. py:class:: FractionScanPlot(logy: bool = False, **kwargs)
+
+   Bases: :py:obj:`puma.plot_base.PlotBase`
+
+   Fraction scan plot class
+
+   Fraction scan plot properties
+
+   :param logy: Decide, if the y-axis of the plot will
+                be in log, by default False
+   :type logy: bool, optional
+   :param \*\*kwargs: kwargs from `plot_base`
+   :type \*\*kwargs: kwargs
+
+   .. py:method:: add(self, curve: object, key: str = None, is_marker: bool = False)
+
+      Adding FractionScan object to figure.
+
+      :param curve: Fraction scan curve
+      :type curve: FractionScan
+      :param key: Unique identifier for FractionScan, by default None
+      :type key: str, optional
+      :param is_marker: Defines if this is a marker (True) or a line (False).
+                        By default False.
+      :type is_marker: bool, optional
+
+      :raises KeyError: If unique identifier key is used twice
+
+
+   .. py:method:: plot(self, **kwargs)
+
+      Plotting curves. Plot objects are drawn in the same order as they
+      were added to the plot.
+
+      :param \*\*kwargs: kwargs passed to matplotlib.axes.Axes.plot()
+      :type \*\*kwargs: kwargs
+
+      :returns: matplotlib Line2D object
+      :rtype: Line2D
+
+
+   .. py:method:: draw(self)
+
+      Draw figure.
+
+
+
+.. py:class:: Histogram(values: numpy.ndarray, flavour: str = None, histtype: str = 'step', **kwargs)
+
+   Bases: :py:obj:`puma.plot_base.PlotLineObject`
+
+   Histogram class storing info about histogram and allows to calculate ratio w.r.t
+   other histograms.
+
+   Initialise properties of histogram curve object.
+
+   :param values: Input data for the histogram
+   :type values: np.ndarray
+   :param flavour: Jet flavour in case the histogram corresponds to one specific flavour. If
+                   this is specified, the correct colour will be extracted from the global
+                   config. Allowed values are the ones from the global config, i.e. "bjets",
+                   "cjets", "ujets", "bbjets", ..., by default None
+   :type flavour: str, optional
+   :param histtype: `histtype` parameter which is handed to matplotlib.hist() when plotting the
+                    histograms. Supported values are "bar", "barstacked", "step", "stepfilled".
+                    By default "step"
+   :type histtype: str, optional
+   :param \*\*kwargs: kwargs passed to `PlotLineObject`
+   :type \*\*kwargs: kwargs
+
+   :raises ValueError: If input data is not of type np.ndarray or list
+
+   .. py:method:: divide(self, other)
+
+      Calculate ratio between two class objects.
+
+      :param other: Second histogram object to calculate ratio with
+      :type other: histogram class
+
+      :returns: * *np.ndarray* -- ratio
+                * *np.ndarray* -- ratio error
+
+      :raises ValueError: If binning is not identical between 2 objects
+      :raises ValueError: If hist attribute is not set for one of the two histograms
+      :raises ValueError: If bin_edges attribute is not set for one of the two histograms
+
+
+
+.. py:class:: HistogramPlot(bins=40, bins_range: tuple = None, discrete_vals: list = None, plot_pie: bool = False, pie_colours: list = None, pie_labels: list = None, norm: bool = True, logy: bool = False, bin_width_in_ylabel: bool = False, **kwargs)
+
+   Bases: :py:obj:`puma.plot_base.PlotBase`
+
+   Histogram plot class
+
+   histogram plot properties
+
+   :param bins: If bins is an int, it defines the number of equal-width bins in the given
+                range. If bins is a sequence, it defines a monotonically increasing array
+                of bin edges, including the rightmost edge, allowing for non-uniform
+                bin widths (like in numpy.histogram). By default 40
+   :type bins: int or numpy.ndarray or list, optional
+   :param bins_range: Tuple of two floats, specifying the range for the binning. If bins_range is
+                      specified and bins is an integer, equal-width bins from bins_range[0] to
+                      bins_range[1] are used for the histogram (like in numpy.histogram).
+                      By default None
+   :type bins_range: tuple, optional
+   :param discrete_vals: List of values if a variable only has discrete values. If discrete_vals is
+                         specified only the bins containing these values are plotted. If a pie chart
+                         is plotted, discrete_vals is obligatory. By default None.
+   :type discrete_vals: list, optional
+   :param plot_pie: Set to True if you would like to plot a pie chart instead of a histogram
+   :type plot_pie: bool, optional
+   :param pie_colours: List of colours used for a pie chart or string providing the colour scheme.
+                       Possible colour schemes are 'red', 'blue', 'green' or 'yellow',
+                       by default None
+   :type pie_colours: list or str, optional
+   :param pie_labels: List of labels used for a pie chart, by default None
+   :type pie_labels: list, optional
+   :param norm: Specify if the histograms are normalised, this means that histograms are
+                divided by the total numer of counts. Therefore, the sum of the bin counts
+                is equal to one, but NOT the area under the curve, which would be
+                sum(bin_counts * bin_width). By default True.
+   :type norm: bool, optional
+   :param logy: Set log scale on y-axis, by default False.
+   :type logy: bool, optional
+   :param bin_width_in_ylabel: Specify if the bin width should be added to the ylabel, by default False
+   :type bin_width_in_ylabel: bool, optional
+   :param \*\*kwargs: kwargs from `plot_base`
+   :type \*\*kwargs: kwargs
+
+   :raises ValueError: If n_ratio_panels > 1
+
+   .. py:method:: add(self, curve: object, key: str = None, reference: bool = False)
+
+      Adding histogram object to figure.
+
+      :param curve: histogram curve
+      :type curve: histogram class
+      :param key: Unique identifier for histogram, by default None
+      :type key: str, optional
+      :param reference: If this histogram is used as reference for ratio calculation, by default
+                        False
+      :type reference: bool, optional
+
+      :raises KeyError: If unique identifier key is used twice
+
+
+   .. py:method:: set_reference(self, key: str)
+
+      Setting the reference histogram curves used in the ratios
+
+      :param key: unique identifier of histogram object
+      :type key: str
+
+
+   .. py:method:: plot(self, **kwargs)
+
+      Plotting curves. This also generates the bins of the histograms that are
+      added to the plot. Plot objects are drawn in the same order as they were added
+      to the plot.
+
+      :param \*\*kwargs: kwargs passed to matplotlib.axes.Axes.hist()
+      :type \*\*kwargs: kwargs
+
+      :returns: matplotlib Line2D object
+      :rtype: Line2D
+
+      :raises ValueError: If specified bins type is not supported.
+
+
+   .. py:method:: plot_pie_chart(self)
+
+      Plotting Pie chart. Only variables with defined discrete values
+      can be plotted. Only non-zero values are plotted.
+
+      :returns: matplotlib Patch object
+      :rtype: Patch
+
+      :raises ValueError: If plot_pie is set to True but not the vertical_split
+      :raises ValueError: If no discrete values of the variable are provided
+      :raises ValueError: If specified bins type is not supported.
+
+
+   .. py:method:: get_discrete_values(self, elem: object)
+
+      Get discrete values of a variable and adjust the
+      bins accordingly
+
+      :param elem: Histogram we want to calculate the bins containing discrete values for
+      :type elem: histogram class
+
+      :returns: **bins**
+      :rtype: recalculated bins including only the discrete values
+
+      :raises ValueError: If the bin width is larger than 1 such that potentially not
+          all discrete values are in a seperate bin
+      :raises ValueError: If the number of bins is set to 1 such that no values can be
+          distinguished
+
+
+   .. py:method:: get_reference_histo(self, histo)
+
+      Get reference histogram from list of references
+
+      :param histo: Histogram we want to calculate the ratio for
+      :type histo: histogram class
+
+      :returns: Reference histogram
+      :rtype: histogram class
+
+      :raises ValueError: If no reference histo was found or multiple matches.
+
+
+   .. py:method:: plot_ratios(self)
+
+      Plotting ratio histograms.
+
+      :raises ValueError: If no reference histogram is defined
+
+
+   .. py:method:: add_bin_width_to_ylabel(self)
+
+      Adds the bin width to the ylabel of a histogram plot. If the bin with is
+      smaller than 0.01, scientific notation will be used.
+
+      :raises ValueError: If plotting_done is False (therefore `bins` is not yet calculated)
+
+
+   .. py:method:: draw(self, labelpad: int = None)
+
+      Draw figure.
+
+      :param labelpad: Spacing in points from the axes bounding box including
+                       ticks and tick labels, by default "ratio"
+      :type labelpad: int, optional
+
+
+
+.. py:class:: PlotBase(**kwargs)
+
+   Bases: :py:obj:`PlotObject`
+
+   Base class for plotting
+
+   Initialise class
+
+   :param \*\*kwargs: kwargs from `plot_object`
+   :type \*\*kwargs: kwargs
+
+   .. py:method:: initialise_figure(self, sub_plot_index: int = 5)
+
+      Initialising matplotlib.figure.Figure for different scenarios depending on how
+      many ratio panels are requested.
+
+      :param sub_plot_index: indicates for the scenario with one ratio how large the upper and lower
+                             panels are, by default 5
+      :type sub_plot_index: int, optional
+
+
+   .. py:method:: draw_vlines(self, vlines_xvalues: list, vlines_label_list: list = None, vlines_line_height_list: list = None, same_height: bool = False, colour: str = '#920000', fontsize: int = 10)
+
+      Drawing working points in plot
+
+      :param vlines_xvalues: List of working points x values to draw
+      :type vlines_xvalues: list
+      :param vlines_label_list: List with labels for the vertical lines. Must be the same
+                                order as the vlines_xvalues. If None, the xvalues * 100 will be
+                                used as labels. By default None
+      :type vlines_label_list: list, optional
+      :param vlines_line_height_list: List with the y height of the vertical lines in percent of the
+                                      upper plot (0 is bottom, 1 is top). Must be the same
+                                      order as the vlines_xvalues and the labels. By default None
+      :type vlines_line_height_list: list, optional
+      :param same_height: working point lines on same height, by default False
+      :type same_height: bool, optional
+      :param colour: colour of the vertical line, by default "#920000"
+      :type colour: str, optional
+      :param fontsize: Fontsize of the vertical line text. By default 10.
+      :type fontsize: int, optional
+
+
+   .. py:method:: set_title(self, title: str = None, **kwargs)
+
+      Set title of top panel.
+
+      :param title: title of top panel, if None using the value form the class variables,
+                    by default None
+      :type title: str, optional
+      :param \*\*kwargs: kwargs passed to `matplotlib.axes.Axes.set_title()`
+      :type \*\*kwargs: kwargs
+
+
+   .. py:method:: set_logy(self, force: bool = False)
+
+      Set log scale of y-axis of main panel.
+
+      :param force: forcing logy even if class variable is False, by default False
+      :type force: bool, optional
+
+
+   .. py:method:: set_y_lim(self)
+
+      Set limits of y-axis.
+
+
+   .. py:method:: set_ylabel(self, ax_mpl, label: str = None, align_right: bool = True, **kwargs)
+
+      Set y-axis label.
+
+      :param ax_mpl: matplotlib axis object
+      :type ax_mpl: matplotlib.axes.Axes
+      :param label: x-axis label, by default None
+      :type label: str, optional
+      :param align_right: alignment of y-axis label, by default True
+      :type align_right: bool, optional
+      :param \*\*kwargs: kwargs passed to `matplotlib.axes.Axes.set_ylabel()`
+      :param kwargs: kwargs passed to `matplotlib.axes.Axes.set_ylabel()`
+
+
+   .. py:method:: set_xlabel(self, label: str = None, **kwargs)
+
+      Set x-axis label.
+
+      :param label: x-axis label, by default None
+      :type label: str, optional
+      :param \*\*kwargs: kwargs passed to `matplotlib.axes.Axes.set_xlabel()`
+      :type \*\*kwargs: kwargs
+
+
+   .. py:method:: set_tick_params(self, labelsize: int = None, **kwargs)
+
+      Set x-axis label.
+
+      :param labelsize: label size of x- and y- axis ticks, by default None
+                        if None then using global fontsize
+      :type labelsize: int, optional
+      :param \*\*kwargs: kwargs passed to `matplotlib.axes.Axes.set_xlabel()`
+      :type \*\*kwargs: kwargs
+
+
+   .. py:method:: set_xlim(self, xmin: float = None, xmax: float = None, **kwargs)
+
+      Set limits of x-axis
+
+      :param xmin: min of x-axis, by default None
+      :type xmin: float, optional
+      :param xmax: max of x-axis, by default None
+      :type xmax: float, optional
+      :param \*\*kwargs: kwargs passed to `matplotlib.axes.Axes.set_xlim()`
+      :type \*\*kwargs: kwargs
+
+
+   .. py:method:: savefig(self, plot_name: str, transparent: bool = False, dpi: int = None, **kwargs)
+
+      Save plot to disk.
+
+      :param plot_name: file name of the plot
+      :type plot_name: str
+      :param transparent: if plot transparent, by default True
+      :type transparent: bool, optional
+      :param dpi: dpi for plotting, by default 400
+      :type dpi: int, optional
+      :param \*\*kwargs: kwargs passed to `matplotlib.figure.Figure.savefig()`
+      :type \*\*kwargs: kwargs
+
+
+   .. py:method:: tight_layout(self, **kwargs)
+
+      abstract function of matplotlib.figure.Figure.tight_layout
+
+      :param \*\*kwargs: kwargs from `matplotlib.figure.Figure.tight_layout()`
+      :type \*\*kwargs: kwargs
+
+
+   .. py:method:: atlasify(self, use_tag: bool = True, force: bool = False)
+
+      Apply ATLAS style to all axes using the atlasify package
+
+      :param use_tag: If False, ATLAS style will be applied but no tag will be put on the plot.
+                      If True, the tag will be put on as well, by default True
+      :type use_tag: bool, optional
+      :param force: Force ATLAS style also if class variable is False, by default False
+      :type force: bool, optional
+
+
+   .. py:method:: make_legend(self, handles: list, ax_mpl: matplotlib.axis, labels: list = None, **kwargs)
+
+      Drawing legend on axis.
+
+      :param handles: list of matplotlib.lines.Line2D object returned when plotting
+      :type handles: list
+      :param ax_mpl: matplotlib.axis object where the legend should be plotted
+      :type ax_mpl: axis
+      :param labels: plot labels. If None, the labels are extracted from the `handles`.
+                     By default None
+      :type labels: list, optional
+      :param \*\*kwargs: kwargs which can be passed to matplotlib axis
+      :type \*\*kwargs: kwargs
+
+
+   .. py:method:: set_ratio_label(self, ratio_panel: int, label: str)
+
+      Associate the rejection class to a ratio panel
+
+      :param ratio_panel: ratio panel either 1 or 2
+      :type ratio_panel: int
+      :param label: y-axis label of the ratio panel
+      :type label: str
+
+      :raises ValueError: if requested ratio panels and given ratio_panel do not match.
+
+
+   .. py:method:: initialise_plot(self)
+
+      Calls other methods which are usually used when plotting
+
+
+
+.. py:class:: PlotLineObject
+
+   Base data class defining properties of a plot object.
+
+   :param xmin: Minimum value of the x-axis, by default None
+   :type xmin: float, optional
+   :param xmax: Maximum value of the x-axis, by default None
+   :type xmax: float, optional
+   :param colour: colour of the object, by default None
+   :type colour: str, optional
+   :param label: label of object, by default None
+   :type label: str, optional
+   :param linestyle: linestyle following numpy style, by default None
+   :type linestyle: str, optional
+   :param alpha: Value for visibility of the plot lines, by default None
+   :type alpha: float, optional
+   :param marker: Marker that is used in the plot. For example an x.
+                  By default None
+   :type marker: str, optional
+   :param markersize: Size of the marker. By default None
+   :type markersize: int, optional
+   :param markeredgewidth: Edge width of the marker. By default None
+   :type markeredgewidth: int, optional
+   :param is_marker: Bool, to give info about if this is a marker or a line.
+                     By default None
+   :type is_marker: bool, optional
+
+   .. py:attribute:: xmin
+      :annotation: :float
+
+      
+
+   .. py:attribute:: xmax
+      :annotation: :float
+
+      
+
+   .. py:attribute:: colour
+      :annotation: :str
+
+      
+
+   .. py:attribute:: label
+      :annotation: :str
+
+      
+
+   .. py:attribute:: linestyle
+      :annotation: :str
+
+      
+
+   .. py:attribute:: linewidth
+      :annotation: :str
+
+      
+
+   .. py:attribute:: alpha
+      :annotation: :float
+
+      
+
+   .. py:attribute:: marker
+      :annotation: :str
+
+      
+
+   .. py:attribute:: markersize
+      :annotation: :int
+
+      
+
+   .. py:attribute:: markeredgewidth
+      :annotation: :int
+
+      
+
+   .. py:attribute:: is_marker
+      :annotation: :bool
+
+      
+
+
+.. py:class:: PlotObject
+
+   Data base class defining properties of a plot object.
+
+   :param title: Title of the plot, by default ""
+   :type title: str, optional
+   :param draw_errors: Draw statistical uncertainty on the lines, by default True
+   :type draw_errors: bool, optional
+   :param xmin: Minimum value of the x-axis, by default None
+   :type xmin: float, optional
+   :param xmax: Maximum value of the x-axis, by default None
+   :type xmax: float, optional
+   :param ymin: Minimum value of the y-axis, by default None
+   :type ymin: float, optional
+   :param ymax: Maximum value of the y-axis, by default None
+   :type ymax: float, optional
+   :param ymin_ratio_1: Set the lower y limit of the first ratio subplot, by default None.
+   :type ymin_ratio_1: float, optional
+   :param ymax_ratio_1: Set the upper y limit of the first ratio subplot, by default None.
+   :type ymax_ratio_1: float, optional
+   :param ymin_ratio_2: Set the lower y limit of the second ratio subplot, by default None.
+   :type ymin_ratio_2: float, optional
+   :param ymax_ratio_2: Set the upper y limit of the second ratio subplot, by default None.
+   :type ymax_ratio_2: float, optional
+   :param y_scale: Scaling up the y axis, e.g. to fit the ATLAS Tag. Applied if ymax not defined,
+                   by default 1.3
+   :type y_scale: float, optional
+   :param logy: Set log of y-axis of main panel, by default True
+   :type logy: bool, optional
+   :param xlabel: Label of the x-axis, by default None
+   :type xlabel: str, optional
+   :param ylabel: Label of the y-axis, by default None
+   :type ylabel: str, optional
+   :param ylabel_ratio_1: Label of the y-axis in the first ratio plot, by default "Ratio"
+   :type ylabel_ratio_1: str, optional
+   :param ylabel_ratio_2: Label of the y-axis in the second ratio plot, by default "Ratio"
+   :type ylabel_ratio_2: str, optional
+   :param label_fontsize: Used fontsize in label, by default 12
+   :type label_fontsize: int, optional
+   :param fontsize: Used fontsize, by default 10
+   :type fontsize: int, optional
+   :param n_ratio_panels: Amount of ratio panels between 0 and 2, by default 0
+   :type n_ratio_panels: int, optional
+   :param vertical_split: Set to False if you would like to split the figure horizonally. If set to
+                          True the figure is split vertically (e.g for pie chart). By default False.
+   :type vertical_split: bool
+   :param figsize: Tuple of figure size `(width, height)` in inches, by default (8, 6)
+   :type figsize: (float, float), optional
+   :param dpi: dpi used for plotting, by default 400
+   :type dpi: int, optional
+   :param grid: Set the grid for the plots.
+   :type grid: bool, optional
+   :param leg_fontsize: Fontsize of the legend, by default 10
+   :type leg_fontsize: int, optional
+   :param leg_loc: Position of the legend in the plot, by default "upper right"
+   :type leg_loc: str, optional
+   :param leg_ncol: Number of legend columns, by default 1
+   :type leg_ncol: int, optional
+   :param apply_atlas_style: Apply ATLAS style for matplotlib, by default True
+   :type apply_atlas_style: bool, optional
+   :param use_atlas_tag: Use the ATLAS Tag in the plots, by default True
+   :type use_atlas_tag: bool, optional
+   :param atlas_first_tag: First row of the ATLAS tag (i.e. the first row is "ATLAS <atlas_first_tag>"),
+                           by default "Simulation Internal"
+   :type atlas_first_tag: str, optional
+   :param atlas_second_tag: Second row of the ATLAS tag, by default ""
+   :type atlas_second_tag: str, optional
+   :param atlas_fontsize: Fontsize of ATLAS label, by default 10
+   :type atlas_fontsize: float, optional
+   :param atlas_vertical_offset: Vertical offset of the ATLAS tag, by default 7
+   :type atlas_vertical_offset: float, optional
+   :param atlas_horizontal_offset: Horizontal offset of the ATLAS tag, by default 8
+   :type atlas_horizontal_offset: float, optional
+   :param atlas_brand: `brand` argument handed to atlasify. If you want to remove it just use an empty
+                       string or None, by default "ATLAS"
+   :type atlas_brand: str, optional
+   :param plotting_done: Bool that indicates if plotting is done. Only then `atlasify()` can be called,
+                         by default False
+   :type plotting_done: bool
+
+   .. py:attribute:: title
+      :annotation: :str = 
+
+      
+
+   .. py:attribute:: draw_errors
+      :annotation: :bool = True
+
+      
+
+   .. py:attribute:: xmin
+      :annotation: :float
+
+      
+
+   .. py:attribute:: xmax
+      :annotation: :float
+
+      
+
+   .. py:attribute:: ymin
+      :annotation: :float
+
+      
+
+   .. py:attribute:: ymax
+      :annotation: :float
+
+      
+
+   .. py:attribute:: ymin_ratio_1
+      :annotation: :float
+
+      
+
+   .. py:attribute:: ymax_ratio_1
+      :annotation: :float
+
+      
+
+   .. py:attribute:: ymin_ratio_2
+      :annotation: :float
+
+      
+
+   .. py:attribute:: ymax_ratio_2
+      :annotation: :float
+
+      
+
+   .. py:attribute:: y_scale
+      :annotation: :float = 1.3
+
+      
+
+   .. py:attribute:: logy
+      :annotation: :bool = True
+
+      
+
+   .. py:attribute:: xlabel
+      :annotation: :str
+
+      
+
+   .. py:attribute:: ylabel
+      :annotation: :str
+
+      
+
+   .. py:attribute:: ylabel_ratio_1
+      :annotation: :str = Ratio
+
+      
+
+   .. py:attribute:: ylabel_ratio_2
+      :annotation: :str = Ratio
+
+      
+
+   .. py:attribute:: label_fontsize
+      :annotation: :int = 12
+
+      
+
+   .. py:attribute:: fontsize
+      :annotation: :int = 10
+
+      
+
+   .. py:attribute:: n_ratio_panels
+      :annotation: :int = 0
+
+      
+
+   .. py:attribute:: vertical_split
+      :annotation: :bool = False
+
+      
+
+   .. py:attribute:: figsize
+      :annotation: :tuple
+
+      
+
+   .. py:attribute:: dpi
+      :annotation: :int = 400
+
+      
+
+   .. py:attribute:: grid
+      :annotation: :bool = True
+
+      
+
+   .. py:attribute:: leg_fontsize
+      :annotation: :int
+
+      
+
+   .. py:attribute:: leg_loc
+      :annotation: :str = upper right
+
+      
+
+   .. py:attribute:: leg_ncol
+      :annotation: :int = 1
+
+      
+
+   .. py:attribute:: apply_atlas_style
+      :annotation: :bool = True
+
+      
+
+   .. py:attribute:: use_atlas_tag
+      :annotation: :bool = True
+
+      
+
+   .. py:attribute:: atlas_first_tag
+      :annotation: :str = Simulation Internal
+
+      
+
+   .. py:attribute:: atlas_second_tag
+      :annotation: :str = 
+
+      
+
+   .. py:attribute:: atlas_fontsize
+      :annotation: :int
+
+      
+
+   .. py:attribute:: atlas_vertical_offset
+      :annotation: :float = 7
+
+      
+
+   .. py:attribute:: atlas_horizontal_offset
+      :annotation: :float = 8
+
+      
+
+   .. py:attribute:: atlas_brand
+      :annotation: :str = ATLAS
+
+      
+
+   .. py:attribute:: plotting_done
+      :annotation: :bool = False
+
+      
+
+   .. py:method:: __post_init__(self)
+
+      Check for allowed values.
+
+      :raises ValueError: if n_ratio_panels not in [0, 1, 2]
+
+
+   .. py:method:: __check_figsize(self)
+
+      Check `figsize`
+
+      :raises ValueError: if shape of `figsize` is not a tuple or list with length 2
+
+
+
+.. py:class:: Roc(sig_eff: numpy.ndarray, bkg_rej: numpy.ndarray, n_test: int = None, rej_class: str = None, signal_class: str = None, key: str = None, **kwargs)
+
+   Bases: :py:obj:`puma.plot_base.PlotLineObject`
+
+   ROC class storing info about curve and allows to calculate ratio w.r.t other roc.
+
+   Initialise properties of roc curve object.
+
+   :param sig_eff: array of signal efficiencies
+   :type sig_eff: np.array
+   :param bkg_rej: array of background rejection
+   :type bkg_rej: np.array
+   :param n_test: Number of events used to calculate the background efficiencies,
+                  by default None
+   :type n_test: int
+   :param signal_class: Signal class, e.g. for b-tagging "bjets", by default None
+   :type signal_class: str
+   :param rej_class: Rejection class, e.g. for b-tagging anc charm rejection "cjets",
+                     by default None
+   :type rej_class: str
+   :param key: identifier for roc curve e.g. tagger, by default None
+   :type key: str
+   :param \*\*kwargs: kwargs passed to `PlotLineObject`
+   :type \*\*kwargs: kwargs
+
+   :raises ValueError: if `sig_eff` and `bkg_rej` have a different shape
+
+   .. py:method:: binomial_error(self, norm: bool = False, n_test: int = None) -> numpy.ndarray
+
+      Calculate binomial error of roc curve.
+
+      :param norm: if True calulate relative error, by default False
+      :type norm: bool
+      :param n_test: Number of events used to calculate the background efficiencies,
+                     by default None
+      :type n_test: int
+
+      :returns: binomial error
+      :rtype: numpy.array
+
+      :raises ValueError: if no `n_test` was provided
+
+
+   .. py:method:: divide(self, roc_comp, inverse: bool = False)
+
+      Calculate ratio between the roc curve and another roc.
+
+      :param roc_comp: second roc curve to calculate ratio with
+      :type roc_comp: roc class
+      :param inverse: if False the ratio is calculated `this_roc / roc_comp`,
+                      if True the inverse is calculated
+      :type inverse: bool
+
+      :returns: * *np.array* -- signal efficiency used for the ratio calculation which is the overlapping
+                  interval of the two roc curves
+                * *np.array* -- ratio
+                * *np.array or None* -- ratio_err if `n_test` was provided to class
+
+
+   .. py:method:: fct_inter(self)
+      :property:
+
+      Interpolate the rejection function for better ratio calculation plotting etc.
+
+      :returns: interpolation function
+      :rtype: pchip
+
+
+   .. py:method:: non_zero_mask(self)
+      :property:
+
+      Masking points where rejection is 0 and no signal efficiency change present
+
+      :returns: masked indices
+      :rtype: numpy.array
+
+
+   .. py:method:: non_zero(self)
+      :property:
+
+      Abstraction of `non_zero_mask`
+
+      :returns: * *numpy.array* -- masked signal efficiency
+                * *numpy.array* -- masked background rejection
+
+
+
+.. py:class:: RocPlot(**kwargs)
+
+   Bases: :py:obj:`puma.plot_base.PlotBase`
+
+   Roc plot class
+
+   roc plot properties
+
+   :param \*\*kwargs: kwargs from `plot_base`
+   :type \*\*kwargs: kwargs
+
+   .. py:method:: add_roc(self, roc_curve: object, key: str = None, reference: bool = False)
+
+      Adding roc object to figure.
+
+      :param roc_curve: roc curve
+      :type roc_curve: roc class
+      :param key: unique identifier for roc, by default None
+      :type key: str, optional
+      :param reference: if roc is used as reference for ratio calculation, by default False
+      :type reference: bool, optional
+
+      :raises KeyError: if unique identifier key is used twice
+
+
+   .. py:method:: set_roc_reference(self, key: str, rej_class: str)
+
+      Setting the reference roc curves used in the ratios
+
+      :param key: unique identifier of roc object
+      :type key: str
+      :param rej_class: rejection class encoded in roc curve
+      :type rej_class: str
+
+      :raises ValueError: if more rejection classes are set than actual ratio panels available.
+
+
+   .. py:method:: set_leg_rej_labels(self, rej_class: str, label: str)
+
+      Set legend label for rejection class
+
+      :param rej_class: rejection class
+      :type rej_class: str
+      :param label: label added in legend
+      :type label: str
+
+
+   .. py:method:: set_ratio_class(self, ratio_panel: int, rej_class: str, label: str)
+
+      Associate the rejection class to a ratio panel
+
+      :param ratio_panel: ratio panel either 1 or 2
+      :type ratio_panel: int
+      :param rej_class: rejeciton class associated to that panel
+      :type rej_class: str
+      :param label: y-axis label of the ratio panel
+      :type label: str
+
+      :raises ValueError: if requested ratio panels and given ratio_panel do not match.
+
+
+   .. py:method:: add_ratios(self)
+
+      Calculating ratios.
+
+      :raises ValueError: if number of reference rocs and ratio panels don't match
+      :raises ValueError: if no ratio classes are set
+
+
+   .. py:method:: get_xlim_auto(self)
+
+      Returns min and max efficiency values
+
+      :returns: min and max efficiency values
+      :rtype: float
+
+
+   .. py:method:: plot_ratios(self, axis: matplotlib.pyplot.axis, rej_class: str)
+
+      Plotting ratio curves
+
+      :param axis: matplotlib axis object
+      :type axis: plt.axis
+      :param rej_class: rejection class
+      :type rej_class: str
+
+
+   .. py:method:: make_split_legend(self, handles)
+
+      Draw legend for the case of 2 ratios, splitting up legend into models and
+      rejection class.
+
+      :param handles: list of Line2D objects to extract info for legend
+      :type handles: list
+
+      :raises ValueError: if not 2 ratios requested
+
+
+   .. py:method:: draw(self, labelpad: int = None)
+
+      Draw plotting
+
+      :param labelpad: Spacing in points from the axes bounding box including
+                       ticks and tick labels, by default None
+      :type labelpad: int, optional
+
+
+   .. py:method:: plot_roc(self, **kwargs) -> matplotlib.lines.Line2D
+
+      Plotting roc curves
+
+      :param \*\*kwargs: kwargs passed to plt.axis.plot
+      :type \*\*kwargs: kwargs
+
+      :returns: matplotlib Line2D object
+      :rtype: Line2D
+
+
+
+.. py:class:: VarVsEff(x_var_sig: numpy.ndarray, disc_sig: numpy.ndarray, x_var_bkg: numpy.ndarray = None, disc_bkg: numpy.ndarray = None, bins=10, working_point: float = None, disc_cut=None, fixed_eff_bin: bool = False, key: str = None, **kwargs)
+
+   Bases: :py:obj:`puma.plot_base.PlotLineObject`
+
+   var_vs_eff class storing info about curve and allows to calculate ratio w.r.t other
+   efficiency plots.
+
+   Initialise properties of roc curve object.
+
+   :param x_var_sig: values for x-axis variable for signal
+   :type x_var_sig: np.ndarray
+   :param disc_sig: discriminant values for signal
+   :type disc_sig: np.ndarray
+   :param x_var_bkg: values for x-axis variable for background, by default None
+   :type x_var_bkg: np.ndarray, optional
+   :param disc_bkg: discriminant values for background, by default None
+   :type disc_bkg: np.ndarray, optional
+   :param bins: If bins is an int, it defines the number of equal-width bins in the
+                given range (10, by default). If bins is a sequence, it defines a
+                monotonically increasing array of bin edges, including the
+                rightmost edge, allowing for non-uniform bin widths, by default 10
+   :type bins: int or sequence of scalars, optional
+   :param working_point: working point, by default None
+   :type working_point: float, optional
+   :param disc_cut: cut value for discriminant, if it is a sequence it has to have the same
+                    length as number of bins, by default None
+   :type disc_cut: float or  sequence of floats, optional
+   :param fixed_eff_bin: if True and no `disc_cut` is given the signal efficiency is held constant
+                         in each bin, by default False
+   :type fixed_eff_bin: bool, optional
+   :param key:    identifier for the curve e.g. tagger, by default None
+               **kwargs : kwargs
+                  kwargs passed to `PlotLineObject`
+   :type key: str, optional
+
+   :raises ValueError: if provided options are not compatible with each other
+
+   .. py:method:: _set_bin_edges(self, bins)
+
+      Calculate bin edges, centres and width and save them as class variables.
+
+      :param bins: If bins is an int, it defines the number of equal-width bins in the given
+                   range. If bins is a sequence, it defines a monotonically increasing array of
+                   bin edges, including the rightmost edge, allowing for non-uniform bin
+                   widths.
+      :type bins: int or sequence of scalars
+
+
+   .. py:method:: _apply_binning(self)
+
+      Get binned distributions for the signal and background.
+
+
+   .. py:method:: _get_disc_cuts(self)
+
+      Retrieve cut values on discriminant. If `disc_cut` is not given, retrieve
+      cut values from the working point.
+
+
+   .. py:method:: efficiency(self, arr: numpy.ndarray, cut: float)
+
+      Calculate efficiency and the associated error.
+
+      :param arr: array with discriminants
+      :type arr: np.ndarray
+      :param cut: cut value
+      :type cut: float
+
+      :returns: * *float* -- efficiency
+                * *float* -- efficiency error
+
+
+   .. py:method:: rejection(self, arr: numpy.ndarray, cut: float)
+
+      Calculate rejection and the associated error.
+
+      :param arr: array with discriminants
+      :type arr: np.ndarray
+      :param cut: cut value
+      :type cut: float
+
+      :returns: * *float* -- rejection
+                * *float* -- rejection error
+
+
+   .. py:method:: sig_eff(self)
+      :property:
+
+      Calculate signal efficiency per bin.
+
+      :returns: * *np.ndarray* -- efficiency
+                * *np.ndarray* -- efficiency_error
+
+
+   .. py:method:: bkg_eff(self)
+      :property:
+
+      Calculate background efficiency per bin.
+
+      :returns: * *np.ndarray* -- efficiency
+                * *np.ndarray* -- efficiency_error
+
+
+   .. py:method:: sig_rej(self)
+      :property:
+
+      Calculate signal rejection per bin.
+
+      :returns: * *np.ndarray* -- rejection
+                * *np.ndarray* -- rejection_error
+
+
+   .. py:method:: bkg_rej(self)
+      :property:
+
+      Calculate background rejection per bin.
+
+      :returns: * *np.ndarray* -- rejection
+                * *np.ndarray* -- rejection_error
+
+
+   .. py:method:: __eq__(self, other)
+
+      Return self==value.
+
+
+   .. py:method:: get(self, mode: str, inverse_cut: bool = False)
+
+      Wrapper around rejection and efficiency functions.
+
+      :param mode: can be "sig_eff", "bkg_eff", "sig_rej", "bkg_rej"
+      :type mode: str
+      :param inverse_cut: inverts the discriminant cut, which will yield the efficiency or rejection
+                          of the jets not passing the working point, by default False
+      :type inverse_cut: bool, optional
+
+      :returns: * *np.ndarray* -- rejection or efficiency depending on `mode` value
+                * *np.ndarray* -- rejection or efficiency error depending on `mode` value
+
+      :raises ValueError: if mode not supported
+
+
+   .. py:method:: divide(self, other, mode: str, inverse: bool = False, inverse_cut: bool = False)
+
+      Calculate ratio between two class objects.
+
+      :param other: second var_vs_eff object to calculate ratio with
+      :type other: var_vs_eff class
+      :param mode: defines the mode which is used for the ratoi calculation, can be the
+                   following values: `sig_eff`, `bkg_eff`, `sig_rej`, `bkg_rej`
+      :type mode: str
+      :param inverse: if False the ratio is calculated `this / other`,
+                      if True the inverse is calculated
+      :type inverse: bool
+      :param inverse_cut: inverts the discriminant cut, which will yield the efficiency or rejection
+                          of the jets not passing the working point, by default False
+      :type inverse_cut: bool
+
+      :returns: * *np.ndarray* -- ratio
+                * *np.ndarray* -- ratio error
+                * *np.ndarray* -- bin centres
+                * *np.ndarray* -- bin widths
+
+      :raises ValueError: if binning is not identical between 2 objects
+
+
+
+.. py:class:: VarVsEffPlot(mode, **kwargs)
+
+   Bases: :py:obj:`puma.plot_base.PlotBase`
+
+   var_vs_eff plot class
+
+   var_vs_eff plot properties
+
+   :param mode: defines which quantity is plotted, the following options ar available:
+                "sig_eff", "bkg_eff", "sig_rej" or "bkg_rej"
+   :type mode: str
+   :param \*\*kwargs: kwargs from `plot_base`
+   :type \*\*kwargs: kwargs
+
+   :raises ValueError: if incompatible mode given or more than 1 ratio panel requested
+
+   .. py:method:: add(self, curve: object, key: str = None, reference: bool = False)
+
+      Adding var_vs_eff object to figure.
+
+      :param curve: var_vs_eff curve
+      :type curve: var_vs_eff class
+      :param key: unique identifier for var_vs_eff, by default None
+      :type key: str, optional
+      :param reference: if var_vs_eff is used as reference for ratio calculation, by default False
+      :type reference: bool, optional
+
+      :raises KeyError: if unique identifier key is used twice
+
+
+   .. py:method:: set_reference(self, key: str)
+
+      Setting the reference roc curves used in the ratios
+
+      :param key: unique identifier of roc object
+      :type key: str
+
+
+   .. py:method:: plot(self, **kwargs)
+
+      Plotting curves
+
+      :param \*\*kwargs:    kwargs passed to plt.axis.errorbar
+
+                         Returns
+      :type \*\*kwargs: kwargs
+      :param -------:
+      :param Line2D: matplotlib Line2D object
+
+
+   .. py:method:: plot_ratios(self)
+
+      Plotting ratio curves.
+
+      :raises ValueError: if no reference curve is defined
+
+
+   .. py:method:: set_grid(self)
+
+      Set gtid lines.
+
+
+   .. py:method:: set_inverse_cut(self, inverse_cut=True)
+
+      Invert the discriminant cut, which will yield the efficiency or rejection
+      of the jets not passing the working point.
+
+      :param inverse_cut: invert discriminant cut, by default True
+      :type inverse_cut: bool, optional
+
+
+   .. py:method:: draw_hline(self, y_val: float)
+
+      Draw hline in top plot panel.
+
+      :param y_val: y value of the horizontal line
+      :type y_val: float
+
+
+   .. py:method:: draw(self, labelpad: int = None)
+
+      Draw figure.
+
+      :param labelpad: Spacing in points from the axes bounding box including
+                       ticks and tick labels, by default "ratio"
+      :type labelpad: int, optional
+
+
+

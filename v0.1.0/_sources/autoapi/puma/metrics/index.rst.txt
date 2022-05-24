@@ -1,0 +1,115 @@
+:py:mod:`puma.metrics`
+======================
+
+.. py:module:: puma.metrics
+
+.. autoapi-nested-parse::
+
+   Tools for metrics module.
+
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   puma.metrics.calc_eff
+   puma.metrics.calc_rej
+   puma.metrics.eff_err
+   puma.metrics.rej_err
+
+
+
+.. py:function:: calc_eff(sig_disc: numpy.ndarray, bkg_disc: numpy.ndarray, target_eff, return_cuts: bool = False)
+
+   Calculate efficiency
+
+   :param sig_disc: signal discriminant
+   :type sig_disc: np.ndarray
+   :param bkg_disc: background discriminant
+   :type bkg_disc: np.ndarray
+   :param target_eff: WP which is used for discriminant calculation
+   :type target_eff: float or list
+   :param return_cuts: Specifies if the cut values corresponding to the provided WPs are returned.
+                       If target_eff is a float, only one cut value will be returned. If target_eff
+                       is an array, target_eff is an array as well.
+   :type return_cuts: bool
+
+   :returns: * *float or np.ndarray* -- efficiency
+               if target_eff is a float, a float is returned if it's a list a np.ndarray
+             * *float or np.ndarray* -- cutvalue if return_cuts is True
+               if target_eff is a float, a float is returned if it's a list a np.ndarray
+
+
+.. py:function:: calc_rej(sig_disc: numpy.ndarray, bkg_disc: numpy.ndarray, target_eff, return_cuts: bool = False)
+
+   Calculate efficiency
+
+   :param sig_disc: signal discriminant
+   :type sig_disc: np.ndarray
+   :param bkg_disc: background discriminant
+   :type bkg_disc: np.ndarray
+   :param target_eff: WP which is used for discriminant calculation
+   :type target_eff: float or list
+   :param return_cuts: Specifies if the cut values corresponding to the provided WPs are returned.
+                       If target_eff is a float, only one cut value will be returned. If target_eff
+                       is an array, target_eff is an array as well.
+   :type return_cuts: bool
+
+   :returns: * *float or np.ndarray* -- rejection
+               if target_eff is a float, a float is returned if it's a list a np.ndarray
+             * *float or np.ndarray* -- cutvalue if return_cuts is True
+               if target_eff is a float, a float is returned if it's a list a np.ndarray
+
+
+.. py:function:: eff_err(arr: numpy.ndarray, n_counts: int, suppress_zero_divison_error: bool = False, norm: bool = False) -> numpy.ndarray
+
+   Calculate statistical efficiency uncertainty.
+
+   :param arr: efficiency values
+   :type arr: numpy.array
+   :param n_counts: number of used statistics to calculate efficiency
+   :type n_counts: int
+   :param suppress_zero_divison_error: not raising Error for zero division
+   :type suppress_zero_divison_error: bool
+   :param norm: if True, normed (relative) error is being calculated, by default False
+   :type norm: bool, optional
+
+   :returns: efficiency uncertainties
+   :rtype: numpy.array
+
+   :raises ValueError: if n_counts <=0
+
+   .. rubric:: Notes
+
+   This method uses binomial errors as described in section 2.2 of
+   https://inspirehep.net/files/57287ac8e45a976ab423f3dd456af694
+
+
+.. py:function:: rej_err(arr: numpy.ndarray, n_counts: int, norm: bool = False) -> numpy.ndarray
+
+   Calculate the rejection uncertainties.
+
+   :param arr: rejection values
+   :type arr: numpy.array
+   :param n_counts: number of used statistics to calculate rejection
+   :type n_counts: int
+   :param norm: if True, normed (relative) error is being calculated, by default False
+   :type norm: bool, optional
+
+   :returns: rejection uncertainties
+   :rtype: numpy.array
+
+   :raises ValueError: if n_counts <=0
+   :raises ValueError: if any rejection value is 0
+
+   .. rubric:: Notes
+
+   special case of `eff_err()`
+
+

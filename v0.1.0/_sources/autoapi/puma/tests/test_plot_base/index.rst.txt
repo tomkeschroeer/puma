@@ -1,0 +1,53 @@
+:py:mod:`puma.tests.test_plot_base`
+===================================
+
+.. py:module:: puma.tests.test_plot_base
+
+.. autoapi-nested-parse::
+
+   Unit test script for the functions in plot_base.py
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   puma.tests.test_plot_base.plot_object_TestCase
+
+
+
+
+.. py:class:: plot_object_TestCase(methodName='runTest')
+
+   Bases: :py:obj:`unittest.TestCase`
+
+   Test class for the puma.PlotObject dataclass.
+
+   Create an instance of the class that will use the named test
+   method when executed. Raises a ValueError if the instance does
+   not have a method with the specified name.
+
+   .. py:method:: test_only_one_input_figsize(self)
+
+
+   .. py:method:: test_only_tuple_three_inputs_figsize(self)
+
+
+   .. py:method:: test_tuple_input_figsize(self)
+
+
+   .. py:method:: test_list_input_figsize(self)
+
+
+   .. py:method:: test_list_input_wrong_len_figsize(self)
+
+
+   .. py:method:: test_wrong_n_ratio_panels(self)
+
+
+

@@ -1,0 +1,2478 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>puma &#8212; puma  documentation</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+<a class="navbar-brand" href="../../index.html">
+<p class="title">puma</p>
+</a>
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../index.html">
+  Quickstart
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../module_reference.html">
+  Module reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../example.html">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../index.html">
+  API Reference
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/umami-hep/puma" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar">
+              <div class="sidebar-start-items">
+<h3>Versions</h3>
+<ul>
+  <li><a href="index.html">v0.1.0</a></li>
+  <li><a href="../../../main/index.html">main</a></li>
+</ul>
+
+              </div>
+              <div class="sidebar-end-items">
+              </div>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#subpackages">
+   Subpackages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#submodules">
+   Submodules
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#package-contents">
+   Package Contents
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#classes">
+     Classes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#attributes">
+     Attributes
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#puma.__version__">
+       __version__
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#puma.FractionScan">
+       FractionScan
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#puma.FractionScanPlot">
+       FractionScanPlot
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.FractionScanPlot.add">
+         add
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.FractionScanPlot.plot">
+         plot
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.FractionScanPlot.draw">
+         draw
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#puma.Histogram">
+       Histogram
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.Histogram.divide">
+         divide
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#puma.HistogramPlot">
+       HistogramPlot
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.HistogramPlot.add">
+         add
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.HistogramPlot.set_reference">
+         set_reference
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.HistogramPlot.plot">
+         plot
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.HistogramPlot.plot_pie_chart">
+         plot_pie_chart
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.HistogramPlot.get_discrete_values">
+         get_discrete_values
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.HistogramPlot.get_reference_histo">
+         get_reference_histo
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.HistogramPlot.plot_ratios">
+         plot_ratios
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.HistogramPlot.add_bin_width_to_ylabel">
+         add_bin_width_to_ylabel
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.HistogramPlot.draw">
+         draw
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#puma.PlotBase">
+       PlotBase
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotBase.initialise_figure">
+         initialise_figure
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotBase.draw_vlines">
+         draw_vlines
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotBase.set_title">
+         set_title
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotBase.set_logy">
+         set_logy
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotBase.set_y_lim">
+         set_y_lim
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotBase.set_ylabel">
+         set_ylabel
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotBase.set_xlabel">
+         set_xlabel
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotBase.set_tick_params">
+         set_tick_params
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotBase.set_xlim">
+         set_xlim
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotBase.savefig">
+         savefig
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotBase.tight_layout">
+         tight_layout
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotBase.atlasify">
+         atlasify
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotBase.make_legend">
+         make_legend
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotBase.set_ratio_label">
+         set_ratio_label
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotBase.initialise_plot">
+         initialise_plot
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#puma.PlotLineObject">
+       PlotLineObject
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotLineObject.xmin">
+         xmin
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotLineObject.xmax">
+         xmax
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotLineObject.colour">
+         colour
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotLineObject.label">
+         label
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotLineObject.linestyle">
+         linestyle
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotLineObject.linewidth">
+         linewidth
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotLineObject.alpha">
+         alpha
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotLineObject.marker">
+         marker
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotLineObject.markersize">
+         markersize
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotLineObject.markeredgewidth">
+         markeredgewidth
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotLineObject.is_marker">
+         is_marker
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#puma.PlotObject">
+       PlotObject
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotObject.title">
+         title
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotObject.draw_errors">
+         draw_errors
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotObject.xmin">
+         xmin
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotObject.xmax">
+         xmax
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotObject.ymin">
+         ymin
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotObject.ymax">
+         ymax
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotObject.ymin_ratio_1">
+         ymin_ratio_1
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotObject.ymax_ratio_1">
+         ymax_ratio_1
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotObject.ymin_ratio_2">
+         ymin_ratio_2
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotObject.ymax_ratio_2">
+         ymax_ratio_2
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotObject.y_scale">
+         y_scale
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotObject.logy">
+         logy
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotObject.xlabel">
+         xlabel
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotObject.ylabel">
+         ylabel
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotObject.ylabel_ratio_1">
+         ylabel_ratio_1
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotObject.ylabel_ratio_2">
+         ylabel_ratio_2
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotObject.label_fontsize">
+         label_fontsize
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotObject.fontsize">
+         fontsize
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotObject.n_ratio_panels">
+         n_ratio_panels
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotObject.vertical_split">
+         vertical_split
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotObject.figsize">
+         figsize
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotObject.dpi">
+         dpi
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotObject.grid">
+         grid
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotObject.leg_fontsize">
+         leg_fontsize
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotObject.leg_loc">
+         leg_loc
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotObject.leg_ncol">
+         leg_ncol
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotObject.apply_atlas_style">
+         apply_atlas_style
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotObject.use_atlas_tag">
+         use_atlas_tag
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotObject.atlas_first_tag">
+         atlas_first_tag
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotObject.atlas_second_tag">
+         atlas_second_tag
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotObject.atlas_fontsize">
+         atlas_fontsize
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotObject.atlas_vertical_offset">
+         atlas_vertical_offset
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotObject.atlas_horizontal_offset">
+         atlas_horizontal_offset
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotObject.atlas_brand">
+         atlas_brand
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotObject.plotting_done">
+         plotting_done
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotObject.__post_init__">
+         __post_init__
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.PlotObject.__check_figsize">
+         __check_figsize
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#puma.Roc">
+       Roc
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.Roc.binomial_error">
+         binomial_error
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.Roc.divide">
+         divide
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.Roc.fct_inter">
+         fct_inter
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.Roc.non_zero_mask">
+         non_zero_mask
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.Roc.non_zero">
+         non_zero
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#puma.RocPlot">
+       RocPlot
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.RocPlot.add_roc">
+         add_roc
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.RocPlot.set_roc_reference">
+         set_roc_reference
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.RocPlot.set_leg_rej_labels">
+         set_leg_rej_labels
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.RocPlot.set_ratio_class">
+         set_ratio_class
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.RocPlot.add_ratios">
+         add_ratios
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.RocPlot.get_xlim_auto">
+         get_xlim_auto
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.RocPlot.plot_ratios">
+         plot_ratios
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.RocPlot.make_split_legend">
+         make_split_legend
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.RocPlot.draw">
+         draw
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.RocPlot.plot_roc">
+         plot_roc
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#puma.VarVsEff">
+       VarVsEff
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.VarVsEff._set_bin_edges">
+         _set_bin_edges
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.VarVsEff._apply_binning">
+         _apply_binning
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.VarVsEff._get_disc_cuts">
+         _get_disc_cuts
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.VarVsEff.efficiency">
+         efficiency
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.VarVsEff.rejection">
+         rejection
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.VarVsEff.sig_eff">
+         sig_eff
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.VarVsEff.bkg_eff">
+         bkg_eff
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.VarVsEff.sig_rej">
+         sig_rej
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.VarVsEff.bkg_rej">
+         bkg_rej
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.VarVsEff.__eq__">
+         __eq__
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.VarVsEff.get">
+         get
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.VarVsEff.divide">
+         divide
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#puma.VarVsEffPlot">
+       VarVsEffPlot
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.VarVsEffPlot.add">
+         add
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.VarVsEffPlot.set_reference">
+         set_reference
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.VarVsEffPlot.plot">
+         plot
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.VarVsEffPlot.plot_ratios">
+         plot_ratios
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.VarVsEffPlot.set_grid">
+         set_grid
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.VarVsEffPlot.set_inverse_cut">
+         set_inverse_cut
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.VarVsEffPlot.draw_hline">
+         draw_hline
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#puma.VarVsEffPlot.draw">
+         draw
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <section id="module-puma">
+<span id="puma"></span><h1><a class="reference internal" href="#module-puma" title="puma"><code class="xref py py-mod docutils literal notranslate"><span class="pre">puma</span></code></a><a class="headerlink" href="#module-puma" title="Permalink to this headline">#</a></h1>
+<p>puma framework - Plotting UMami Api.</p>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">#</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">puma.utils</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="utils/generate/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">puma.utils.generate</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils/histogram/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">puma.utils.histogram</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils/logging/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">puma.utils.logging</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">#</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="fraction_scan/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">puma.fraction_scan</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="histogram/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">puma.histogram</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="metrics/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">puma.metrics</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_base/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">puma.plot_base</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="roc/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">puma.roc</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="var_vs_eff/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">puma.var_vs_eff</span></code></a></li>
+</ul>
+</div>
+</section>
+<section id="package-contents">
+<h2>Package Contents<a class="headerlink" href="#package-contents" title="Permalink to this headline">#</a></h2>
+<section id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">#</a></h3>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#puma.FractionScan" title="puma.FractionScan"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FractionScan</span></code></a></p></td>
+<td><p>FractionScan class storing info about the fractions.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#puma.FractionScanPlot" title="puma.FractionScanPlot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FractionScanPlot</span></code></a></p></td>
+<td><p>Fraction scan plot class</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../module_reference.html#puma.Histogram" title="puma.Histogram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Histogram</span></code></a></p></td>
+<td><p>Histogram class storing info about histogram and allows to calculate ratio w.r.t</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../module_reference.html#puma.HistogramPlot" title="puma.HistogramPlot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HistogramPlot</span></code></a></p></td>
+<td><p>Histogram plot class</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../module_reference.html#puma.PlotBase" title="puma.PlotBase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PlotBase</span></code></a></p></td>
+<td><p>Base class for plotting</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../module_reference.html#puma.PlotLineObject" title="puma.PlotLineObject"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PlotLineObject</span></code></a></p></td>
+<td><p>Base data class defining properties of a plot object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../module_reference.html#puma.PlotObject" title="puma.PlotObject"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PlotObject</span></code></a></p></td>
+<td><p>Data base class defining properties of a plot object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../module_reference.html#puma.Roc" title="puma.Roc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Roc</span></code></a></p></td>
+<td><p>ROC class storing info about curve and allows to calculate ratio w.r.t other roc.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../module_reference.html#puma.RocPlot" title="puma.RocPlot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RocPlot</span></code></a></p></td>
+<td><p>Roc plot class</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#puma.VarVsEff" title="puma.VarVsEff"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VarVsEff</span></code></a></p></td>
+<td><p>var_vs_eff class storing info about curve and allows to calculate ratio w.r.t other</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#puma.VarVsEffPlot" title="puma.VarVsEffPlot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VarVsEffPlot</span></code></a></p></td>
+<td><p>var_vs_eff plot class</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="attributes">
+<h3>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">#</a></h3>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#puma.__version__" title="puma.__version__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__version__</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py data">
+<dt class="sig sig-object py" id="puma.__version__">
+<span class="sig-prename descclassname"><span class="pre">puma.</span></span><span class="sig-name descname"><span class="pre">__version__</span></span><em class="property"> <span class="pre">=</span> <span class="pre">0.1.0</span></em><a class="headerlink" href="#puma.__version__" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="puma.FractionScan">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">puma.</span></span><span class="sig-name descname"><span class="pre">FractionScan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_values</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_values</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.FractionScan" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="plot_base/index.html#puma.plot_base.PlotLineObject" title="puma.plot_base.PlotLineObject"><code class="xref py py-obj docutils literal notranslate"><span class="pre">puma.plot_base.PlotLineObject</span></code></a></p>
+<p>FractionScan class storing info about the fractions.</p>
+<p>Initialise properties of fraction scan curve object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x_values</strong> (<em>np.ndarray</em>) – x values of the fraction scan curve</p></li>
+<li><p><strong>y_values</strong> (<em>np.ndarray</em>) – y values of the fraction scan curve</p></li>
+<li><p><strong>**kwargs</strong> (<em>kwargs</em>) – kwargs passed to <code class="code docutils literal notranslate"><span class="pre">PlotLineObject</span></code></p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – If the dtype of x_values and y_values is different.</p></li>
+<li><p><strong>ValueError</strong> – If provided x_values array is empty.</p></li>
+<li><p><strong>ValueError</strong> – If provided y_values array is empty.</p></li>
+<li><p><strong>ValueError</strong> – If provided x_values and y_values arrays have different
+shapes.</p></li>
+<li><p><strong>ValueError</strong> – If an invalid type was given for x_values</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="puma.FractionScanPlot">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">puma.</span></span><span class="sig-name descname"><span class="pre">FractionScanPlot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logy</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.FractionScanPlot" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="plot_base/index.html#puma.plot_base.PlotBase" title="puma.plot_base.PlotBase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">puma.plot_base.PlotBase</span></code></a></p>
+<p>Fraction scan plot class</p>
+<p>Fraction scan plot properties</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>logy</strong> (<em>bool</em><em>, </em><em>optional</em>) – Decide, if the y-axis of the plot will
+be in log, by default False</p></li>
+<li><p><strong>**kwargs</strong> (<em>kwargs</em>) – kwargs from <code class="code docutils literal notranslate"><span class="pre">plot_base</span></code></p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.FractionScanPlot.add">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curve</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_marker</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.FractionScanPlot.add" title="Permalink to this definition">#</a></dt>
+<dd><p>Adding FractionScan object to figure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>curve</strong> (<a class="reference internal" href="#puma.FractionScan" title="puma.FractionScan"><em>FractionScan</em></a>) – Fraction scan curve</p></li>
+<li><p><strong>key</strong> (<em>str</em><em>, </em><em>optional</em>) – Unique identifier for FractionScan, by default None</p></li>
+<li><p><strong>is_marker</strong> (<em>bool</em><em>, </em><em>optional</em>) – Defines if this is a marker (True) or a line (False).
+By default False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>KeyError</strong> – If unique identifier key is used twice</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.FractionScanPlot.plot">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.FractionScanPlot.plot" title="Permalink to this definition">#</a></dt>
+<dd><p>Plotting curves. Plot objects are drawn in the same order as they
+were added to the plot.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>**kwargs</strong> (<em>kwargs</em>) – kwargs passed to matplotlib.axes.Axes.plot()</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>matplotlib Line2D object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Line2D</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.FractionScanPlot.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.FractionScanPlot.draw" title="Permalink to this definition">#</a></dt>
+<dd><p>Draw figure.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="puma.Histogram">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">puma.</span></span><span class="sig-name descname"><span class="pre">Histogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flavour</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">histtype</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'step'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.Histogram" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="plot_base/index.html#puma.plot_base.PlotLineObject" title="puma.plot_base.PlotLineObject"><code class="xref py py-obj docutils literal notranslate"><span class="pre">puma.plot_base.PlotLineObject</span></code></a></p>
+<p>Histogram class storing info about histogram and allows to calculate ratio w.r.t
+other histograms.</p>
+<p>Initialise properties of histogram curve object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>values</strong> (<em>np.ndarray</em>) – Input data for the histogram</p></li>
+<li><p><strong>flavour</strong> (<em>str</em><em>, </em><em>optional</em>) – Jet flavour in case the histogram corresponds to one specific flavour. If
+this is specified, the correct colour will be extracted from the global
+config. Allowed values are the ones from the global config, i.e. “bjets”,
+“cjets”, “ujets”, “bbjets”, …, by default None</p></li>
+<li><p><strong>histtype</strong> (<em>str</em><em>, </em><em>optional</em>) – <code class="code docutils literal notranslate"><span class="pre">histtype</span></code> parameter which is handed to matplotlib.hist() when plotting the
+histograms. Supported values are “bar”, “barstacked”, “step”, “stepfilled”.
+By default “step”</p></li>
+<li><p><strong>**kwargs</strong> (<em>kwargs</em>) – kwargs passed to <code class="code docutils literal notranslate"><span class="pre">PlotLineObject</span></code></p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If input data is not of type np.ndarray or list</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.Histogram.divide">
+<span class="sig-name descname"><span class="pre">divide</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.Histogram.divide" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculate ratio between two class objects.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>other</strong> (<em>histogram class</em>) – Second histogram object to calculate ratio with</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>np.ndarray</em> – ratio</p></li>
+<li><p><em>np.ndarray</em> – ratio error</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ValueError</strong> – If binning is not identical between 2 objects</p></li>
+<li><p><strong>ValueError</strong> – If hist attribute is not set for one of the two histograms</p></li>
+<li><p><strong>ValueError</strong> – If bin_edges attribute is not set for one of the two histograms</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="puma.HistogramPlot">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">puma.</span></span><span class="sig-name descname"><span class="pre">HistogramPlot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">40</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bins_range</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">tuple</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discrete_vals</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_pie</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pie_colours</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pie_labels</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logy</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bin_width_in_ylabel</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.HistogramPlot" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="plot_base/index.html#puma.plot_base.PlotBase" title="puma.plot_base.PlotBase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">puma.plot_base.PlotBase</span></code></a></p>
+<p>Histogram plot class</p>
+<p>histogram plot properties</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bins</strong> (<em>int</em><em> or </em><em>numpy.ndarray</em><em> or </em><em>list</em><em>, </em><em>optional</em>) – If bins is an int, it defines the number of equal-width bins in the given
+range. If bins is a sequence, it defines a monotonically increasing array
+of bin edges, including the rightmost edge, allowing for non-uniform
+bin widths (like in numpy.histogram). By default 40</p></li>
+<li><p><strong>bins_range</strong> (<em>tuple</em><em>, </em><em>optional</em>) – Tuple of two floats, specifying the range for the binning. If bins_range is
+specified and bins is an integer, equal-width bins from bins_range[0] to
+bins_range[1] are used for the histogram (like in numpy.histogram).
+By default None</p></li>
+<li><p><strong>discrete_vals</strong> (<em>list</em><em>, </em><em>optional</em>) – List of values if a variable only has discrete values. If discrete_vals is
+specified only the bins containing these values are plotted. If a pie chart
+is plotted, discrete_vals is obligatory. By default None.</p></li>
+<li><p><strong>plot_pie</strong> (<em>bool</em><em>, </em><em>optional</em>) – Set to True if you would like to plot a pie chart instead of a histogram</p></li>
+<li><p><strong>pie_colours</strong> (<em>list</em><em> or </em><em>str</em><em>, </em><em>optional</em>) – List of colours used for a pie chart or string providing the colour scheme.
+Possible colour schemes are ‘red’, ‘blue’, ‘green’ or ‘yellow’,
+by default None</p></li>
+<li><p><strong>pie_labels</strong> (<em>list</em><em>, </em><em>optional</em>) – List of labels used for a pie chart, by default None</p></li>
+<li><p><strong>norm</strong> (<em>bool</em><em>, </em><em>optional</em>) – Specify if the histograms are normalised, this means that histograms are
+divided by the total numer of counts. Therefore, the sum of the bin counts
+is equal to one, but NOT the area under the curve, which would be
+sum(bin_counts * bin_width). By default True.</p></li>
+<li><p><strong>logy</strong> (<em>bool</em><em>, </em><em>optional</em>) – Set log scale on y-axis, by default False.</p></li>
+<li><p><strong>bin_width_in_ylabel</strong> (<em>bool</em><em>, </em><em>optional</em>) – Specify if the bin width should be added to the ylabel, by default False</p></li>
+<li><p><strong>**kwargs</strong> (<em>kwargs</em>) – kwargs from <code class="code docutils literal notranslate"><span class="pre">plot_base</span></code></p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If n_ratio_panels &gt; 1</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.HistogramPlot.add">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curve</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reference</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.HistogramPlot.add" title="Permalink to this definition">#</a></dt>
+<dd><p>Adding histogram object to figure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>curve</strong> (<em>histogram class</em>) – histogram curve</p></li>
+<li><p><strong>key</strong> (<em>str</em><em>, </em><em>optional</em>) – Unique identifier for histogram, by default None</p></li>
+<li><p><strong>reference</strong> (<em>bool</em><em>, </em><em>optional</em>) – If this histogram is used as reference for ratio calculation, by default
+False</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>KeyError</strong> – If unique identifier key is used twice</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.HistogramPlot.set_reference">
+<span class="sig-name descname"><span class="pre">set_reference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.HistogramPlot.set_reference" title="Permalink to this definition">#</a></dt>
+<dd><p>Setting the reference histogram curves used in the ratios</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key</strong> (<em>str</em>) – unique identifier of histogram object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.HistogramPlot.plot">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.HistogramPlot.plot" title="Permalink to this definition">#</a></dt>
+<dd><p>Plotting curves. This also generates the bins of the histograms that are
+added to the plot. Plot objects are drawn in the same order as they were added
+to the plot.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>**kwargs</strong> (<em>kwargs</em>) – kwargs passed to matplotlib.axes.Axes.hist()</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>matplotlib Line2D object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Line2D</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If specified bins type is not supported.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.HistogramPlot.plot_pie_chart">
+<span class="sig-name descname"><span class="pre">plot_pie_chart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.HistogramPlot.plot_pie_chart" title="Permalink to this definition">#</a></dt>
+<dd><p>Plotting Pie chart. Only variables with defined discrete values
+can be plotted. Only non-zero values are plotted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>matplotlib Patch object</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Patch</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ValueError</strong> – If plot_pie is set to True but not the vertical_split</p></li>
+<li><p><strong>ValueError</strong> – If no discrete values of the variable are provided</p></li>
+<li><p><strong>ValueError</strong> – If specified bins type is not supported.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.HistogramPlot.get_discrete_values">
+<span class="sig-name descname"><span class="pre">get_discrete_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elem</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">object</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.HistogramPlot.get_discrete_values" title="Permalink to this definition">#</a></dt>
+<dd><p>Get discrete values of a variable and adjust the
+bins accordingly</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>elem</strong> (<em>histogram class</em>) – Histogram we want to calculate the bins containing discrete values for</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>bins</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>recalculated bins including only the discrete values</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – If the bin width is larger than 1 such that potentially not
+all discrete values are in a seperate bin</p></li>
+<li><p><strong>ValueError</strong> – If the number of bins is set to 1 such that no values can be
+distinguished</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.HistogramPlot.get_reference_histo">
+<span class="sig-name descname"><span class="pre">get_reference_histo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">histo</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.HistogramPlot.get_reference_histo" title="Permalink to this definition">#</a></dt>
+<dd><p>Get reference histogram from list of references</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>histo</strong> (<em>histogram class</em>) – Histogram we want to calculate the ratio for</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Reference histogram</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>histogram class</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If no reference histo was found or multiple matches.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.HistogramPlot.plot_ratios">
+<span class="sig-name descname"><span class="pre">plot_ratios</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.HistogramPlot.plot_ratios" title="Permalink to this definition">#</a></dt>
+<dd><p>Plotting ratio histograms.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If no reference histogram is defined</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.HistogramPlot.add_bin_width_to_ylabel">
+<span class="sig-name descname"><span class="pre">add_bin_width_to_ylabel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.HistogramPlot.add_bin_width_to_ylabel" title="Permalink to this definition">#</a></dt>
+<dd><p>Adds the bin width to the ylabel of a histogram plot. If the bin with is
+smaller than 0.01, scientific notation will be used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If plotting_done is False (therefore <code class="code docutils literal notranslate"><span class="pre">bins</span></code> is not yet calculated)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.HistogramPlot.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labelpad</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.HistogramPlot.draw" title="Permalink to this definition">#</a></dt>
+<dd><p>Draw figure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>labelpad</strong> (<em>int</em><em>, </em><em>optional</em>) – Spacing in points from the axes bounding box including
+ticks and tick labels, by default “ratio”</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="puma.PlotBase">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">puma.</span></span><span class="sig-name descname"><span class="pre">PlotBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.PlotBase" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../module_reference.html#puma.PlotObject" title="puma.PlotObject"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PlotObject</span></code></a></p>
+<p>Base class for plotting</p>
+<p>Initialise class</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>**kwargs</strong> (<em>kwargs</em>) – kwargs from <code class="code docutils literal notranslate"><span class="pre">plot_object</span></code></p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.PlotBase.initialise_figure">
+<span class="sig-name descname"><span class="pre">initialise_figure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sub_plot_index</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.PlotBase.initialise_figure" title="Permalink to this definition">#</a></dt>
+<dd><p>Initialising matplotlib.figure.Figure for different scenarios depending on how
+many ratio panels are requested.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sub_plot_index</strong> (<em>int</em><em>, </em><em>optional</em>) – indicates for the scenario with one ratio how large the upper and lower
+panels are, by default 5</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.PlotBase.draw_vlines">
+<span class="sig-name descname"><span class="pre">draw_vlines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vlines_xvalues</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vlines_label_list</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vlines_line_height_list</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_height</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colour</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'#920000'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fontsize</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.PlotBase.draw_vlines" title="Permalink to this definition">#</a></dt>
+<dd><p>Drawing working points in plot</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vlines_xvalues</strong> (<em>list</em>) – List of working points x values to draw</p></li>
+<li><p><strong>vlines_label_list</strong> (<em>list</em><em>, </em><em>optional</em>) – List with labels for the vertical lines. Must be the same
+order as the vlines_xvalues. If None, the xvalues * 100 will be
+used as labels. By default None</p></li>
+<li><p><strong>vlines_line_height_list</strong> (<em>list</em><em>, </em><em>optional</em>) – List with the y height of the vertical lines in percent of the
+upper plot (0 is bottom, 1 is top). Must be the same
+order as the vlines_xvalues and the labels. By default None</p></li>
+<li><p><strong>same_height</strong> (<em>bool</em><em>, </em><em>optional</em>) – working point lines on same height, by default False</p></li>
+<li><p><strong>colour</strong> (<em>str</em><em>, </em><em>optional</em>) – colour of the vertical line, by default “#920000”</p></li>
+<li><p><strong>fontsize</strong> (<em>int</em><em>, </em><em>optional</em>) – Fontsize of the vertical line text. By default 10.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.PlotBase.set_title">
+<span class="sig-name descname"><span class="pre">set_title</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.PlotBase.set_title" title="Permalink to this definition">#</a></dt>
+<dd><p>Set title of top panel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>title</strong> (<em>str</em><em>, </em><em>optional</em>) – title of top panel, if None using the value form the class variables,
+by default None</p></li>
+<li><p><strong>**kwargs</strong> (<em>kwargs</em>) – kwargs passed to <code class="code docutils literal notranslate"><span class="pre">matplotlib.axes.Axes.set_title()</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.PlotBase.set_logy">
+<span class="sig-name descname"><span class="pre">set_logy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.PlotBase.set_logy" title="Permalink to this definition">#</a></dt>
+<dd><p>Set log scale of y-axis of main panel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>force</strong> (<em>bool</em><em>, </em><em>optional</em>) – forcing logy even if class variable is False, by default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.PlotBase.set_y_lim">
+<span class="sig-name descname"><span class="pre">set_y_lim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.PlotBase.set_y_lim" title="Permalink to this definition">#</a></dt>
+<dd><p>Set limits of y-axis.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.PlotBase.set_ylabel">
+<span class="sig-name descname"><span class="pre">set_ylabel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax_mpl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_right</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.PlotBase.set_ylabel" title="Permalink to this definition">#</a></dt>
+<dd><p>Set y-axis label.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ax_mpl</strong> (<em>matplotlib.axes.Axes</em>) – matplotlib axis object</p></li>
+<li><p><strong>label</strong> (<em>str</em><em>, </em><em>optional</em>) – x-axis label, by default None</p></li>
+<li><p><strong>align_right</strong> (<em>bool</em><em>, </em><em>optional</em>) – alignment of y-axis label, by default True</p></li>
+<li><p><strong>**kwargs</strong> – kwargs passed to <code class="code docutils literal notranslate"><span class="pre">matplotlib.axes.Axes.set_ylabel()</span></code></p></li>
+<li><p><strong>kwargs</strong> – kwargs passed to <code class="code docutils literal notranslate"><span class="pre">matplotlib.axes.Axes.set_ylabel()</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.PlotBase.set_xlabel">
+<span class="sig-name descname"><span class="pre">set_xlabel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.PlotBase.set_xlabel" title="Permalink to this definition">#</a></dt>
+<dd><p>Set x-axis label.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>label</strong> (<em>str</em><em>, </em><em>optional</em>) – x-axis label, by default None</p></li>
+<li><p><strong>**kwargs</strong> (<em>kwargs</em>) – kwargs passed to <code class="code docutils literal notranslate"><span class="pre">matplotlib.axes.Axes.set_xlabel()</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.PlotBase.set_tick_params">
+<span class="sig-name descname"><span class="pre">set_tick_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labelsize</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.PlotBase.set_tick_params" title="Permalink to this definition">#</a></dt>
+<dd><p>Set x-axis label.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>labelsize</strong> (<em>int</em><em>, </em><em>optional</em>) – label size of x- and y- axis ticks, by default None
+if None then using global fontsize</p></li>
+<li><p><strong>**kwargs</strong> (<em>kwargs</em>) – kwargs passed to <code class="code docutils literal notranslate"><span class="pre">matplotlib.axes.Axes.set_xlabel()</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.PlotBase.set_xlim">
+<span class="sig-name descname"><span class="pre">set_xlim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xmin</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xmax</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.PlotBase.set_xlim" title="Permalink to this definition">#</a></dt>
+<dd><p>Set limits of x-axis</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>xmin</strong> (<em>float</em><em>, </em><em>optional</em>) – min of x-axis, by default None</p></li>
+<li><p><strong>xmax</strong> (<em>float</em><em>, </em><em>optional</em>) – max of x-axis, by default None</p></li>
+<li><p><strong>**kwargs</strong> (<em>kwargs</em>) – kwargs passed to <code class="code docutils literal notranslate"><span class="pre">matplotlib.axes.Axes.set_xlim()</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.PlotBase.savefig">
+<span class="sig-name descname"><span class="pre">savefig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transparent</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dpi</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.PlotBase.savefig" title="Permalink to this definition">#</a></dt>
+<dd><p>Save plot to disk.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>plot_name</strong> (<em>str</em>) – file name of the plot</p></li>
+<li><p><strong>transparent</strong> (<em>bool</em><em>, </em><em>optional</em>) – if plot transparent, by default True</p></li>
+<li><p><strong>dpi</strong> (<em>int</em><em>, </em><em>optional</em>) – dpi for plotting, by default 400</p></li>
+<li><p><strong>**kwargs</strong> (<em>kwargs</em>) – kwargs passed to <code class="code docutils literal notranslate"><span class="pre">matplotlib.figure.Figure.savefig()</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.PlotBase.tight_layout">
+<span class="sig-name descname"><span class="pre">tight_layout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.PlotBase.tight_layout" title="Permalink to this definition">#</a></dt>
+<dd><p>abstract function of matplotlib.figure.Figure.tight_layout</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>**kwargs</strong> (<em>kwargs</em>) – kwargs from <code class="code docutils literal notranslate"><span class="pre">matplotlib.figure.Figure.tight_layout()</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.PlotBase.atlasify">
+<span class="sig-name descname"><span class="pre">atlasify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_tag</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.PlotBase.atlasify" title="Permalink to this definition">#</a></dt>
+<dd><p>Apply ATLAS style to all axes using the atlasify package</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>use_tag</strong> (<em>bool</em><em>, </em><em>optional</em>) – If False, ATLAS style will be applied but no tag will be put on the plot.
+If True, the tag will be put on as well, by default True</p></li>
+<li><p><strong>force</strong> (<em>bool</em><em>, </em><em>optional</em>) – Force ATLAS style also if class variable is False, by default False</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.PlotBase.make_legend">
+<span class="sig-name descname"><span class="pre">make_legend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">handles</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax_mpl</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">matplotlib.axis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.PlotBase.make_legend" title="Permalink to this definition">#</a></dt>
+<dd><p>Drawing legend on axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>handles</strong> (<em>list</em>) – list of matplotlib.lines.Line2D object returned when plotting</p></li>
+<li><p><strong>ax_mpl</strong> (<em>axis</em>) – matplotlib.axis object where the legend should be plotted</p></li>
+<li><p><strong>labels</strong> (<em>list</em><em>, </em><em>optional</em>) – plot labels. If None, the labels are extracted from the <code class="code docutils literal notranslate"><span class="pre">handles</span></code>.
+By default None</p></li>
+<li><p><strong>**kwargs</strong> (<em>kwargs</em>) – kwargs which can be passed to matplotlib axis</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.PlotBase.set_ratio_label">
+<span class="sig-name descname"><span class="pre">set_ratio_label</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio_panel</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.PlotBase.set_ratio_label" title="Permalink to this definition">#</a></dt>
+<dd><p>Associate the rejection class to a ratio panel</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ratio_panel</strong> (<em>int</em>) – ratio panel either 1 or 2</p></li>
+<li><p><strong>label</strong> (<em>str</em>) – y-axis label of the ratio panel</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – if requested ratio panels and given ratio_panel do not match.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.PlotBase.initialise_plot">
+<span class="sig-name descname"><span class="pre">initialise_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.PlotBase.initialise_plot" title="Permalink to this definition">#</a></dt>
+<dd><p>Calls other methods which are usually used when plotting</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="puma.PlotLineObject">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">puma.</span></span><span class="sig-name descname"><span class="pre">PlotLineObject</span></span><a class="headerlink" href="#puma.PlotLineObject" title="Permalink to this definition">#</a></dt>
+<dd><p>Base data class defining properties of a plot object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>xmin</strong> (<em>float</em><em>, </em><em>optional</em>) – Minimum value of the x-axis, by default None</p></li>
+<li><p><strong>xmax</strong> (<em>float</em><em>, </em><em>optional</em>) – Maximum value of the x-axis, by default None</p></li>
+<li><p><strong>colour</strong> (<em>str</em><em>, </em><em>optional</em>) – colour of the object, by default None</p></li>
+<li><p><strong>label</strong> (<em>str</em><em>, </em><em>optional</em>) – label of object, by default None</p></li>
+<li><p><strong>linestyle</strong> (<em>str</em><em>, </em><em>optional</em>) – linestyle following numpy style, by default None</p></li>
+<li><p><strong>alpha</strong> (<em>float</em><em>, </em><em>optional</em>) – Value for visibility of the plot lines, by default None</p></li>
+<li><p><strong>marker</strong> (<em>str</em><em>, </em><em>optional</em>) – Marker that is used in the plot. For example an x.
+By default None</p></li>
+<li><p><strong>markersize</strong> (<em>int</em><em>, </em><em>optional</em>) – Size of the marker. By default None</p></li>
+<li><p><strong>markeredgewidth</strong> (<em>int</em><em>, </em><em>optional</em>) – Edge width of the marker. By default None</p></li>
+<li><p><strong>is_marker</strong> (<em>bool</em><em>, </em><em>optional</em>) – Bool, to give info about if this is a marker or a line.
+By default None</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="puma.PlotLineObject.xmin">
+<span class="sig-name descname"><span class="pre">xmin</span></span><em class="property"> <span class="pre">:float</span></em><a class="headerlink" href="#puma.PlotLineObject.xmin" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="puma.PlotLineObject.xmax">
+<span class="sig-name descname"><span class="pre">xmax</span></span><em class="property"> <span class="pre">:float</span></em><a class="headerlink" href="#puma.PlotLineObject.xmax" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="puma.PlotLineObject.colour">
+<span class="sig-name descname"><span class="pre">colour</span></span><em class="property"> <span class="pre">:str</span></em><a class="headerlink" href="#puma.PlotLineObject.colour" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="puma.PlotLineObject.label">
+<span class="sig-name descname"><span class="pre">label</span></span><em class="property"> <span class="pre">:str</span></em><a class="headerlink" href="#puma.PlotLineObject.label" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="puma.PlotLineObject.linestyle">
+<span class="sig-name descname"><span class="pre">linestyle</span></span><em class="property"> <span class="pre">:str</span></em><a class="headerlink" href="#puma.PlotLineObject.linestyle" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="puma.PlotLineObject.linewidth">
+<span class="sig-name descname"><span class="pre">linewidth</span></span><em class="property"> <span class="pre">:str</span></em><a class="headerlink" href="#puma.PlotLineObject.linewidth" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="puma.PlotLineObject.alpha">
+<span class="sig-name descname"><span class="pre">alpha</span></span><em class="property"> <span class="pre">:float</span></em><a class="headerlink" href="#puma.PlotLineObject.alpha" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="puma.PlotLineObject.marker">
+<span class="sig-name descname"><span class="pre">marker</span></span><em class="property"> <span class="pre">:str</span></em><a class="headerlink" href="#puma.PlotLineObject.marker" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="puma.PlotLineObject.markersize">
+<span class="sig-name descname"><span class="pre">markersize</span></span><em class="property"> <span class="pre">:int</span></em><a class="headerlink" href="#puma.PlotLineObject.markersize" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="puma.PlotLineObject.markeredgewidth">
+<span class="sig-name descname"><span class="pre">markeredgewidth</span></span><em class="property"> <span class="pre">:int</span></em><a class="headerlink" href="#puma.PlotLineObject.markeredgewidth" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="puma.PlotLineObject.is_marker">
+<span class="sig-name descname"><span class="pre">is_marker</span></span><em class="property"> <span class="pre">:bool</span></em><a class="headerlink" href="#puma.PlotLineObject.is_marker" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="puma.PlotObject">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">puma.</span></span><span class="sig-name descname"><span class="pre">PlotObject</span></span><a class="headerlink" href="#puma.PlotObject" title="Permalink to this definition">#</a></dt>
+<dd><p>Data base class defining properties of a plot object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>title</strong> (<em>str</em><em>, </em><em>optional</em>) – Title of the plot, by default “”</p></li>
+<li><p><strong>draw_errors</strong> (<em>bool</em><em>, </em><em>optional</em>) – Draw statistical uncertainty on the lines, by default True</p></li>
+<li><p><strong>xmin</strong> (<em>float</em><em>, </em><em>optional</em>) – Minimum value of the x-axis, by default None</p></li>
+<li><p><strong>xmax</strong> (<em>float</em><em>, </em><em>optional</em>) – Maximum value of the x-axis, by default None</p></li>
+<li><p><strong>ymin</strong> (<em>float</em><em>, </em><em>optional</em>) – Minimum value of the y-axis, by default None</p></li>
+<li><p><strong>ymax</strong> (<em>float</em><em>, </em><em>optional</em>) – Maximum value of the y-axis, by default None</p></li>
+<li><p><strong>ymin_ratio_1</strong> (<em>float</em><em>, </em><em>optional</em>) – Set the lower y limit of the first ratio subplot, by default None.</p></li>
+<li><p><strong>ymax_ratio_1</strong> (<em>float</em><em>, </em><em>optional</em>) – Set the upper y limit of the first ratio subplot, by default None.</p></li>
+<li><p><strong>ymin_ratio_2</strong> (<em>float</em><em>, </em><em>optional</em>) – Set the lower y limit of the second ratio subplot, by default None.</p></li>
+<li><p><strong>ymax_ratio_2</strong> (<em>float</em><em>, </em><em>optional</em>) – Set the upper y limit of the second ratio subplot, by default None.</p></li>
+<li><p><strong>y_scale</strong> (<em>float</em><em>, </em><em>optional</em>) – Scaling up the y axis, e.g. to fit the ATLAS Tag. Applied if ymax not defined,
+by default 1.3</p></li>
+<li><p><strong>logy</strong> (<em>bool</em><em>, </em><em>optional</em>) – Set log of y-axis of main panel, by default True</p></li>
+<li><p><strong>xlabel</strong> (<em>str</em><em>, </em><em>optional</em>) – Label of the x-axis, by default None</p></li>
+<li><p><strong>ylabel</strong> (<em>str</em><em>, </em><em>optional</em>) – Label of the y-axis, by default None</p></li>
+<li><p><strong>ylabel_ratio_1</strong> (<em>str</em><em>, </em><em>optional</em>) – Label of the y-axis in the first ratio plot, by default “Ratio”</p></li>
+<li><p><strong>ylabel_ratio_2</strong> (<em>str</em><em>, </em><em>optional</em>) – Label of the y-axis in the second ratio plot, by default “Ratio”</p></li>
+<li><p><strong>label_fontsize</strong> (<em>int</em><em>, </em><em>optional</em>) – Used fontsize in label, by default 12</p></li>
+<li><p><strong>fontsize</strong> (<em>int</em><em>, </em><em>optional</em>) – Used fontsize, by default 10</p></li>
+<li><p><strong>n_ratio_panels</strong> (<em>int</em><em>, </em><em>optional</em>) – Amount of ratio panels between 0 and 2, by default 0</p></li>
+<li><p><strong>vertical_split</strong> (<em>bool</em>) – Set to False if you would like to split the figure horizonally. If set to
+True the figure is split vertically (e.g for pie chart). By default False.</p></li>
+<li><p><strong>figsize</strong> (<em>(</em><em>float</em><em>, </em><em>float</em><em>)</em><em>, </em><em>optional</em>) – Tuple of figure size <code class="code docutils literal notranslate"><span class="pre">(width,</span> <span class="pre">height)</span></code> in inches, by default (8, 6)</p></li>
+<li><p><strong>dpi</strong> (<em>int</em><em>, </em><em>optional</em>) – dpi used for plotting, by default 400</p></li>
+<li><p><strong>grid</strong> (<em>bool</em><em>, </em><em>optional</em>) – Set the grid for the plots.</p></li>
+<li><p><strong>leg_fontsize</strong> (<em>int</em><em>, </em><em>optional</em>) – Fontsize of the legend, by default 10</p></li>
+<li><p><strong>leg_loc</strong> (<em>str</em><em>, </em><em>optional</em>) – Position of the legend in the plot, by default “upper right”</p></li>
+<li><p><strong>leg_ncol</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of legend columns, by default 1</p></li>
+<li><p><strong>apply_atlas_style</strong> (<em>bool</em><em>, </em><em>optional</em>) – Apply ATLAS style for matplotlib, by default True</p></li>
+<li><p><strong>use_atlas_tag</strong> (<em>bool</em><em>, </em><em>optional</em>) – Use the ATLAS Tag in the plots, by default True</p></li>
+<li><p><strong>atlas_first_tag</strong> (<em>str</em><em>, </em><em>optional</em>) – First row of the ATLAS tag (i.e. the first row is “ATLAS &lt;atlas_first_tag&gt;”),
+by default “Simulation Internal”</p></li>
+<li><p><strong>atlas_second_tag</strong> (<em>str</em><em>, </em><em>optional</em>) – Second row of the ATLAS tag, by default “”</p></li>
+<li><p><strong>atlas_fontsize</strong> (<em>float</em><em>, </em><em>optional</em>) – Fontsize of ATLAS label, by default 10</p></li>
+<li><p><strong>atlas_vertical_offset</strong> (<em>float</em><em>, </em><em>optional</em>) – Vertical offset of the ATLAS tag, by default 7</p></li>
+<li><p><strong>atlas_horizontal_offset</strong> (<em>float</em><em>, </em><em>optional</em>) – Horizontal offset of the ATLAS tag, by default 8</p></li>
+<li><p><strong>atlas_brand</strong> (<em>str</em><em>, </em><em>optional</em>) – <code class="code docutils literal notranslate"><span class="pre">brand</span></code> argument handed to atlasify. If you want to remove it just use an empty
+string or None, by default “ATLAS”</p></li>
+<li><p><strong>plotting_done</strong> (<em>bool</em>) – Bool that indicates if plotting is done. Only then <code class="code docutils literal notranslate"><span class="pre">atlasify()</span></code> can be called,
+by default False</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="puma.PlotObject.title">
+<span class="sig-name descname"><span class="pre">title</span></span><em class="property"> <span class="pre">:str</span> <span class="pre">=</span></em><a class="headerlink" href="#puma.PlotObject.title" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="puma.PlotObject.draw_errors">
+<span class="sig-name descname"><span class="pre">draw_errors</span></span><em class="property"> <span class="pre">:bool</span> <span class="pre">=</span> <span class="pre">True</span></em><a class="headerlink" href="#puma.PlotObject.draw_errors" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="puma.PlotObject.xmin">
+<span class="sig-name descname"><span class="pre">xmin</span></span><em class="property"> <span class="pre">:float</span></em><a class="headerlink" href="#puma.PlotObject.xmin" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="puma.PlotObject.xmax">
+<span class="sig-name descname"><span class="pre">xmax</span></span><em class="property"> <span class="pre">:float</span></em><a class="headerlink" href="#puma.PlotObject.xmax" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="puma.PlotObject.ymin">
+<span class="sig-name descname"><span class="pre">ymin</span></span><em class="property"> <span class="pre">:float</span></em><a class="headerlink" href="#puma.PlotObject.ymin" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="puma.PlotObject.ymax">
+<span class="sig-name descname"><span class="pre">ymax</span></span><em class="property"> <span class="pre">:float</span></em><a class="headerlink" href="#puma.PlotObject.ymax" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="puma.PlotObject.ymin_ratio_1">
+<span class="sig-name descname"><span class="pre">ymin_ratio_1</span></span><em class="property"> <span class="pre">:float</span></em><a class="headerlink" href="#puma.PlotObject.ymin_ratio_1" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="puma.PlotObject.ymax_ratio_1">
+<span class="sig-name descname"><span class="pre">ymax_ratio_1</span></span><em class="property"> <span class="pre">:float</span></em><a class="headerlink" href="#puma.PlotObject.ymax_ratio_1" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="puma.PlotObject.ymin_ratio_2">
+<span class="sig-name descname"><span class="pre">ymin_ratio_2</span></span><em class="property"> <span class="pre">:float</span></em><a class="headerlink" href="#puma.PlotObject.ymin_ratio_2" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="puma.PlotObject.ymax_ratio_2">
+<span class="sig-name descname"><span class="pre">ymax_ratio_2</span></span><em class="property"> <span class="pre">:float</span></em><a class="headerlink" href="#puma.PlotObject.ymax_ratio_2" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="puma.PlotObject.y_scale">
+<span class="sig-name descname"><span class="pre">y_scale</span></span><em class="property"> <span class="pre">:float</span> <span class="pre">=</span> <span class="pre">1.3</span></em><a class="headerlink" href="#puma.PlotObject.y_scale" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="puma.PlotObject.logy">
+<span class="sig-name descname"><span class="pre">logy</span></span><em class="property"> <span class="pre">:bool</span> <span class="pre">=</span> <span class="pre">True</span></em><a class="headerlink" href="#puma.PlotObject.logy" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="puma.PlotObject.xlabel">
+<span class="sig-name descname"><span class="pre">xlabel</span></span><em class="property"> <span class="pre">:str</span></em><a class="headerlink" href="#puma.PlotObject.xlabel" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="puma.PlotObject.ylabel">
+<span class="sig-name descname"><span class="pre">ylabel</span></span><em class="property"> <span class="pre">:str</span></em><a class="headerlink" href="#puma.PlotObject.ylabel" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="puma.PlotObject.ylabel_ratio_1">
+<span class="sig-name descname"><span class="pre">ylabel_ratio_1</span></span><em class="property"> <span class="pre">:str</span> <span class="pre">=</span> <span class="pre">Ratio</span></em><a class="headerlink" href="#puma.PlotObject.ylabel_ratio_1" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="puma.PlotObject.ylabel_ratio_2">
+<span class="sig-name descname"><span class="pre">ylabel_ratio_2</span></span><em class="property"> <span class="pre">:str</span> <span class="pre">=</span> <span class="pre">Ratio</span></em><a class="headerlink" href="#puma.PlotObject.ylabel_ratio_2" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="puma.PlotObject.label_fontsize">
+<span class="sig-name descname"><span class="pre">label_fontsize</span></span><em class="property"> <span class="pre">:int</span> <span class="pre">=</span> <span class="pre">12</span></em><a class="headerlink" href="#puma.PlotObject.label_fontsize" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="puma.PlotObject.fontsize">
+<span class="sig-name descname"><span class="pre">fontsize</span></span><em class="property"> <span class="pre">:int</span> <span class="pre">=</span> <span class="pre">10</span></em><a class="headerlink" href="#puma.PlotObject.fontsize" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="puma.PlotObject.n_ratio_panels">
+<span class="sig-name descname"><span class="pre">n_ratio_panels</span></span><em class="property"> <span class="pre">:int</span> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#puma.PlotObject.n_ratio_panels" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="puma.PlotObject.vertical_split">
+<span class="sig-name descname"><span class="pre">vertical_split</span></span><em class="property"> <span class="pre">:bool</span> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#puma.PlotObject.vertical_split" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="puma.PlotObject.figsize">
+<span class="sig-name descname"><span class="pre">figsize</span></span><em class="property"> <span class="pre">:tuple</span></em><a class="headerlink" href="#puma.PlotObject.figsize" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="puma.PlotObject.dpi">
+<span class="sig-name descname"><span class="pre">dpi</span></span><em class="property"> <span class="pre">:int</span> <span class="pre">=</span> <span class="pre">400</span></em><a class="headerlink" href="#puma.PlotObject.dpi" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="puma.PlotObject.grid">
+<span class="sig-name descname"><span class="pre">grid</span></span><em class="property"> <span class="pre">:bool</span> <span class="pre">=</span> <span class="pre">True</span></em><a class="headerlink" href="#puma.PlotObject.grid" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="puma.PlotObject.leg_fontsize">
+<span class="sig-name descname"><span class="pre">leg_fontsize</span></span><em class="property"> <span class="pre">:int</span></em><a class="headerlink" href="#puma.PlotObject.leg_fontsize" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="puma.PlotObject.leg_loc">
+<span class="sig-name descname"><span class="pre">leg_loc</span></span><em class="property"> <span class="pre">:str</span> <span class="pre">=</span> <span class="pre">upper</span> <span class="pre">right</span></em><a class="headerlink" href="#puma.PlotObject.leg_loc" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="puma.PlotObject.leg_ncol">
+<span class="sig-name descname"><span class="pre">leg_ncol</span></span><em class="property"> <span class="pre">:int</span> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#puma.PlotObject.leg_ncol" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="puma.PlotObject.apply_atlas_style">
+<span class="sig-name descname"><span class="pre">apply_atlas_style</span></span><em class="property"> <span class="pre">:bool</span> <span class="pre">=</span> <span class="pre">True</span></em><a class="headerlink" href="#puma.PlotObject.apply_atlas_style" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="puma.PlotObject.use_atlas_tag">
+<span class="sig-name descname"><span class="pre">use_atlas_tag</span></span><em class="property"> <span class="pre">:bool</span> <span class="pre">=</span> <span class="pre">True</span></em><a class="headerlink" href="#puma.PlotObject.use_atlas_tag" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="puma.PlotObject.atlas_first_tag">
+<span class="sig-name descname"><span class="pre">atlas_first_tag</span></span><em class="property"> <span class="pre">:str</span> <span class="pre">=</span> <span class="pre">Simulation</span> <span class="pre">Internal</span></em><a class="headerlink" href="#puma.PlotObject.atlas_first_tag" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="puma.PlotObject.atlas_second_tag">
+<span class="sig-name descname"><span class="pre">atlas_second_tag</span></span><em class="property"> <span class="pre">:str</span> <span class="pre">=</span></em><a class="headerlink" href="#puma.PlotObject.atlas_second_tag" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="puma.PlotObject.atlas_fontsize">
+<span class="sig-name descname"><span class="pre">atlas_fontsize</span></span><em class="property"> <span class="pre">:int</span></em><a class="headerlink" href="#puma.PlotObject.atlas_fontsize" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="puma.PlotObject.atlas_vertical_offset">
+<span class="sig-name descname"><span class="pre">atlas_vertical_offset</span></span><em class="property"> <span class="pre">:float</span> <span class="pre">=</span> <span class="pre">7</span></em><a class="headerlink" href="#puma.PlotObject.atlas_vertical_offset" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="puma.PlotObject.atlas_horizontal_offset">
+<span class="sig-name descname"><span class="pre">atlas_horizontal_offset</span></span><em class="property"> <span class="pre">:float</span> <span class="pre">=</span> <span class="pre">8</span></em><a class="headerlink" href="#puma.PlotObject.atlas_horizontal_offset" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="puma.PlotObject.atlas_brand">
+<span class="sig-name descname"><span class="pre">atlas_brand</span></span><em class="property"> <span class="pre">:str</span> <span class="pre">=</span> <span class="pre">ATLAS</span></em><a class="headerlink" href="#puma.PlotObject.atlas_brand" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="puma.PlotObject.plotting_done">
+<span class="sig-name descname"><span class="pre">plotting_done</span></span><em class="property"> <span class="pre">:bool</span> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#puma.PlotObject.plotting_done" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.PlotObject.__post_init__">
+<span class="sig-name descname"><span class="pre">__post_init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.PlotObject.__post_init__" title="Permalink to this definition">#</a></dt>
+<dd><p>Check for allowed values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – if n_ratio_panels not in [0, 1, 2]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.PlotObject.__check_figsize">
+<span class="sig-name descname"><span class="pre">__check_figsize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.PlotObject.__check_figsize" title="Permalink to this definition">#</a></dt>
+<dd><p>Check <code class="code docutils literal notranslate"><span class="pre">figsize</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – if shape of <code class="code docutils literal notranslate"><span class="pre">figsize</span></code> is not a tuple or list with length 2</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="puma.Roc">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">puma.</span></span><span class="sig-name descname"><span class="pre">Roc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sig_eff</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bkg_rej</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_test</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rej_class</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signal_class</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.Roc" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="plot_base/index.html#puma.plot_base.PlotLineObject" title="puma.plot_base.PlotLineObject"><code class="xref py py-obj docutils literal notranslate"><span class="pre">puma.plot_base.PlotLineObject</span></code></a></p>
+<p>ROC class storing info about curve and allows to calculate ratio w.r.t other roc.</p>
+<p>Initialise properties of roc curve object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sig_eff</strong> (<em>np.array</em>) – array of signal efficiencies</p></li>
+<li><p><strong>bkg_rej</strong> (<em>np.array</em>) – array of background rejection</p></li>
+<li><p><strong>n_test</strong> (<em>int</em>) – Number of events used to calculate the background efficiencies,
+by default None</p></li>
+<li><p><strong>signal_class</strong> (<em>str</em>) – Signal class, e.g. for b-tagging “bjets”, by default None</p></li>
+<li><p><strong>rej_class</strong> (<em>str</em>) – Rejection class, e.g. for b-tagging anc charm rejection “cjets”,
+by default None</p></li>
+<li><p><strong>key</strong> (<em>str</em>) – identifier for roc curve e.g. tagger, by default None</p></li>
+<li><p><strong>**kwargs</strong> (<em>kwargs</em>) – kwargs passed to <code class="code docutils literal notranslate"><span class="pre">PlotLineObject</span></code></p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – if <code class="code docutils literal notranslate"><span class="pre">sig_eff</span></code> and <code class="code docutils literal notranslate"><span class="pre">bkg_rej</span></code> have a different shape</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.Roc.binomial_error">
+<span class="sig-name descname"><span class="pre">binomial_error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_test</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#puma.Roc.binomial_error" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculate binomial error of roc curve.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>norm</strong> (<em>bool</em>) – if True calulate relative error, by default False</p></li>
+<li><p><strong>n_test</strong> (<em>int</em>) – Number of events used to calculate the background efficiencies,
+by default None</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>binomial error</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.array</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – if no <code class="code docutils literal notranslate"><span class="pre">n_test</span></code> was provided</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.Roc.divide">
+<span class="sig-name descname"><span class="pre">divide</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roc_comp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inverse</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.Roc.divide" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculate ratio between the roc curve and another roc.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>roc_comp</strong> (<em>roc class</em>) – second roc curve to calculate ratio with</p></li>
+<li><p><strong>inverse</strong> (<em>bool</em>) – if False the ratio is calculated <code class="code docutils literal notranslate"><span class="pre">this_roc</span> <span class="pre">/</span> <span class="pre">roc_comp</span></code>,
+if True the inverse is calculated</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>np.array</em> – signal efficiency used for the ratio calculation which is the overlapping
+interval of the two roc curves</p></li>
+<li><p><em>np.array</em> – ratio</p></li>
+<li><p><em>np.array or None</em> – ratio_err if <code class="code docutils literal notranslate"><span class="pre">n_test</span></code> was provided to class</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.Roc.fct_inter">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">fct_inter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.Roc.fct_inter" title="Permalink to this definition">#</a></dt>
+<dd><p>Interpolate the rejection function for better ratio calculation plotting etc.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>interpolation function</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>pchip</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.Roc.non_zero_mask">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">non_zero_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.Roc.non_zero_mask" title="Permalink to this definition">#</a></dt>
+<dd><p>Masking points where rejection is 0 and no signal efficiency change present</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>masked indices</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>numpy.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.Roc.non_zero">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">non_zero</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.Roc.non_zero" title="Permalink to this definition">#</a></dt>
+<dd><p>Abstraction of <code class="code docutils literal notranslate"><span class="pre">non_zero_mask</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><em>numpy.array</em> – masked signal efficiency</p></li>
+<li><p><em>numpy.array</em> – masked background rejection</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="puma.RocPlot">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">puma.</span></span><span class="sig-name descname"><span class="pre">RocPlot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.RocPlot" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="plot_base/index.html#puma.plot_base.PlotBase" title="puma.plot_base.PlotBase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">puma.plot_base.PlotBase</span></code></a></p>
+<p>Roc plot class</p>
+<p>roc plot properties</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>**kwargs</strong> (<em>kwargs</em>) – kwargs from <code class="code docutils literal notranslate"><span class="pre">plot_base</span></code></p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.RocPlot.add_roc">
+<span class="sig-name descname"><span class="pre">add_roc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roc_curve</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reference</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.RocPlot.add_roc" title="Permalink to this definition">#</a></dt>
+<dd><p>Adding roc object to figure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>roc_curve</strong> (<em>roc class</em>) – roc curve</p></li>
+<li><p><strong>key</strong> (<em>str</em><em>, </em><em>optional</em>) – unique identifier for roc, by default None</p></li>
+<li><p><strong>reference</strong> (<em>bool</em><em>, </em><em>optional</em>) – if roc is used as reference for ratio calculation, by default False</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>KeyError</strong> – if unique identifier key is used twice</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.RocPlot.set_roc_reference">
+<span class="sig-name descname"><span class="pre">set_roc_reference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rej_class</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.RocPlot.set_roc_reference" title="Permalink to this definition">#</a></dt>
+<dd><p>Setting the reference roc curves used in the ratios</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>str</em>) – unique identifier of roc object</p></li>
+<li><p><strong>rej_class</strong> (<em>str</em>) – rejection class encoded in roc curve</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – if more rejection classes are set than actual ratio panels available.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.RocPlot.set_leg_rej_labels">
+<span class="sig-name descname"><span class="pre">set_leg_rej_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rej_class</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.RocPlot.set_leg_rej_labels" title="Permalink to this definition">#</a></dt>
+<dd><p>Set legend label for rejection class</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rej_class</strong> (<em>str</em>) – rejection class</p></li>
+<li><p><strong>label</strong> (<em>str</em>) – label added in legend</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.RocPlot.set_ratio_class">
+<span class="sig-name descname"><span class="pre">set_ratio_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio_panel</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rej_class</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.RocPlot.set_ratio_class" title="Permalink to this definition">#</a></dt>
+<dd><p>Associate the rejection class to a ratio panel</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ratio_panel</strong> (<em>int</em>) – ratio panel either 1 or 2</p></li>
+<li><p><strong>rej_class</strong> (<em>str</em>) – rejeciton class associated to that panel</p></li>
+<li><p><strong>label</strong> (<em>str</em>) – y-axis label of the ratio panel</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – if requested ratio panels and given ratio_panel do not match.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.RocPlot.add_ratios">
+<span class="sig-name descname"><span class="pre">add_ratios</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.RocPlot.add_ratios" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculating ratios.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ValueError</strong> – if number of reference rocs and ratio panels don’t match</p></li>
+<li><p><strong>ValueError</strong> – if no ratio classes are set</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.RocPlot.get_xlim_auto">
+<span class="sig-name descname"><span class="pre">get_xlim_auto</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.RocPlot.get_xlim_auto" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns min and max efficiency values</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>min and max efficiency values</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.RocPlot.plot_ratios">
+<span class="sig-name descname"><span class="pre">plot_ratios</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">matplotlib.pyplot.axis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rej_class</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.RocPlot.plot_ratios" title="Permalink to this definition">#</a></dt>
+<dd><p>Plotting ratio curves</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>axis</strong> (<em>plt.axis</em>) – matplotlib axis object</p></li>
+<li><p><strong>rej_class</strong> (<em>str</em>) – rejection class</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.RocPlot.make_split_legend">
+<span class="sig-name descname"><span class="pre">make_split_legend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">handles</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.RocPlot.make_split_legend" title="Permalink to this definition">#</a></dt>
+<dd><p>Draw legend for the case of 2 ratios, splitting up legend into models and
+rejection class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>handles</strong> (<em>list</em>) – list of Line2D objects to extract info for legend</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – if not 2 ratios requested</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.RocPlot.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labelpad</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.RocPlot.draw" title="Permalink to this definition">#</a></dt>
+<dd><p>Draw plotting</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>labelpad</strong> (<em>int</em><em>, </em><em>optional</em>) – Spacing in points from the axes bounding box including
+ticks and tick labels, by default None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.RocPlot.plot_roc">
+<span class="sig-name descname"><span class="pre">plot_roc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">matplotlib.lines.Line2D</span></span></span><a class="headerlink" href="#puma.RocPlot.plot_roc" title="Permalink to this definition">#</a></dt>
+<dd><p>Plotting roc curves</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>**kwargs</strong> (<em>kwargs</em>) – kwargs passed to plt.axis.plot</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>matplotlib Line2D object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Line2D</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="puma.VarVsEff">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">puma.</span></span><span class="sig-name descname"><span class="pre">VarVsEff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_var_sig</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disc_sig</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_var_bkg</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disc_bkg</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">working_point</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disc_cut</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fixed_eff_bin</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.VarVsEff" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="plot_base/index.html#puma.plot_base.PlotLineObject" title="puma.plot_base.PlotLineObject"><code class="xref py py-obj docutils literal notranslate"><span class="pre">puma.plot_base.PlotLineObject</span></code></a></p>
+<p>var_vs_eff class storing info about curve and allows to calculate ratio w.r.t other
+efficiency plots.</p>
+<p>Initialise properties of roc curve object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x_var_sig</strong> (<em>np.ndarray</em>) – values for x-axis variable for signal</p></li>
+<li><p><strong>disc_sig</strong> (<em>np.ndarray</em>) – discriminant values for signal</p></li>
+<li><p><strong>x_var_bkg</strong> (<em>np.ndarray</em><em>, </em><em>optional</em>) – values for x-axis variable for background, by default None</p></li>
+<li><p><strong>disc_bkg</strong> (<em>np.ndarray</em><em>, </em><em>optional</em>) – discriminant values for background, by default None</p></li>
+<li><p><strong>bins</strong> (<em>int</em><em> or </em><em>sequence of scalars</em><em>, </em><em>optional</em>) – If bins is an int, it defines the number of equal-width bins in the
+given range (10, by default). If bins is a sequence, it defines a
+monotonically increasing array of bin edges, including the
+rightmost edge, allowing for non-uniform bin widths, by default 10</p></li>
+<li><p><strong>working_point</strong> (<em>float</em><em>, </em><em>optional</em>) – working point, by default None</p></li>
+<li><p><strong>disc_cut</strong> (<em>float</em><em> or  </em><em>sequence of floats</em><em>, </em><em>optional</em>) – cut value for discriminant, if it is a sequence it has to have the same
+length as number of bins, by default None</p></li>
+<li><p><strong>fixed_eff_bin</strong> (<em>bool</em><em>, </em><em>optional</em>) – if True and no <code class="code docutils literal notranslate"><span class="pre">disc_cut</span></code> is given the signal efficiency is held constant
+in each bin, by default False</p></li>
+<li><p><strong>key</strong> (<em>str</em><em>, </em><em>optional</em>) – <p>identifier for the curve e.g. tagger, by default None
+<a href="#id1"><span class="problematic" id="id2">**</span></a>kwargs : kwargs</p>
+<blockquote>
+<div><p>kwargs passed to <code class="code docutils literal notranslate"><span class="pre">PlotLineObject</span></code></p>
+</div></blockquote>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – if provided options are not compatible with each other</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.VarVsEff._set_bin_edges">
+<span class="sig-name descname"><span class="pre">_set_bin_edges</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bins</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.VarVsEff._set_bin_edges" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculate bin edges, centres and width and save them as class variables.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>bins</strong> (<em>int</em><em> or </em><em>sequence of scalars</em>) – If bins is an int, it defines the number of equal-width bins in the given
+range. If bins is a sequence, it defines a monotonically increasing array of
+bin edges, including the rightmost edge, allowing for non-uniform bin
+widths.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.VarVsEff._apply_binning">
+<span class="sig-name descname"><span class="pre">_apply_binning</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.VarVsEff._apply_binning" title="Permalink to this definition">#</a></dt>
+<dd><p>Get binned distributions for the signal and background.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.VarVsEff._get_disc_cuts">
+<span class="sig-name descname"><span class="pre">_get_disc_cuts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.VarVsEff._get_disc_cuts" title="Permalink to this definition">#</a></dt>
+<dd><p>Retrieve cut values on discriminant. If <code class="code docutils literal notranslate"><span class="pre">disc_cut</span></code> is not given, retrieve
+cut values from the working point.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.VarVsEff.efficiency">
+<span class="sig-name descname"><span class="pre">efficiency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arr</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cut</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.VarVsEff.efficiency" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculate efficiency and the associated error.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>arr</strong> (<em>np.ndarray</em>) – array with discriminants</p></li>
+<li><p><strong>cut</strong> (<em>float</em>) – cut value</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>float</em> – efficiency</p></li>
+<li><p><em>float</em> – efficiency error</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.VarVsEff.rejection">
+<span class="sig-name descname"><span class="pre">rejection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arr</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cut</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.VarVsEff.rejection" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculate rejection and the associated error.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>arr</strong> (<em>np.ndarray</em>) – array with discriminants</p></li>
+<li><p><strong>cut</strong> (<em>float</em>) – cut value</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>float</em> – rejection</p></li>
+<li><p><em>float</em> – rejection error</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.VarVsEff.sig_eff">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">sig_eff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.VarVsEff.sig_eff" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculate signal efficiency per bin.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><em>np.ndarray</em> – efficiency</p></li>
+<li><p><em>np.ndarray</em> – efficiency_error</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.VarVsEff.bkg_eff">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">bkg_eff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.VarVsEff.bkg_eff" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculate background efficiency per bin.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><em>np.ndarray</em> – efficiency</p></li>
+<li><p><em>np.ndarray</em> – efficiency_error</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.VarVsEff.sig_rej">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">sig_rej</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.VarVsEff.sig_rej" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculate signal rejection per bin.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><em>np.ndarray</em> – rejection</p></li>
+<li><p><em>np.ndarray</em> – rejection_error</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.VarVsEff.bkg_rej">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">bkg_rej</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.VarVsEff.bkg_rej" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculate background rejection per bin.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><em>np.ndarray</em> – rejection</p></li>
+<li><p><em>np.ndarray</em> – rejection_error</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.VarVsEff.__eq__">
+<span class="sig-name descname"><span class="pre">__eq__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.VarVsEff.__eq__" title="Permalink to this definition">#</a></dt>
+<dd><p>Return self==value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.VarVsEff.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inverse_cut</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.VarVsEff.get" title="Permalink to this definition">#</a></dt>
+<dd><p>Wrapper around rejection and efficiency functions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mode</strong> (<em>str</em>) – can be “sig_eff”, “bkg_eff”, “sig_rej”, “bkg_rej”</p></li>
+<li><p><strong>inverse_cut</strong> (<em>bool</em><em>, </em><em>optional</em>) – inverts the discriminant cut, which will yield the efficiency or rejection
+of the jets not passing the working point, by default False</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>np.ndarray</em> – rejection or efficiency depending on <code class="code docutils literal notranslate"><span class="pre">mode</span></code> value</p></li>
+<li><p><em>np.ndarray</em> – rejection or efficiency error depending on <code class="code docutils literal notranslate"><span class="pre">mode</span></code> value</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – if mode not supported</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.VarVsEff.divide">
+<span class="sig-name descname"><span class="pre">divide</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">other</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inverse</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inverse_cut</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.VarVsEff.divide" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculate ratio between two class objects.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>other</strong> (<em>var_vs_eff class</em>) – second var_vs_eff object to calculate ratio with</p></li>
+<li><p><strong>mode</strong> (<em>str</em>) – defines the mode which is used for the ratoi calculation, can be the
+following values: <code class="code docutils literal notranslate"><span class="pre">sig_eff</span></code>, <code class="code docutils literal notranslate"><span class="pre">bkg_eff</span></code>, <code class="code docutils literal notranslate"><span class="pre">sig_rej</span></code>, <code class="code docutils literal notranslate"><span class="pre">bkg_rej</span></code></p></li>
+<li><p><strong>inverse</strong> (<em>bool</em>) – if False the ratio is calculated <code class="code docutils literal notranslate"><span class="pre">this</span> <span class="pre">/</span> <span class="pre">other</span></code>,
+if True the inverse is calculated</p></li>
+<li><p><strong>inverse_cut</strong> (<em>bool</em>) – inverts the discriminant cut, which will yield the efficiency or rejection
+of the jets not passing the working point, by default False</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>np.ndarray</em> – ratio</p></li>
+<li><p><em>np.ndarray</em> – ratio error</p></li>
+<li><p><em>np.ndarray</em> – bin centres</p></li>
+<li><p><em>np.ndarray</em> – bin widths</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – if binning is not identical between 2 objects</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="puma.VarVsEffPlot">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">puma.</span></span><span class="sig-name descname"><span class="pre">VarVsEffPlot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.VarVsEffPlot" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="plot_base/index.html#puma.plot_base.PlotBase" title="puma.plot_base.PlotBase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">puma.plot_base.PlotBase</span></code></a></p>
+<p>var_vs_eff plot class</p>
+<p>var_vs_eff plot properties</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mode</strong> (<em>str</em>) – defines which quantity is plotted, the following options ar available:
+“sig_eff”, “bkg_eff”, “sig_rej” or “bkg_rej”</p></li>
+<li><p><strong>**kwargs</strong> (<em>kwargs</em>) – kwargs from <code class="code docutils literal notranslate"><span class="pre">plot_base</span></code></p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – if incompatible mode given or more than 1 ratio panel requested</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.VarVsEffPlot.add">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curve</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reference</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.VarVsEffPlot.add" title="Permalink to this definition">#</a></dt>
+<dd><p>Adding var_vs_eff object to figure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>curve</strong> (<em>var_vs_eff class</em>) – var_vs_eff curve</p></li>
+<li><p><strong>key</strong> (<em>str</em><em>, </em><em>optional</em>) – unique identifier for var_vs_eff, by default None</p></li>
+<li><p><strong>reference</strong> (<em>bool</em><em>, </em><em>optional</em>) – if var_vs_eff is used as reference for ratio calculation, by default False</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>KeyError</strong> – if unique identifier key is used twice</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.VarVsEffPlot.set_reference">
+<span class="sig-name descname"><span class="pre">set_reference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.VarVsEffPlot.set_reference" title="Permalink to this definition">#</a></dt>
+<dd><p>Setting the reference roc curves used in the ratios</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key</strong> (<em>str</em>) – unique identifier of roc object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.VarVsEffPlot.plot">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.VarVsEffPlot.plot" title="Permalink to this definition">#</a></dt>
+<dd><p>Plotting curves</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>**kwargs</strong> (<em>kwargs</em>) – <p>kwargs passed to plt.axis.errorbar</p>
+<p>Returns</p>
+</p></li>
+<li><p><strong>-------</strong> – </p></li>
+<li><p><strong>Line2D</strong> – matplotlib Line2D object</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.VarVsEffPlot.plot_ratios">
+<span class="sig-name descname"><span class="pre">plot_ratios</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.VarVsEffPlot.plot_ratios" title="Permalink to this definition">#</a></dt>
+<dd><p>Plotting ratio curves.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – if no reference curve is defined</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.VarVsEffPlot.set_grid">
+<span class="sig-name descname"><span class="pre">set_grid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.VarVsEffPlot.set_grid" title="Permalink to this definition">#</a></dt>
+<dd><p>Set gtid lines.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.VarVsEffPlot.set_inverse_cut">
+<span class="sig-name descname"><span class="pre">set_inverse_cut</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inverse_cut</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.VarVsEffPlot.set_inverse_cut" title="Permalink to this definition">#</a></dt>
+<dd><p>Invert the discriminant cut, which will yield the efficiency or rejection
+of the jets not passing the working point.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inverse_cut</strong> (<em>bool</em><em>, </em><em>optional</em>) – invert discriminant cut, by default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.VarVsEffPlot.draw_hline">
+<span class="sig-name descname"><span class="pre">draw_hline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_val</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.VarVsEffPlot.draw_hline" title="Permalink to this definition">#</a></dt>
+<dd><p>Draw hline in top plot panel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>y_val</strong> (<em>float</em>) – y value of the horizontal line</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="puma.VarVsEffPlot.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labelpad</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.VarVsEffPlot.draw" title="Permalink to this definition">#</a></dt>
+<dd><p>Draw figure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>labelpad</strong> (<em>int</em><em>, </em><em>optional</em>) – Spacing in points from the axes bounding box including
+ticks and tick labels, by default “ratio”</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+              </div>
+              
+              
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2022, puma developers.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>
