@@ -347,6 +347,16 @@ function checkPageExistsAndRedirect(event) {
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#puma.utils.get_dummy_2_taggers">
+       get_dummy_2_taggers
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#puma.utils.get_dummy_multiclass_scores">
+       get_dummy_multiclass_scores
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#puma.utils.logger">
        logger
       </a>
@@ -364,16 +374,6 @@ function checkPageExistsAndRedirect(event) {
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#puma.utils.get_good_pie_colours">
        get_good_pie_colours
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#puma.utils.get_dummy_multiclass_scores">
-       get_dummy_multiclass_scores
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#puma.utils.get_dummy_2_taggers">
-       get_dummy_2_taggers
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
@@ -434,6 +434,12 @@ function checkPageExistsAndRedirect(event) {
 <col style="width: 90%" />
 </colgroup>
 <tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#puma.utils.get_dummy_2_taggers" title="puma.utils.get_dummy_2_taggers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_dummy_2_taggers</span></code></a>(size: int = 10000, shuffle: bool = True, seed: int = 42, add_pt: bool = False)</p></td>
+<td><p>Wrapper function of <code class="code docutils literal notranslate"><span class="pre">get_dummy_multiclass_scores</span></code> to generate classifier output</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#puma.utils.get_dummy_multiclass_scores" title="puma.utils.get_dummy_multiclass_scores"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_dummy_multiclass_scores</span></code></a>(size: int = 10000, bjets_mean: float = 1.4, seed: int = 42)</p></td>
+<td><p>Generate dummy data representing output of 3 class classifier.</p></td>
+</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#puma.utils.set_log_level" title="puma.utils.set_log_level"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_log_level</span></code></a>(puma_logger, log_level: str)</p></td>
 <td><p>Setting log level.</p></td>
 </tr>
@@ -442,12 +448,6 @@ function checkPageExistsAndRedirect(event) {
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#puma.utils.get_good_pie_colours" title="puma.utils.get_good_pie_colours"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_good_pie_colours</span></code></a>(colour_scheme=None)</p></td>
 <td><p>Helper function to get good colours for a pie chart. You can</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#puma.utils.get_dummy_multiclass_scores" title="puma.utils.get_dummy_multiclass_scores"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_dummy_multiclass_scores</span></code></a>(size: int = 10000, bjets_mean: float = 1.4, seed: int = 42)</p></td>
-<td><p>Generate dummy data representing output of 3 class classifier.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#puma.utils.get_dummy_2_taggers" title="puma.utils.get_dummy_2_taggers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_dummy_2_taggers</span></code></a>(size: int = 10000, shuffle: bool = True, seed: int = 42, add_pt: bool = False)</p></td>
-<td><p>Wrapper function of <code class="code docutils literal notranslate"><span class="pre">get_dummy_multiclass_scores</span></code> to generate classifier output</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#puma.utils.get_good_colours" title="puma.utils.get_good_colours"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_good_colours</span></code></a>()</p></td>
 <td><p>List of colours adequate for plotting</p></td>
@@ -471,6 +471,57 @@ function checkPageExistsAndRedirect(event) {
 </tr>
 </tbody>
 </table>
+<dl class="py function">
+<dt class="sig sig-object py" id="puma.utils.get_dummy_2_taggers">
+<span class="sig-prename descclassname"><span class="pre">puma.utils.</span></span><span class="sig-name descname"><span class="pre">get_dummy_2_taggers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">10000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shuffle</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">42</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_pt</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.utils.get_dummy_2_taggers" title="Permalink to this definition">#</a></dt>
+<dd><p>Wrapper function of <code class="code docutils literal notranslate"><span class="pre">get_dummy_multiclass_scores</span></code> to generate classifier output
+for 2 taggers, in this case rnnip and dips as well as HadronConeExclTruthLabelID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>size</strong> (<em>int</em><em>, </em><em>optional</em>) – Size of dummy data, by default 10_000</p></li>
+<li><p><strong>shuffle</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True shuffles the dummy data, by default True</p></li>
+<li><p><strong>seed</strong> (<em>int</em><em>, </em><em>optional</em>) – Random seed for number generation (will count +10 for second tagger),
+by default 42</p></li>
+<li><p><strong>add_pt</strong> (<em>bool</em><em>, </em><em>optional</em>) – Specify if pt column should be added as well, by default False</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>df_gen</strong> – Dataframe with columns
+[HadronConeExclTruthLabelID, rnnip_pu, rnnip_pc, rnnip_pb, dips_pu, dips_pc,
+dips_pb]</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="puma.utils.get_dummy_multiclass_scores">
+<span class="sig-prename descclassname"><span class="pre">puma.utils.</span></span><span class="sig-name descname"><span class="pre">get_dummy_multiclass_scores</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">10000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bjets_mean</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1.4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">42</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.utils.get_dummy_multiclass_scores" title="Permalink to this definition">#</a></dt>
+<dd><p>Generate dummy data representing output of 3 class classifier.
+Adapted to light-, c- and b-jets and values of <code class="code docutils literal notranslate"><span class="pre">HadronConeExclTruthLabelID</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>size</strong> (<em>int</em><em>, </em><em>optional</em>) – Size of dummy data. For each of the 3 classes, the same amount of is produces,
+by default 10_000</p></li>
+<li><p><strong>bjets_mean</strong> (<em>float</em><em>, </em><em>optional</em>) – Mean value of the b-jets 3D gaussian, the more away from 0, the better the
+b-tagging performance, by default 1.4</p></li>
+<li><p><strong>seed</strong> (<em>int</em><em>, </em><em>optional</em>) – Random seed for number generation, by default 42</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>np.ndarray</em> – Output scores of the shape (size, 3)</p></li>
+<li><p><em>np.ndarray</em> – Labels of shape (size,). The order of the output is light-jets, c-jets, b-jets</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py data">
 <dt class="sig sig-object py" id="puma.utils.logger">
 <span class="sig-prename descclassname"><span class="pre">puma.utils.</span></span><span class="sig-name descname"><span class="pre">logger</span></span><a class="headerlink" href="#puma.utils.logger" title="Permalink to this definition">#</a></dt>
@@ -520,57 +571,6 @@ or blue, red, green or yellow to use a specific colour scheme</p>
 </dd>
 <dt class="field-even">Raises</dt>
 <dd class="field-even"><p><strong>KeyError</strong> – If colour_scheme is not in [“blue”, “red”, “green”, “yellow”, None]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="puma.utils.get_dummy_multiclass_scores">
-<span class="sig-prename descclassname"><span class="pre">puma.utils.</span></span><span class="sig-name descname"><span class="pre">get_dummy_multiclass_scores</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">10000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bjets_mean</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1.4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">42</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.utils.get_dummy_multiclass_scores" title="Permalink to this definition">#</a></dt>
-<dd><p>Generate dummy data representing output of 3 class classifier.
-Adapted to light-, c- and b-jets and values of <code class="code docutils literal notranslate"><span class="pre">HadronConeExclTruthLabelID</span></code>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>size</strong> (<em>int</em><em>, </em><em>optional</em>) – size of dummy data. For each of the 3 classes, the same amount of is produces,
-by default 10_000</p></li>
-<li><p><strong>bjets_mean</strong> (<em>float</em><em>, </em><em>optional</em>) – mean value of the b-jets 3D gaussian, the more away from 0, the better the
-b-tagging performance, by default 1.4</p></li>
-<li><p><strong>seed</strong> (<em>int</em><em>, </em><em>optional</em>) – random seed for number generation, by default 42</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p><em>np.ndarray</em> – output scores of the shape (size, 3)</p></li>
-<li><p><em>np.ndarray</em> – labels of shape (size,). The order of the output is light-jets, c-jets, b-jets</p></li>
-</ul>
-</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="puma.utils.get_dummy_2_taggers">
-<span class="sig-prename descclassname"><span class="pre">puma.utils.</span></span><span class="sig-name descname"><span class="pre">get_dummy_2_taggers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">10000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shuffle</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">42</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_pt</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#puma.utils.get_dummy_2_taggers" title="Permalink to this definition">#</a></dt>
-<dd><p>Wrapper function of <code class="code docutils literal notranslate"><span class="pre">get_dummy_multiclass_scores</span></code> to generate classifier output
-for 2 taggers, in this case rnnip and dips as well as HadronConeExclTruthLabelID.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>size</strong> (<em>int</em><em>, </em><em>optional</em>) – size of dummy data, by default 10_000</p></li>
-<li><p><strong>shuffle</strong> (<em>bool</em><em>, </em><em>optional</em>) – if True shuffles the dummy data, by default True</p></li>
-<li><p><strong>seed</strong> (<em>int</em><em>, </em><em>optional</em>) – random seed for number generation (will count +10 for second tagger),
-by default 42</p></li>
-<li><p><strong>add_pt</strong> (<em>bool</em><em>, </em><em>optional</em>) – specify if pt column should be added as well, by default False</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>pandas DataFrame with columns
-[HadronConeExclTruthLabelID, rnnip_pu, rnnip_pc, rnnip_pb, dips_pu, dips_pc,
-dips_pb]</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>pd.DataFrame</p>
 </dd>
 </dl>
 </dd></dl>
