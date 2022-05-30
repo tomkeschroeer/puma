@@ -1,0 +1,88 @@
+:py:mod:`puma.utils.histogram`
+==============================
+
+.. py:module:: puma.utils.histogram
+
+.. autoapi-nested-parse::
+
+   Helper function for histogram handling.
+
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   puma.utils.histogram.save_divide
+   puma.utils.histogram.hist_w_unc
+   puma.utils.histogram.hist_ratio
+
+
+
+.. py:function:: save_divide(numerator, denominator, default: float = 1.0)
+
+   Division using numpy divide function returning default value in cases where
+   denominator is 0.
+
+   :param numerator: Numerator in the ratio calculation.
+   :type numerator: array_like, int, float
+   :param denominator: Denominator in the ratio calculation.
+   :type denominator: array_like, int, float
+   :param default: Default value which is returned if denominator is 0.
+   :type default: float
+
+   :returns: **ratio**
+   :rtype: array_like, float
+
+
+.. py:function:: hist_w_unc(arr, bins, bins_range=None, normed: bool = True)
+
+   Computes histogram and the associated statistical uncertainty.
+
+   :param arr: Input data. The histogram is computed over the flattened array.
+   :type arr: array_like
+   :param bins: bins parameter from np.histogram
+   :type bins: int or sequence of scalars or str
+   :param bins_range: range parameter from np.histogram
+   :type bins_range: tuple, optional
+   :param normed: If True (default) the calculated histogram is normalised to an integral
+                  of 1.
+   :type normed: bool, optional
+
+   :returns: * **bin_edges** (*array of dtype float*) -- Return the bin edges (length(hist)+1)
+             * **hist** (*numpy array*) -- The values of the histogram. If normed is true (default), returns the
+               normed counts per bin
+             * **unc** (*numpy array*) -- Statistical uncertainty per bin.
+               If normed is true (default), returns the normed values.
+             * **band** (*numpy array*) -- lower uncertainty band location: hist - unc
+               If normed is true (default), returns the normed values.
+
+
+.. py:function:: hist_ratio(numerator, denominator, numerator_unc, denominator_unc, step: bool = True)
+
+   This method calculates the ratio of the given bincounts and
+   returns the input for a step function that plots the ratio.
+
+   :param numerator: Numerator in the ratio calculation.
+   :type numerator: array_like
+   :param denominator: Denominator in the ratio calculation.
+   :type denominator: array_like
+   :param numerator_unc: Uncertainty of the numerator.
+   :type numerator_unc: array_like
+   :param denominator_unc: Uncertainty of the denominator.
+   :type denominator_unc: array_like
+   :param step: if True duplicates first bin to match with step plotting function,
+                by default True
+   :type step: bool
+
+   :returns: * **step_ratio** (*array_like*) -- Ratio returning 1 in case the denominator is 0.
+             * **step_ratio_unc** (*array_like*) -- Stat. uncertainty of the step_ratio
+
+   :raises AssertionError: If inputs don't have the same shape.
+
+

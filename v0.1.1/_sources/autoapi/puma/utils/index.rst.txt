@@ -1,0 +1,141 @@
+:py:mod:`puma.utils`
+====================
+
+.. py:module:: puma.utils
+
+.. autoapi-nested-parse::
+
+   Module for usefule tools in puma.
+
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   generate/index.rst
+   histogram/index.rst
+   logging/index.rst
+
+
+Package Contents
+----------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   puma.utils.get_dummy_2_taggers
+   puma.utils.get_dummy_multiclass_scores
+   puma.utils.set_log_level
+   puma.utils.set_xaxis_ticklabels_invisible
+   puma.utils.get_good_pie_colours
+   puma.utils.get_good_colours
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   puma.utils.logger
+   puma.utils.global_config
+
+
+.. py:function:: get_dummy_2_taggers(size: int = 10000, shuffle: bool = True, seed: int = 42, add_pt: bool = False)
+
+   Wrapper function of `get_dummy_multiclass_scores` to generate classifier output
+   for 2 taggers, in this case rnnip and dips as well as HadronConeExclTruthLabelID.
+
+
+   :param size: Size of dummy data, by default 10_000
+   :type size: int, optional
+   :param shuffle: If True shuffles the dummy data, by default True
+   :type shuffle: bool, optional
+   :param seed: Random seed for number generation (will count +10 for second tagger),
+                by default 42
+   :type seed: int, optional
+   :param add_pt: Specify if pt column should be added as well, by default False
+   :type add_pt: bool, optional
+
+   :returns: **df_gen** -- Dataframe with columns
+             [HadronConeExclTruthLabelID, rnnip_pu, rnnip_pc, rnnip_pb, dips_pu, dips_pc,
+             dips_pb]
+   :rtype: pandas.DataFrame
+
+
+.. py:function:: get_dummy_multiclass_scores(size: int = 10000, bjets_mean: float = 1.4, seed: int = 42)
+
+   Generate dummy data representing output of 3 class classifier.
+   Adapted to light-, c- and b-jets and values of `HadronConeExclTruthLabelID`.
+
+   :param size: Size of dummy data. For each of the 3 classes, the same amount of is produces,
+                by default 10_000
+   :type size: int, optional
+   :param bjets_mean: Mean value of the b-jets 3D gaussian, the more away from 0, the better the
+                      b-tagging performance, by default 1.4
+   :type bjets_mean: float, optional
+   :param seed: Random seed for number generation, by default 42
+   :type seed: int, optional
+
+   :returns: * *np.ndarray* -- Output scores of the shape (size, 3)
+             * *np.ndarray* -- Labels of shape (size,). The order of the output is light-jets, c-jets, b-jets
+
+
+.. py:data:: logger
+   
+
+   
+
+.. py:function:: set_log_level(puma_logger, log_level: str)
+
+   Setting log level.
+
+   :param puma_logger: logger object
+   :type puma_logger: logger
+   :param log_level: Logging level corresponding CRITICAL, ERROR, WARNING, INFO, DEBUG, NOTSET
+   :type log_level: str
+
+
+.. py:function:: set_xaxis_ticklabels_invisible(ax)
+
+   Helper function to set the ticklabels of the xaxis invisible
+
+   :param ax: Axis you want to modify
+   :type ax: matplotlib.axes.Axes
+
+
+.. py:function:: get_good_pie_colours(colour_scheme=None)
+
+   Helper function to get good colours for a pie chart. You can
+   choose between a specific colour scheme or use the default colours
+   for a pie chart
+
+   :param colour_scheme: colour scheme for the pie chart. Can be None to use default colours
+                         or blue, red, green or yellow to use a specific colour scheme
+   :type colour_scheme: string, optional
+
+   :returns: returns a list of colours in the specified colour scheme
+   :rtype: list
+
+   :raises KeyError: If colour_scheme is not in ["blue", "red", "green", "yellow", None]
+
+
+.. py:function:: get_good_colours()
+
+   List of colours adequate for plotting
+
+   :returns: list with colours
+   :rtype: list
+
+
+.. py:data:: global_config
+   
+
+   
+

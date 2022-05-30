@@ -1,0 +1,280 @@
+:py:mod:`puma.var_vs_eff`
+=========================
+
+.. py:module:: puma.var_vs_eff
+
+.. autoapi-nested-parse::
+
+   Efficiency plots vs. specific variable.
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   puma.var_vs_eff.VarVsEff
+   puma.var_vs_eff.VarVsEffPlot
+
+
+
+
+.. py:class:: VarVsEff(x_var_sig: numpy.ndarray, disc_sig: numpy.ndarray, x_var_bkg: numpy.ndarray = None, disc_bkg: numpy.ndarray = None, bins=10, working_point: float = None, disc_cut=None, fixed_eff_bin: bool = False, key: str = None, **kwargs)
+
+   Bases: :py:obj:`puma.plot_base.PlotLineObject`
+
+   var_vs_eff class storing info about curve and allows to calculate ratio w.r.t other
+   efficiency plots.
+
+   Initialise properties of roc curve object.
+
+   :param x_var_sig: Values for x-axis variable for signal
+   :type x_var_sig: np.ndarray
+   :param disc_sig: Discriminant values for signal
+   :type disc_sig: np.ndarray
+   :param x_var_bkg: Values for x-axis variable for background, by default None
+   :type x_var_bkg: np.ndarray, optional
+   :param disc_bkg: Discriminant values for background, by default None
+   :type disc_bkg: np.ndarray, optional
+   :param bins: If bins is an int, it defines the number of equal-width bins in the
+                given range (10, by default). If bins is a sequence, it defines a
+                monotonically increasing array of bin edges, including the
+                rightmost edge, allowing for non-uniform bin widths, by default 10
+   :type bins: int or sequence of scalars, optional
+   :param working_point: Working point, by default None
+   :type working_point: float, optional
+   :param disc_cut: Cut value for discriminant, if it is a sequence it has to have the same
+                    length as number of bins, by default None
+   :type disc_cut: float or  sequence of floats, optional
+   :param fixed_eff_bin: If True and no `disc_cut` is given the signal efficiency is held constant
+                         in each bin, by default False
+   :type fixed_eff_bin: bool, optional
+   :param key: Identifier for the curve e.g. tagger, by default None
+   :type key: str, optional
+   :param \*\*kwargs: Keyword arguments passed to `PlotLineObject`
+   :type \*\*kwargs: kwargs
+
+   :raises ValueError: If provided options are not compatible with each other
+
+   .. py:method:: _set_bin_edges(self, bins)
+
+      Calculate bin edges, centres and width and save them as class variables.
+
+      :param bins: If bins is an int, it defines the number of equal-width bins in the given
+                   range. If bins is a sequence, it defines a monotonically increasing array of
+                   bin edges, including the rightmost edge, allowing for non-uniform bin
+                   widths.
+      :type bins: int or sequence of scalars
+
+
+   .. py:method:: _apply_binning(self)
+
+      Get binned distributions for the signal and background.
+
+
+   .. py:method:: _get_disc_cuts(self)
+
+      Retrieve cut values on discriminant. If `disc_cut` is not given, retrieve
+      cut values from the working point.
+
+
+   .. py:method:: efficiency(self, arr: numpy.ndarray, cut: float)
+
+      Calculate efficiency and the associated error.
+
+      :param arr: Array with discriminants
+      :type arr: np.ndarray
+      :param cut: Cut value
+      :type cut: float
+
+      :returns: * *float* -- Efficiency
+                * *float* -- Efficiency error
+
+
+   .. py:method:: rejection(self, arr: numpy.ndarray, cut: float)
+
+      Calculate rejection and the associated error.
+
+      :param arr: Array with discriminants
+      :type arr: np.ndarray
+      :param cut: Cut value
+      :type cut: float
+
+      :returns: * *float* -- Rejection
+                * *float* -- Rejection error
+
+
+   .. py:method:: sig_eff(self)
+      :property:
+
+      Calculate signal efficiency per bin.
+
+      :returns: * *np.ndarray* -- Efficiency
+                * *np.ndarray* -- Efficiency_error
+
+
+   .. py:method:: bkg_eff(self)
+      :property:
+
+      Calculate background efficiency per bin.
+
+      :returns: * *np.ndarray* -- Efficiency
+                * *np.ndarray* -- Efficiency_error
+
+
+   .. py:method:: sig_rej(self)
+      :property:
+
+      Calculate signal rejection per bin.
+
+      :returns: * *np.ndarray* -- Rejection
+                * *np.ndarray* -- Rejection_error
+
+
+   .. py:method:: bkg_rej(self)
+      :property:
+
+      Calculate background rejection per bin.
+
+      :returns: * *np.ndarray* -- Rejection
+                * *np.ndarray* -- Rejection_error
+
+
+   .. py:method:: __eq__(self, other)
+
+      Return self==value.
+
+
+   .. py:method:: get(self, mode: str, inverse_cut: bool = False)
+
+      Wrapper around rejection and efficiency functions.
+
+      :param mode: Can be "sig_eff", "bkg_eff", "sig_rej", "bkg_rej"
+      :type mode: str
+      :param inverse_cut: Inverts the discriminant cut, which will yield the efficiency or rejection
+                          of the jets not passing the working point, by default False
+      :type inverse_cut: bool, optional
+
+      :returns: * *np.ndarray* -- Rejection or efficiency depending on `mode` value
+                * *np.ndarray* -- Rejection or efficiency error depending on `mode` value
+
+      :raises ValueError: If mode not supported
+
+
+   .. py:method:: divide(self, other, mode: str, inverse: bool = False, inverse_cut: bool = False)
+
+      Calculate ratio between two class objects.
+
+      :param other: Second var_vs_eff object to calculate ratio with
+      :type other: var_vs_eff class
+      :param mode: Defines the mode which is used for the ratoi calculation, can be the
+                   following values: `sig_eff`, `bkg_eff`, `sig_rej`, `bkg_rej`
+      :type mode: str
+      :param inverse: If False the ratio is calculated `this / other`,
+                      if True the inverse is calculated
+      :type inverse: bool
+      :param inverse_cut: Inverts the discriminant cut, which will yield the efficiency or rejection
+                          of the jets not passing the working point, by default False
+      :type inverse_cut: bool
+
+      :returns: * *np.ndarray* -- Ratio
+                * *np.ndarray* -- Ratio error
+                * *np.ndarray* -- Bin centres
+                * *np.ndarray* -- Bin widths
+
+      :raises ValueError: If binning is not identical between 2 objects
+
+
+
+.. py:class:: VarVsEffPlot(mode, **kwargs)
+
+   Bases: :py:obj:`puma.plot_base.PlotBase`
+
+   var_vs_eff plot class
+
+   var_vs_eff plot properties
+
+   :param mode: Defines which quantity is plotted, the following options ar available:
+                "sig_eff", "bkg_eff", "sig_rej" or "bkg_rej"
+   :type mode: str
+   :param \*\*kwargs: Keyword arguments from `puma.PlotObject`
+   :type \*\*kwargs: kwargs
+
+   :raises ValueError: If incompatible mode given or more than 1 ratio panel requested
+
+   .. py:method:: add(self, curve: object, key: str = None, reference: bool = False)
+
+      Adding var_vs_eff object to figure.
+
+      :param curve: Var_vs_eff curve
+      :type curve: var_vs_eff class
+      :param key: Unique identifier for var_vs_eff, by default None
+      :type key: str, optional
+      :param reference: If var_vs_eff is used as reference for ratio calculation, by default False
+      :type reference: bool, optional
+
+      :raises KeyError: If unique identifier key is used twice
+
+
+   .. py:method:: set_reference(self, key: str)
+
+      Setting the reference roc curves used in the ratios
+
+      :param key: Unique identifier of roc object
+      :type key: str
+
+
+   .. py:method:: plot(self, **kwargs)
+
+      Plotting curves
+
+      :param \*\*kwargs: Keyword arguments passed to plt.axis.errorbar
+      :type \*\*kwargs: kwargs
+
+      :returns: matplotlib Line2D object
+      :rtype: Line2D
+
+
+   .. py:method:: plot_ratios(self)
+
+      Plotting ratio curves.
+
+      :raises ValueError: If no reference curve is defined
+
+
+   .. py:method:: set_grid(self)
+
+      Set gtid lines.
+
+
+   .. py:method:: set_inverse_cut(self, inverse_cut=True)
+
+      Invert the discriminant cut, which will yield the efficiency or rejection
+      of the jets not passing the working point.
+
+      :param inverse_cut: Invert discriminant cut, by default True
+      :type inverse_cut: bool, optional
+
+
+   .. py:method:: draw_hline(self, y_val: float)
+
+      Draw hline in top plot panel.
+
+      :param y_val: y value of the horizontal line
+      :type y_val: float
+
+
+   .. py:method:: draw(self, labelpad: int = None)
+
+      Draw figure.
+
+      :param labelpad: Spacing in points from the axes bounding box including
+                       ticks and tick labels, by default "ratio"
+      :type labelpad: int, optional
+
+
+

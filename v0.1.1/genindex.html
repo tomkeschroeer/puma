@@ -1,0 +1,1653 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Index &#8212; puma 0.1.1 documentation</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="#" />
+    <link rel="search" title="Search" href="search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+<a class="navbar-brand" href="index.html">
+<p class="title">puma</p>
+</a>
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="index.html">
+  Quickstart
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="examples/index.html">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="dev_guidelines/index.html">
+  Develop
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="autoapi/index.html">
+  API Reference
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <div class="dropdown" id="version_switcher">
+    <button type="button" class="btn btn-primary btn-sm navbar-btn dropdown-toggle" id="version_switcher_button" data-toggle="dropdown">
+        v0.1.1  <!-- this text may get changed later by javascript -->
+        <span class="caret"></span>
+    </button>
+    <div id="version_switcher_menu" class="dropdown-menu list-group-flush py-0" aria-labelledby="version_switcher_button">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+</div>
+
+<!-- NOTE: this JS must live here (not in our global JS file) because it relies
+     on being processed by Jinja before it is run (specifically for replacing
+     variables genindex and {'json_url': 'https://umami-hep.github.io/puma/main/_static/switcher.json', 'version_match': 'v0.1.1'}.
+-->
+
+<script type="text/javascript">
+// Check if corresponding page path exists in other version of docs
+// and, if so, go there instead of the homepage of the other docs version
+function checkPageExistsAndRedirect(event) {
+    const currentFilePath = "genindex.html",
+          tryUrl = event.target.getAttribute("href");
+    let otherDocsHomepage = tryUrl.replace(currentFilePath, "");
+    $.ajax({
+        type: 'HEAD',
+        url: tryUrl,
+        // if the page exists, go there
+        success: function() {
+            location.href = tryUrl;
+        }
+    }).fail(function() {
+        location.href = otherDocsHomepage;
+    });
+    // this prevents the browser from following the href of the clicked node
+    // (which is fine because this function takes care of redirecting)
+    return false;
+}
+
+// Populate the version switcher from the JSON config file
+(function () {
+    $.getJSON("https://umami-hep.github.io/puma/main/_static/switcher.json", function(data, textStatus, jqXHR) {
+        const currentFilePath = "genindex.html";
+        // create links to the corresponding page in the other docs versions
+        $.each(data, function(index, entry) {
+            // if no custom name specified (e.g., "latest"), use version string
+            if (!("name" in entry)) {
+                entry.name = entry.version;
+            }
+            // create the node
+            const node = document.createElement("a");
+            node.setAttribute("class", "list-group-item list-group-item-action py-1");
+            node.textContent = `${entry.name}`;
+            node.setAttribute("href", `${entry.url}${currentFilePath}`);
+            // on click, AJAX calls will check if the linked page exists before
+            // trying to redirect, and if not, will redirect to the homepage
+            // for that version of the docs.
+            node.onclick = checkPageExistsAndRedirect;
+            // Add dataset values for the version and name in case people want
+            // to apply CSS styling based on this information.
+            node.dataset["versionName"] = entry.name;
+            node.dataset["version"] = entry.version;
+
+            $("#version_switcher_menu").append(node);
+            // replace dropdown button text with the preferred display name of
+            // this version, rather than using sphinx's  variable.
+            // also highlight the dropdown entry for the currently-viewed
+            // version's entry
+            if (entry.version == "v0.1.1") {
+                node.classList.add("active");
+                let btn = document.getElementById("version_switcher_button");
+                btn.innerText = btn.dataset["activeVersionName"] = entry.name;
+                btn.dataset["activeVersion"] = entry.version;
+            }
+        });
+    });
+})();
+</script>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/umami-hep/puma" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar">
+              <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+  </div>
+</nav>
+              </div>
+              <div class="sidebar-end-items">
+              </div>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+
+<h1 id="index">Index</h1>
+
+<div class="genindex-jumpbox">
+ <a href="#_"><strong>_</strong></a>
+ | <a href="#A"><strong>A</strong></a>
+ | <a href="#B"><strong>B</strong></a>
+ | <a href="#C"><strong>C</strong></a>
+ | <a href="#D"><strong>D</strong></a>
+ | <a href="#E"><strong>E</strong></a>
+ | <a href="#F"><strong>F</strong></a>
+ | <a href="#G"><strong>G</strong></a>
+ | <a href="#H"><strong>H</strong></a>
+ | <a href="#I"><strong>I</strong></a>
+ | <a href="#L"><strong>L</strong></a>
+ | <a href="#M"><strong>M</strong></a>
+ | <a href="#N"><strong>N</strong></a>
+ | <a href="#P"><strong>P</strong></a>
+ | <a href="#R"><strong>R</strong></a>
+ | <a href="#S"><strong>S</strong></a>
+ | <a href="#T"><strong>T</strong></a>
+ | <a href="#U"><strong>U</strong></a>
+ | <a href="#V"><strong>V</strong></a>
+ | <a href="#X"><strong>X</strong></a>
+ | <a href="#Y"><strong>Y</strong></a>
+ 
+</div>
+<h2 id="_">_</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotObject.__check_figsize">__check_figsize() (puma.plot_base.PlotObject method)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotObject.__check_figsize">(puma.PlotObject method)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/var_vs_eff/index.html#puma.var_vs_eff.VarVsEff.__eq__">__eq__() (puma.var_vs_eff.VarVsEff method)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.VarVsEff.__eq__">(puma.VarVsEff method)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotObject.__post_init__">__post_init__() (puma.plot_base.PlotObject method)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotObject.__post_init__">(puma.PlotObject method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/puma/index.html#puma.__version__">__version__ (in module puma)</a>
+</li>
+      <li><a href="autoapi/puma/var_vs_eff/index.html#puma.var_vs_eff.VarVsEff._apply_binning">_apply_binning() (puma.var_vs_eff.VarVsEff method)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.VarVsEff._apply_binning">(puma.VarVsEff method)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/var_vs_eff/index.html#puma.var_vs_eff.VarVsEff._get_disc_cuts">_get_disc_cuts() (puma.var_vs_eff.VarVsEff method)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.VarVsEff._get_disc_cuts">(puma.VarVsEff method)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/var_vs_eff/index.html#puma.var_vs_eff.VarVsEff._set_bin_edges">_set_bin_edges() (puma.var_vs_eff.VarVsEff method)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.VarVsEff._set_bin_edges">(puma.VarVsEff method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="A">A</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/puma/fraction_scan/index.html#puma.fraction_scan.FractionScanPlot.add">add() (puma.fraction_scan.FractionScanPlot method)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.FractionScanPlot.add">(puma.FractionScanPlot method)</a>
+</li>
+        <li><a href="autoapi/puma/histogram/index.html#puma.histogram.HistogramPlot.add">(puma.histogram.HistogramPlot method)</a>
+</li>
+        <li><a href="autoapi/puma/index.html#puma.HistogramPlot.add">(puma.HistogramPlot method)</a>
+</li>
+        <li><a href="autoapi/puma/var_vs_eff/index.html#puma.var_vs_eff.VarVsEffPlot.add">(puma.var_vs_eff.VarVsEffPlot method)</a>
+</li>
+        <li><a href="autoapi/puma/index.html#puma.VarVsEffPlot.add">(puma.VarVsEffPlot method)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/histogram/index.html#puma.histogram.HistogramPlot.add_bin_width_to_ylabel">add_bin_width_to_ylabel() (puma.histogram.HistogramPlot method)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.HistogramPlot.add_bin_width_to_ylabel">(puma.HistogramPlot method)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/roc/index.html#puma.roc.RocPlot.add_ratios">add_ratios() (puma.roc.RocPlot method)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.RocPlot.add_ratios">(puma.RocPlot method)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/roc/index.html#puma.roc.RocPlot.add_roc">add_roc() (puma.roc.RocPlot method)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.RocPlot.add_roc">(puma.RocPlot method)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotLineObject.alpha">alpha (puma.plot_base.PlotLineObject attribute)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotLineObject.alpha">(puma.PlotLineObject attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotObject.apply_atlas_style">apply_atlas_style (puma.plot_base.PlotObject attribute)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotObject.apply_atlas_style">(puma.PlotObject attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotObject.atlas_brand">atlas_brand (puma.plot_base.PlotObject attribute)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotObject.atlas_brand">(puma.PlotObject attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotObject.atlas_first_tag">atlas_first_tag (puma.plot_base.PlotObject attribute)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotObject.atlas_first_tag">(puma.PlotObject attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotObject.atlas_fontsize">atlas_fontsize (puma.plot_base.PlotObject attribute)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotObject.atlas_fontsize">(puma.PlotObject attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotObject.atlas_horizontal_offset">atlas_horizontal_offset (puma.plot_base.PlotObject attribute)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotObject.atlas_horizontal_offset">(puma.PlotObject attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotObject.atlas_second_tag">atlas_second_tag (puma.plot_base.PlotObject attribute)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotObject.atlas_second_tag">(puma.PlotObject attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotObject.atlas_vertical_offset">atlas_vertical_offset (puma.plot_base.PlotObject attribute)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotObject.atlas_vertical_offset">(puma.PlotObject attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotBase.atlasify">atlasify() (puma.plot_base.PlotBase method)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotBase.atlasify">(puma.PlotBase method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="B">B</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/puma/index.html#puma.Roc.binomial_error">binomial_error() (puma.Roc method)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/roc/index.html#puma.roc.Roc.binomial_error">(puma.roc.Roc method)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/var_vs_eff/index.html#puma.var_vs_eff.VarVsEff.bkg_eff">bkg_eff() (puma.var_vs_eff.VarVsEff property)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.VarVsEff.bkg_eff">(puma.VarVsEff property)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/puma/var_vs_eff/index.html#puma.var_vs_eff.VarVsEff.bkg_rej">bkg_rej() (puma.var_vs_eff.VarVsEff property)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.VarVsEff.bkg_rej">(puma.VarVsEff property)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/utils/logging/index.html#puma.utils.logging.CustomFormatter.bold_red">bold_red (puma.utils.logging.CustomFormatter attribute)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="C">C</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/puma/metrics/index.html#puma.metrics.calc_eff">calc_eff() (in module puma.metrics)</a>
+</li>
+      <li><a href="autoapi/puma/metrics/index.html#puma.metrics.calc_rej">calc_rej() (in module puma.metrics)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotLineObject.colour">colour (puma.plot_base.PlotLineObject attribute)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotLineObject.colour">(puma.PlotLineObject attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/utils/logging/index.html#puma.utils.logging.CustomFormatter">CustomFormatter (class in puma.utils.logging)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="D">D</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/puma/utils/logging/index.html#puma.utils.logging.CustomFormatter.date_format">date_format (puma.utils.logging.CustomFormatter attribute)</a>
+</li>
+      <li><a href="autoapi/puma/utils/logging/index.html#puma.utils.logging.CustomFormatter.debugformat">debugformat (puma.utils.logging.CustomFormatter attribute)</a>
+</li>
+      <li><a href="autoapi/puma/index.html#puma.Histogram.divide">divide() (puma.Histogram method)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/histogram/index.html#puma.histogram.Histogram.divide">(puma.histogram.Histogram method)</a>
+</li>
+        <li><a href="autoapi/puma/index.html#puma.Roc.divide">(puma.Roc method)</a>
+</li>
+        <li><a href="autoapi/puma/roc/index.html#puma.roc.Roc.divide">(puma.roc.Roc method)</a>
+</li>
+        <li><a href="autoapi/puma/var_vs_eff/index.html#puma.var_vs_eff.VarVsEff.divide">(puma.var_vs_eff.VarVsEff method)</a>
+</li>
+        <li><a href="autoapi/puma/index.html#puma.VarVsEff.divide">(puma.VarVsEff method)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotObject.dpi">dpi (puma.plot_base.PlotObject attribute)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotObject.dpi">(puma.PlotObject attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/fraction_scan/index.html#puma.fraction_scan.FractionScanPlot.draw">draw() (puma.fraction_scan.FractionScanPlot method)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.FractionScanPlot.draw">(puma.FractionScanPlot method)</a>
+</li>
+        <li><a href="autoapi/puma/histogram/index.html#puma.histogram.HistogramPlot.draw">(puma.histogram.HistogramPlot method)</a>
+</li>
+        <li><a href="autoapi/puma/index.html#puma.HistogramPlot.draw">(puma.HistogramPlot method)</a>
+</li>
+        <li><a href="autoapi/puma/roc/index.html#puma.roc.RocPlot.draw">(puma.roc.RocPlot method)</a>
+</li>
+        <li><a href="autoapi/puma/index.html#puma.RocPlot.draw">(puma.RocPlot method)</a>
+</li>
+        <li><a href="autoapi/puma/var_vs_eff/index.html#puma.var_vs_eff.VarVsEffPlot.draw">(puma.var_vs_eff.VarVsEffPlot method)</a>
+</li>
+        <li><a href="autoapi/puma/index.html#puma.VarVsEffPlot.draw">(puma.VarVsEffPlot method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotObject.draw_errors">draw_errors (puma.plot_base.PlotObject attribute)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotObject.draw_errors">(puma.PlotObject attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/var_vs_eff/index.html#puma.var_vs_eff.VarVsEffPlot.draw_hline">draw_hline() (puma.var_vs_eff.VarVsEffPlot method)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.VarVsEffPlot.draw_hline">(puma.VarVsEffPlot method)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotBase.draw_vlines">draw_vlines() (puma.plot_base.PlotBase method)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotBase.draw_vlines">(puma.PlotBase method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="E">E</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/puma/metrics/index.html#puma.metrics.eff_err">eff_err() (in module puma.metrics)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_metrics/index.html#puma.tests.test_metrics.eff_err_TestCase">eff_err_TestCase (class in puma.tests.test_metrics)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/puma/var_vs_eff/index.html#puma.var_vs_eff.VarVsEff.efficiency">efficiency() (puma.var_vs_eff.VarVsEff method)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.VarVsEff.efficiency">(puma.VarVsEff method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="F">F</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/puma/index.html#puma.Roc.fct_inter">fct_inter() (puma.Roc property)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/roc/index.html#puma.roc.Roc.fct_inter">(puma.roc.Roc property)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotObject.figsize">figsize (puma.plot_base.PlotObject attribute)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotObject.figsize">(puma.PlotObject attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotObject.fontsize">fontsize (puma.plot_base.PlotObject attribute)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotObject.fontsize">(puma.PlotObject attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/puma/utils/logging/index.html#puma.utils.logging.CustomFormatter.format">format() (puma.utils.logging.CustomFormatter method)</a>
+</li>
+      <li><a href="autoapi/puma/utils/logging/index.html#puma.utils.logging.CustomFormatter.FORMATS">FORMATS (puma.utils.logging.CustomFormatter attribute)</a>
+</li>
+      <li><a href="autoapi/puma/index.html#puma.FractionScan">FractionScan (class in puma)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/fraction_scan/index.html#puma.fraction_scan.FractionScan">(class in puma.fraction_scan)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/index.html#puma.FractionScanPlot">FractionScanPlot (class in puma)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/fraction_scan/index.html#puma.fraction_scan.FractionScanPlot">(class in puma.fraction_scan)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/tests/test_fraction_scan/index.html#puma.tests.test_fraction_scan.FractionScanTestCase">FractionScanTestCase (class in puma.tests.test_fraction_scan)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="G">G</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/puma/var_vs_eff/index.html#puma.var_vs_eff.VarVsEff.get">get() (puma.var_vs_eff.VarVsEff method)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.VarVsEff.get">(puma.VarVsEff method)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/histogram/index.html#puma.histogram.HistogramPlot.get_discrete_values">get_discrete_values() (puma.histogram.HistogramPlot method)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.HistogramPlot.get_discrete_values">(puma.HistogramPlot method)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/utils/index.html#puma.utils.get_dummy_2_taggers">get_dummy_2_taggers() (in module puma.utils)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/utils/generate/index.html#puma.utils.generate.get_dummy_2_taggers">(in module puma.utils.generate)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/utils/index.html#puma.utils.get_dummy_multiclass_scores">get_dummy_multiclass_scores() (in module puma.utils)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/utils/generate/index.html#puma.utils.generate.get_dummy_multiclass_scores">(in module puma.utils.generate)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/utils/index.html#puma.utils.get_good_colours">get_good_colours() (in module puma.utils)</a>
+</li>
+      <li><a href="autoapi/puma/utils/index.html#puma.utils.get_good_pie_colours">get_good_pie_colours() (in module puma.utils)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/puma/utils/logging/index.html#puma.utils.logging.get_log_level">get_log_level() (in module puma.utils.logging)</a>
+</li>
+      <li><a href="autoapi/puma/tests/utils/test_logging/index.html#puma.tests.utils.test_logging.get_log_level_TestCase">get_log_level_TestCase (class in puma.tests.utils.test_logging)</a>
+</li>
+      <li><a href="autoapi/puma/histogram/index.html#puma.histogram.HistogramPlot.get_reference_histo">get_reference_histo() (puma.histogram.HistogramPlot method)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.HistogramPlot.get_reference_histo">(puma.HistogramPlot method)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/roc/index.html#puma.roc.RocPlot.get_xlim_auto">get_xlim_auto() (puma.roc.RocPlot method)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.RocPlot.get_xlim_auto">(puma.RocPlot method)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/utils/index.html#puma.utils.global_config">global_config (in module puma.utils)</a>
+</li>
+      <li><a href="autoapi/puma/utils/logging/index.html#puma.utils.logging.CustomFormatter.green">green (puma.utils.logging.CustomFormatter attribute)</a>
+</li>
+      <li><a href="autoapi/puma/utils/logging/index.html#puma.utils.logging.CustomFormatter.grey">grey (puma.utils.logging.CustomFormatter attribute)</a>
+</li>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotObject.grid">grid (puma.plot_base.PlotObject attribute)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotObject.grid">(puma.PlotObject attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="H">H</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/puma/utils/histogram/index.html#puma.utils.histogram.hist_ratio">hist_ratio() (in module puma.utils.histogram)</a>
+</li>
+      <li><a href="autoapi/puma/utils/histogram/index.html#puma.utils.histogram.hist_w_unc">hist_w_unc() (in module puma.utils.histogram)</a>
+</li>
+      <li><a href="autoapi/puma/index.html#puma.Histogram">Histogram (class in puma)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/histogram/index.html#puma.histogram.Histogram">(class in puma.histogram)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/puma/tests/test_histogram/index.html#puma.tests.test_histogram.histogram_plot_TestCase">histogram_plot_TestCase (class in puma.tests.test_histogram)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/tests/test_pie_chart/index.html#puma.tests.test_pie_chart.histogram_plot_TestCase">(class in puma.tests.test_pie_chart)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/tests/test_histogram/index.html#puma.tests.test_histogram.histogram_TestCase">histogram_TestCase (class in puma.tests.test_histogram)</a>
+</li>
+      <li><a href="autoapi/puma/index.html#puma.HistogramPlot">HistogramPlot (class in puma)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/histogram/index.html#puma.histogram.HistogramPlot">(class in puma.histogram)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="I">I</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotBase.initialise_figure">initialise_figure() (puma.plot_base.PlotBase method)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotBase.initialise_figure">(puma.PlotBase method)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/utils/logging/index.html#puma.utils.logging.initialise_logger">initialise_logger() (in module puma.utils.logging)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotBase.initialise_plot">initialise_plot() (puma.plot_base.PlotBase method)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotBase.initialise_plot">(puma.PlotBase method)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotLineObject.is_marker">is_marker (puma.plot_base.PlotLineObject attribute)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotLineObject.is_marker">(puma.PlotLineObject attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="L">L</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotLineObject.label">label (puma.plot_base.PlotLineObject attribute)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotLineObject.label">(puma.PlotLineObject attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotObject.label_fontsize">label_fontsize (puma.plot_base.PlotObject attribute)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotObject.label_fontsize">(puma.PlotObject attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotObject.leg_fontsize">leg_fontsize (puma.plot_base.PlotObject attribute)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotObject.leg_fontsize">(puma.PlotObject attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotObject.leg_loc">leg_loc (puma.plot_base.PlotObject attribute)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotObject.leg_loc">(puma.PlotObject attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotObject.leg_ncol">leg_ncol (puma.plot_base.PlotObject attribute)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotObject.leg_ncol">(puma.PlotObject attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.LINE_SPACING">LINE_SPACING (in module puma.plot_base)</a>
+</li>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotLineObject.linestyle">linestyle (puma.plot_base.PlotLineObject attribute)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotLineObject.linestyle">(puma.PlotLineObject attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotLineObject.linewidth">linewidth (puma.plot_base.PlotLineObject attribute)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotLineObject.linewidth">(puma.PlotLineObject attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/utils/index.html#puma.utils.logger">logger (in module puma.utils)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/utils/logging/index.html#puma.utils.logging.logger">(in module puma.utils.logging)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotObject.logx">logx (puma.plot_base.PlotObject attribute)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotObject.logx">(puma.PlotObject attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotObject.logy">logy (puma.plot_base.PlotObject attribute)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotObject.logy">(puma.PlotObject attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="M">M</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotBase.make_legend">make_legend() (puma.plot_base.PlotBase method)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotBase.make_legend">(puma.PlotBase method)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/roc/index.html#puma.roc.RocPlot.make_split_legend">make_split_legend() (puma.roc.RocPlot method)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.RocPlot.make_split_legend">(puma.RocPlot method)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotLineObject.marker">marker (puma.plot_base.PlotLineObject attribute)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotLineObject.marker">(puma.PlotLineObject attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotLineObject.markeredgewidth">markeredgewidth (puma.plot_base.PlotLineObject attribute)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotLineObject.markeredgewidth">(puma.PlotLineObject attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotLineObject.markersize">markersize (puma.plot_base.PlotLineObject attribute)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotLineObject.markersize">(puma.PlotLineObject attribute)</a>
+</li>
+      </ul></li>
+      <li>
+    module
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#module-puma">puma</a>
+</li>
+        <li><a href="autoapi/puma/fraction_scan/index.html#module-puma.fraction_scan">puma.fraction_scan</a>
+</li>
+        <li><a href="autoapi/puma/histogram/index.html#module-puma.histogram">puma.histogram</a>
+</li>
+        <li><a href="autoapi/puma/metrics/index.html#module-puma.metrics">puma.metrics</a>
+</li>
+        <li><a href="autoapi/puma/plot_base/index.html#module-puma.plot_base">puma.plot_base</a>
+</li>
+        <li><a href="autoapi/puma/roc/index.html#module-puma.roc">puma.roc</a>
+</li>
+        <li><a href="autoapi/puma/tests/test_fraction_scan/index.html#module-puma.tests.test_fraction_scan">puma.tests.test_fraction_scan</a>
+</li>
+        <li><a href="autoapi/puma/tests/test_histogram/index.html#module-puma.tests.test_histogram">puma.tests.test_histogram</a>
+</li>
+        <li><a href="autoapi/puma/tests/test_metrics/index.html#module-puma.tests.test_metrics">puma.tests.test_metrics</a>
+</li>
+        <li><a href="autoapi/puma/tests/test_pie_chart/index.html#module-puma.tests.test_pie_chart">puma.tests.test_pie_chart</a>
+</li>
+        <li><a href="autoapi/puma/tests/test_plot_base/index.html#module-puma.tests.test_plot_base">puma.tests.test_plot_base</a>
+</li>
+        <li><a href="autoapi/puma/tests/test_roc/index.html#module-puma.tests.test_roc">puma.tests.test_roc</a>
+</li>
+        <li><a href="autoapi/puma/tests/test_var_vs_eff/index.html#module-puma.tests.test_var_vs_eff">puma.tests.test_var_vs_eff</a>
+</li>
+        <li><a href="autoapi/puma/tests/utils/test_logging/index.html#module-puma.tests.utils.test_logging">puma.tests.utils.test_logging</a>
+</li>
+        <li><a href="autoapi/puma/utils/index.html#module-puma.utils">puma.utils</a>
+</li>
+        <li><a href="autoapi/puma/utils/generate/index.html#module-puma.utils.generate">puma.utils.generate</a>
+</li>
+        <li><a href="autoapi/puma/utils/histogram/index.html#module-puma.utils.histogram">puma.utils.histogram</a>
+</li>
+        <li><a href="autoapi/puma/utils/logging/index.html#module-puma.utils.logging">puma.utils.logging</a>
+</li>
+        <li><a href="autoapi/puma/var_vs_eff/index.html#module-puma.var_vs_eff">puma.var_vs_eff</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="N">N</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotObject.n_ratio_panels">n_ratio_panels (puma.plot_base.PlotObject attribute)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotObject.n_ratio_panels">(puma.PlotObject attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/index.html#puma.Roc.non_zero">non_zero() (puma.Roc property)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/roc/index.html#puma.roc.Roc.non_zero">(puma.roc.Roc property)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/puma/index.html#puma.Roc.non_zero_mask">non_zero_mask() (puma.Roc property)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/roc/index.html#puma.roc.Roc.non_zero_mask">(puma.roc.Roc property)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="P">P</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/puma/fraction_scan/index.html#puma.fraction_scan.FractionScanPlot.plot">plot() (puma.fraction_scan.FractionScanPlot method)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.FractionScanPlot.plot">(puma.FractionScanPlot method)</a>
+</li>
+        <li><a href="autoapi/puma/histogram/index.html#puma.histogram.HistogramPlot.plot">(puma.histogram.HistogramPlot method)</a>
+</li>
+        <li><a href="autoapi/puma/index.html#puma.HistogramPlot.plot">(puma.HistogramPlot method)</a>
+</li>
+        <li><a href="autoapi/puma/var_vs_eff/index.html#puma.var_vs_eff.VarVsEffPlot.plot">(puma.var_vs_eff.VarVsEffPlot method)</a>
+</li>
+        <li><a href="autoapi/puma/index.html#puma.VarVsEffPlot.plot">(puma.VarVsEffPlot method)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/tests/test_plot_base/index.html#puma.tests.test_plot_base.plot_object_TestCase">plot_object_TestCase (class in puma.tests.test_plot_base)</a>
+</li>
+      <li><a href="autoapi/puma/histogram/index.html#puma.histogram.HistogramPlot.plot_pie_chart">plot_pie_chart() (puma.histogram.HistogramPlot method)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.HistogramPlot.plot_pie_chart">(puma.HistogramPlot method)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/histogram/index.html#puma.histogram.HistogramPlot.plot_ratios">plot_ratios() (puma.histogram.HistogramPlot method)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.HistogramPlot.plot_ratios">(puma.HistogramPlot method)</a>
+</li>
+        <li><a href="autoapi/puma/roc/index.html#puma.roc.RocPlot.plot_ratios">(puma.roc.RocPlot method)</a>
+</li>
+        <li><a href="autoapi/puma/index.html#puma.RocPlot.plot_ratios">(puma.RocPlot method)</a>
+</li>
+        <li><a href="autoapi/puma/var_vs_eff/index.html#puma.var_vs_eff.VarVsEffPlot.plot_ratios">(puma.var_vs_eff.VarVsEffPlot method)</a>
+</li>
+        <li><a href="autoapi/puma/index.html#puma.VarVsEffPlot.plot_ratios">(puma.VarVsEffPlot method)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/roc/index.html#puma.roc.RocPlot.plot_roc">plot_roc() (puma.roc.RocPlot method)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.RocPlot.plot_roc">(puma.RocPlot method)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/index.html#puma.PlotBase">PlotBase (class in puma)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotBase">(class in puma.plot_base)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/index.html#puma.PlotLineObject">PlotLineObject (class in puma)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotLineObject">(class in puma.plot_base)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/index.html#puma.PlotObject">PlotObject (class in puma)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotObject">(class in puma.plot_base)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotObject.plotting_done">plotting_done (puma.plot_base.PlotObject attribute)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotObject.plotting_done">(puma.PlotObject attribute)</a>
+</li>
+      </ul></li>
+      <li>
+    puma
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#module-puma">module</a>
+</li>
+      </ul></li>
+      <li>
+    puma.fraction_scan
+
+      <ul>
+        <li><a href="autoapi/puma/fraction_scan/index.html#module-puma.fraction_scan">module</a>
+</li>
+      </ul></li>
+      <li>
+    puma.histogram
+
+      <ul>
+        <li><a href="autoapi/puma/histogram/index.html#module-puma.histogram">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    puma.metrics
+
+      <ul>
+        <li><a href="autoapi/puma/metrics/index.html#module-puma.metrics">module</a>
+</li>
+      </ul></li>
+      <li>
+    puma.plot_base
+
+      <ul>
+        <li><a href="autoapi/puma/plot_base/index.html#module-puma.plot_base">module</a>
+</li>
+      </ul></li>
+      <li>
+    puma.roc
+
+      <ul>
+        <li><a href="autoapi/puma/roc/index.html#module-puma.roc">module</a>
+</li>
+      </ul></li>
+      <li>
+    puma.tests.test_fraction_scan
+
+      <ul>
+        <li><a href="autoapi/puma/tests/test_fraction_scan/index.html#module-puma.tests.test_fraction_scan">module</a>
+</li>
+      </ul></li>
+      <li>
+    puma.tests.test_histogram
+
+      <ul>
+        <li><a href="autoapi/puma/tests/test_histogram/index.html#module-puma.tests.test_histogram">module</a>
+</li>
+      </ul></li>
+      <li>
+    puma.tests.test_metrics
+
+      <ul>
+        <li><a href="autoapi/puma/tests/test_metrics/index.html#module-puma.tests.test_metrics">module</a>
+</li>
+      </ul></li>
+      <li>
+    puma.tests.test_pie_chart
+
+      <ul>
+        <li><a href="autoapi/puma/tests/test_pie_chart/index.html#module-puma.tests.test_pie_chart">module</a>
+</li>
+      </ul></li>
+      <li>
+    puma.tests.test_plot_base
+
+      <ul>
+        <li><a href="autoapi/puma/tests/test_plot_base/index.html#module-puma.tests.test_plot_base">module</a>
+</li>
+      </ul></li>
+      <li>
+    puma.tests.test_roc
+
+      <ul>
+        <li><a href="autoapi/puma/tests/test_roc/index.html#module-puma.tests.test_roc">module</a>
+</li>
+      </ul></li>
+      <li>
+    puma.tests.test_var_vs_eff
+
+      <ul>
+        <li><a href="autoapi/puma/tests/test_var_vs_eff/index.html#module-puma.tests.test_var_vs_eff">module</a>
+</li>
+      </ul></li>
+      <li>
+    puma.tests.utils.test_logging
+
+      <ul>
+        <li><a href="autoapi/puma/tests/utils/test_logging/index.html#module-puma.tests.utils.test_logging">module</a>
+</li>
+      </ul></li>
+      <li>
+    puma.utils
+
+      <ul>
+        <li><a href="autoapi/puma/utils/index.html#module-puma.utils">module</a>
+</li>
+      </ul></li>
+      <li>
+    puma.utils.generate
+
+      <ul>
+        <li><a href="autoapi/puma/utils/generate/index.html#module-puma.utils.generate">module</a>
+</li>
+      </ul></li>
+      <li>
+    puma.utils.histogram
+
+      <ul>
+        <li><a href="autoapi/puma/utils/histogram/index.html#module-puma.utils.histogram">module</a>
+</li>
+      </ul></li>
+      <li>
+    puma.utils.logging
+
+      <ul>
+        <li><a href="autoapi/puma/utils/logging/index.html#module-puma.utils.logging">module</a>
+</li>
+      </ul></li>
+      <li>
+    puma.var_vs_eff
+
+      <ul>
+        <li><a href="autoapi/puma/var_vs_eff/index.html#module-puma.var_vs_eff">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="R">R</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/puma/utils/logging/index.html#puma.utils.logging.CustomFormatter.red">red (puma.utils.logging.CustomFormatter attribute)</a>
+</li>
+      <li><a href="autoapi/puma/metrics/index.html#puma.metrics.rej_err">rej_err() (in module puma.metrics)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_metrics/index.html#puma.tests.test_metrics.rej_err_TestCase">rej_err_TestCase (class in puma.tests.test_metrics)</a>
+</li>
+      <li><a href="autoapi/puma/var_vs_eff/index.html#puma.var_vs_eff.VarVsEff.rejection">rejection() (puma.var_vs_eff.VarVsEff method)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.VarVsEff.rejection">(puma.VarVsEff method)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/utils/logging/index.html#puma.utils.logging.CustomFormatter.reset">reset (puma.utils.logging.CustomFormatter attribute)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/puma/index.html#puma.Roc">Roc (class in puma)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/roc/index.html#puma.roc.Roc">(class in puma.roc)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/tests/test_roc/index.html#puma.tests.test_roc.roc_mask_TestCase">roc_mask_TestCase (class in puma.tests.test_roc)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_roc/index.html#puma.tests.test_roc.roc_output_TestCase">roc_output_TestCase (class in puma.tests.test_roc)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_roc/index.html#puma.tests.test_roc.roc_TestCase">roc_TestCase (class in puma.tests.test_roc)</a>
+</li>
+      <li><a href="autoapi/puma/index.html#puma.RocPlot">RocPlot (class in puma)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/roc/index.html#puma.roc.RocPlot">(class in puma.roc)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="S">S</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/puma/utils/histogram/index.html#puma.utils.histogram.save_divide">save_divide() (in module puma.utils.histogram)</a>
+</li>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotBase.savefig">savefig() (puma.plot_base.PlotBase method)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotBase.savefig">(puma.PlotBase method)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/var_vs_eff/index.html#puma.var_vs_eff.VarVsEffPlot.set_grid">set_grid() (puma.var_vs_eff.VarVsEffPlot method)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.VarVsEffPlot.set_grid">(puma.VarVsEffPlot method)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/var_vs_eff/index.html#puma.var_vs_eff.VarVsEffPlot.set_inverse_cut">set_inverse_cut() (puma.var_vs_eff.VarVsEffPlot method)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.VarVsEffPlot.set_inverse_cut">(puma.VarVsEffPlot method)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/roc/index.html#puma.roc.RocPlot.set_leg_rej_labels">set_leg_rej_labels() (puma.roc.RocPlot method)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.RocPlot.set_leg_rej_labels">(puma.RocPlot method)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotBase.set_log">set_log() (puma.plot_base.PlotBase method)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotBase.set_log">(puma.PlotBase method)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/utils/index.html#puma.utils.set_log_level">set_log_level() (in module puma.utils)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/utils/logging/index.html#puma.utils.logging.set_log_level">(in module puma.utils.logging)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/roc/index.html#puma.roc.RocPlot.set_ratio_class">set_ratio_class() (puma.roc.RocPlot method)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.RocPlot.set_ratio_class">(puma.RocPlot method)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotBase.set_ratio_label">set_ratio_label() (puma.plot_base.PlotBase method)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotBase.set_ratio_label">(puma.PlotBase method)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/histogram/index.html#puma.histogram.HistogramPlot.set_reference">set_reference() (puma.histogram.HistogramPlot method)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.HistogramPlot.set_reference">(puma.HistogramPlot method)</a>
+</li>
+        <li><a href="autoapi/puma/var_vs_eff/index.html#puma.var_vs_eff.VarVsEffPlot.set_reference">(puma.var_vs_eff.VarVsEffPlot method)</a>
+</li>
+        <li><a href="autoapi/puma/index.html#puma.VarVsEffPlot.set_reference">(puma.VarVsEffPlot method)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/roc/index.html#puma.roc.RocPlot.set_roc_reference">set_roc_reference() (puma.roc.RocPlot method)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.RocPlot.set_roc_reference">(puma.RocPlot method)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotBase.set_tick_params">set_tick_params() (puma.plot_base.PlotBase method)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotBase.set_tick_params">(puma.PlotBase method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotBase.set_title">set_title() (puma.plot_base.PlotBase method)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotBase.set_title">(puma.PlotBase method)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/utils/index.html#puma.utils.set_xaxis_ticklabels_invisible">set_xaxis_ticklabels_invisible() (in module puma.utils)</a>
+</li>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotBase.set_xlabel">set_xlabel() (puma.plot_base.PlotBase method)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotBase.set_xlabel">(puma.PlotBase method)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotBase.set_xlim">set_xlim() (puma.plot_base.PlotBase method)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotBase.set_xlim">(puma.PlotBase method)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotBase.set_y_lim">set_y_lim() (puma.plot_base.PlotBase method)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotBase.set_y_lim">(puma.PlotBase method)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotBase.set_ylabel">set_ylabel() (puma.plot_base.PlotBase method)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotBase.set_ylabel">(puma.PlotBase method)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/tests/test_fraction_scan/index.html#puma.tests.test_fraction_scan.TestCase.setUp">setUp() (puma.tests.test_fraction_scan.TestCase method)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/tests/test_histogram/index.html#puma.tests.test_histogram.histogram_plot_TestCase.setUp">(puma.tests.test_histogram.histogram_plot_TestCase method)</a>
+</li>
+        <li><a href="autoapi/puma/tests/test_metrics/index.html#puma.tests.test_metrics.rej_err_TestCase.setUp">(puma.tests.test_metrics.rej_err_TestCase method)</a>
+</li>
+        <li><a href="autoapi/puma/tests/test_pie_chart/index.html#puma.tests.test_pie_chart.histogram_plot_TestCase.setUp">(puma.tests.test_pie_chart.histogram_plot_TestCase method)</a>
+</li>
+        <li><a href="autoapi/puma/tests/test_roc/index.html#puma.tests.test_roc.roc_mask_TestCase.setUp">(puma.tests.test_roc.roc_mask_TestCase method)</a>
+</li>
+        <li><a href="autoapi/puma/tests/test_roc/index.html#puma.tests.test_roc.roc_output_TestCase.setUp">(puma.tests.test_roc.roc_output_TestCase method)</a>
+</li>
+        <li><a href="autoapi/puma/tests/test_roc/index.html#puma.tests.test_roc.roc_TestCase.setUp">(puma.tests.test_roc.roc_TestCase method)</a>
+</li>
+        <li><a href="autoapi/puma/tests/test_var_vs_eff/index.html#puma.tests.test_var_vs_eff.var_vs_eff_output_TestCase.setUp">(puma.tests.test_var_vs_eff.var_vs_eff_output_TestCase method)</a>
+</li>
+        <li><a href="autoapi/puma/tests/test_var_vs_eff/index.html#puma.tests.test_var_vs_eff.var_vs_eff_TestCase.setUp">(puma.tests.test_var_vs_eff.var_vs_eff_TestCase method)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/var_vs_eff/index.html#puma.var_vs_eff.VarVsEff.sig_eff">sig_eff() (puma.var_vs_eff.VarVsEff property)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.VarVsEff.sig_eff">(puma.VarVsEff property)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/var_vs_eff/index.html#puma.var_vs_eff.VarVsEff.sig_rej">sig_rej() (puma.var_vs_eff.VarVsEff property)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.VarVsEff.sig_rej">(puma.VarVsEff property)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="T">T</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/puma/tests/test_histogram/index.html#puma.tests.test_histogram.histogram_plot_TestCase.test_add_bin_width_to_ylabel">test_add_bin_width_to_ylabel() (puma.tests.test_histogram.histogram_plot_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_roc/index.html#puma.tests.test_roc.roc_TestCase.test_binomial_error_example">test_binomial_error_example() (puma.tests.test_roc.roc_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_roc/index.html#puma.tests.test_roc.roc_TestCase.test_binomial_error_example_norm">test_binomial_error_example_norm() (puma.tests.test_roc.roc_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_roc/index.html#puma.tests.test_roc.roc_TestCase.test_binomial_error_example_pass_ntest">test_binomial_error_example_pass_ntest() (puma.tests.test_roc.roc_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_roc/index.html#puma.tests.test_roc.roc_TestCase.test_binomial_error_no_ntest">test_binomial_error_no_ntest() (puma.tests.test_roc.roc_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_roc/index.html#puma.tests.test_roc.roc_TestCase.test_binomial_error_only_zeros">test_binomial_error_only_zeros() (puma.tests.test_roc.roc_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_histogram/index.html#puma.tests.test_histogram.histogram_plot_TestCase.test_custom_range">test_custom_range() (puma.tests.test_histogram.histogram_plot_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_fraction_scan/index.html#puma.tests.test_fraction_scan.FractionScanTestCase.test_different_input_shapes">test_different_input_shapes() (puma.tests.test_fraction_scan.FractionScanTestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_fraction_scan/index.html#puma.tests.test_fraction_scan.FractionScanTestCase.test_differnt_input_types">test_differnt_input_types() (puma.tests.test_fraction_scan.FractionScanTestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_histogram/index.html#puma.tests.test_histogram.histogram_TestCase.test_divide_after_plotting_no_norm">test_divide_after_plotting_no_norm() (puma.tests.test_histogram.histogram_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_histogram/index.html#puma.tests.test_histogram.histogram_TestCase.test_divide_after_plotting_norm">test_divide_after_plotting_norm() (puma.tests.test_histogram.histogram_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_histogram/index.html#puma.tests.test_histogram.histogram_TestCase.test_divide_before_plotting">test_divide_before_plotting() (puma.tests.test_histogram.histogram_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_histogram/index.html#puma.tests.test_histogram.histogram_plot_TestCase.test_draw_vlines_histogram">test_draw_vlines_histogram() (puma.tests.test_histogram.histogram_plot_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_histogram/index.html#puma.tests.test_histogram.histogram_plot_TestCase.test_draw_vlines_histogram_custom_labels">test_draw_vlines_histogram_custom_labels() (puma.tests.test_histogram.histogram_plot_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_histogram/index.html#puma.tests.test_histogram.histogram_plot_TestCase.test_draw_vlines_histogram_custom_yheight">test_draw_vlines_histogram_custom_yheight() (puma.tests.test_histogram.histogram_plot_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_histogram/index.html#puma.tests.test_histogram.histogram_plot_TestCase.test_draw_vlines_histogram_same_height">test_draw_vlines_histogram_same_height() (puma.tests.test_histogram.histogram_plot_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_histogram/index.html#puma.tests.test_histogram.histogram_TestCase.test_empty_histogram">test_empty_histogram() (puma.tests.test_histogram.histogram_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_fraction_scan/index.html#puma.tests.test_fraction_scan.FractionScanTestCase.test_empty_input">test_empty_input() (puma.tests.test_fraction_scan.FractionScanTestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_metrics/index.html#puma.tests.test_metrics.eff_err_TestCase.test_example_case">test_example_case() (puma.tests.test_metrics.eff_err_TestCase method)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/tests/test_metrics/index.html#puma.tests.test_metrics.rej_err_TestCase.test_example_case">(puma.tests.test_metrics.rej_err_TestCase method)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/tests/test_roc/index.html#puma.tests.test_roc.roc_TestCase.test_fct_inter">test_fct_inter() (puma.tests.test_roc.roc_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_fraction_scan/index.html#puma.tests.test_fraction_scan.TestCase.test_FractionScanPlot">test_FractionScanPlot() (puma.tests.test_fraction_scan.TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_fraction_scan/index.html#puma.tests.test_fraction_scan.TestCase.test_FractionScanPlot_double_key">test_FractionScanPlot_double_key() (puma.tests.test_fraction_scan.TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_fraction_scan/index.html#puma.tests.test_fraction_scan.TestCase.test_FractionScanPlot_grid_off">test_FractionScanPlot_grid_off() (puma.tests.test_fraction_scan.TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_fraction_scan/index.html#puma.tests.test_fraction_scan.TestCase.test_FractionScanPlot_no_param_set">test_FractionScanPlot_no_param_set() (puma.tests.test_fraction_scan.TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_histogram/index.html#puma.tests.test_histogram.histogram_plot_TestCase.test_invalid_bins_type">test_invalid_bins_type() (puma.tests.test_histogram.histogram_plot_TestCase method)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/tests/test_pie_chart/index.html#puma.tests.test_pie_chart.histogram_plot_TestCase.test_invalid_bins_type">(puma.tests.test_pie_chart.histogram_plot_TestCase method)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/tests/test_pie_chart/index.html#puma.tests.test_pie_chart.histogram_plot_TestCase.test_invalid_binwidth">test_invalid_binwidth() (puma.tests.test_pie_chart.histogram_plot_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_plot_base/index.html#puma.tests.test_plot_base.plot_object_TestCase.test_list_input_figsize">test_list_input_figsize() (puma.tests.test_plot_base.plot_object_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_plot_base/index.html#puma.tests.test_plot_base.plot_object_TestCase.test_list_input_wrong_len_figsize">test_list_input_wrong_len_figsize() (puma.tests.test_plot_base.plot_object_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_histogram/index.html#puma.tests.test_histogram.histogram_plot_TestCase.test_multiple_references_flavour">test_multiple_references_flavour() (puma.tests.test_histogram.histogram_plot_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_histogram/index.html#puma.tests.test_histogram.histogram_plot_TestCase.test_multiple_references_no_flavour">test_multiple_references_no_flavour() (puma.tests.test_histogram.histogram_plot_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_metrics/index.html#puma.tests.test_metrics.eff_err_TestCase.test_negative_N_case">test_negative_N_case() (puma.tests.test_metrics.eff_err_TestCase method)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/tests/test_metrics/index.html#puma.tests.test_metrics.rej_err_TestCase.test_negative_N_case">(puma.tests.test_metrics.rej_err_TestCase method)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/tests/test_pie_chart/index.html#puma.tests.test_pie_chart.histogram_plot_TestCase.test_no_discrete_vals">test_no_discrete_vals() (puma.tests.test_pie_chart.histogram_plot_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_pie_chart/index.html#puma.tests.test_pie_chart.histogram_plot_TestCase.test_no_vertical_split">test_no_vertical_split() (puma.tests.test_pie_chart.histogram_plot_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_roc/index.html#puma.tests.test_roc.roc_mask_TestCase.test_non_zero">test_non_zero() (puma.tests.test_roc.roc_mask_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_roc/index.html#puma.tests.test_roc.roc_mask_TestCase.test_non_zero_mask">test_non_zero_mask() (puma.tests.test_roc.roc_mask_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_roc/index.html#puma.tests.test_roc.roc_mask_TestCase.test_non_zero_mask_xmax">test_non_zero_mask_xmax() (puma.tests.test_roc.roc_mask_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_roc/index.html#puma.tests.test_roc.roc_mask_TestCase.test_non_zero_mask_xmin">test_non_zero_mask_xmin() (puma.tests.test_roc.roc_mask_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_roc/index.html#puma.tests.test_roc.roc_mask_TestCase.test_non_zero_mask_xmin_xmax">test_non_zero_mask_xmin_xmax() (puma.tests.test_roc.roc_mask_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_roc/index.html#puma.tests.test_roc.roc_mask_TestCase.test_non_zero_xmax">test_non_zero_xmax() (puma.tests.test_roc.roc_mask_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_roc/index.html#puma.tests.test_roc.roc_mask_TestCase.test_non_zero_xmin">test_non_zero_xmin() (puma.tests.test_roc.roc_mask_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_roc/index.html#puma.tests.test_roc.roc_mask_TestCase.test_non_zero_xmin_xmax">test_non_zero_xmin_xmax() (puma.tests.test_roc.roc_mask_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_metrics/index.html#puma.tests.test_metrics.eff_err_TestCase.test_one_case">test_one_case() (puma.tests.test_metrics.eff_err_TestCase method)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/tests/test_metrics/index.html#puma.tests.test_metrics.rej_err_TestCase.test_one_case">(puma.tests.test_metrics.rej_err_TestCase method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/puma/tests/test_plot_base/index.html#puma.tests.test_plot_base.plot_object_TestCase.test_only_one_input_figsize">test_only_one_input_figsize() (puma.tests.test_plot_base.plot_object_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_plot_base/index.html#puma.tests.test_plot_base.plot_object_TestCase.test_only_tuple_three_inputs_figsize">test_only_tuple_three_inputs_figsize() (puma.tests.test_plot_base.plot_object_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_histogram/index.html#puma.tests.test_histogram.histogram_plot_TestCase.test_output_different_range_histogram">test_output_different_range_histogram() (puma.tests.test_histogram.histogram_plot_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_histogram/index.html#puma.tests.test_histogram.histogram_plot_TestCase.test_output_empty_histogram_no_norm">test_output_empty_histogram_no_norm() (puma.tests.test_histogram.histogram_plot_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_histogram/index.html#puma.tests.test_histogram.histogram_plot_TestCase.test_output_empty_histogram_norm">test_output_empty_histogram_norm() (puma.tests.test_histogram.histogram_plot_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_roc/index.html#puma.tests.test_roc.roc_output_TestCase.test_output_four_curves_two_ratio">test_output_four_curves_two_ratio() (puma.tests.test_roc.roc_output_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_roc/index.html#puma.tests.test_roc.roc_output_TestCase.test_output_four_curves_two_ratio_uncertainties">test_output_four_curves_two_ratio_uncertainties() (puma.tests.test_roc.roc_output_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_var_vs_eff/index.html#puma.tests.test_var_vs_eff.var_vs_eff_output_TestCase.test_output_plot_fixed_eff_bin_bkg_efficiency">test_output_plot_fixed_eff_bin_bkg_efficiency() (puma.tests.test_var_vs_eff.var_vs_eff_output_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_var_vs_eff/index.html#puma.tests.test_var_vs_eff.var_vs_eff_output_TestCase.test_output_plot_fixed_eff_bin_bkg_rejection">test_output_plot_fixed_eff_bin_bkg_rejection() (puma.tests.test_var_vs_eff.var_vs_eff_output_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_histogram/index.html#puma.tests.test_histogram.histogram_plot_TestCase.test_output_ratio">test_output_ratio() (puma.tests.test_histogram.histogram_plot_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_roc/index.html#puma.tests.test_roc.roc_output_TestCase.test_output_two_curves_one_ratio">test_output_two_curves_one_ratio() (puma.tests.test_roc.roc_output_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_roc/index.html#puma.tests.test_roc.roc_output_TestCase.test_output_two_curves_one_ratio_uncertainties">test_output_two_curves_one_ratio_uncertainties() (puma.tests.test_roc.roc_output_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_pie_chart/index.html#puma.tests.test_pie_chart.histogram_plot_TestCase.test_plot_pie_chart">test_plot_pie_chart() (puma.tests.test_pie_chart.histogram_plot_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_roc/index.html#puma.tests.test_roc.roc_TestCase.test_ratio_different_sig_interval">test_ratio_different_sig_interval() (puma.tests.test_roc.roc_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_roc/index.html#puma.tests.test_roc.roc_TestCase.test_ratio_factor_two">test_ratio_factor_two() (puma.tests.test_roc.roc_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_roc/index.html#puma.tests.test_roc.roc_TestCase.test_ratio_factor_two_inverse">test_ratio_factor_two_inverse() (puma.tests.test_roc.roc_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_histogram/index.html#puma.tests.test_histogram.histogram_TestCase.test_ratio_same_histogram">test_ratio_same_histogram() (puma.tests.test_histogram.histogram_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_roc/index.html#puma.tests.test_roc.roc_TestCase.test_ratio_same_object">test_ratio_same_object() (puma.tests.test_roc.roc_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_roc/index.html#puma.tests.test_roc.roc_TestCase.test_roc_init">test_roc_init() (puma.tests.test_roc.roc_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_plot_base/index.html#puma.tests.test_plot_base.plot_object_TestCase.test_tuple_input_figsize">test_tuple_input_figsize() (puma.tests.test_plot_base.plot_object_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_var_vs_eff/index.html#puma.tests.test_var_vs_eff.var_vs_eff_TestCase.test_var_vs_eff_divide_different_binning">test_var_vs_eff_divide_different_binning() (puma.tests.test_var_vs_eff.var_vs_eff_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_var_vs_eff/index.html#puma.tests.test_var_vs_eff.var_vs_eff_TestCase.test_var_vs_eff_divide_same">test_var_vs_eff_divide_same() (puma.tests.test_var_vs_eff.var_vs_eff_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_var_vs_eff/index.html#puma.tests.test_var_vs_eff.var_vs_eff_TestCase.test_var_vs_eff_divide_wrong_mode">test_var_vs_eff_divide_wrong_mode() (puma.tests.test_var_vs_eff.var_vs_eff_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_var_vs_eff/index.html#puma.tests.test_var_vs_eff.var_vs_eff_TestCase.test_var_vs_eff_fixed_eff_sig_eff">test_var_vs_eff_fixed_eff_sig_eff() (puma.tests.test_var_vs_eff.var_vs_eff_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_var_vs_eff/index.html#puma.tests.test_var_vs_eff.var_vs_eff_TestCase.test_var_vs_eff_fixed_eff_sig_rej">test_var_vs_eff_fixed_eff_sig_rej() (puma.tests.test_var_vs_eff.var_vs_eff_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_var_vs_eff/index.html#puma.tests.test_var_vs_eff.var_vs_eff_TestCase.test_var_vs_eff_init_disc_cut_wp">test_var_vs_eff_init_disc_cut_wp() (puma.tests.test_var_vs_eff.var_vs_eff_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_var_vs_eff/index.html#puma.tests.test_var_vs_eff.var_vs_eff_TestCase.test_var_vs_eff_init_disc_cut_wrong_shape">test_var_vs_eff_init_disc_cut_wrong_shape() (puma.tests.test_var_vs_eff.var_vs_eff_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_var_vs_eff/index.html#puma.tests.test_var_vs_eff.var_vs_eff_TestCase.test_var_vs_eff_init_fixed_eff_disc_cut">test_var_vs_eff_init_fixed_eff_disc_cut() (puma.tests.test_var_vs_eff.var_vs_eff_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_var_vs_eff/index.html#puma.tests.test_var_vs_eff.var_vs_eff_TestCase.test_var_vs_eff_init_fixed_eff_no_wp">test_var_vs_eff_init_fixed_eff_no_wp() (puma.tests.test_var_vs_eff.var_vs_eff_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_var_vs_eff/index.html#puma.tests.test_var_vs_eff.var_vs_eff_TestCase.test_var_vs_eff_init_no_disc_cut_no_wp">test_var_vs_eff_init_no_disc_cut_no_wp() (puma.tests.test_var_vs_eff.var_vs_eff_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_var_vs_eff/index.html#puma.tests.test_var_vs_eff.var_vs_eff_TestCase.test_var_vs_eff_init_wrong_bkg_shape">test_var_vs_eff_init_wrong_bkg_shape() (puma.tests.test_var_vs_eff.var_vs_eff_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_var_vs_eff/index.html#puma.tests.test_var_vs_eff.var_vs_eff_TestCase.test_var_vs_eff_init_wrong_sig_shape">test_var_vs_eff_init_wrong_sig_shape() (puma.tests.test_var_vs_eff.var_vs_eff_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_var_vs_eff/index.html#puma.tests.test_var_vs_eff.var_vs_eff_TestCase.test_var_vs_eff_one_bin">test_var_vs_eff_one_bin() (puma.tests.test_var_vs_eff.var_vs_eff_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_var_vs_eff/index.html#puma.tests.test_var_vs_eff.var_vs_eff_TestCase.test_var_vs_eff_set_bin_edges">test_var_vs_eff_set_bin_edges() (puma.tests.test_var_vs_eff.var_vs_eff_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_var_vs_eff/index.html#puma.tests.test_var_vs_eff.var_vs_eff_TestCase.test_var_vs_eff_set_bin_edges_list">test_var_vs_eff_set_bin_edges_list() (puma.tests.test_var_vs_eff.var_vs_eff_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_var_vs_eff/index.html#puma.tests.test_var_vs_eff.var_vs_eff_TestCase.test_var_vs_eff_set_bin_edges_only_signal">test_var_vs_eff_set_bin_edges_only_signal() (puma.tests.test_var_vs_eff.var_vs_eff_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/utils/test_logging/index.html#puma.tests.utils.test_logging.get_log_level_TestCase.test_wrong_input">test_wrong_input() (puma.tests.utils.test_logging.get_log_level_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_fraction_scan/index.html#puma.tests.test_fraction_scan.FractionScanTestCase.test_wrong_inputs_xvalues">test_wrong_inputs_xvalues() (puma.tests.test_fraction_scan.FractionScanTestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_plot_base/index.html#puma.tests.test_plot_base.plot_object_TestCase.test_wrong_n_ratio_panels">test_wrong_n_ratio_panels() (puma.tests.test_plot_base.plot_object_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_metrics/index.html#puma.tests.test_metrics.eff_err_TestCase.test_zero_N_case">test_zero_N_case() (puma.tests.test_metrics.eff_err_TestCase method)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/tests/test_metrics/index.html#puma.tests.test_metrics.rej_err_TestCase.test_zero_N_case">(puma.tests.test_metrics.rej_err_TestCase method)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/tests/test_metrics/index.html#puma.tests.test_metrics.rej_err_TestCase.test_zero_x_case">test_zero_x_case() (puma.tests.test_metrics.rej_err_TestCase method)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_fraction_scan/index.html#puma.tests.test_fraction_scan.TestCase">TestCase (class in puma.tests.test_fraction_scan)</a>
+</li>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotBase.tight_layout">tight_layout() (puma.plot_base.PlotBase method)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotBase.tight_layout">(puma.PlotBase method)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotObject.title">title (puma.plot_base.PlotObject attribute)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotObject.title">(puma.PlotObject attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="U">U</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotObject.use_atlas_tag">use_atlas_tag (puma.plot_base.PlotObject attribute)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotObject.use_atlas_tag">(puma.PlotObject attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="V">V</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/puma/tests/test_var_vs_eff/index.html#puma.tests.test_var_vs_eff.var_vs_eff_output_TestCase">var_vs_eff_output_TestCase (class in puma.tests.test_var_vs_eff)</a>
+</li>
+      <li><a href="autoapi/puma/tests/test_var_vs_eff/index.html#puma.tests.test_var_vs_eff.var_vs_eff_TestCase">var_vs_eff_TestCase (class in puma.tests.test_var_vs_eff)</a>
+</li>
+      <li><a href="autoapi/puma/index.html#puma.VarVsEff">VarVsEff (class in puma)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/var_vs_eff/index.html#puma.var_vs_eff.VarVsEff">(class in puma.var_vs_eff)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/puma/index.html#puma.VarVsEffPlot">VarVsEffPlot (class in puma)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/var_vs_eff/index.html#puma.var_vs_eff.VarVsEffPlot">(class in puma.var_vs_eff)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotObject.vertical_split">vertical_split (puma.plot_base.PlotObject attribute)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotObject.vertical_split">(puma.PlotObject attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="X">X</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotObject.xlabel">xlabel (puma.plot_base.PlotObject attribute)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotObject.xlabel">(puma.PlotObject attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotLineObject.xmax">xmax (puma.plot_base.PlotLineObject attribute)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotObject.xmax">(puma.plot_base.PlotObject attribute)</a>
+</li>
+        <li><a href="autoapi/puma/index.html#puma.PlotLineObject.xmax">(puma.PlotLineObject attribute)</a>
+</li>
+        <li><a href="autoapi/puma/index.html#puma.PlotObject.xmax">(puma.PlotObject attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotLineObject.xmin">xmin (puma.plot_base.PlotLineObject attribute)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotObject.xmin">(puma.plot_base.PlotObject attribute)</a>
+</li>
+        <li><a href="autoapi/puma/index.html#puma.PlotLineObject.xmin">(puma.PlotLineObject attribute)</a>
+</li>
+        <li><a href="autoapi/puma/index.html#puma.PlotObject.xmin">(puma.PlotObject attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="Y">Y</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotObject.y_scale">y_scale (puma.plot_base.PlotObject attribute)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotObject.y_scale">(puma.PlotObject attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/utils/logging/index.html#puma.utils.logging.CustomFormatter.yellow">yellow (puma.utils.logging.CustomFormatter attribute)</a>
+</li>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotObject.ylabel">ylabel (puma.plot_base.PlotObject attribute)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotObject.ylabel">(puma.PlotObject attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotObject.ylabel_ratio_1">ylabel_ratio_1 (puma.plot_base.PlotObject attribute)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotObject.ylabel_ratio_1">(puma.PlotObject attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotObject.ylabel_ratio_2">ylabel_ratio_2 (puma.plot_base.PlotObject attribute)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotObject.ylabel_ratio_2">(puma.PlotObject attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotObject.ymax">ymax (puma.plot_base.PlotObject attribute)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotObject.ymax">(puma.PlotObject attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotObject.ymax_ratio_1">ymax_ratio_1 (puma.plot_base.PlotObject attribute)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotObject.ymax_ratio_1">(puma.PlotObject attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotObject.ymax_ratio_2">ymax_ratio_2 (puma.plot_base.PlotObject attribute)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotObject.ymax_ratio_2">(puma.PlotObject attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotObject.ymin">ymin (puma.plot_base.PlotObject attribute)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotObject.ymin">(puma.PlotObject attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotObject.ymin_ratio_1">ymin_ratio_1 (puma.plot_base.PlotObject attribute)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotObject.ymin_ratio_1">(puma.PlotObject attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/puma/plot_base/index.html#puma.plot_base.PlotObject.ymin_ratio_2">ymin_ratio_2 (puma.plot_base.PlotObject attribute)</a>
+
+      <ul>
+        <li><a href="autoapi/puma/index.html#puma.PlotObject.ymin_ratio_2">(puma.PlotObject attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+
+
+              </div>
+              
+              
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2022, puma developers.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

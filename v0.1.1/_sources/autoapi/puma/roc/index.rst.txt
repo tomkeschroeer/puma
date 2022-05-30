@@ -1,0 +1,231 @@
+:py:mod:`puma.roc`
+==================
+
+.. py:module:: puma.roc
+
+.. autoapi-nested-parse::
+
+   ROC curve functions.
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   puma.roc.Roc
+   puma.roc.RocPlot
+
+
+
+
+.. py:class:: Roc(sig_eff: numpy.ndarray, bkg_rej: numpy.ndarray, n_test: int = None, rej_class: str = None, signal_class: str = None, key: str = None, **kwargs)
+
+   Bases: :py:obj:`puma.plot_base.PlotLineObject`
+
+   ROC class storing info about curve and allows to calculate ratio w.r.t other roc.
+
+   Initialise properties of roc curve object.
+
+   :param sig_eff: Array of signal efficiencies
+   :type sig_eff: np.array
+   :param bkg_rej: Array of background rejection
+   :type bkg_rej: np.array
+   :param n_test: Number of events used to calculate the background efficiencies,
+                  by default None
+   :type n_test: int
+   :param signal_class: Signal class, e.g. for b-tagging "bjets", by default None
+   :type signal_class: str
+   :param rej_class: Rejection class, e.g. for b-tagging anc charm rejection "cjets",
+                     by default None
+   :type rej_class: str
+   :param key: Identifier for roc curve e.g. tagger, by default None
+   :type key: str
+   :param \*\*kwargs: Keyword arguments passed to `puma.PlotLineObject`
+   :type \*\*kwargs: kwargs
+
+   :raises ValueError: If `sig_eff` and `bkg_rej` have a different shape
+
+   .. py:method:: binomial_error(self, norm: bool = False, n_test: int = None) -> numpy.ndarray
+
+      Calculate binomial error of roc curve.
+
+      :param norm: If True calulate relative error, by default False
+      :type norm: bool
+      :param n_test: Number of events used to calculate the background efficiencies,
+                     by default None
+      :type n_test: int
+
+      :returns: Binomial error
+      :rtype: numpy.array
+
+      :raises ValueError: If no `n_test` was provided
+
+
+   .. py:method:: divide(self, roc_comp, inverse: bool = False)
+
+      Calculate ratio between the roc curve and another roc.
+
+      :param roc_comp: Second roc curve to calculate ratio with
+      :type roc_comp: roc class
+      :param inverse: If False the ratio is calculated `this_roc / roc_comp`,
+                      if True the inverse is calculated
+      :type inverse: bool
+
+      :returns: * *np.array* -- Signal efficiency used for the ratio calculation which is the overlapping
+                  interval of the two roc curves
+                * *np.array* -- Ratio
+                * *np.array or None* -- Ratio_err if `n_test` was provided to class
+
+
+   .. py:method:: fct_inter(self)
+      :property:
+
+      Interpolate the rejection function for better ratio calculation plotting etc.
+
+      :returns: Interpolation function
+      :rtype: pchip
+
+
+   .. py:method:: non_zero_mask(self)
+      :property:
+
+      Masking points where rejection is 0 and no signal efficiency change present
+
+      :returns: Masked indices
+      :rtype: numpy.array
+
+
+   .. py:method:: non_zero(self)
+      :property:
+
+      Abstraction of `non_zero_mask`
+
+      :returns: * *numpy.array* -- Masked signal efficiency
+                * *numpy.array* -- Masked background rejection
+
+
+
+.. py:class:: RocPlot(**kwargs)
+
+   Bases: :py:obj:`puma.plot_base.PlotBase`
+
+   ROC plot class
+
+   ROC plot properties
+
+   :param \*\*kwargs: Keyword arguments from `puma.PlotObject`
+   :type \*\*kwargs: kwargs
+
+   .. py:method:: add_roc(self, roc_curve: object, key: str = None, reference: bool = False)
+
+      Adding puma.Roc object to figure.
+
+      :param roc_curve: ROC curve
+      :type roc_curve: puma.Roc
+      :param key: Unique identifier for roc_curve, by default None
+      :type key: str, optional
+      :param reference: If roc is used as reference for ratio calculation, by default False
+      :type reference: bool, optional
+
+      :raises KeyError: If unique identifier key is used twice
+
+
+   .. py:method:: set_roc_reference(self, key: str, rej_class: str)
+
+      Setting the reference roc curves used in the ratios
+
+      :param key: Unique identifier of roc object
+      :type key: str
+      :param rej_class: Rejection class encoded in roc curve
+      :type rej_class: str
+
+      :raises ValueError: If more rejection classes are set than actual ratio panels available.
+
+
+   .. py:method:: set_leg_rej_labels(self, rej_class: str, label: str)
+
+      Set legend label for rejection class
+
+      :param rej_class: Rejection class
+      :type rej_class: str
+      :param label: Label added in legend
+      :type label: str
+
+
+   .. py:method:: set_ratio_class(self, ratio_panel: int, rej_class: str, label: str)
+
+      Associate the rejection class to a ratio panel
+
+      :param ratio_panel: Ratio panel either 1 or 2
+      :type ratio_panel: int
+      :param rej_class: Rejeciton class associated to that panel
+      :type rej_class: str
+      :param label: y-axis label of the ratio panel
+      :type label: str
+
+      :raises ValueError: if requested ratio panels and given ratio_panel do not match.
+
+
+   .. py:method:: add_ratios(self)
+
+      Calculating ratios.
+
+      :raises ValueError: If number of reference rocs and ratio panels don't match
+      :raises ValueError: If no ratio classes are set
+
+
+   .. py:method:: get_xlim_auto(self)
+
+      Returns min and max efficiency values
+
+      :returns: Min and max efficiency values
+      :rtype: float
+
+
+   .. py:method:: plot_ratios(self, axis: matplotlib.pyplot.axis, rej_class: str)
+
+      Plotting ratio curves
+
+      :param axis: matplotlib axis object
+      :type axis: plt.axis
+      :param rej_class: Rejection class
+      :type rej_class: str
+
+
+   .. py:method:: make_split_legend(self, handles)
+
+      Draw legend for the case of 2 ratios, splitting up legend into models and
+      rejection class.
+
+      :param handles: List of Line2D objects to extract info for legend
+      :type handles: list
+
+      :raises ValueError: If not 2 ratios requested
+
+
+   .. py:method:: draw(self, labelpad: int = None)
+
+      Draw plotting
+
+      :param labelpad: Spacing in points from the axes bounding box including
+                       ticks and tick labels, by default None
+      :type labelpad: int, optional
+
+
+   .. py:method:: plot_roc(self, **kwargs) -> matplotlib.lines.Line2D
+
+      Plotting roc curves
+
+      :param \*\*kwargs: Keyword arguments passed to plt.axis.plot
+      :type \*\*kwargs: kwargs
+
+      :returns: matplotlib Line2D object
+      :rtype: Line2D
+
+
+

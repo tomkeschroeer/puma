@@ -1,0 +1,93 @@
+:py:mod:`puma.fraction_scan`
+============================
+
+.. py:module:: puma.fraction_scan
+
+.. autoapi-nested-parse::
+
+   Fraction scan plot functions.
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   puma.fraction_scan.FractionScan
+   puma.fraction_scan.FractionScanPlot
+
+
+
+
+.. py:class:: FractionScan(x_values: numpy.ndarray, y_values: numpy.ndarray, **kwargs)
+
+   Bases: :py:obj:`puma.plot_base.PlotLineObject`
+
+   FractionScan class storing info about the fractions.
+
+   Initialise properties of fraction scan curve object.
+
+   :param x_values: x values of the fraction scan curve
+   :type x_values: np.ndarray
+   :param y_values: y values of the fraction scan curve
+   :type y_values: np.ndarray
+   :param \*\*kwargs: kwargs passed to `PlotLineObject`
+   :type \*\*kwargs: kwargs
+
+   :raises ValueError: If the dtype of x_values and y_values is different.
+   :raises ValueError: If provided x_values array is empty.
+   :raises ValueError: If provided y_values array is empty.
+   :raises ValueError: If provided x_values and y_values arrays have different
+       shapes.
+   :raises ValueError: If an invalid type was given for x_values
+
+
+.. py:class:: FractionScanPlot(logy: bool = False, **kwargs)
+
+   Bases: :py:obj:`puma.plot_base.PlotBase`
+
+   Fraction scan plot class
+
+   Fraction scan plot properties
+
+   :param logy: Decide, if the y-axis of the plot will be in log, by default False
+   :type logy: bool, optional
+   :param \*\*kwargs: Keyword arguments from `puma.PlotObject`
+   :type \*\*kwargs: kwargs
+
+   .. py:method:: add(self, curve: object, key: str = None, is_marker: bool = False)
+
+      Adding FractionScan object to figure.
+
+      :param curve: Fraction scan curve
+      :type curve: FractionScan
+      :param key: Unique identifier for FractionScan, by default None
+      :type key: str, optional
+      :param is_marker: Defines if this is a marker (True) or a line (False). By default False.
+      :type is_marker: bool, optional
+
+      :raises KeyError: If unique identifier key is used twice
+
+
+   .. py:method:: plot(self, **kwargs)
+
+      Plotting curves. Plot objects are drawn in the same order as they
+      were added to the plot.
+
+      :param \*\*kwargs: Keyword arguments passed to matplotlib.axes.Axes.plot()
+      :type \*\*kwargs: kwargs
+
+      :returns: matplotlib Line2D object
+      :rtype: Line2D
+
+
+   .. py:method:: draw(self)
+
+      Draw figure.
+
+
+

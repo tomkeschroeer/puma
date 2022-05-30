@@ -1,0 +1,472 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>ROC curves &#8212; puma 0.1.1 documentation</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Variable vs efficiency plots" href="var_vs_eff.html" />
+    <link rel="prev" title="Histograms" href="histograms.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+<a class="navbar-brand" href="../index.html">
+<p class="title">puma</p>
+</a>
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../index.html">
+  Quickstart
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="index.html">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../dev_guidelines/index.html">
+  Develop
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../autoapi/index.html">
+  API Reference
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <div class="dropdown" id="version_switcher">
+    <button type="button" class="btn btn-primary btn-sm navbar-btn dropdown-toggle" id="version_switcher_button" data-toggle="dropdown">
+        v0.1.1  <!-- this text may get changed later by javascript -->
+        <span class="caret"></span>
+    </button>
+    <div id="version_switcher_menu" class="dropdown-menu list-group-flush py-0" aria-labelledby="version_switcher_button">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+</div>
+
+<!-- NOTE: this JS must live here (not in our global JS file) because it relies
+     on being processed by Jinja before it is run (specifically for replacing
+     variables examples/rocs and {'json_url': 'https://umami-hep.github.io/puma/main/_static/switcher.json', 'version_match': 'v0.1.1'}.
+-->
+
+<script type="text/javascript">
+// Check if corresponding page path exists in other version of docs
+// and, if so, go there instead of the homepage of the other docs version
+function checkPageExistsAndRedirect(event) {
+    const currentFilePath = "examples/rocs.html",
+          tryUrl = event.target.getAttribute("href");
+    let otherDocsHomepage = tryUrl.replace(currentFilePath, "");
+    $.ajax({
+        type: 'HEAD',
+        url: tryUrl,
+        // if the page exists, go there
+        success: function() {
+            location.href = tryUrl;
+        }
+    }).fail(function() {
+        location.href = otherDocsHomepage;
+    });
+    // this prevents the browser from following the href of the clicked node
+    // (which is fine because this function takes care of redirecting)
+    return false;
+}
+
+// Populate the version switcher from the JSON config file
+(function () {
+    $.getJSON("https://umami-hep.github.io/puma/main/_static/switcher.json", function(data, textStatus, jqXHR) {
+        const currentFilePath = "examples/rocs.html";
+        // create links to the corresponding page in the other docs versions
+        $.each(data, function(index, entry) {
+            // if no custom name specified (e.g., "latest"), use version string
+            if (!("name" in entry)) {
+                entry.name = entry.version;
+            }
+            // create the node
+            const node = document.createElement("a");
+            node.setAttribute("class", "list-group-item list-group-item-action py-1");
+            node.textContent = `${entry.name}`;
+            node.setAttribute("href", `${entry.url}${currentFilePath}`);
+            // on click, AJAX calls will check if the linked page exists before
+            // trying to redirect, and if not, will redirect to the homepage
+            // for that version of the docs.
+            node.onclick = checkPageExistsAndRedirect;
+            // Add dataset values for the version and name in case people want
+            // to apply CSS styling based on this information.
+            node.dataset["versionName"] = entry.name;
+            node.dataset["version"] = entry.version;
+
+            $("#version_switcher_menu").append(node);
+            // replace dropdown button text with the preferred display name of
+            // this version, rather than using sphinx's  variable.
+            // also highlight the dropdown entry for the currently-viewed
+            // version's entry
+            if (entry.version == "v0.1.1") {
+                node.classList.add("active");
+                let btn = document.getElementById("version_switcher_button");
+                btn.innerText = btn.dataset["activeVersionName"] = entry.name;
+                btn.dataset["activeVersion"] = entry.version;
+            }
+        });
+    });
+})();
+</script>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/umami-hep/puma" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar">
+              <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="dummy_data.html">
+   Dummy Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="histograms.html">
+   Histograms
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   ROC curves
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="var_vs_eff.html">
+   Variable vs efficiency plots
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="fraction_scan.html">
+   Fraction Scan Plots
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pie_charts.html">
+   Pie charts
+  </a>
+ </li>
+</ul>
+
+  </div>
+</nav>
+              </div>
+              <div class="sidebar-end-items">
+              </div>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+
+<nav id="bd-toc-nav">
+    
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <section id="roc-curves">
+<h1>ROC curves<a class="headerlink" href="#roc-curves" title="Permalink to this headline">#</a></h1>
+<p>In the following a small example how to plot a roc curve with the <code class="docutils literal notranslate"><span class="pre">puma</span></code> API.</p>
+<p>To set up the inputs for the plots, have a look <a class="reference internal" href="index.html"><span class="doc std std-doc">here</span></a>.</p>
+<p>Then we can start the actual plotting part:</p>
+<img src=https://github.com/umami-hep/puma/raw/examples-material/roc.png width=500>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Produce roc curves from tagger output and labels.&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">puma</span> <span class="kn">import</span> <span class="n">Roc</span><span class="p">,</span> <span class="n">RocPlot</span>
+<span class="kn">from</span> <span class="nn">puma.metrics</span> <span class="kn">import</span> <span class="n">calc_rej</span>
+<span class="kn">from</span> <span class="nn">puma.utils</span> <span class="kn">import</span> <span class="n">get_dummy_2_taggers</span><span class="p">,</span> <span class="n">logger</span>
+
+<span class="c1"># The line below generates dummy data which is similar to a NN output</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">get_dummy_2_taggers</span><span class="p">()</span>
+
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;caclulate tagger discriminants&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># define a small function to calculate discriminant</span>
+<span class="k">def</span> <span class="nf">disc_fct</span><span class="p">(</span><span class="n">arr</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">f_c</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.018</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Tagger discriminant</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    arr : numpy.ndarray</span>
+<span class="sd">        array with with shape (, 3)</span>
+<span class="sd">    f_c : float, optional</span>
+<span class="sd">        f_c value in the discriminant (weight for c-jets rejection)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    np.ndarray</span>
+<span class="sd">        Array with the discriminant values inside.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># you can adapt this for your needs</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="n">f_c</span> <span class="o">*</span> <span class="n">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">f_c</span><span class="p">)</span> <span class="o">*</span> <span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+
+
+<span class="c1"># you can also use a lambda function</span>
+<span class="c1"># discs_rnnip = np.apply_along_axis(</span>
+<span class="c1">#     lambda a: np.log(a[2] / (0.018 * a[1] + 0.92 * a[0])),</span>
+<span class="c1">#     1,</span>
+<span class="c1">#     df[[&quot;rnnip_pu&quot;, &quot;rnnip_pc&quot;, &quot;rnnip_pb&quot;]].values,</span>
+<span class="c1"># )</span>
+
+<span class="c1"># calculate discriminant</span>
+<span class="n">discs_rnnip</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">apply_along_axis</span><span class="p">(</span>
+    <span class="n">disc_fct</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;rnnip_pu&quot;</span><span class="p">,</span> <span class="s2">&quot;rnnip_pc&quot;</span><span class="p">,</span> <span class="s2">&quot;rnnip_pb&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
+<span class="p">)</span>
+<span class="n">discs_dips</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">apply_along_axis</span><span class="p">(</span>
+    <span class="n">disc_fct</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;dips_pu&quot;</span><span class="p">,</span> <span class="s2">&quot;dips_pc&quot;</span><span class="p">,</span> <span class="s2">&quot;dips_pb&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
+<span class="p">)</span>
+<span class="c1"># defining target efficiency</span>
+<span class="n">sig_eff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.49</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="c1"># defining boolean arrays to select the different flavour classes</span>
+<span class="n">is_light</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;HadronConeExclTruthLabelID&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="n">is_c</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;HadronConeExclTruthLabelID&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">4</span>
+<span class="n">is_b</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;HadronConeExclTruthLabelID&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">5</span>
+
+<span class="n">n_jets_light</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">is_light</span><span class="p">)</span>
+<span class="n">n_jets_c</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">is_c</span><span class="p">)</span>
+
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Calculate rejection&quot;</span><span class="p">)</span>
+<span class="n">rnnip_ujets_rej</span> <span class="o">=</span> <span class="n">calc_rej</span><span class="p">(</span><span class="n">discs_rnnip</span><span class="p">[</span><span class="n">is_b</span><span class="p">],</span> <span class="n">discs_rnnip</span><span class="p">[</span><span class="n">is_light</span><span class="p">],</span> <span class="n">sig_eff</span><span class="p">)</span>
+<span class="n">rnnip_cjets_rej</span> <span class="o">=</span> <span class="n">calc_rej</span><span class="p">(</span><span class="n">discs_rnnip</span><span class="p">[</span><span class="n">is_b</span><span class="p">],</span> <span class="n">discs_rnnip</span><span class="p">[</span><span class="n">is_c</span><span class="p">],</span> <span class="n">sig_eff</span><span class="p">)</span>
+<span class="n">dips_ujets_rej</span> <span class="o">=</span> <span class="n">calc_rej</span><span class="p">(</span><span class="n">discs_dips</span><span class="p">[</span><span class="n">is_b</span><span class="p">],</span> <span class="n">discs_dips</span><span class="p">[</span><span class="n">is_light</span><span class="p">],</span> <span class="n">sig_eff</span><span class="p">)</span>
+<span class="n">dips_cjets_rej</span> <span class="o">=</span> <span class="n">calc_rej</span><span class="p">(</span><span class="n">discs_dips</span><span class="p">[</span><span class="n">is_b</span><span class="p">],</span> <span class="n">discs_dips</span><span class="p">[</span><span class="n">is_c</span><span class="p">],</span> <span class="n">sig_eff</span><span class="p">)</span>
+
+<span class="c1"># Alternatively you can simply use a results file with the rejection values</span>
+<span class="c1"># logger.info(&quot;read h5&quot;)</span>
+<span class="c1"># df = pd.read_hdf(&quot;results-rej_per_eff-1_new.h5&quot;, &quot;ttbar&quot;)</span>
+<span class="c1"># print(df.columns.values)</span>
+<span class="c1"># sig_eff = df[&quot;effs&quot;]</span>
+<span class="c1"># rnnip_ujets_rej = df[&quot;rnnip_ujets_rej&quot;]</span>
+<span class="c1"># rnnip_cjets_rej = df[&quot;rnnip_cjets_rej&quot;]</span>
+<span class="c1"># dips_ujets_rej = df[&quot;dips_ujets_rej&quot;]</span>
+<span class="c1"># dips_cjets_rej = df[&quot;dips_cjets_rej&quot;]</span>
+<span class="c1"># n_test = 10_000</span>
+
+<span class="c1"># here the plotting of the roc starts</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Plotting ROC curves.&quot;</span><span class="p">)</span>
+<span class="n">plot_roc</span> <span class="o">=</span> <span class="n">RocPlot</span><span class="p">(</span>
+    <span class="n">n_ratio_panels</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Background rejection&quot;</span><span class="p">,</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;$b$-jets efficiency&quot;</span><span class="p">,</span>
+    <span class="n">atlas_second_tag</span><span class="o">=</span><span class="s2">&quot;$</span><span class="se">\\</span><span class="s2">sqrt</span><span class="si">{s}</span><span class="s2">=13$ TeV, dummy jets </span><span class="se">\n</span><span class="s2">dummy sample, $f_</span><span class="si">{c}</span><span class="s2">=0.018$&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">plot_roc</span><span class="o">.</span><span class="n">add_roc</span><span class="p">(</span>
+    <span class="n">Roc</span><span class="p">(</span>
+        <span class="n">sig_eff</span><span class="p">,</span>
+        <span class="n">rnnip_ujets_rej</span><span class="p">,</span>
+        <span class="n">n_test</span><span class="o">=</span><span class="n">n_jets_light</span><span class="p">,</span>
+        <span class="n">rej_class</span><span class="o">=</span><span class="s2">&quot;ujets&quot;</span><span class="p">,</span>
+        <span class="n">signal_class</span><span class="o">=</span><span class="s2">&quot;bjets&quot;</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;RNNIP&quot;</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="n">reference</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">plot_roc</span><span class="o">.</span><span class="n">add_roc</span><span class="p">(</span>
+    <span class="n">Roc</span><span class="p">(</span>
+        <span class="n">sig_eff</span><span class="p">,</span>
+        <span class="n">dips_ujets_rej</span><span class="p">,</span>
+        <span class="n">n_test</span><span class="o">=</span><span class="n">n_jets_light</span><span class="p">,</span>
+        <span class="n">rej_class</span><span class="o">=</span><span class="s2">&quot;ujets&quot;</span><span class="p">,</span>
+        <span class="n">signal_class</span><span class="o">=</span><span class="s2">&quot;bjets&quot;</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;DIPS r22&quot;</span><span class="p">,</span>
+    <span class="p">),</span>
+<span class="p">)</span>
+<span class="n">plot_roc</span><span class="o">.</span><span class="n">add_roc</span><span class="p">(</span>
+    <span class="n">Roc</span><span class="p">(</span>
+        <span class="n">sig_eff</span><span class="p">,</span>
+        <span class="n">rnnip_cjets_rej</span><span class="p">,</span>
+        <span class="n">n_test</span><span class="o">=</span><span class="n">n_jets_c</span><span class="p">,</span>
+        <span class="n">rej_class</span><span class="o">=</span><span class="s2">&quot;cjets&quot;</span><span class="p">,</span>
+        <span class="n">signal_class</span><span class="o">=</span><span class="s2">&quot;bjets&quot;</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;RNNIP&quot;</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="n">reference</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">plot_roc</span><span class="o">.</span><span class="n">add_roc</span><span class="p">(</span>
+    <span class="n">Roc</span><span class="p">(</span>
+        <span class="n">sig_eff</span><span class="p">,</span>
+        <span class="n">dips_cjets_rej</span><span class="p">,</span>
+        <span class="n">n_test</span><span class="o">=</span><span class="n">n_jets_c</span><span class="p">,</span>
+        <span class="n">rej_class</span><span class="o">=</span><span class="s2">&quot;cjets&quot;</span><span class="p">,</span>
+        <span class="n">signal_class</span><span class="o">=</span><span class="s2">&quot;bjets&quot;</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;DIPS r22&quot;</span><span class="p">,</span>
+    <span class="p">),</span>
+<span class="p">)</span>
+<span class="c1"># setting which flavour rejection ratio is drawn in which ratio panel</span>
+<span class="n">plot_roc</span><span class="o">.</span><span class="n">set_ratio_class</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;ujets&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Light-flavour jets ratio&quot;</span><span class="p">)</span>
+<span class="n">plot_roc</span><span class="o">.</span><span class="n">set_ratio_class</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;cjets&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$c$-jets ratio&quot;</span><span class="p">)</span>
+<span class="c1"># if you want to swap the ratios just uncomment the following 2 lines</span>
+<span class="c1"># plot_roc.set_ratio_class(2, &quot;ujets&quot;, label=&quot;light-flavour jets ratio&quot;)</span>
+<span class="c1"># plot_roc.set_ratio_class(1, &quot;cjets&quot;, label=&quot;c-jets ratio&quot;)</span>
+<span class="n">plot_roc</span><span class="o">.</span><span class="n">set_leg_rej_labels</span><span class="p">(</span><span class="s2">&quot;ujets&quot;</span><span class="p">,</span> <span class="s2">&quot;Light-flavour jets rejection&quot;</span><span class="p">)</span>
+<span class="n">plot_roc</span><span class="o">.</span><span class="n">set_leg_rej_labels</span><span class="p">(</span><span class="s2">&quot;cjets&quot;</span><span class="p">,</span> <span class="s2">&quot;$c$-jets rejection&quot;</span><span class="p">)</span>
+
+
+<span class="n">plot_roc</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+<span class="n">plot_roc</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;roc.png&quot;</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+
+
+              </div>
+              
+              
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="histograms.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Histograms</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="var_vs_eff.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Variable vs efficiency plots</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2022, puma developers.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

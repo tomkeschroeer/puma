@@ -1,0 +1,143 @@
+:py:mod:`puma.tests.test_var_vs_eff`
+====================================
+
+.. py:module:: puma.tests.test_var_vs_eff
+
+.. autoapi-nested-parse::
+
+   Unit test script for the functions in var_vs_eff.py
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   puma.tests.test_var_vs_eff.var_vs_eff_TestCase
+   puma.tests.test_var_vs_eff.var_vs_eff_output_TestCase
+
+
+
+
+.. py:class:: var_vs_eff_TestCase(methodName='runTest')
+
+   Bases: :py:obj:`unittest.TestCase`
+
+   Test class for the puma.var_vs_eff functions.
+
+   Create an instance of the class that will use the named test
+   method when executed. Raises a ValueError if the instance does
+   not have a method with the specified name.
+
+   .. py:method:: setUp(self)
+
+      Hook method for setting up the test fixture before exercising it.
+
+
+   .. py:method:: test_var_vs_eff_init_wrong_sig_shape(self)
+
+      Test var_vs_eff init.
+
+
+   .. py:method:: test_var_vs_eff_init_wrong_bkg_shape(self)
+
+      Test var_vs_eff init.
+
+
+   .. py:method:: test_var_vs_eff_init_fixed_eff_disc_cut(self)
+
+      Test var_vs_eff init.
+
+
+   .. py:method:: test_var_vs_eff_init_fixed_eff_no_wp(self)
+
+      Test var_vs_eff init.
+
+
+   .. py:method:: test_var_vs_eff_init_disc_cut_wp(self)
+
+      Test var_vs_eff init.
+
+
+   .. py:method:: test_var_vs_eff_init_no_disc_cut_no_wp(self)
+
+      Test var_vs_eff init.
+
+
+   .. py:method:: test_var_vs_eff_init_disc_cut_wrong_shape(self)
+
+      Test var_vs_eff init.
+
+
+   .. py:method:: test_var_vs_eff_set_bin_edges_list(self)
+
+      Test var_vs_eff _set_bin_edges.
+
+
+   .. py:method:: test_var_vs_eff_set_bin_edges_only_signal(self)
+
+      Test var_vs_eff _set_bin_edges.
+
+
+   .. py:method:: test_var_vs_eff_set_bin_edges(self)
+
+      Test var_vs_eff _set_bin_edges.
+
+
+   .. py:method:: test_var_vs_eff_fixed_eff_sig_eff(self)
+
+      Test var_vs_eff sig_eff.
+
+
+   .. py:method:: test_var_vs_eff_fixed_eff_sig_rej(self)
+
+      Test var_vs_eff sig_rej.
+
+
+   .. py:method:: test_var_vs_eff_one_bin(self)
+
+      Test var_vs_eff.
+
+
+   .. py:method:: test_var_vs_eff_divide_same(self)
+
+      Test var_vs_eff divide.
+
+
+   .. py:method:: test_var_vs_eff_divide_wrong_mode(self)
+
+      Test var_vs_eff divide.
+
+
+   .. py:method:: test_var_vs_eff_divide_different_binning(self)
+
+      Test var_vs_eff divide.
+
+
+
+.. py:class:: var_vs_eff_output_TestCase(methodName='runTest')
+
+   Bases: :py:obj:`unittest.TestCase`
+
+   Test class for the puma.var_vs_eff_plot output
+
+   Create an instance of the class that will use the named test
+   method when executed. Raises a ValueError if the instance does
+   not have a method with the specified name.
+
+   .. py:method:: setUp(self)
+
+      Hook method for setting up the test fixture before exercising it.
+
+
+   .. py:method:: test_output_plot_fixed_eff_bin_bkg_rejection(self)
+
+
+   .. py:method:: test_output_plot_fixed_eff_bin_bkg_efficiency(self)
+
+
+
