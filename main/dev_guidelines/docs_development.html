@@ -237,9 +237,24 @@ function checkPageExistsAndRedirect(event) {
               
               <div class="toc-item">
                 
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
 
 <nav id="bd-toc-nav">
-    
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#downloading-the-artifact-of-a-dev-version-of-the-docs">
+   Downloading the artifact of a dev version of the docs
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adding-a-new-version-tag-to-the-docs">
+   Adding a new version/tag to the docs
+  </a>
+ </li>
+</ul>
+
 </nav>
               </div>
               
@@ -261,19 +276,50 @@ function checkPageExistsAndRedirect(event) {
                 
   <section id="docs-development">
 <h1>Docs development<a class="headerlink" href="#docs-development" title="Permalink to this headline">#</a></h1>
+<section id="downloading-the-artifact-of-a-dev-version-of-the-docs">
+<h2>Downloading the artifact of a dev version of the docs<a class="headerlink" href="#downloading-the-artifact-of-a-dev-version-of-the-docs" title="Permalink to this headline">#</a></h2>
 <p>When changing something in the <code class="docutils literal notranslate"><span class="pre">puma</span></code> documentation, you might find yourself in a
 situation where you want to see if your changes have the intended effect.</p>
 <p>The docs are only deployed for commits on the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch. However, the docs are
 built for <em>every</em> commit, no matter on which branch, and are uploaded as an artifact.</p>
 <p>This means that you can download the docs as a <code class="docutils literal notranslate"><span class="pre">.zip</span></code> file and then browser the html
 files on your machine.</p>
-<p>If you have an open pull request for you changes, you find the artifact like shown
+<p>If you have an open pull request for your changes, you find the artifact like shown
 below (click on the button that is marked with the red circle).
 After downloading, unzip the file and open the <code class="docutils literal notranslate"><span class="pre">artifact/index.html</span></code> file in your browser.
 You should then see the docs that you just downloaded.</p>
 <p><img alt="" src="../_images/artifact_steps_1.png" />
 <img alt="" src="../_images/artifact_steps_2.png" />
 <img alt="" src="../_images/artifact_steps_3.png" /></p>
+</section>
+<section id="adding-a-new-version-tag-to-the-docs">
+<h2>Adding a new version/tag to the docs<a class="headerlink" href="#adding-a-new-version-tag-to-the-docs" title="Permalink to this headline">#</a></h2>
+<p>When publishing a new release of <code class="docutils literal notranslate"><span class="pre">puma</span></code>, we have to take care with the docs, since
+it is built for each tag.</p>
+<p>Let’s say we want to update <code class="docutils literal notranslate"><span class="pre">puma</span></code> from version <code class="docutils literal notranslate"><span class="pre">0.1.0dev</span></code> to <code class="docutils literal notranslate"><span class="pre">0.1.1</span></code>. This means that
+the version switcher in the docs currently looks like this:</p>
+<p><img alt="" src="../_images/version_switcher_update_1.png" /></p>
+<p>In order to update the <code class="docutils literal notranslate"><span class="pre">puma</span></code> version in the docs correctly, please follow the steps
+below (adapting the version numbers to your case).</p>
+<ol class="arabic simple">
+<li><p>Bump the version in the <code class="docutils literal notranslate"><span class="pre">puma/__init__.py</span></code>, e.g. <code class="docutils literal notranslate"><span class="pre">0.1.0dev</span></code> → <code class="docutils literal notranslate"><span class="pre">0.1.1</span></code> and merge
+into the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch via a PR. This means that the version does not contain “dev”
+any more - as a result of that, the switcher shows the version number instead of
+“latest”, even if you click on “latest”</p></li>
+</ol>
+<p><img alt="" src="../_images/version_switcher_update_2.png" /></p>
+<ol class="arabic simple" start="2">
+<li><p>Create release / push tag <code class="docutils literal notranslate"><span class="pre">v0.1.0</span></code>.</p></li>
+<li><p>Create another PR which adds a switcher entry with the new tag (this has to be
+done after the tag/release has been created, otherwise the build crashes since it
+wants to check out the tag even though it does not exist).
+In addition to that, rename the version in the <code class="docutils literal notranslate"><span class="pre">puma/__init__.py</span></code> like follows:
+<code class="docutils literal notranslate"><span class="pre">0.1.1</span></code> → <code class="docutils literal notranslate"><span class="pre">0.1.1dev</span></code>. The version switcher should now correctly display both the
+latest version and the new tag.</p></li>
+</ol>
+<p><img alt="" src="../_images/version_switcher_update_edit.png" /></p>
+<p><img alt="" src="../_images/version_switcher_update_3.png" /></p>
+</section>
 </section>
 
 
