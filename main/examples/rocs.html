@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>ROC curves &#8212; puma 0.1.1dev documentation</title>
+    <title>ROC curves &#8212; puma 0.1.2dev documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -316,7 +316,7 @@ function checkPageExistsAndRedirect(event) {
 
 <span class="c1"># you can also use a lambda function</span>
 <span class="c1"># discs_rnnip = np.apply_along_axis(</span>
-<span class="c1">#     lambda a: np.log(a[2] / (0.018 * a[1] + 0.92 * a[0])),</span>
+<span class="c1">#     lambda a: np.log(a[2] / (0.018 * a[1] + (1 - 0.018) * a[0])),</span>
 <span class="c1">#     1,</span>
 <span class="c1">#     df[[&quot;rnnip_pu&quot;, &quot;rnnip_pc&quot;, &quot;rnnip_pb&quot;]].values,</span>
 <span class="c1"># )</span>

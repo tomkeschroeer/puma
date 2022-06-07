@@ -23,7 +23,7 @@ Classes
 
 
 
-.. py:class:: Histogram(values: numpy.ndarray, flavour: str = None, histtype: str = 'step', **kwargs)
+.. py:class:: Histogram(values: numpy.ndarray, ratio_group: str = None, flavour: str = None, add_flavour_label: bool = True, histtype: str = 'step', **kwargs)
 
    Bases: :py:obj:`puma.plot_base.PlotLineObject`
 
@@ -34,11 +34,19 @@ Classes
 
    :param values: Input data for the histogram
    :type values: np.ndarray
+   :param ratio_group: Name of the ratio group this histogram is compared with. The ratio group
+                       allows you to compare different groups of histograms within one plot.
+                       By default None
+   :type ratio_group: str, optional
    :param flavour: Jet flavour in case the histogram corresponds to one specific flavour. If
                    this is specified, the correct colour will be extracted from the global
                    config. Allowed values are the ones from the global config, i.e. "bjets",
                    "cjets", "ujets", "bbjets", ..., by default None
    :type flavour: str, optional
+   :param add_flavour_label: Set to False to suppress the automatic addition of the flavour label prefix
+                             in the label of the curve (i.e. "$b$-jets" in the case of b-jets).
+                             This is ignored if `flavour` is not set. By default False
+   :type add_flavour_label: bool, optional
    :param histtype: `histtype` parameter which is handed to matplotlib.hist() when plotting the
                     histograms. Supported values are "bar", "barstacked", "step", "stepfilled".
                     By default "step"

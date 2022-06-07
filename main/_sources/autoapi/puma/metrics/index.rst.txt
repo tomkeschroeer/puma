@@ -22,6 +22,7 @@ Functions
    puma.metrics.calc_rej
    puma.metrics.eff_err
    puma.metrics.rej_err
+   puma.metrics.calc_separation
 
 
 
@@ -111,5 +112,29 @@ Functions
    .. rubric:: Notes
 
    Special case of `eff_err()`
+
+
+.. py:function:: calc_separation(values_a: numpy.ndarray, values_b: numpy.ndarray, bins: int = 100, bins_range: tuple = None, return_hist: bool = False) -> float
+
+   Calculates the separation of two distributions.
+
+   :param values_a: First distribution
+   :type values_a: np.ndarray
+   :param values_b: Second distribution
+   :type values_b: np.ndarray
+   :param bins: Number of bins used for the histograms (common binning over whole range if
+                `bins_range` is not defined), by default 100
+   :type bins: int, optional
+   :param bins_range: Lower and upper limit for binning. If not provided, the whole range of the
+                      joined distribution is used, by default None
+   :type bins_range: tuple, optional
+   :param return_hist: Option to also return the hist_a, hist_b and bin_edges arrays
+   :type return_hist: bool, optional
+
+   :returns: * *float* -- separation value
+             * *float* -- separation uncertainty
+             * *numpy.ndarray* -- Bins height of histogram a (only returned if `return_hist` is True)
+             * *numpy.ndarray* -- Bins height of histogram b (only returned if `return_hist` is True)
+             * *numpy.ndarray* -- Bin edges of the two histograms (only returned if `return_hist` is True)
 
 

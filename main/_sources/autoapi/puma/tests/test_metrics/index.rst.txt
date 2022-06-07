@@ -17,9 +17,57 @@ Classes
 
 .. autoapisummary::
 
+   puma.tests.test_metrics.separation_TestCase
    puma.tests.test_metrics.eff_err_TestCase
    puma.tests.test_metrics.rej_err_TestCase
 
+
+
+
+.. py:class:: separation_TestCase(methodName='runTest')
+
+   Bases: :py:obj:`unittest.TestCase`
+
+   Test class for the puma.metrics.calc_separation.
+
+   Create an instance of the class that will use the named test
+   method when executed. Raises a ValueError if the instance does
+   not have a method with the specified name.
+
+   .. py:method:: setUp(self)
+
+      Define a default (seeded) random number generator for all tests
+
+
+   .. py:method:: test_equal_datasets(self)
+
+      Separation of two equal datasets (=0)
+
+
+   .. py:method:: test_completely_separated(self)
+
+      Separation of two completely separated distributions
+
+
+   .. py:method:: test_completely_separated_bad_binning(self)
+
+      Separation of two completely separated distributions if the binning
+      if chosen such that they share one bin
+
+
+   .. py:method:: test_half_separated(self)
+
+      Separation of 0.5
+
+
+   .. py:method:: test_return_bins(self)
+
+      Test if bins are correctly returned
+
+
+   .. py:method:: test_bins_range(self)
+
+      Test if bins_range is properly treated.
 
 
 

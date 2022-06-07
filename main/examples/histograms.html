@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Histograms &#8212; puma 0.1.1dev documentation</title>
+    <title>Histograms &#8212; puma 0.1.2dev documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -329,17 +329,46 @@ function checkPageExistsAndRedirect(event) {
 <span class="n">is_c</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;HadronConeExclTruthLabelID&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">4</span>
 <span class="n">is_b</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;HadronConeExclTruthLabelID&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">5</span>
 
-<span class="n">hist_dips_light</span> <span class="o">=</span> <span class="n">Histogram</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">is_light</span><span class="p">][</span><span class="s2">&quot;disc_dips&quot;</span><span class="p">],</span> <span class="n">flavour</span><span class="o">=</span><span class="s2">&quot;ujets&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;DIPS&quot;</span><span class="p">)</span>
-<span class="n">hist_dips_c</span> <span class="o">=</span> <span class="n">Histogram</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">is_c</span><span class="p">][</span><span class="s2">&quot;disc_dips&quot;</span><span class="p">],</span> <span class="n">flavour</span><span class="o">=</span><span class="s2">&quot;cjets&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;DIPS&quot;</span><span class="p">)</span>
-<span class="n">hist_dips_b</span> <span class="o">=</span> <span class="n">Histogram</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">is_b</span><span class="p">][</span><span class="s2">&quot;disc_dips&quot;</span><span class="p">],</span> <span class="n">flavour</span><span class="o">=</span><span class="s2">&quot;bjets&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;DIPS&quot;</span><span class="p">)</span>
+<span class="n">hist_dips_light</span> <span class="o">=</span> <span class="n">Histogram</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">[</span><span class="n">is_light</span><span class="p">][</span><span class="s2">&quot;disc_dips&quot;</span><span class="p">],</span>
+    <span class="n">flavour</span><span class="o">=</span><span class="s2">&quot;ujets&quot;</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;DIPS&quot;</span><span class="p">,</span>
+    <span class="c1"># if not set, the &quot;ratio_group&quot; argument would be set to the flavour &quot;ujets&quot;</span>
+    <span class="c1"># so this is just done here for demonstration purposes</span>
+    <span class="n">ratio_group</span><span class="o">=</span><span class="s2">&quot;ujets&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">hist_dips_c</span> <span class="o">=</span> <span class="n">Histogram</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">[</span><span class="n">is_c</span><span class="p">][</span><span class="s2">&quot;disc_dips&quot;</span><span class="p">],</span>
+    <span class="n">flavour</span><span class="o">=</span><span class="s2">&quot;cjets&quot;</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;DIPS&quot;</span><span class="p">,</span>
+    <span class="n">ratio_group</span><span class="o">=</span><span class="s2">&quot;cjets&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">hist_dips_b</span> <span class="o">=</span> <span class="n">Histogram</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">[</span><span class="n">is_b</span><span class="p">][</span><span class="s2">&quot;disc_dips&quot;</span><span class="p">],</span>
+    <span class="n">flavour</span><span class="o">=</span><span class="s2">&quot;bjets&quot;</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;DIPS&quot;</span><span class="p">,</span>
+    <span class="n">ratio_group</span><span class="o">=</span><span class="s2">&quot;bjets&quot;</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="n">hist_rnnip_light</span> <span class="o">=</span> <span class="n">Histogram</span><span class="p">(</span>
-    <span class="n">df</span><span class="p">[</span><span class="n">is_light</span><span class="p">][</span><span class="s2">&quot;disc_rnnip&quot;</span><span class="p">],</span> <span class="n">flavour</span><span class="o">=</span><span class="s2">&quot;ujets&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;RNNIP&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span>
+    <span class="n">df</span><span class="p">[</span><span class="n">is_light</span><span class="p">][</span><span class="s2">&quot;disc_rnnip&quot;</span><span class="p">],</span>
+    <span class="n">flavour</span><span class="o">=</span><span class="s2">&quot;ujets&quot;</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;RNNIP&quot;</span><span class="p">,</span>
+    <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">,</span>
+    <span class="n">ratio_group</span><span class="o">=</span><span class="s2">&quot;ujets&quot;</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">hist_rnnip_c</span> <span class="o">=</span> <span class="n">Histogram</span><span class="p">(</span>
-    <span class="n">df</span><span class="p">[</span><span class="n">is_c</span><span class="p">][</span><span class="s2">&quot;disc_rnnip&quot;</span><span class="p">],</span> <span class="n">flavour</span><span class="o">=</span><span class="s2">&quot;cjets&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;RNNIP&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span>
+    <span class="n">df</span><span class="p">[</span><span class="n">is_c</span><span class="p">][</span><span class="s2">&quot;disc_rnnip&quot;</span><span class="p">],</span>
+    <span class="n">flavour</span><span class="o">=</span><span class="s2">&quot;cjets&quot;</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;RNNIP&quot;</span><span class="p">,</span>
+    <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">,</span>
+    <span class="n">ratio_group</span><span class="o">=</span><span class="s2">&quot;cjets&quot;</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">hist_rnnip_b</span> <span class="o">=</span> <span class="n">Histogram</span><span class="p">(</span>
-    <span class="n">df</span><span class="p">[</span><span class="n">is_b</span><span class="p">][</span><span class="s2">&quot;disc_rnnip&quot;</span><span class="p">],</span> <span class="n">flavour</span><span class="o">=</span><span class="s2">&quot;bjets&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;RNNIP&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span>
+    <span class="n">df</span><span class="p">[</span><span class="n">is_b</span><span class="p">][</span><span class="s2">&quot;disc_rnnip&quot;</span><span class="p">],</span>
+    <span class="n">flavour</span><span class="o">=</span><span class="s2">&quot;bjets&quot;</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;RNNIP&quot;</span><span class="p">,</span>
+    <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">,</span>
+    <span class="n">ratio_group</span><span class="o">=</span><span class="s2">&quot;bjets&quot;</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="c1"># Initialise histogram plot</span>

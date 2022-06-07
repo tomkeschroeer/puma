@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>puma.metrics &#8212; puma 0.1.1dev documentation</title>
+    <title>puma.metrics &#8212; puma 0.1.2dev documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -356,6 +356,11 @@ function checkPageExistsAndRedirect(event) {
        rej_err
       </a>
      </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#puma.metrics.calc_separation">
+       calc_separation
+      </a>
+     </li>
     </ul>
    </li>
   </ul>
@@ -405,6 +410,9 @@ function checkPageExistsAndRedirect(event) {
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#puma.metrics.rej_err" title="puma.metrics.rej_err"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rej_err</span></code></a>(arr: numpy.ndarray, n_counts: int, norm: bool = False) → numpy.ndarray</p></td>
 <td><p>Calculate the rejection uncertainties.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#puma.metrics.calc_separation" title="puma.metrics.calc_separation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_separation</span></code></a>(values_a: numpy.ndarray, values_b: numpy.ndarray, bins: int = 100, bins_range: tuple = None, return_hist: bool = False) → float</p></td>
+<td><p>Calculates the separation of two distributions.</p></td>
 </tr>
 </tbody>
 </table>
@@ -517,6 +525,35 @@ If target_eff is a float, a float is returned if it’s a list a np.ndarray</p><
 </dl>
 <p class="rubric">Notes</p>
 <p>Special case of <code class="code docutils literal notranslate"><span class="pre">eff_err()</span></code></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="puma.metrics.calc_separation">
+<span class="sig-prename descclassname"><span class="pre">puma.metrics.</span></span><span class="sig-name descname"><span class="pre">calc_separation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values_a</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values_b</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bins</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bins_range</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">tuple</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_hist</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#puma.metrics.calc_separation" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculates the separation of two distributions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>values_a</strong> (<em>np.ndarray</em>) – First distribution</p></li>
+<li><p><strong>values_b</strong> (<em>np.ndarray</em>) – Second distribution</p></li>
+<li><p><strong>bins</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of bins used for the histograms (common binning over whole range if
+<code class="code docutils literal notranslate"><span class="pre">bins_range</span></code> is not defined), by default 100</p></li>
+<li><p><strong>bins_range</strong> (<em>tuple</em><em>, </em><em>optional</em>) – Lower and upper limit for binning. If not provided, the whole range of the
+joined distribution is used, by default None</p></li>
+<li><p><strong>return_hist</strong> (<em>bool</em><em>, </em><em>optional</em>) – Option to also return the hist_a, hist_b and bin_edges arrays</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>float</em> – separation value</p></li>
+<li><p><em>float</em> – separation uncertainty</p></li>
+<li><p><em>numpy.ndarray</em> – Bins height of histogram a (only returned if <code class="code docutils literal notranslate"><span class="pre">return_hist</span></code> is True)</p></li>
+<li><p><em>numpy.ndarray</em> – Bins height of histogram b (only returned if <code class="code docutils literal notranslate"><span class="pre">return_hist</span></code> is True)</p></li>
+<li><p><em>numpy.ndarray</em> – Bin edges of the two histograms (only returned if <code class="code docutils literal notranslate"><span class="pre">return_hist</span></code> is True)</p></li>
+</ul>
+</p>
+</dd>
+</dl>
 </dd></dl>
 
 </section>

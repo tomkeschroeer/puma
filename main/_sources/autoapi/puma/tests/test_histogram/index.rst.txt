@@ -142,4 +142,15 @@ Classes
       Test the drawing of vertical lines in the histogram.
 
 
+   .. py:method:: test_ratio_group_options(self)
+
+      Test different combinations of using ratio groups.
+
+
+   .. py:method:: test_flavoured_labels(self)
+
+      Test different combinations of specifying the label when also specifying a
+      flavour for the histogram.
+
+
 

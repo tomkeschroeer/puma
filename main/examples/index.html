@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Examples &#8212; puma 0.1.1dev documentation</title>
+    <title>Examples &#8212; puma 0.1.2dev documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -345,21 +345,28 @@ discriminant.</p>
 <p>In the example below you can find an example on how you can calculate the tagger
 discriminant using the raw output (i.e. <code class="docutils literal notranslate"><span class="pre">p_u</span></code>, <code class="docutils literal notranslate"><span class="pre">p_c</span></code> and <code class="docutils literal notranslate"><span class="pre">p_b</span></code>) of the tagger.</p>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="c1"># define a small function to calculate discriminant</span>
-<span class="k">def</span> <span class="nf">disc_fct</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">disc_fct</span><span class="p">(</span><span class="n">arr</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">f_c</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.018</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Tagger discriminant</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    a : numpy.ndarray</span>
+<span class="sd">    arr : numpy.ndarray</span>
 <span class="sd">        array with with shape (, 3)</span>
+<span class="sd">    f_c : float, optional</span>
+<span class="sd">        f_c value in the discriminant (weight for c-jets rejection)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    np.ndarray</span>
+<span class="sd">        Array with the discriminant values inside.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># you can adapt this for your needs</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="mf">0.018</span> <span class="o">*</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.982</span> <span class="o">*</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="n">f_c</span> <span class="o">*</span> <span class="n">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">f_c</span><span class="p">)</span> <span class="o">*</span> <span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
 
 
 <span class="c1"># you can also use a lambda function</span>
 <span class="c1"># discs_rnnip = np.apply_along_axis(</span>
-<span class="c1">#     lambda a: np.log(a[2] / (0.018 * a[1] + 0.982 * a[0])),</span>
+<span class="c1">#     lambda a: np.log(a[2] / (0.018 * a[1] + (1 - 0.018) * a[0])),</span>
 <span class="c1">#     1,</span>
 <span class="c1">#     df[[&quot;rnnip_pu&quot;, &quot;rnnip_pc&quot;, &quot;rnnip_pb&quot;]].values,</span>
 <span class="c1"># )</span>
